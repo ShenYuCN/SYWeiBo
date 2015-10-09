@@ -10,13 +10,39 @@
 
 @interface AppDelegate ()
 
+
 @end
 
 @implementation AppDelegate
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    
+    //1.创建窗口
+    self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    
+    //2.设置根控制器
+    UITabBarController *tabbarVc = [[UITabBarController alloc] init];
+    self.window.rootViewController = tabbarVc;
+    
+    //3.设置子控制器
+    UIViewController *vc1 = [[UIViewController alloc] init];
+    vc1.tabBarItem.title = @"首页";
+    vc1.tabBarItem.image = [UIImage imageNamed:@"tabbar_home"];
+    vc1.tabBarItem.selectedImage =[[UIImage imageNamed:@"tabbar_home_selected"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    vc1.view.backgroundColor = [UIColor redColor];
+    
+    UIViewController *vc2 = [[UIViewController alloc] init];
+    vc2.tabBarItem.title = @"消息";
+    vc2.tabBarItem.image = [UIImage imageNamed:@"tabbar_message_center"];
+    vc2.tabBarItem.selectedImage = [[UIImage imageNamed:@"tabbar_message_center_selected"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    vc2.view.backgroundColor = [UIColor redColor];
+    
+    
+    tabbarVc.viewControllers = @[vc1,vc2];
+    
+    //4.显示窗口
+    [self.window makeKeyAndVisible];
     return YES;
 }
 
