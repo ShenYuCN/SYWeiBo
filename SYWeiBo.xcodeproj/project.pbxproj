@@ -11,6 +11,9 @@
 		A5283C381BC89ED100E62BE7 /* SYMessageCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5283C371BC89ED100E62BE7 /* SYMessageCenterViewController.m */; settings = {ASSET_TAGS = (); }; };
 		A5283C3B1BC89EE400E62BE7 /* SYDiscoverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5283C3A1BC89EE400E62BE7 /* SYDiscoverViewController.m */; settings = {ASSET_TAGS = (); }; };
 		A5283C3E1BC89EF400E62BE7 /* SYProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5283C3D1BC89EF400E62BE7 /* SYProfileViewController.m */; settings = {ASSET_TAGS = (); }; };
+		A5283C801BC8A6DE00E62BE7 /* SYTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5283C7F1BC8A6DE00E62BE7 /* SYTabBarViewController.m */; settings = {ASSET_TAGS = (); }; };
+		A5D28C0C1BC8B18A00BF8BD9 /* Test1ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5D28C0A1BC8B18A00BF8BD9 /* Test1ViewController.m */; settings = {ASSET_TAGS = (); }; };
+		A5D28C0D1BC8B18A00BF8BD9 /* Test1ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A5D28C0B1BC8B18A00BF8BD9 /* Test1ViewController.xib */; settings = {ASSET_TAGS = (); }; };
 		A5F5B7A91BC7BA4D0047F482 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A5F5B7A81BC7BA4D0047F482 /* main.m */; };
 		A5F5B7B71BC7BA4D0047F482 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5F5B7B51BC7BA4D0047F482 /* LaunchScreen.storyboard */; };
 		A5F5B7C21BC7BA4D0047F482 /* SYWeiBoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A5F5B7C11BC7BA4D0047F482 /* SYWeiBoTests.m */; };
@@ -45,6 +48,11 @@
 		A5283C3A1BC89EE400E62BE7 /* SYDiscoverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYDiscoverViewController.m; sourceTree = "<group>"; };
 		A5283C3C1BC89EF400E62BE7 /* SYProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYProfileViewController.h; sourceTree = "<group>"; };
 		A5283C3D1BC89EF400E62BE7 /* SYProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYProfileViewController.m; sourceTree = "<group>"; };
+		A5283C7E1BC8A6DE00E62BE7 /* SYTabBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYTabBarViewController.h; sourceTree = "<group>"; };
+		A5283C7F1BC8A6DE00E62BE7 /* SYTabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYTabBarViewController.m; sourceTree = "<group>"; };
+		A5D28C091BC8B18A00BF8BD9 /* Test1ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Test1ViewController.h; sourceTree = "<group>"; };
+		A5D28C0A1BC8B18A00BF8BD9 /* Test1ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Test1ViewController.m; sourceTree = "<group>"; };
+		A5D28C0B1BC8B18A00BF8BD9 /* Test1ViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Test1ViewController.xib; sourceTree = "<group>"; };
 		A5F5B7A41BC7BA4D0047F482 /* SYWeiBo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SYWeiBo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5F5B7A81BC7BA4D0047F482 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		A5F5B7B61BC7BA4D0047F482 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -156,6 +164,11 @@
 				A5283C3A1BC89EE400E62BE7 /* SYDiscoverViewController.m */,
 				A5283C3C1BC89EF400E62BE7 /* SYProfileViewController.h */,
 				A5283C3D1BC89EF400E62BE7 /* SYProfileViewController.m */,
+				A5283C7E1BC8A6DE00E62BE7 /* SYTabBarViewController.h */,
+				A5283C7F1BC8A6DE00E62BE7 /* SYTabBarViewController.m */,
+				A5D28C091BC8B18A00BF8BD9 /* Test1ViewController.h */,
+				A5D28C0A1BC8B18A00BF8BD9 /* Test1ViewController.m */,
+				A5D28C0B1BC8B18A00BF8BD9 /* Test1ViewController.xib */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -265,6 +278,7 @@
 			files = (
 				A5F5B7DB1BC7BB520047F482 /* Assets.xcassets in Resources */,
 				A5F5B7B71BC7BA4D0047F482 /* LaunchScreen.storyboard in Resources */,
+				A5D28C0D1BC8B18A00BF8BD9 /* Test1ViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -289,9 +303,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A5D28C0C1BC8B18A00BF8BD9 /* Test1ViewController.m in Sources */,
 				A5F5B7A91BC7BA4D0047F482 /* main.m in Sources */,
 				A5283C3B1BC89EE400E62BE7 /* SYDiscoverViewController.m in Sources */,
 				A5283C3E1BC89EF400E62BE7 /* SYProfileViewController.m in Sources */,
+				A5283C801BC8A6DE00E62BE7 /* SYTabBarViewController.m in Sources */,
 				A5283C351BC89EBE00E62BE7 /* SYHomeViewController.m in Sources */,
 				A5F5B7DF1BC7BBAA0047F482 /* AppDelegate.m in Sources */,
 				A5283C381BC89ED100E62BE7 /* SYMessageCenterViewController.m in Sources */,
