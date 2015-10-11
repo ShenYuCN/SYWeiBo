@@ -13,6 +13,7 @@
 		A5283C3E1BC89EF400E62BE7 /* SYProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5283C3D1BC89EF400E62BE7 /* SYProfileViewController.m */; settings = {ASSET_TAGS = (); }; };
 		A5283C801BC8A6DE00E62BE7 /* SYTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5283C7F1BC8A6DE00E62BE7 /* SYTabBarViewController.m */; settings = {ASSET_TAGS = (); }; };
 		A544E3201BC9FD910018BB9C /* SYNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = A544E31F1BC9FD910018BB9C /* SYNavigationController.m */; settings = {ASSET_TAGS = (); }; };
+		A544E3421BCA176A0018BB9C /* UIBarButtonItem+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = A544E3411BCA176A0018BB9C /* UIBarButtonItem+Extension.m */; settings = {ASSET_TAGS = (); }; };
 		A5CA0F981BC9116D00154FF6 /* Test2ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5CA0F971BC9116D00154FF6 /* Test2ViewController.m */; settings = {ASSET_TAGS = (); }; };
 		A5CA0F9B1BC916F900154FF6 /* Test3ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5CA0F9A1BC916F900154FF6 /* Test3ViewController.m */; settings = {ASSET_TAGS = (); }; };
 		A5D28C0C1BC8B18A00BF8BD9 /* Test1ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5D28C0A1BC8B18A00BF8BD9 /* Test1ViewController.m */; settings = {ASSET_TAGS = (); }; };
@@ -70,6 +71,8 @@
 		A5283C7F1BC8A6DE00E62BE7 /* SYTabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYTabBarViewController.m; sourceTree = "<group>"; };
 		A544E31E1BC9FD910018BB9C /* SYNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYNavigationController.h; sourceTree = "<group>"; };
 		A544E31F1BC9FD910018BB9C /* SYNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYNavigationController.m; sourceTree = "<group>"; };
+		A544E3401BCA176A0018BB9C /* UIBarButtonItem+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+Extension.h"; sourceTree = "<group>"; };
+		A544E3411BCA176A0018BB9C /* UIBarButtonItem+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBarButtonItem+Extension.m"; sourceTree = "<group>"; };
 		A5CA0F961BC9116D00154FF6 /* Test2ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Test2ViewController.h; sourceTree = "<group>"; };
 		A5CA0F971BC9116D00154FF6 /* Test2ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Test2ViewController.m; sourceTree = "<group>"; };
 		A5CA0F991BC916F900154FF6 /* Test3ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Test3ViewController.h; sourceTree = "<group>"; };
@@ -143,13 +146,127 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		A5CA0F901BC90CC300154FF6 /* Extension */ = {
+		A544E3301BCA0C6B0018BB9C /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				A544E3331BCA0C8E0018BB9C /* Category */,
+				A544E3321BCA0C7D0018BB9C /* Other */,
+				A544E3311BCA0C730018BB9C /* Controller */,
+			);
+			name = Main;
+			sourceTree = "<group>";
+		};
+		A544E3311BCA0C730018BB9C /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				A5283C7E1BC8A6DE00E62BE7 /* SYTabBarViewController.h */,
+				A5283C7F1BC8A6DE00E62BE7 /* SYTabBarViewController.m */,
+				A544E31E1BC9FD910018BB9C /* SYNavigationController.h */,
+				A544E31F1BC9FD910018BB9C /* SYNavigationController.m */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		A544E3321BCA0C7D0018BB9C /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				A5F5B7DD1BC7BBAA0047F482 /* AppDelegate.h */,
+				A5F5B7DE1BC7BBAA0047F482 /* AppDelegate.m */,
+			);
+			name = Other;
+			sourceTree = "<group>";
+		};
+		A544E3331BCA0C8E0018BB9C /* Category */ = {
 			isa = PBXGroup;
 			children = (
 				A5D28C0E1BC8BBAA00BF8BD9 /* UIView+Extension.h */,
 				A5D28C0F1BC8BBAA00BF8BD9 /* UIView+Extension.m */,
+				A544E3401BCA176A0018BB9C /* UIBarButtonItem+Extension.h */,
+				A544E3411BCA176A0018BB9C /* UIBarButtonItem+Extension.m */,
 			);
-			name = Extension;
+			name = Category;
+			sourceTree = "<group>";
+		};
+		A544E3341BCA0CA10018BB9C /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				A544E3351BCA0CAA0018BB9C /* Controller */,
+			);
+			name = Home;
+			sourceTree = "<group>";
+		};
+		A544E3351BCA0CAA0018BB9C /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				A5283C331BC89EBE00E62BE7 /* SYHomeViewController.h */,
+				A5283C341BC89EBE00E62BE7 /* SYHomeViewController.m */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		A544E3361BCA0CB40018BB9C /* Message */ = {
+			isa = PBXGroup;
+			children = (
+				A544E3371BCA0CC00018BB9C /* Controller */,
+			);
+			name = Message;
+			sourceTree = "<group>";
+		};
+		A544E3371BCA0CC00018BB9C /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				A5283C361BC89ED100E62BE7 /* SYMessageCenterViewController.h */,
+				A5283C371BC89ED100E62BE7 /* SYMessageCenterViewController.m */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		A544E3381BCA0CCB0018BB9C /* Discover */ = {
+			isa = PBXGroup;
+			children = (
+				A544E3391BCA0CD30018BB9C /* Controller */,
+			);
+			name = Discover;
+			sourceTree = "<group>";
+		};
+		A544E3391BCA0CD30018BB9C /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				A5283C391BC89EE400E62BE7 /* SYDiscoverViewController.h */,
+				A5283C3A1BC89EE400E62BE7 /* SYDiscoverViewController.m */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		A544E33A1BCA0CDE0018BB9C /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				A544E33B1BCA0CE40018BB9C /* Controller */,
+			);
+			name = Profile;
+			sourceTree = "<group>";
+		};
+		A544E33B1BCA0CE40018BB9C /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				A5283C3C1BC89EF400E62BE7 /* SYProfileViewController.h */,
+				A5283C3D1BC89EF400E62BE7 /* SYProfileViewController.m */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		A544E33C1BCA0CF70018BB9C /* Temp */ = {
+			isa = PBXGroup;
+			children = (
+				A5D28C091BC8B18A00BF8BD9 /* Test1ViewController.h */,
+				A5D28C0A1BC8B18A00BF8BD9 /* Test1ViewController.m */,
+				A5D28C0B1BC8B18A00BF8BD9 /* Test1ViewController.xib */,
+				A5CA0F961BC9116D00154FF6 /* Test2ViewController.h */,
+				A5CA0F971BC9116D00154FF6 /* Test2ViewController.m */,
+				A5CA0F991BC916F900154FF6 /* Test3ViewController.h */,
+				A5CA0F9A1BC916F900154FF6 /* Test3ViewController.m */,
+			);
+			name = Temp;
 			sourceTree = "<group>";
 		};
 		A5F5B79B1BC7BA4D0047F482 = {
@@ -216,28 +333,12 @@
 		A5F5B7DC1BC7BBAA0047F482 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				A5CA0F901BC90CC300154FF6 /* Extension */,
-				A5F5B7DD1BC7BBAA0047F482 /* AppDelegate.h */,
-				A5F5B7DE1BC7BBAA0047F482 /* AppDelegate.m */,
-				A5283C7E1BC8A6DE00E62BE7 /* SYTabBarViewController.h */,
-				A5283C7F1BC8A6DE00E62BE7 /* SYTabBarViewController.m */,
-				A544E31E1BC9FD910018BB9C /* SYNavigationController.h */,
-				A544E31F1BC9FD910018BB9C /* SYNavigationController.m */,
-				A5283C331BC89EBE00E62BE7 /* SYHomeViewController.h */,
-				A5283C341BC89EBE00E62BE7 /* SYHomeViewController.m */,
-				A5283C361BC89ED100E62BE7 /* SYMessageCenterViewController.h */,
-				A5283C371BC89ED100E62BE7 /* SYMessageCenterViewController.m */,
-				A5283C391BC89EE400E62BE7 /* SYDiscoverViewController.h */,
-				A5283C3A1BC89EE400E62BE7 /* SYDiscoverViewController.m */,
-				A5283C3C1BC89EF400E62BE7 /* SYProfileViewController.h */,
-				A5283C3D1BC89EF400E62BE7 /* SYProfileViewController.m */,
-				A5D28C091BC8B18A00BF8BD9 /* Test1ViewController.h */,
-				A5D28C0A1BC8B18A00BF8BD9 /* Test1ViewController.m */,
-				A5D28C0B1BC8B18A00BF8BD9 /* Test1ViewController.xib */,
-				A5CA0F961BC9116D00154FF6 /* Test2ViewController.h */,
-				A5CA0F971BC9116D00154FF6 /* Test2ViewController.m */,
-				A5CA0F991BC916F900154FF6 /* Test3ViewController.h */,
-				A5CA0F9A1BC916F900154FF6 /* Test3ViewController.m */,
+				A544E33C1BCA0CF70018BB9C /* Temp */,
+				A544E33A1BCA0CDE0018BB9C /* Profile */,
+				A544E3381BCA0CCB0018BB9C /* Discover */,
+				A544E3361BCA0CB40018BB9C /* Message */,
+				A544E3341BCA0CA10018BB9C /* Home */,
+				A544E3301BCA0C6B0018BB9C /* Main */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -495,6 +596,7 @@
 				A544E3201BC9FD910018BB9C /* SYNavigationController.m in Sources */,
 				A5283C801BC8A6DE00E62BE7 /* SYTabBarViewController.m in Sources */,
 				A5283C351BC89EBE00E62BE7 /* SYHomeViewController.m in Sources */,
+				A544E3421BCA176A0018BB9C /* UIBarButtonItem+Extension.m in Sources */,
 				A5F5B7DF1BC7BBAA0047F482 /* AppDelegate.m in Sources */,
 				A5283C381BC89ED100E62BE7 /* SYMessageCenterViewController.m in Sources */,
 			);
