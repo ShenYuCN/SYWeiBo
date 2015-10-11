@@ -58,11 +58,17 @@
     
     [childVc.tabBarItem setTitleTextAttributes:textAttrs forState:UIControlStateNormal];
     [childVc.tabBarItem setTitleTextAttributes:selectedTextAttrs forState:UIControlStateSelected];
-    childVc.view.backgroundColor = [UIColor colorWithRed:(arc4random_uniform(256)/255.0) green:(arc4random_uniform(256)/255.0) blue:(arc4random_uniform(256)/255.0) alpha:1.0];
+    
+    //这个创建随机色代码不应该在这里写；原因1：写这里的目的是为了看背景测试用  原因2：写了这句代码后直接创建了控制器的view，打开程序就创建了四个控制器，事实上不需要，应该用的时候才创建  原因3：这句代码在 SYNavigationController之前，那么创建view的时候得不到SYNavigationController的主题样式
+//    childVc.view.backgroundColor = [UIColor colorWithRed:(arc4random_uniform(256)/255.0) green:(arc4random_uniform(256)/255.0) blue:(arc4random_uniform(256)/255.0) alpha:1.0];
     
     
     SYNavigationController *nav = [[SYNavigationController alloc] initWithRootViewController:childVc];
     [self addChildViewController:nav];
+    
+//    add添加的时候事实上是添加进了tabBarController的数组中，因此在子控制器之间切换，子控制器并不会销毁
+//    self.childViewControllers
+//    self.viewControllers
 }
 
 @end

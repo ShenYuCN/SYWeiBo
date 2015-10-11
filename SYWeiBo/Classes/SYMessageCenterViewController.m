@@ -14,9 +14,19 @@
 
 @implementation SYMessageCenterViewController
 
+-(void)viewDidLoad{
+
+    [super viewDidLoad];
+    
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"写私信" style:UIBarButtonItemStyleDone target:self action:@selector(message)];
+    
+    self.navigationItem.rightBarButtonItem.enabled = NO;
+}
+-(void)message{
+    NSLog(@"message");
+}
+
 #pragma mark - Table view data source
-
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return 20;
 }

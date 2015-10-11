@@ -15,6 +15,35 @@
 
 @implementation SYNavigationController
 
++(void)initialize{
+
+    //设置整个项目的UIBarButtonItem的主题样式
+    UIBarButtonItem *item = [UIBarButtonItem appearance];
+    //正常状态
+    NSMutableDictionary *textAttr = [NSMutableDictionary dictionary];
+    textAttr[NSForegroundColorAttributeName] = [UIColor orangeColor];
+    textAttr[NSFontAttributeName] = [UIFont systemFontOfSize:13];
+    [item setTitleTextAttributes:textAttr forState:UIControlStateNormal];
+    //不可用状态
+    NSMutableDictionary *disableTextAttr = [NSMutableDictionary dictionary];
+    disableTextAttr[NSForegroundColorAttributeName] = [UIColor lightGrayColor];
+    disableTextAttr[NSFontAttributeName] = [UIFont systemFontOfSize:13];
+    [item setTitleTextAttributes:disableTextAttr forState:UIControlStateDisabled];
+
+    
+    
+    
+    
+}
+-(void)viewDidLoad{
+    [super viewDidLoad];
+    
+}
+/**
+ *  重写这个方法目的：能够拦截所有push进来的控制器
+ *
+ *  @param viewController 即将push进来的控制器
+ */
 -(void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated{
     if (self.childViewControllers.count > 0) {
         
@@ -28,6 +57,8 @@
     [super pushViewController:viewController animated:YES];
 }
 -(void)back{
+    //这里要用self，不是self.navigationController
+    // 因为self本来就是一个导航控制器，self.navigationController这里是nil的
     [self popViewControllerAnimated:YES];
 }
 

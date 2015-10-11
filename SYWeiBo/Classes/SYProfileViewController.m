@@ -9,7 +9,7 @@
 //
 
 #import "SYProfileViewController.h"
-
+#import "Test1ViewController.h"
 @interface SYProfileViewController ()
 
 @end
@@ -24,6 +24,11 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"设置" style:UIBarButtonItemStyleDone target:self action:@selector(setting)];
+}
+-(void)setting{
+    [self.navigationController pushViewController:[[Test1ViewController alloc] init] animated:YES];
 }
 
 - (void)didReceiveMemoryWarning {

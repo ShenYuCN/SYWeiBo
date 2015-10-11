@@ -7,7 +7,7 @@
 //
 
 #import "SYDiscoverViewController.h"
-
+#import "UIView+Extension.h"
 @interface SYDiscoverViewController ()
 
 @end
@@ -17,11 +17,24 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
+    //创建搜索框对象
+    UITextField *searchBar = [[UITextField alloc] init];
+    [searchBar setBackground:[UIImage imageNamed:@"searchbar_textfield_background"]];
+    searchBar.size = CGSizeMake(300, 30);
     
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    searchBar.placeholder = @"搜索";
+    [searchBar setValue:[UIColor grayColor] forKeyPath:@"_placeholderLabel.textColor"];
+    [searchBar setValue:[UIFont boldSystemFontOfSize:13] forKeyPath:@"_placeholderLabel.font"];
+//    [searchBar setValue:[UIViewContentMode UIViewContentModeCenter] forKeyPath:@"_placeholderLabel.contentMode"];
+    //设置放大镜图标
+    UIImageView *searchIcon = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"searchbar_textfield_search_icon"]];
+    searchIcon.size = CGSizeMake(30, 30);
+    
+    searchBar.leftView = searchIcon;
+    searchBar.leftViewMode = UITextFieldViewModeAlways;
+    searchIcon.contentMode = UIViewContentModeCenter;
+    
+    self.navigationItem.titleView = searchBar;
 }
 
 - (void)didReceiveMemoryWarning {
