@@ -9,9 +9,29 @@
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
+		<key>晓蓉明天干嘛去.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>A5D28C141BC8DA3900BF8BD9</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>A5D28C2C1BC8DA3900BF8BD9</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>A5D28C371BC8DA3900BF8BD9</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>A5F5B7A31BC7BA4D0047F482</key>
 		<dict>
 			<key>primary</key>

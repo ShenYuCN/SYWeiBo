@@ -39,6 +39,7 @@
     
     Test1ViewController *test1 = [[Test1ViewController alloc] init];
     test1.title = @"测试11";
+    NSLog(@"didSelectedRowAtIndexPath --- %@",self.navigationController);
     [self.navigationController pushViewController:test1 animated:YES];
     
 

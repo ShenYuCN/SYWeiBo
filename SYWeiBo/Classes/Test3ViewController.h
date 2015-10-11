@@ -1,5 +1,5 @@
 //
-//  Test1ViewController.h
+//  Test3ViewController.h
 //  SYWeiBo
 //
 //  Created by Shen Yu on 15/10/10.
@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface Test1ViewController : UIViewController
-
+@interface Test3ViewController : UIViewController
 
 @end

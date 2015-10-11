@@ -11,6 +11,7 @@
 #import "SYMessageCenterViewController.h"
 #import "SYDiscoverViewController.h"
 #import "SYProfileViewController.h"
+#import "SYNavigationController.h"
 @interface SYTabBarViewController ()
 
 @end
@@ -54,12 +55,13 @@
     textAttrs[NSForegroundColorAttributeName] = [UIColor colorWithRed:123/255.0 green:123/255.0 blue:123/255.0 alpha:1];
     NSMutableDictionary *selectedTextAttrs = [NSMutableDictionary dictionary];
     selectedTextAttrs[NSForegroundColorAttributeName] = [UIColor orangeColor];
+    
     [childVc.tabBarItem setTitleTextAttributes:textAttrs forState:UIControlStateNormal];
     [childVc.tabBarItem setTitleTextAttributes:selectedTextAttrs forState:UIControlStateSelected];
     childVc.view.backgroundColor = [UIColor colorWithRed:(arc4random_uniform(256)/255.0) green:(arc4random_uniform(256)/255.0) blue:(arc4random_uniform(256)/255.0) alpha:1.0];
     
     
-    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:childVc];
+    SYNavigationController *nav = [[SYNavigationController alloc] initWithRootViewController:childVc];
     [self addChildViewController:nav];
 }
 
