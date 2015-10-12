@@ -8,6 +8,7 @@
 
 #import "SYDiscoverViewController.h"
 #import "UIView+Extension.h"
+#import "SYSearchBar.h"
 @interface SYDiscoverViewController ()
 
 @end
@@ -18,21 +19,8 @@
     [super viewDidLoad];
     
     //创建搜索框对象
-    UITextField *searchBar = [[UITextField alloc] init];
-    [searchBar setBackground:[UIImage imageNamed:@"searchbar_textfield_background"]];
+    UITextField *searchBar = [SYSearchBar searchBar];
     searchBar.size = CGSizeMake(300, 30);
-    
-    searchBar.placeholder = @"搜索";
-    [searchBar setValue:[UIColor grayColor] forKeyPath:@"_placeholderLabel.textColor"];
-    [searchBar setValue:[UIFont boldSystemFontOfSize:13] forKeyPath:@"_placeholderLabel.font"];
-//    [searchBar setValue:[UIViewContentMode UIViewContentModeCenter] forKeyPath:@"_placeholderLabel.contentMode"];
-    //设置放大镜图标
-    UIImageView *searchIcon = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"searchbar_textfield_search_icon"]];
-    searchIcon.size = CGSizeMake(30, 30);
-    
-    searchBar.leftView = searchIcon;
-    searchBar.leftViewMode = UITextFieldViewModeAlways;
-    searchIcon.contentMode = UIViewContentModeCenter;
     
     self.navigationItem.titleView = searchBar;
 }

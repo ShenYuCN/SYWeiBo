@@ -14,6 +14,7 @@
 		A5283C801BC8A6DE00E62BE7 /* SYTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5283C7F1BC8A6DE00E62BE7 /* SYTabBarViewController.m */; settings = {ASSET_TAGS = (); }; };
 		A544E3201BC9FD910018BB9C /* SYNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = A544E31F1BC9FD910018BB9C /* SYNavigationController.m */; settings = {ASSET_TAGS = (); }; };
 		A544E3421BCA176A0018BB9C /* UIBarButtonItem+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = A544E3411BCA176A0018BB9C /* UIBarButtonItem+Extension.m */; settings = {ASSET_TAGS = (); }; };
+		A5A78BC21BCB4E4D006EFB2D /* SYSearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = A5A78BC11BCB4E4D006EFB2D /* SYSearchBar.m */; settings = {ASSET_TAGS = (); }; };
 		A5CA0F981BC9116D00154FF6 /* Test2ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5CA0F971BC9116D00154FF6 /* Test2ViewController.m */; settings = {ASSET_TAGS = (); }; };
 		A5CA0F9B1BC916F900154FF6 /* Test3ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5CA0F9A1BC916F900154FF6 /* Test3ViewController.m */; settings = {ASSET_TAGS = (); }; };
 		A5D28C0C1BC8B18A00BF8BD9 /* Test1ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5D28C0A1BC8B18A00BF8BD9 /* Test1ViewController.m */; settings = {ASSET_TAGS = (); }; };
@@ -73,6 +74,8 @@
 		A544E31F1BC9FD910018BB9C /* SYNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYNavigationController.m; sourceTree = "<group>"; };
 		A544E3401BCA176A0018BB9C /* UIBarButtonItem+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+Extension.h"; sourceTree = "<group>"; };
 		A544E3411BCA176A0018BB9C /* UIBarButtonItem+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBarButtonItem+Extension.m"; sourceTree = "<group>"; };
+		A5A78BC01BCB4E4D006EFB2D /* SYSearchBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYSearchBar.h; sourceTree = "<group>"; };
+		A5A78BC11BCB4E4D006EFB2D /* SYSearchBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYSearchBar.m; sourceTree = "<group>"; };
 		A5CA0F961BC9116D00154FF6 /* Test2ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Test2ViewController.h; sourceTree = "<group>"; };
 		A5CA0F971BC9116D00154FF6 /* Test2ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Test2ViewController.m; sourceTree = "<group>"; };
 		A5CA0F991BC916F900154FF6 /* Test3ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Test3ViewController.h; sourceTree = "<group>"; };
@@ -149,6 +152,7 @@
 		A544E3301BCA0C6B0018BB9C /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				A5A78BBF1BCB4D87006EFB2D /* View */,
 				A544E3331BCA0C8E0018BB9C /* Category */,
 				A544E3321BCA0C7D0018BB9C /* Other */,
 				A544E3311BCA0C730018BB9C /* Controller */,
@@ -267,6 +271,15 @@
 				A5CA0F9A1BC916F900154FF6 /* Test3ViewController.m */,
 			);
 			name = Temp;
+			sourceTree = "<group>";
+		};
+		A5A78BBF1BCB4D87006EFB2D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A5A78BC01BCB4E4D006EFB2D /* SYSearchBar.h */,
+				A5A78BC11BCB4E4D006EFB2D /* SYSearchBar.m */,
+			);
+			name = View;
 			sourceTree = "<group>";
 		};
 		A5F5B79B1BC7BA4D0047F482 = {
@@ -597,6 +610,7 @@
 				A5283C801BC8A6DE00E62BE7 /* SYTabBarViewController.m in Sources */,
 				A5283C351BC89EBE00E62BE7 /* SYHomeViewController.m in Sources */,
 				A544E3421BCA176A0018BB9C /* UIBarButtonItem+Extension.m in Sources */,
+				A5A78BC21BCB4E4D006EFB2D /* SYSearchBar.m in Sources */,
 				A5F5B7DF1BC7BBAA0047F482 /* AppDelegate.m in Sources */,
 				A5283C381BC89ED100E62BE7 /* SYMessageCenterViewController.m in Sources */,
 			);
