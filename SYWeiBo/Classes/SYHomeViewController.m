@@ -12,7 +12,6 @@
 #import "SYDropdownMenu.h"
 #import "SYTitleMenuViewController.h"
 @interface SYHomeViewController ()
-
 @end
 
 @implementation SYHomeViewController
@@ -42,6 +41,7 @@
     self.navigationItem.titleView = titleBtn;
     
     [titleBtn addTarget:self action:@selector(titleClick:) forControlEvents:UIControlEventTouchUpInside];
+    
 }
 -(void)titleClick:(UIButton *)titleButton{
     //创建一个下拉菜单
@@ -49,11 +49,17 @@
     
     SYTitleMenuViewController *vc = [[SYTitleMenuViewController alloc] init];
     vc.view.height = 44 * 3;
+    vc.view.width = 150;
     menu.contentController = vc;
     
     //显示
     [menu showFrom:titleButton];
     
+    
+}
+
+-(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+
 }
 
 -(void)back{

@@ -18,6 +18,8 @@
 -(CGFloat)x{
     return self.frame.origin.x;
 }
+
+
 -(void)setY:(CGFloat)y{
     CGRect frame = self.frame;
     frame.origin.y = y;
@@ -27,6 +29,31 @@
 -(CGFloat)y{
     return self.frame.origin.y;
 }
+
+
+-(void)setCenterX:(CGFloat)centerX{
+    CGPoint center = self.center;
+    center.x = centerX;
+    self.center = center;
+}
+-(CGFloat)centerX{
+    return self.center.x;
+}
+
+
+
+
+-(void)setCenterY:(CGFloat)centerY{
+    CGPoint center = self.center;
+    center.y = centerY;
+    self.center = center;
+}
+-(CGFloat)centerY{
+    return self.center.y;
+}
+
+
+
 -(void)setHeight:(CGFloat)height{
 
     CGRect frame = self.frame;

@@ -18,6 +18,19 @@
  *  构体属性frame.origin.y
  */
 @property (nonatomic,assign) CGFloat y;
+
+/**
+ *  构体属性view.center.x
+ */
+@property (nonatomic,assign) CGFloat centerX;
+/**
+ *  构体属性view.center.y
+ */
+@property (nonatomic,assign) CGFloat centerY;
+
+
+
+
 /**
  *  构体属性frame.size.height
  */

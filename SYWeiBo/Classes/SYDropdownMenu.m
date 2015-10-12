@@ -24,7 +24,6 @@
         
         UIImageView *containerView = [[UIImageView alloc] init];
         containerView.image = [UIImage imageNamed:@"popover_background"];
-        containerView.size = CGSizeMake(217, 217);
         [self addSubview:containerView];
         containerView.userInteractionEnabled = YES; // 开启交互
         
@@ -57,16 +56,16 @@
     self.frame = window.bounds;
 
     //4.调整灰色图片的位置
-    self.containerView.y = 45;
-    self.containerView.x = (self.width - self.containerView.width) * 0.5;
+    
+    //坐标系转换，两种方式， [from.superView convertRect:from.frame toView:window];
+    CGRect newFrame = [from convertRect:from.bounds toView:window];
+    
+    self.containerView.y = CGRectGetMaxY(newFrame);
+    self.containerView.centerX = CGRectGetMidX(newFrame);
+    
+//    self.containerView.x = (self.width - self.containerView.width) * 0.5;
     
 }
--(void)dismiss{
-
-    [self removeFromSuperview];
-}
-
-
 -(void)setContent:(UIView *)content{
 
     _content = content;
@@ -76,10 +75,12 @@
     content.y = 15;
     
     //调整内容的宽度
-    content.width = self.containerView.width - content.x * 2;
+//    content.width = self.containerView.width - content.x * 2;
+    NSLog(@"%@",NSStringFromCGRect(content.frame));
     
     //设置灰色容器的高度
-    self.containerView.height = CGRectGetMaxY(content.frame) + 10;
+    self.containerView.height = CGRectGetMaxY(content.frame) + 11;
+    self.containerView.width = CGRectGetMaxX(content.frame) + 10;
     
     //添加内容到灰色容器中
     [self.containerView addSubview:content];
@@ -91,5 +92,15 @@
     
     self.content = contentController.view;
     
+}
+/**
+ *  销毁
+ */
+-(void)dismiss{
+    
+    [self removeFromSuperview];
+}
+-(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+    [self dismiss];
 }
 @end
