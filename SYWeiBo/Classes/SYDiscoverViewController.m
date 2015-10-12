@@ -9,7 +9,7 @@
 #import "SYDiscoverViewController.h"
 #import "UIView+Extension.h"
 #import "SYSearchBar.h"
-@interface SYDiscoverViewController ()
+@interface SYDiscoverViewController ()<UITextFieldDelegate>
 
 @end
 
@@ -21,36 +21,42 @@
     //创建搜索框对象
     UITextField *searchBar = [SYSearchBar searchBar];
     searchBar.size = CGSizeMake(300, 30);
-    
+    searchBar.delegate = self;
     self.navigationItem.titleView = searchBar;
+    
 }
 
+-(BOOL)textFieldShouldReturn:(UITextField *)textField{
+
+    [textField resignFirstResponder];
+    return  YES;
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
 #warning Incomplete implementation, return the number of sections
-    return 0;
+    return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 #warning Incomplete implementation, return the number of rows
-    return 0;
+    return 4;
 }
 
-/*
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
-    
-    // Configure the cell...
-    
+    static NSString *ID = @"cell";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ID];
+    }
     return cell;
 }
-*/
 
 /*
 // Override to support conditional editing of the table view.
