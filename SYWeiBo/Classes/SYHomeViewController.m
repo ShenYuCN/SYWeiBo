@@ -73,7 +73,6 @@
  *  菜单销毁了
  */
 -(void)dropdownMenuDidDismiss:(SYDropdownMenu *)menu{
-    NSLog(@"菜单销毁了");
      // 让箭头向下
     UIButton *btn = (UIButton *)self.navigationItem.titleView;
     btn.selected = NO;
@@ -83,7 +82,6 @@
  *  下拉菜单显示了
  */
 -(void)dropdownMenuDidShow:(SYDropdownMenu *)menu{
-       NSLog(@"菜单显示了");
      // 让箭头向上 selected --- up
     UIButton *btn = (UIButton *)self.navigationItem.titleView;
     btn.selected = YES;

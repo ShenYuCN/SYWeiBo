@@ -67,7 +67,6 @@
     
     // 通知外界，自己显示了
     if ([self.delegate respondsToSelector:@selector(dropdownMenuDidShow:)]) {
-        NSLog(@"menu ---- 显示了");
         [self.delegate dropdownMenuDidShow:self];
     }
 
@@ -106,7 +105,6 @@
     [self removeFromSuperview];
     // 通知外界，自己被销毁了
     if ([self.delegate respondsToSelector:@selector(dropdownMenuDidDismiss:)]) {
-        NSLog(@"menu ---- 销毁了");
         [self.delegate dropdownMenuDidDismiss:self];
     }
 }

@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "SYTabBarViewController.h"
+#import "SYNewFeatureViewController.h"
 @interface AppDelegate ()
 
 
@@ -23,8 +24,9 @@
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     
     //2.设置根控制器
-    self.window.rootViewController =  [[SYTabBarViewController alloc] init];
-        
+//    self.window.rootViewController =  [[SYTabBarViewController alloc] init];
+    self.window.rootViewController =  [[SYNewFeatureViewController alloc] init];
+    
     //3.显示窗口
     [self.window makeKeyAndVisible];
     return YES;
