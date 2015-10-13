@@ -9,6 +9,8 @@
 #import "SYNewFeatureViewController.h"
 #import "UIView+Extension.h"
 
+#define kSYNewfeatureCount 4
+
 @implementation SYNewFeatureViewController
 -(void)viewDidLoad{
     [super viewDidLoad];
@@ -16,18 +18,36 @@
     //1、创建ScrollView
     UIScrollView *scrollView = [[UIScrollView alloc] init];
     scrollView.frame = self.view.bounds;
-    scrollView.contentSize = CGSizeMake(4 * scrollView.width, 0);
     [self.view addSubview:scrollView];
     
     //2、添加图片
-    for (int i = 0; i < 4 ; i++) {
+    CGFloat scrollW = scrollView.width;
+    CGFloat scrollH = scrollView.height;
+    for (int i = 0; i < kSYNewfeatureCount ; i++) {
         NSString *imageName = [NSString stringWithFormat:@"new_feature_%d",i + 1];
         UIImageView *imageView = [[UIImageView alloc] init];
         imageView.image = [UIImage imageNamed:imageName];
-        imageView.size = scrollView.size;
+        
+        imageView.height = scrollH;
+        imageView.width = scrollW;
         imageView.y = 0;
         imageView.x = i * scrollView.width;
         [scrollView addSubview:imageView];
     }
-}
+    //3、设置ScrollView的其他属性
+    scrollView.contentSize = CGSizeMake(kSYNewfeatureCount * scrollW, 0);
+    scrollView.bounces = NO;
+    scrollView.pagingEnabled = YES;
+    scrollView.showsHorizontalScrollIndicator = NO;
+    
+    //4、添加分页，UIPageControl 即使没有设置宽高也正在显示，它本身是0 . 0 没有大小，不可点击，但是子控件有
+    UIPageControl *pageControl = [[UIPageControl alloc] init];
+    pageControl.numberOfPages = kSYNewfeatureCount;
+    pageControl.centerX = self.view.width * 0.5;
+    pageControl.centerY = self.view.height - 50;
+    pageControl.currentPageIndicatorTintColor = [UIColor orangeColor];
+    pageControl.pageIndicatorTintColor = [UIColor lightGrayColor];
+    
+    [self.view addSubview:pageControl];
+  }
 @end
