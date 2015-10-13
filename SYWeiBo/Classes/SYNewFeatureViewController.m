@@ -36,6 +36,10 @@
         imageView.y = 0;
         imageView.x = i * scrollView.width;
         [scrollView addSubview:imageView];
+        
+        if (i == kSYNewfeatureCount - 1) {
+            [self setupLastImageView:imageView];
+        }
     }
     //3、设置ScrollView的其他属性
     scrollView.contentSize = CGSizeMake(kSYNewfeatureCount * scrollW, 0);
@@ -54,9 +58,47 @@
     [self.view addSubview:pageControl];
     self.pageControl = pageControl;
   }
--(void)scrollViewDidScroll:(UIScrollView *)scrollView{
 
-    NSLog(@"%f",scrollView.contentOffset.x / self.view.width);
+
+-(void)setupLastImageView:(UIImageView *)imageView{
+    
+    imageView.userInteractionEnabled = YES;
+    // 1.分享给大家（checkbox）
+    UIButton *shareBtn = [[UIButton alloc] init];
+    [shareBtn setImage:[UIImage imageNamed:@"new_feature_share_false"] forState:UIControlStateNormal];
+    [shareBtn setImage:[UIImage imageNamed:@"new_feature_share_true"] forState:UIControlStateSelected];
+    [shareBtn setTitle:@"分享给大家" forState:UIControlStateNormal];
+    [shareBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    shareBtn.titleLabel.font = [UIFont systemFontOfSize:15];
+    //注意长和宽必须在x,y值之前设置
+    shareBtn.height = 30;
+    shareBtn.width = 200;
+    shareBtn.centerX = imageView.width  * 0.5;
+    shareBtn.centerY = imageView.height * 0.6;
+    
+    [shareBtn addTarget:self action:@selector(shareClick:) forControlEvents:UIControlEventTouchUpInside];
+    [imageView addSubview:shareBtn];
+    
+   
+    //2.开始微博
+
+    UIButton *startBtn = [[UIButton alloc] init];
+    [startBtn setBackgroundImage:[UIImage imageNamed:@"new_feature_finish_button"] forState:UIControlStateNormal];
+    [startBtn setBackgroundImage:[UIImage imageNamed:@"new_feature_finish_button_highlighted"] forState:UIControlStateHighlighted];
+    [startBtn setTitle:@"开始微博" forState:UIControlStateNormal];
+    
+    startBtn.size = startBtn.currentBackgroundImage.size;
+    startBtn.centerX = imageView.width * 0.5;
+    startBtn.centerY = imageView.height * 0.7;
+    
+    [imageView addSubview:startBtn];
+}
+
+-(void)shareClick:(UIButton *)shareButton{
+
+    shareButton.selected = !shareButton.isSelected;
+}
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView{
     double pageNum = scrollView.contentOffset.x / self.view.width;
     self.pageControl.currentPage = (int)(pageNum + 0.5);
 }
