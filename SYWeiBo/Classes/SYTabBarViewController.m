@@ -12,7 +12,9 @@
 #import "SYDiscoverViewController.h"
 #import "SYProfileViewController.h"
 #import "SYNavigationController.h"
-@interface SYTabBarViewController ()
+#import "UIView+Extension.h"
+#import "SYTabBar.h"
+@interface SYTabBarViewController ()<SYTabBarDelegate>
 
 @end
 
@@ -31,7 +33,17 @@
     SYProfileViewController   *profileVc = [[SYProfileViewController alloc] init];
     [self addchildVc:profileVc title:@"我" image:@"tabbar_profile" selectedImage:@"tabbar_profile_selected"];
     
+    
+    
+    // 2.更换系统自带的tabbar,只读属性不能使用set方法
+    // self.tabBar = [[SYTabBar alloc] init];
+    
+    SYTabBar *tabBar =[[SYTabBar alloc] init];
+    [self setValue:tabBar forKey:@"tabBar"];
+    tabBar.delegeta = self;
+    
 }
+
 /**
  *  添加一个子控制器
  *
@@ -69,6 +81,15 @@
 //    add添加的时候事实上是添加进了tabBarController的数组中，因此在子控制器之间切换，子控制器并不会销毁
 //    self.childViewControllers
 //    self.viewControllers
+}
+
+#pragma mark - tabBar的代理方法
+
+-(void)tabBarDidClickPlusBtn:(SYTabBar *)tabBar{
+
+    UIViewController *vc = [[UIViewController alloc] init];
+    vc.view.backgroundColor = [UIColor redColor];
+    [self presentViewController:vc animated:YES completion:NO];
 }
 
 @end

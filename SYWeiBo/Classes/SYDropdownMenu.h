@@ -7,8 +7,18 @@
 //
 
 #import <UIKit/UIKit.h>
+@class SYDropdownMenu;
+@protocol SYDropdownmMenuDelegate <NSObject>
+@optional
+-(void)dropdownMenuDidDismiss:(SYDropdownMenu *)menu;
+-(void)dropdownMenuDidShow:(SYDropdownMenu *)menu;
+@end
+
+
 
 @interface SYDropdownMenu : UIView
+@property (nonatomic,weak) id<SYDropdownmMenuDelegate>  delegate;
+
 /**
  *  内容view
  */

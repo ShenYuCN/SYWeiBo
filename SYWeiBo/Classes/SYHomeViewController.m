@@ -11,7 +11,7 @@
 #import "UIView+Extension.h"
 #import "SYDropdownMenu.h"
 #import "SYTitleMenuViewController.h"
-@interface SYHomeViewController ()
+@interface SYHomeViewController ()<SYDropdownmMenuDelegate>
 @end
 
 @implementation SYHomeViewController
@@ -34,6 +34,7 @@
     [titleBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     titleBtn.titleLabel.font = [UIFont boldSystemFontOfSize:17];
     [titleBtn setImage:[UIImage imageNamed:@"navigationbar_arrow_down"] forState:UIControlStateNormal];
+    [titleBtn setImage:[UIImage imageNamed:@"navigationbar_arrow_up"] forState:UIControlStateSelected];
     
     titleBtn.imageEdgeInsets = UIEdgeInsetsMake(0, 100, 0, 0);
     titleBtn.titleEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 20);
@@ -47,19 +48,17 @@
     //创建一个下拉菜单
     SYDropdownMenu *menu = [SYDropdownMenu menu];
     
+    //设置代理
+    menu.delegate = self;
+    
     SYTitleMenuViewController *vc = [[SYTitleMenuViewController alloc] init];
     vc.view.height = 44 * 3;
     vc.view.width = 150;
     menu.contentController = vc;
-    
     //显示
     [menu showFrom:titleButton];
-    
-    
-}
-
--(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
-
+   
+   
 }
 
 -(void)back{
@@ -68,5 +67,25 @@
 
 -(void)more{
     NSLog(@"more");
+}
+#pragma mark - SYDropdownmMenuDelegate的代理方法
+/**
+ *  菜单销毁了
+ */
+-(void)dropdownMenuDidDismiss:(SYDropdownMenu *)menu{
+    NSLog(@"菜单销毁了");
+     // 让箭头向下
+    UIButton *btn = (UIButton *)self.navigationItem.titleView;
+    btn.selected = NO;
+    
+}
+/**
+ *  下拉菜单显示了
+ */
+-(void)dropdownMenuDidShow:(SYDropdownMenu *)menu{
+       NSLog(@"菜单显示了");
+     // 让箭头向上 selected --- up
+    UIButton *btn = (UIButton *)self.navigationItem.titleView;
+    btn.selected = YES;
 }
 @end

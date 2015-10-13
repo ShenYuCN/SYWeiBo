@@ -65,6 +65,13 @@
     
 //    self.containerView.x = (self.width - self.containerView.width) * 0.5;
     
+    // 通知外界，自己显示了
+    if ([self.delegate respondsToSelector:@selector(dropdownMenuDidShow:)]) {
+        NSLog(@"menu ---- 显示了");
+        [self.delegate dropdownMenuDidShow:self];
+    }
+
+    
 }
 -(void)setContent:(UIView *)content{
 
@@ -76,7 +83,6 @@
     
     //调整内容的宽度
 //    content.width = self.containerView.width - content.x * 2;
-    NSLog(@"%@",NSStringFromCGRect(content.frame));
     
     //设置灰色容器的高度
     self.containerView.height = CGRectGetMaxY(content.frame) + 11;
@@ -97,8 +103,12 @@
  *  销毁
  */
 -(void)dismiss{
-    
     [self removeFromSuperview];
+    // 通知外界，自己被销毁了
+    if ([self.delegate respondsToSelector:@selector(dropdownMenuDidDismiss:)]) {
+        NSLog(@"menu ---- 销毁了");
+        [self.delegate dropdownMenuDidDismiss:self];
+    }
 }
 -(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
     [self dismiss];
