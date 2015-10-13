@@ -10,7 +10,9 @@
 #import "UIView+Extension.h"
 
 #define kSYNewfeatureCount 4
-
+@interface SYNewFeatureViewController()<UIScrollViewDelegate>
+@property(nonatomic,strong) UIPageControl *pageControl;
+@end
 @implementation SYNewFeatureViewController
 -(void)viewDidLoad{
     [super viewDidLoad];
@@ -19,6 +21,7 @@
     UIScrollView *scrollView = [[UIScrollView alloc] init];
     scrollView.frame = self.view.bounds;
     [self.view addSubview:scrollView];
+    scrollView.delegate = self;
     
     //2、添加图片
     CGFloat scrollW = scrollView.width;
@@ -49,5 +52,12 @@
     pageControl.pageIndicatorTintColor = [UIColor lightGrayColor];
     
     [self.view addSubview:pageControl];
+    self.pageControl = pageControl;
   }
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView{
+
+    NSLog(@"%f",scrollView.contentOffset.x / self.view.width);
+    double pageNum = scrollView.contentOffset.x / self.view.width;
+    self.pageControl.currentPage = (int)(pageNum + 0.5);
+}
 @end
