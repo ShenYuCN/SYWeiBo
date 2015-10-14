@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "SYTabBarViewController.h"
 #import "SYNewFeatureViewController.h"
+#import "SYOAuthViewController.h"
 @interface AppDelegate ()
 
 
@@ -23,25 +24,24 @@
     //1.创建窗口
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     
-    //2.版本控制，然后设置根控制器
-    NSString *key = @"CFBundleVersion";
     
-    //获得上次运行的版本号，沙盒中获取
-    NSString *lastVersion = [[NSUserDefaults standardUserDefaults] objectForKey:key];
-    
-    //获得当前软件的版本号（info.plist）
-    NSString *currentVersion = [NSBundle mainBundle].infoDictionary[key];
-    
-    
-    if ([currentVersion isEqualToString:lastVersion]) {
-        self.window.rootViewController =  [[SYTabBarViewController alloc] init];
-    }else{
-        //新特性界面
-        self.window.rootViewController =  [[SYNewFeatureViewController alloc] init];
-         // 将当前的版本号存进沙盒
-        [[NSUserDefaults standardUserDefaults] setObject:currentVersion forKey:key];
-        [[NSUserDefaults standardUserDefaults] synchronize];
-    }
+    self.window.rootViewController =  [[SYOAuthViewController alloc] init];
+
+//    //2.设置根控制器
+//    NSString *key = @"CFBundleVersion";
+//    //获得上次运行的版本号，沙盒中获取
+//    NSString *lastVersion = [[NSUserDefaults standardUserDefaults] objectForKey:key];
+//    //获得当前软件的版本号（info.plist）
+//    NSString *currentVersion = [NSBundle mainBundle].infoDictionary[key];
+//    if ([currentVersion isEqualToString:lastVersion]) {
+//        self.window.rootViewController =  [[SYTabBarViewController alloc] init];
+//    }else{
+//        //新特性界面
+//        self.window.rootViewController =  [[SYNewFeatureViewController alloc] init];
+//         // 将当前的版本号存进沙盒
+//        [[NSUserDefaults standardUserDefaults] setObject:currentVersion forKey:key];
+//        [[NSUserDefaults standardUserDefaults] synchronize];
+//    }
 
     
     
