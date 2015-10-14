@@ -30,6 +30,7 @@
 		A58A026A1BCE2BEF005ACD8D /* MBProgressHUD+MJ.m in Sources */ = {isa = PBXBuildFile; fileRef = A58A02661BCE2BEF005ACD8D /* MBProgressHUD+MJ.m */; settings = {ASSET_TAGS = (); }; };
 		A58A026B1BCE2BEF005ACD8D /* MBProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A58A02671BCE2BEF005ACD8D /* MBProgressHUD.bundle */; settings = {ASSET_TAGS = (); }; };
 		A58A026C1BCE2BEF005ACD8D /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = A58A02691BCE2BEF005ACD8D /* MBProgressHUD.m */; settings = {ASSET_TAGS = (); }; };
+		A58A02701BCE3742005ACD8D /* SYAccountTool.m in Sources */ = {isa = PBXBuildFile; fileRef = A58A026F1BCE3742005ACD8D /* SYAccountTool.m */; settings = {ASSET_TAGS = (); }; };
 		A5A78BC21BCB4E4D006EFB2D /* SYSearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = A5A78BC11BCB4E4D006EFB2D /* SYSearchBar.m */; settings = {ASSET_TAGS = (); }; };
 		A5A78BC51BCB8B66006EFB2D /* SYDropdownMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = A5A78BC41BCB8B66006EFB2D /* SYDropdownMenu.m */; settings = {ASSET_TAGS = (); }; };
 		A5A78BC91BCB9667006EFB2D /* SYTitleMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5A78BC81BCB9667006EFB2D /* SYTitleMenuViewController.m */; settings = {ASSET_TAGS = (); }; };
@@ -124,6 +125,8 @@
 		A58A02671BCE2BEF005ACD8D /* MBProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MBProgressHUD.bundle; sourceTree = "<group>"; };
 		A58A02681BCE2BEF005ACD8D /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		A58A02691BCE2BEF005ACD8D /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		A58A026E1BCE3742005ACD8D /* SYAccountTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYAccountTool.h; sourceTree = "<group>"; };
+		A58A026F1BCE3742005ACD8D /* SYAccountTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYAccountTool.m; sourceTree = "<group>"; };
 		A5A78BC01BCB4E4D006EFB2D /* SYSearchBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYSearchBar.h; sourceTree = "<group>"; };
 		A5A78BC11BCB4E4D006EFB2D /* SYSearchBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYSearchBar.m; sourceTree = "<group>"; };
 		A5A78BC31BCB8B66006EFB2D /* SYDropdownMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYDropdownMenu.h; sourceTree = "<group>"; };
@@ -349,6 +352,7 @@
 		A58A023A1BCDEBBF005ACD8D /* OAuth */ = {
 			isa = PBXGroup;
 			children = (
+				A58A026D1BCE3733005ACD8D /* Tool */,
 				A58A025D1BCE26C0005ACD8D /* Model */,
 				A58A023B1BCDEBE0005ACD8D /* Controller */,
 			);
@@ -418,6 +422,15 @@
 				A58A02691BCE2BEF005ACD8D /* MBProgressHUD.m */,
 			);
 			path = MBProgressHUD;
+			sourceTree = "<group>";
+		};
+		A58A026D1BCE3733005ACD8D /* Tool */ = {
+			isa = PBXGroup;
+			children = (
+				A58A026E1BCE3742005ACD8D /* SYAccountTool.h */,
+				A58A026F1BCE3742005ACD8D /* SYAccountTool.m */,
+			);
+			name = Tool;
 			sourceTree = "<group>";
 		};
 		A5A78BBF1BCB4D87006EFB2D /* View */ = {
@@ -763,6 +776,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A56D6F851BCCA70200C3ED44 /* SYNewFeatureViewController.m in Sources */,
+				A58A02701BCE3742005ACD8D /* SYAccountTool.m in Sources */,
 				A5D28C101BC8BBAA00BF8BD9 /* UIView+Extension.m in Sources */,
 				A5D28C0C1BC8B18A00BF8BD9 /* Test1ViewController.m in Sources */,
 				A5F5B7A91BC7BA4D0047F482 /* main.m in Sources */,

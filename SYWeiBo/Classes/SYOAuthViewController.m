@@ -12,6 +12,7 @@
 #import "SYAccount.h"
 #import "SYTabBarViewController.h"
 #import "SYNewFeatureViewController.h"
+#import "SYAccountTool.h"
 @interface SYOAuthViewController()<UIWebViewDelegate>
 @end
 @implementation SYOAuthViewController
@@ -81,13 +82,10 @@
         [MBProgressHUD hideHUD];
         
         
-        //将数据字典转成模型，存进沙盒
-        NSString *document = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
-        NSString *path = [document stringByAppendingPathComponent:@"account.archive"];
-        
-        // 自定义对象的存储必须用NSKeyedArchiver，内部调用encodeWithCoder
+        // 将返回的账号字典数据 --> 模型，存进沙盒
         SYAccount *account = [SYAccount accountWithDict:responseObject];
-        [NSKeyedArchiver archiveRootObject:account toFile:path];
+        // 存储账号信息
+        [SYAccountTool saveAccount:account];
         
         
         // 切换窗口的根控制器

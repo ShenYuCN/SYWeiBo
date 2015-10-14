@@ -10,6 +10,7 @@
 #import "SYTabBarViewController.h"
 #import "SYNewFeatureViewController.h"
 #import "SYOAuthViewController.h"
+#import "SYAccountTool.h"
 #import "SYAccount.h"
 @interface AppDelegate ()
 @end
@@ -24,12 +25,8 @@
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     
     //2.设置根控制器
-    
-    //沙盒路径
-    NSString *document = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
-    NSString *path = [document stringByAppendingPathComponent:@"account.archive"];
-    SYAccount *account = [NSKeyedUnarchiver unarchiveObjectWithFile:path];
-    
+    //取出账号信息
+     SYAccount *account = [SYAccountTool account];
     if (account) {
         // 之前已经登录成功过，沙盒中存在数据
         //判断版本是否更新
