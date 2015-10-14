@@ -20,9 +20,6 @@
  *  @param account 账号模型
  */
 +(void)saveAccount:(SYAccount *)account{
-   // 获得账号存储的时间（accessToken的产生时间）
-    account.create_time = [NSDate date];
-    
     // 自定义对象的存储必须用NSKeyedArchiver，内部调用encodeWithCoder
     [NSKeyedArchiver archiveRootObject:account toFile:SYAccountPath];
 }

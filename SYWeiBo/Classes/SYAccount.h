@@ -24,5 +24,9 @@
  */
 @property (nonatomic,copy) NSDate *create_time;
 
+/**
+ *  昵称
+ */
+@property (nonatomic,copy) NSString *name;
 + (instancetype)accountWithDict:(NSDictionary *)dict;
 @end

@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-@class SYAccount;
+#import "SYAccount.h"
 @interface SYAccountTool : NSObject
 /**
  *  存储账号信息
