@@ -12,6 +12,7 @@
 #import "SYOAuthViewController.h"
 #import "SYAccountTool.h"
 #import "SYAccount.h"
+#import "UIWindow+Extension.h"
 @interface AppDelegate ()
 @end
 
@@ -28,22 +29,7 @@
     //取出账号信息
      SYAccount *account = [SYAccountTool account];
     if (account) {
-        // 之前已经登录成功过，沙盒中存在数据
-        //判断版本是否更新
-        NSString *key = @"CFBundleVersion";
-        //获得上次运行的版本号，沙盒中获取
-        NSString *lastVersion = [[NSUserDefaults standardUserDefaults] objectForKey:key];
-        //获得当前软件的版本号（info.plist）
-        NSString *currentVersion = [NSBundle mainBundle].infoDictionary[key];
-        if ([currentVersion isEqualToString:lastVersion]) {
-            self.window.rootViewController =  [[SYTabBarViewController alloc] init];
-        }else{
-            //新特性界面
-            self.window.rootViewController =  [[SYNewFeatureViewController alloc] init];
-             // 将当前的版本号存进沙盒
-            [[NSUserDefaults standardUserDefaults] setObject:currentVersion forKey:key];
-            [[NSUserDefaults standardUserDefaults] synchronize];
-        }
+        [self.window switchRootViewController];
     }else{
         //如果沙盒中不存在数据，说明没有登录过，进入登录界面
         self.window.rootViewController =  [[SYOAuthViewController alloc] init];

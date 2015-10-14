@@ -13,6 +13,7 @@
 #import "SYTabBarViewController.h"
 #import "SYNewFeatureViewController.h"
 #import "SYAccountTool.h"
+#import "UIWindow+Extension.h"
 @interface SYOAuthViewController()<UIWebViewDelegate>
 @end
 @implementation SYOAuthViewController
@@ -31,7 +32,6 @@
 #pragma mark - 代理方法
 -(BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType{
     
-    NSLog(@"%@",request.URL);
     //获取code
     NSString *url = request.URL.absoluteString;
     NSRange range = [url rangeOfString:@"code="];
@@ -40,8 +40,8 @@
     if (range.length != 0) {
         int fromIndex = range.location + range.length;
         NSString *code = [url substringFromIndex:fromIndex];
-        NSLog(@"%@",code);
         [self accessTokenWithCode:code];
+        
         // 禁止加载回调地址
         return NO;
     }
@@ -78,36 +78,16 @@
     
     //3.发送请求
     [mgr POST:@"https://api.weibo.com/oauth2/access_token" parameters:params success:^(AFHTTPRequestOperation *operation, NSDictionary *responseObject) {
-        NSLog(@"请求成功----%@",responseObject);
         [MBProgressHUD hideHUD];
-        
         
         // 将返回的账号字典数据 --> 模型，存进沙盒
         SYAccount *account = [SYAccount accountWithDict:responseObject];
         // 存储账号信息
         [SYAccountTool saveAccount:account];
         
-        
         // 切换窗口的根控制器
-        NSString *key = @"CFBundleVersion";
-        // 上一次的使用版本（存储在沙盒中的版本号）在模拟器(手机上)的Library/Preferences偏好设置
-        NSString *lastVersion = [[NSUserDefaults standardUserDefaults] objectForKey:key];
-        // 当前软件的版本号（从Info.plist中获得)本地电脑上项目中的plist文件中
-        NSString *currentVersion = [NSBundle mainBundle].infoDictionary[key];
-        
         UIWindow *window = [UIApplication sharedApplication].keyWindow;
-        if ([currentVersion isEqualToString:lastVersion]) { // 版本号相同：这次打开和上次打开的是同一个版本
-            window.rootViewController = [[SYTabBarViewController alloc] init];
-        } else { // 这次打开的版本和上一次不一样，显示新特性
-            window.rootViewController = [[SYNewFeatureViewController alloc] init];
-            
-            // 将当前的版本号存进沙盒`
-            [[NSUserDefaults standardUserDefaults] setObject:currentVersion forKey:key];
-            [[NSUserDefaults standardUserDefaults] synchronize];
-        }
-        
-        
-        
+        [window switchRootViewController];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"请求失败 ---- %@",error);
         [MBProgressHUD hideHUD];
