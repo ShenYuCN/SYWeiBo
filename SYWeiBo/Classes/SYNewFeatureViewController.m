@@ -8,6 +8,7 @@
 
 #import "SYNewFeatureViewController.h"
 #import "UIView+Extension.h"
+#import "SYTabBarViewController.h"
 
 #define kSYNewfeatureCount 4
 @interface SYNewFeatureViewController()<UIScrollViewDelegate>
@@ -77,7 +78,9 @@
     shareBtn.centerY = imageView.height * 0.6;
     
     [shareBtn addTarget:self action:@selector(shareClick:) forControlEvents:UIControlEventTouchUpInside];
+    shareBtn.titleEdgeInsets = UIEdgeInsetsMake(0, 10, 0, 0);
     [imageView addSubview:shareBtn];
+    
     
    
     //2.开始微博
@@ -91,12 +94,32 @@
     startBtn.centerX = imageView.width * 0.5;
     startBtn.centerY = imageView.height * 0.7;
     
+    [startBtn addTarget:self action:@selector(startClick) forControlEvents:UIControlEventTouchUpInside];
+    
     [imageView addSubview:startBtn];
+ 
 }
 
 -(void)shareClick:(UIButton *)shareButton{
 
     shareButton.selected = !shareButton.isSelected;
+}
+
+-(void)startClick{
+
+    UIWindow *window = [UIApplication sharedApplication].keyWindow;
+    window.rootViewController = [[SYTabBarViewController alloc] init];
+    
+    /*
+     切换控制器的手段
+     1.push：依赖于UINavigationController，控制器的切换是可逆的，比如A切换到B，B又可以回到A
+     2.modal：控制器的切换是可逆的，比如A切换到B，B又可以回到A
+     3.切换window的rootViewController
+     
+     modal方式，不建议采取：新特性控制器不会销毁
+     HWTabBarViewController *main = [[HWTabBarViewController alloc] init];
+     [self presentViewController:main animated:YES completion:nil];
+    */
 }
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView{
     double pageNum = scrollView.contentOffset.x / self.view.width;
