@@ -10,9 +10,8 @@
 #import "SYTabBarViewController.h"
 #import "SYNewFeatureViewController.h"
 #import "SYOAuthViewController.h"
+#import "SYAccount.h"
 @interface AppDelegate ()
-
-
 @end
 
 @implementation AppDelegate
@@ -24,26 +23,34 @@
     //1.创建窗口
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     
+    //2.设置根控制器
     
-    self.window.rootViewController =  [[SYOAuthViewController alloc] init];
-
-//    //2.设置根控制器
-//    NSString *key = @"CFBundleVersion";
-//    //获得上次运行的版本号，沙盒中获取
-//    NSString *lastVersion = [[NSUserDefaults standardUserDefaults] objectForKey:key];
-//    //获得当前软件的版本号（info.plist）
-//    NSString *currentVersion = [NSBundle mainBundle].infoDictionary[key];
-//    if ([currentVersion isEqualToString:lastVersion]) {
-//        self.window.rootViewController =  [[SYTabBarViewController alloc] init];
-//    }else{
-//        //新特性界面
-//        self.window.rootViewController =  [[SYNewFeatureViewController alloc] init];
-//         // 将当前的版本号存进沙盒
-//        [[NSUserDefaults standardUserDefaults] setObject:currentVersion forKey:key];
-//        [[NSUserDefaults standardUserDefaults] synchronize];
-//    }
-
+    //沙盒路径
+    NSString *document = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+    NSString *path = [document stringByAppendingPathComponent:@"account.archive"];
+    SYAccount *account = [NSKeyedUnarchiver unarchiveObjectWithFile:path];
     
+    if (account) {
+        // 之前已经登录成功过，沙盒中存在数据
+        //判断版本是否更新
+        NSString *key = @"CFBundleVersion";
+        //获得上次运行的版本号，沙盒中获取
+        NSString *lastVersion = [[NSUserDefaults standardUserDefaults] objectForKey:key];
+        //获得当前软件的版本号（info.plist）
+        NSString *currentVersion = [NSBundle mainBundle].infoDictionary[key];
+        if ([currentVersion isEqualToString:lastVersion]) {
+            self.window.rootViewController =  [[SYTabBarViewController alloc] init];
+        }else{
+            //新特性界面
+            self.window.rootViewController =  [[SYNewFeatureViewController alloc] init];
+             // 将当前的版本号存进沙盒
+            [[NSUserDefaults standardUserDefaults] setObject:currentVersion forKey:key];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+        }
+    }else{
+        //如果沙盒中不存在数据，说明没有登录过，进入登录界面
+        self.window.rootViewController =  [[SYOAuthViewController alloc] init];
+    }
     
     //3.显示窗口
     [self.window makeKeyAndVisible];
