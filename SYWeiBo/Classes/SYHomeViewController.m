@@ -22,10 +22,16 @@
 /**
  *  微博数组（里面放的都是SYStatus模型，一个模型就是一条微博）
  */
-@property (nonatomic,strong) NSArray *statuses;
+@property (nonatomic,strong) NSMutableArray *statuses;
 @end
 
 @implementation SYHomeViewController
+-(NSMutableArray *)statuses{
+    if (_statuses == nil) {
+        _statuses = [NSMutableArray array];
+    }
+    return _statuses;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -36,8 +42,8 @@
     //设置用户信息
     [self setupUserInfo];
     
-    //加载最新数据
-    [self loadNewStatus];
+    //下拉刷新
+    [self setupRefresh];
 }
 
 /**
@@ -76,28 +82,47 @@
     }];
 }
 /**
- *  加载最新数据
+ *  添加下拉刷新控件
  */
--(void)loadNewStatus{
+-(void)setupRefresh{
+    
+    UIRefreshControl *control = [[UIRefreshControl alloc] init];
+    [control addTarget:self action:@selector(refreshStateChange:) forControlEvents:UIControlEventValueChanged];
+    [self.tableView addSubview:control];
+}
+/**
+ *  UIRefreshControl进入刷新状态：加载最新的数据
+ *
+ */
+-(void)refreshStateChange:(UIRefreshControl *)control
+{
     //1.请求管理者
     AFHTTPRequestOperationManager *mgr = [AFHTTPRequestOperationManager manager];
-
+    
     //2.拼接参数
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     SYAccount *account = [SYAccountTool account];
     params[@"access_token"] = account.access_token;
+    SYStatus *firstStatus = [self.statuses firstObject];
+    params[@"since_id"] = firstStatus.idstr;
     //3.发送请求
     [mgr GET:@"https://api.weibo.com/2/statuses/friends_timeline.json" parameters:params success:^(AFHTTPRequestOperation *operation, NSDictionary *responseObject) {
-        
+         [control endRefreshing];
         //取得字典数组,转换成模型数组
-        self.statuses = [SYStatus objectArrayWithKeyValuesArray:responseObject[@"statuses"] ];
+        NSArray *newStatus = [SYStatus objectArrayWithKeyValuesArray:responseObject[@"statuses"] ];
+        
+        //将最新的数据添加到数组最前面
+        NSRange range = NSMakeRange(0, newStatus.count);
+        NSIndexSet *set = [[NSIndexSet alloc] initWithIndexesInRange:range];
+        [self.statuses insertObjects:newStatus atIndexes:set];
         
         // 刷新表格
         [self.tableView reloadData];
+        [control endRefreshing];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"请求失败 --%@",error);
+        [control endRefreshing];
     }];
-
 }
 /**
  *  导航栏信息设置
