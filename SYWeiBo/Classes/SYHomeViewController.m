@@ -14,7 +14,12 @@
 #import "SYTitleMenuViewController.h"
 #import "SYAccountTool.h"
 #import "SYTitleButton.h"
+#import "UIImageView+WebCache.h"
 @interface SYHomeViewController ()<SYDropdownmMenuDelegate>
+/**
+ *  微博数组（里面放的都是微博字典，一个字典对象就是一条微博）
+ */
+@property (nonatomic,strong) NSArray *statuses;
 @end
 
 @implementation SYHomeViewController
@@ -22,23 +27,25 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    //导航栏左右按钮
+    //导航栏信息设置
     [self setupNav];
 
     //设置用户信息
     [self setupUserInfo];
     
-   
-    
+    //加载最新数据
+    [self loadNewStatus];
 }
 
+/**
+ *  设置用户信息
+ */
 -(void)setupUserInfo{
     /**
      access_token采用OAuth授权方式为必填参数，其他授权方式不需要此参数，OAuth授权后获得。
      uid 需要查询的用户ID。
      https://api.weibo.com/2/users/show.json
      */
-    
     
     
     //1.请求管理者
@@ -51,7 +58,6 @@
     params[@"uid"] = account.uid;
     //3.发送请求
     [mgr GET:@"https://api.weibo.com/2/users/show.json" parameters:params success:^(AFHTTPRequestOperation *operation, NSDictionary *responseObject) {
-        NSLog(@"请求成功---%@",responseObject);
         //取出名字
         NSString *name = responseObject[@"name"];
         //设置标题
@@ -65,9 +71,31 @@
         NSLog(@"请求失败 --%@",error);
     }];
 }
-
 /**
- *  设置顶部按钮
+ *  加载最新数据
+ */
+-(void)loadNewStatus{
+    //1.请求管理者
+    AFHTTPRequestOperationManager *mgr = [AFHTTPRequestOperationManager manager];
+    
+    //2.拼接参数
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    SYAccount *account = [SYAccountTool account];
+    params[@"access_token"] = account.access_token;
+    //3.发送请求
+    [mgr GET:@"https://api.weibo.com/2/statuses/friends_timeline.json" parameters:params success:^(AFHTTPRequestOperation *operation, NSDictionary *responseObject) {
+        NSLog(@"请求成功---");
+        //取得微博字典数组
+        self.statuses = responseObject[@"statuses"];
+        // 刷新表格
+        [self.tableView reloadData];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"请求失败 --%@",error);
+    }];
+
+}
+/**
+ *  导航栏信息设置
  */
 -(void)setupNav{
     /* 设置导航栏上面的内容 */
@@ -85,6 +113,7 @@
     [titleBtn addTarget:self action:@selector(titleClick:) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.titleView = titleBtn;
 }
+
 /**
  *  标题栏TitleView的点击设置
  */
@@ -128,4 +157,31 @@
     UIButton *btn = (UIButton *)self.navigationItem.titleView;
     btn.selected = YES;
 }
+#pragma mark - Table view data source
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return  self.statuses.count;
+}
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    static NSString *ID = @"status";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:ID];
+    }
+    
+    
+    //取出这行微博字典
+    NSDictionary *status = self.statuses[indexPath.row];
+    //设置微博的文字
+    cell.detailTextLabel.text = status[@"text"];
+    //取出这条微博的作者
+    NSDictionary *user = status[@"user"];
+    cell.textLabel.text = user[@"name"];
+    
+    //设置头像
+    NSString *urlStr = user[@"profile_image_url"];
+    UIImage *placeholderImage = [UIImage imageNamed:@"avatar_default_small"];
+    [cell.imageView sd_setImageWithURL:[NSURL URLWithString:urlStr] placeholderImage:placeholderImage];
+    return cell;
+}
+
 @end

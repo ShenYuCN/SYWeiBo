@@ -8,7 +8,6 @@
 
 #import "SYTitleButton.h"
 #import "UIView+Extension.h"
-
 @implementation SYTitleButton
 -(instancetype)initWithFrame:(CGRect)frame{
     if (self = [super initWithFrame:frame]) {
@@ -16,6 +15,10 @@
         self.titleLabel.font = [UIFont boldSystemFontOfSize:17];
         [self setImage:[UIImage imageNamed:@"navigationbar_arrow_down"] forState:UIControlStateNormal];
         [self setImage:[UIImage imageNamed:@"navigationbar_arrow_up"] forState:UIControlStateSelected];
+        //TODO: 测试代码，要删除
+//        self.backgroundColor = [UIColor redColor];
+//        self.imageView.backgroundColor = [UIColor blueColor];
+//        self.titleLabel.backgroundColor = [UIColor greenColor];
     }
     return self;
 }
@@ -23,7 +26,10 @@
 
     [super layoutSubviews];
     // 如果仅仅是调整按钮内部titleLabel和imageView的位置，那么在layoutSubviews中单独设置位置即可
-    self.titleLabel.x = self.imageView.x;
+//    self.titleLabel.x = self.imageView.x;
+    //TODO: 测试代码，要删除
+//    NSLog(@"%@",NSStringFromCGRect(self.imageView.frame));
+    self.titleLabel.x = 0;
     self.imageView.x = CGRectGetMaxX(self.titleLabel.frame);
 }
 
