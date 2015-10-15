@@ -12,6 +12,7 @@
 		A5283C3B1BC89EE400E62BE7 /* SYDiscoverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5283C3A1BC89EE400E62BE7 /* SYDiscoverViewController.m */; settings = {ASSET_TAGS = (); }; };
 		A5283C3E1BC89EF400E62BE7 /* SYProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5283C3D1BC89EF400E62BE7 /* SYProfileViewController.m */; settings = {ASSET_TAGS = (); }; };
 		A5283C801BC8A6DE00E62BE7 /* SYTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5283C7F1BC8A6DE00E62BE7 /* SYTabBarViewController.m */; settings = {ASSET_TAGS = (); }; };
+		A54405DF1BCF7C0C00D7FB56 /* SYTitleButton.m in Sources */ = {isa = PBXBuildFile; fileRef = A54405DE1BCF7C0C00D7FB56 /* SYTitleButton.m */; settings = {ASSET_TAGS = (); }; };
 		A544E3201BC9FD910018BB9C /* SYNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = A544E31F1BC9FD910018BB9C /* SYNavigationController.m */; settings = {ASSET_TAGS = (); }; };
 		A544E3421BCA176A0018BB9C /* UIBarButtonItem+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = A544E3411BCA176A0018BB9C /* UIBarButtonItem+Extension.m */; settings = {ASSET_TAGS = (); }; };
 		A567D4541BCBDF7C006098A4 /* SYTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = A567D4531BCBDF7C006098A4 /* SYTabBar.m */; settings = {ASSET_TAGS = (); }; };
@@ -91,6 +92,8 @@
 		A5283C3D1BC89EF400E62BE7 /* SYProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYProfileViewController.m; sourceTree = "<group>"; };
 		A5283C7E1BC8A6DE00E62BE7 /* SYTabBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYTabBarViewController.h; sourceTree = "<group>"; };
 		A5283C7F1BC8A6DE00E62BE7 /* SYTabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYTabBarViewController.m; sourceTree = "<group>"; };
+		A54405DD1BCF7C0C00D7FB56 /* SYTitleButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYTitleButton.h; sourceTree = "<group>"; };
+		A54405DE1BCF7C0C00D7FB56 /* SYTitleButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYTitleButton.m; sourceTree = "<group>"; };
 		A544E31E1BC9FD910018BB9C /* SYNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYNavigationController.h; sourceTree = "<group>"; };
 		A544E31F1BC9FD910018BB9C /* SYNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYNavigationController.m; sourceTree = "<group>"; };
 		A544E3401BCA176A0018BB9C /* UIBarButtonItem+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+Extension.h"; sourceTree = "<group>"; };
@@ -459,6 +462,8 @@
 			children = (
 				A5A78BC71BCB9667006EFB2D /* SYTitleMenuViewController.h */,
 				A5A78BC81BCB9667006EFB2D /* SYTitleMenuViewController.m */,
+				A54405DD1BCF7C0C00D7FB56 /* SYTitleButton.h */,
+				A54405DE1BCF7C0C00D7FB56 /* SYTitleButton.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -790,6 +795,7 @@
 				A5F5B7A91BC7BA4D0047F482 /* main.m in Sources */,
 				A58A02591BCDF5D9005ACD8D /* AFURLConnectionOperation.m in Sources */,
 				A58A02581BCDF5D9005ACD8D /* AFSecurityPolicy.m in Sources */,
+				A54405DF1BCF7C0C00D7FB56 /* SYTitleButton.m in Sources */,
 				A58A02731BCE41A2005ACD8D /* UIWindow+Extension.m in Sources */,
 				A58A026A1BCE2BEF005ACD8D /* MBProgressHUD+MJ.m in Sources */,
 				A5CA0F9B1BC916F900154FF6 /* Test3ViewController.m in Sources */,

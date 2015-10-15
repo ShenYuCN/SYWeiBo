@@ -13,6 +13,7 @@
 #import "AFNetworking.h"
 #import "SYTitleMenuViewController.h"
 #import "SYAccountTool.h"
+#import "SYTitleButton.h"
 @interface SYHomeViewController ()<SYDropdownmMenuDelegate>
 @end
 
@@ -66,34 +67,26 @@
 }
 
 /**
- *  设置导航栏按钮
+ *  设置顶部按钮
  */
 -(void)setupNav{
+    /* 设置导航栏上面的内容 */
     self.navigationItem.leftBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(back) image:@"navigationbar_friendsearch" highlightedImage:@"navigationbar_friendsearch_highlighted"];
     
     self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(more) image:@"navigationbar_pop" highlightedImage:@"navigationbar_pop_highlighted"];
-    //导航栏中间
-    UIButton *titleBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    titleBtn.height = 30;
-    titleBtn.width = 200;
     
+    
+    //导航栏中间
+    SYTitleButton *titleBtn = [[SYTitleButton alloc] init];
     //设置图片和文字
     NSString *name = [[SYAccountTool account] name];
     [titleBtn setTitle:name?name:@"首页" forState:UIControlStateNormal];
-    [titleBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    titleBtn.titleLabel.font = [UIFont boldSystemFontOfSize:17];
-    [titleBtn setImage:[UIImage imageNamed:@"navigationbar_arrow_down"] forState:UIControlStateNormal];
-    [titleBtn setImage:[UIImage imageNamed:@"navigationbar_arrow_up"] forState:UIControlStateSelected];
-    
-    titleBtn.imageEdgeInsets = UIEdgeInsetsMake(0, 100, 0, 0);
-    titleBtn.titleEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 20);
-    
-    self.navigationItem.titleView = titleBtn;
     
     [titleBtn addTarget:self action:@selector(titleClick:) forControlEvents:UIControlEventTouchUpInside];
+    self.navigationItem.titleView = titleBtn;
 }
 /**
- *  标题栏Title的点击设置
+ *  标题栏TitleView的点击设置
  */
 -(void)titleClick:(UIButton *)titleButton{
     //创建一个下拉菜单
