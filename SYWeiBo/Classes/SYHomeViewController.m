@@ -89,6 +89,9 @@
     UIRefreshControl *control = [[UIRefreshControl alloc] init];
     [control addTarget:self action:@selector(refreshStateChange:) forControlEvents:UIControlEventValueChanged];
     [self.tableView addSubview:control];
+    //如果使用 [control beginRefresh] 仅仅是显示，不会触发UIControlEventValueChanged
+    //进来就直接刷新一次
+    [self refreshStateChange:control];
 }
 /**
  *  UIRefreshControl进入刷新状态：加载最新的数据
@@ -119,10 +122,47 @@
         // 刷新表格
         [self.tableView reloadData];
         [control endRefreshing];
+        
+        //显示新的微博数量
+        [self showNewStatusCount:newStatus.count];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"请求失败 --%@",error);
         [control endRefreshing];
     }];
+}
+/**
+ *  显示新的微博数量
+ */
+-(void)showNewStatusCount:(NSInteger)count{
+    UILabel *label = [[UILabel alloc] init];
+    //设置frame
+    label.height = 30;
+    label.width  = [UIScreen mainScreen].bounds.size.width;
+    label.y      = 64 -label.height;
+    
+    //设置属性
+    label.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"timeline_new_status_background"]];
+    label.textAlignment = NSTextAlignmentCenter;
+    label.font = [UIFont systemFontOfSize:14];
+    label.textColor = [UIColor whiteColor];
+    if (count == 0) {
+        label.text = @"没有最新的微博，请稍后重试";
+    }else{
+        label.text = [NSString stringWithFormat:@"发现%d条新的微博",count];
+    }
+    //添加到视图
+    [self.navigationController.view insertSubview:label belowSubview:self.navigationController.navigationBar];
+    //添加动画
+    [UIView animateWithDuration:0.5 animations:^{
+        label.transform = CGAffineTransformMakeTranslation(0, label.height);
+    } completion:^(BOOL finished) {
+        [UIView animateWithDuration:0.5 delay:1.0 options:UIViewAnimationOptionCurveLinear animations:^{
+            label.transform = CGAffineTransformIdentity;
+        } completion:^(BOOL finished) {
+            [label removeFromSuperview];
+        }];
+    }];
+    
 }
 /**
  *  导航栏信息设置

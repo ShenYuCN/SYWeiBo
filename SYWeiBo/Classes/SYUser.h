@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @interface SYUser : NSObject
-/**符串型的用户UID */
+/**用户UID */
 @property (nonatomic,copy) NSString *idstr;
 /**友好显示名称*/
 @property (nonatomic,copy) NSString *name;
