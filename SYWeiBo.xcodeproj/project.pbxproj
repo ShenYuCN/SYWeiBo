@@ -71,6 +71,8 @@
 		A5DC93F81BD0847400429898 /* NSObject+MJKeyValue.m in Sources */ = {isa = PBXBuildFile; fileRef = A5DC93EB1BD0847400429898 /* NSObject+MJKeyValue.m */; settings = {ASSET_TAGS = (); }; };
 		A5DC93F91BD0847400429898 /* NSObject+MJProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = A5DC93ED1BD0847400429898 /* NSObject+MJProperty.m */; settings = {ASSET_TAGS = (); }; };
 		A5DC93FA1BD0847400429898 /* NSString+MJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = A5DC93EF1BD0847400429898 /* NSString+MJExtension.m */; settings = {ASSET_TAGS = (); }; };
+		A5DC93FD1BD094A500429898 /* SYLoadMoreFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = A5DC93FC1BD094A400429898 /* SYLoadMoreFooter.m */; settings = {ASSET_TAGS = (); }; };
+		A5DC94011BD0959300429898 /* SYLoadMoreFooter.xib in Resources */ = {isa = PBXBuildFile; fileRef = A5DC94001BD0959300429898 /* SYLoadMoreFooter.xib */; settings = {ASSET_TAGS = (); }; };
 		A5F5B7A91BC7BA4D0047F482 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A5F5B7A81BC7BA4D0047F482 /* main.m */; };
 		A5F5B7B71BC7BA4D0047F482 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5F5B7B51BC7BA4D0047F482 /* LaunchScreen.storyboard */; };
 		A5F5B7C21BC7BA4D0047F482 /* SYWeiBoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A5F5B7C11BC7BA4D0047F482 /* SYWeiBoTests.m */; };
@@ -242,6 +244,9 @@
 		A5DC93ED1BD0847400429898 /* NSObject+MJProperty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+MJProperty.m"; sourceTree = "<group>"; };
 		A5DC93EE1BD0847400429898 /* NSString+MJExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+MJExtension.h"; sourceTree = "<group>"; };
 		A5DC93EF1BD0847400429898 /* NSString+MJExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+MJExtension.m"; sourceTree = "<group>"; };
+		A5DC93FB1BD094A400429898 /* SYLoadMoreFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYLoadMoreFooter.h; sourceTree = "<group>"; };
+		A5DC93FC1BD094A400429898 /* SYLoadMoreFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYLoadMoreFooter.m; sourceTree = "<group>"; };
+		A5DC94001BD0959300429898 /* SYLoadMoreFooter.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SYLoadMoreFooter.xib; sourceTree = "<group>"; };
 		A5F5B7A41BC7BA4D0047F482 /* SYWeiBo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SYWeiBo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5F5B7A81BC7BA4D0047F482 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		A5F5B7B61BC7BA4D0047F482 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -567,6 +572,9 @@
 				A5A78BC81BCB9667006EFB2D /* SYTitleMenuViewController.m */,
 				A54405DD1BCF7C0C00D7FB56 /* SYTitleButton.h */,
 				A54405DE1BCF7C0C00D7FB56 /* SYTitleButton.m */,
+				A5DC93FB1BD094A400429898 /* SYLoadMoreFooter.h */,
+				A5DC93FC1BD094A400429898 /* SYLoadMoreFooter.m */,
+				A5DC94001BD0959300429898 /* SYLoadMoreFooter.xib */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -916,6 +924,7 @@
 				A58A026B1BCE2BEF005ACD8D /* MBProgressHUD.bundle in Resources */,
 				A5F5B7B71BC7BA4D0047F482 /* LaunchScreen.storyboard in Resources */,
 				A5D28C0D1BC8B18A00BF8BD9 /* Test1ViewController.xib in Resources */,
+				A5DC94011BD0959300429898 /* SYLoadMoreFooter.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1009,6 +1018,7 @@
 				A5DC93F01BD0847400429898 /* MJDictionaryCache.m in Sources */,
 				A58A02571BCDF5D9005ACD8D /* AFNetworkReachabilityManager.m in Sources */,
 				A58A026C1BCE2BEF005ACD8D /* MBProgressHUD.m in Sources */,
+				A5DC93FD1BD094A500429898 /* SYLoadMoreFooter.m in Sources */,
 				A58A025B1BCDF5D9005ACD8D /* AFURLResponseSerialization.m in Sources */,
 				A58A025A1BCDF5D9005ACD8D /* AFURLRequestSerialization.m in Sources */,
 				A5283C351BC89EBE00E62BE7 /* SYHomeViewController.m in Sources */,
