@@ -18,4 +18,8 @@
 @property (nonatomic,copy) NSString *text;
 /**微博作者的用户信息字段 详细*/
 @property (nonatomic,strong) SYUser *user;
+/** 微博创建时间 */
+@property (nonatomic,copy) NSString *created_at;
+/** 微博来源 */
+@property (nonatomic,copy) NSString *source;
 @end

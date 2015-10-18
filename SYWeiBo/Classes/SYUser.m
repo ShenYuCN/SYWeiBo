@@ -8,4 +8,8 @@
 
 #import "SYUser.h"
 @implementation SYUser
+-(void)setMbtype:(int)mbtype{
+    _mbtype = mbtype;
+    self.vip = mbtype >2;
+}
 @end

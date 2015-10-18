@@ -56,38 +56,43 @@
         
         /**头像*/
         UIImageView *iconView = [[UIImageView alloc] init];
-        [self.originalView addSubview:iconView];
+        [originalView addSubview:iconView];
         self.iconView = iconView;
         
         /**配图*/
         UIImageView *photoView = [[UIImageView alloc] init];
-        [self.originalView addSubview:photoView];
+        [originalView addSubview:photoView];
         self.photoView = photoView;
         
         /**会员图标*/
         UIImageView *vipView = [[UIImageView alloc] init];
-        [self.originalView addSubview:vipView];
+        [originalView addSubview:vipView];
+        vipView.contentMode = UIViewContentModeCenter;
         self.vipView = vipView;
         
         /** 昵称 */
         UILabel *nameLabel = [[UILabel alloc] init];
-        [self.originalView addSubview:nameLabel];
+        [originalView addSubview:nameLabel];
         self.nameLabel = nameLabel;
         
         /** 时间 */
         UILabel *timeLabel = [[UILabel alloc] init];
-        [self.originalView addSubview:timeLabel];
+        [originalView addSubview:timeLabel];
+        timeLabel.font = kSYStatusCellTimeFont;
         self.timeLabel = timeLabel;
         
         /** 来源 */
         UILabel *sourceLabel = [[UILabel alloc] init];
-        [self.originalView addSubview:sourceLabel];
+        [originalView addSubview:sourceLabel];
+        sourceLabel.font = kSYStatusCellSourceFont;
         self.sourceLabel = sourceLabel;
         
         /** 正文 */
         UILabel *contentLabel = [[UILabel alloc] init];
-        [self.originalView addSubview:contentLabel];
+        [originalView addSubview:contentLabel];
+        contentLabel.numberOfLines = 0;
         self.contentLabel = contentLabel;
+        contentLabel.font = kSYStatusCellContentFont;
     }
     return  self;
 }
@@ -113,18 +118,29 @@
     self.photoView.backgroundColor = [UIColor redColor];
     
     /**会员图标*/
-    self.vipView.frame = statusFrame.vipViewF;
-    self.vipView.image = [UIImage imageNamed:@"common_icon_membership_level1"];
+    if (user.isVip) {
+        self.vipView.hidden = NO;
+        self.vipView.frame = statusFrame.vipViewF;
+        NSString *vipName = [NSString stringWithFormat:@"common_icon_membership_level%d",user.mbrank];
+        self.vipView.image = [UIImage imageNamed:vipName];
+        self.nameLabel.textColor = [UIColor orangeColor];
+    }else{
+        self.vipView.hidden = YES;
+        self.nameLabel.textColor = [UIColor blackColor];
+    }
     
     /** 昵称 */
-    self.nameLabel.frame = statusFrame.nameLavelF;
+    self.nameLabel.frame = statusFrame.nameLabelF;
     self.nameLabel.text = user.name;
+    self.nameLabel.font = kSYStatusCellNameFont;
     
     /** 时间 */
     self.timeLabel.frame = statusFrame.timeLabelF;
+    self.timeLabel.text = status.created_at;
     
     /** 来源 */
     self.sourceLabel.frame = statusFrame.sourceLabelF;
+    self.sourceLabel.text = status.source;
     
     /** 正文 */
     self.contentLabel.frame = statusFrame.contentLabelF;

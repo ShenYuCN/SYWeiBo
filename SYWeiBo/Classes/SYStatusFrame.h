@@ -8,6 +8,18 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+
+
+
+// 昵称字体
+#define kSYStatusCellNameFont [UIFont systemFontOfSize:15]
+// 时间字体
+#define kSYStatusCellTimeFont [UIFont systemFontOfSize:12]
+// 来源字体
+#define kSYStatusCellSourceFont kSYStatusCellTimeFont
+// 正文字体
+#define kSYStatusCellContentFont [UIFont systemFontOfSize:14]
+
 @class SYStatus;
 /**
  *  一个SYStatusFrame模型:
@@ -27,7 +39,7 @@
 /**会员图标*/
 @property (nonatomic,assign) CGRect vipViewF;
 /** 昵称 */
-@property (nonatomic,assign) CGRect nameLavelF;
+@property (nonatomic,assign) CGRect nameLabelF;
 /** 时间 */
 @property (nonatomic,assign) CGRect timeLabelF;
 /** 来源 */
