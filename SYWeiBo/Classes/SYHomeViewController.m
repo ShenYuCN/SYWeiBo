@@ -20,19 +20,20 @@
 #import "MJExtension.h"
 #import "SYLoadMoreFooter.h"
 #import "SYStatusCell.h"
+#import "SYStatusFrame.h"
 @interface SYHomeViewController ()<SYDropdownmMenuDelegate>
 /**
- *  微博数组（里面放的都是SYStatus模型，一个模型就是一条微博）
+ *  微博数组（里面放的都是SYStatuFrame模型，一个模型就是一条微博,包含SYStatus数据和Frame）
  */
-@property (nonatomic,strong) NSMutableArray *statuses;
+@property (nonatomic,strong) NSMutableArray *statusFrames;
 @end
 
 @implementation SYHomeViewController
--(NSMutableArray *)statuses{
-    if (_statuses == nil) {
-        _statuses = [NSMutableArray array];
+-(NSMutableArray *)statusFrames{
+    if (_statusFrames == nil) {
+        _statusFrames = [NSMutableArray array];
     }
-    return _statuses;
+    return _statusFrames;
 }
 
 - (void)viewDidLoad {
@@ -116,19 +117,22 @@
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     SYAccount *account = [SYAccountTool account];
     params[@"access_token"] = account.access_token;
-    SYStatus *firstStatus = [self.statuses firstObject];
-    if (firstStatus) {
-        params[@"since_id"] = firstStatus.idstr;
+    SYStatusFrame *firstStatusFrame = [self.statusFrames firstObject];
+    if (firstStatusFrame) {
+        params[@"since_id"] = firstStatusFrame.status.idstr;
     }
     //3.发送请求
     [mgr GET:@"https://api.weibo.com/2/statuses/friends_timeline.json" parameters:params success:^(AFHTTPRequestOperation *operation, NSDictionary *responseObject) {
          [control endRefreshing];
         //取得字典数组,转换成模型数组
         NSArray *newStatus = [SYStatus objectArrayWithKeyValuesArray:responseObject[@"statuses"] ];
+        
+        NSArray *statusFrames = [self statusFrameWithStatuses:newStatus];
+        
         //将最新的数据添加到数组最前面
         NSRange range = NSMakeRange(0, newStatus.count);
         NSIndexSet *set = [[NSIndexSet alloc] initWithIndexesInRange:range];
-        [self.statuses insertObjects:newStatus atIndexes:set];
+        [self.statusFrames insertObjects:statusFrames atIndexes:set];
         
         // 刷新表格
         [self.tableView reloadData];
@@ -140,6 +144,18 @@
         NSLog(@"请求失败 --%@",error);
         [control endRefreshing];
     }];
+}
+/**
+ *  将SYStatus模型转为SYStatusFrame模型
+ */
+-(NSArray *)statusFrameWithStatuses:(NSArray *)statuses{
+    NSMutableArray *statusFrames = [NSMutableArray array];
+    for (SYStatus *status in statuses) {
+        SYStatusFrame *statusFrame = [[SYStatusFrame alloc] init];
+        statusFrame.status = status;
+        [statusFrames addObject:statusFrame];
+    }
+    return statusFrames;
 }
 /**
  *  添加上拉加载控件
@@ -161,20 +177,22 @@
     SYAccount *account = [SYAccountTool account];
     params[@"access_token"] = account.access_token;
      // 取出最后面的微博（最新的微博，ID最大的微博）
-    SYStatus *lastStatus = [self.statuses lastObject];
-    if (lastStatus) {
+    SYStatusFrame *lastStatusFrame = [self.statusFrames lastObject];
+    if (lastStatusFrame) {
         // 若指定此参数，则返回ID小于或等于max_id的微博，默认为0。
         // id这种数据一般都是比较大的，一般转成整数的话，最好是long long类型
-        long long maxId = lastStatus.idstr.longLongValue - 1;
+        long long maxId = lastStatusFrame.status.idstr.longLongValue - 1;
         params[@"max_id"] = @(maxId);
     }
     //3.发送请求
     [mgr GET:@"https://api.weibo.com/2/statuses/friends_timeline.json" parameters:params success:^(AFHTTPRequestOperation *operation, NSDictionary *responseObject) {
         //取得字典数组,转换成模型数组
-        NSArray *newStatus = [SYStatus objectArrayWithKeyValuesArray:responseObject[@"statuses"] ];
+        NSArray *newStatus = [SYStatus objectArrayWithKeyValuesArray:responseObject[@"statuses"]];
+       
+         NSArray *statusFrames = [self statusFrameWithStatuses:newStatus];
         
         //将更多的微博数据，添加到总数组的最后面
-        [self.statuses addObjectsFromArray:newStatus];
+        [self.statusFrames addObjectsFromArray:statusFrames];
         
         // 刷新表格
         [self.tableView reloadData];
@@ -319,8 +337,7 @@
 }
 #pragma mark - Table view data source
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return  self.statuses.count;
-    return self.statuses.count;
+    return self.statusFrames.count;
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
@@ -328,7 +345,7 @@
     SYStatusCell *cell = [SYStatusCell cellWithTableView:tableView];
     
     //给cell传递模型数据
-//    cell.statusFrame = self.statuses[indexPath.row];
+    cell.statusFrame = self.statusFrames[indexPath.row];
     
     /**
      *  
@@ -348,7 +365,7 @@
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView{
     //scrollView == self.tableView == self.view
     //如果tableView还没有数据，直接返回
-    if (self.statuses.count == 0 || self.tableView.tableFooterView.isHidden == NO) return;
+    if (self.statusFrames.count == 0 || self.tableView.tableFooterView.isHidden == NO) return;
     
     CGFloat offsetY = scrollView.contentOffset.y;
     
@@ -369,5 +386,9 @@
      1.它可以用来判断scrollView滚动到什么位置
      2.指scrollView的内容超出了scrollView顶部的距离（除掉contentInset以外的尺寸）
      */
+}
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    SYStatusFrame *statusFrame = self.statusFrames[indexPath.row];
+    return statusFrame.cellHeightF;
 }
 @end

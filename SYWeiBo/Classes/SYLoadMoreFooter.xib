@@ -10,6 +10,10 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="35"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="84g-V3-dPs">
+                    <rect key="frame" x="215" y="7" width="20" height="20"/>
+                    <animations/>
+                </activityIndicatorView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="加载更多" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hce-ph-2Tj">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="35"/>
                     <animations/>
@@ -17,21 +21,31 @@
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="84g-V3-dPs">
-                    <rect key="frame" x="215" y="7" width="20" height="20"/>
-                    <animations/>
-                </activityIndicatorView>
             </subviews>
             <animations/>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstAttribute="trailing" secondItem="hce-ph-2Tj" secondAttribute="trailing" id="2U2-AL-Zcc"/>
+                <constraint firstItem="hce-ph-2Tj" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="4IF-Lf-Cia"/>
                 <constraint firstAttribute="trailing" secondItem="hce-ph-2Tj" secondAttribute="trailing" id="76E-YN-UIH"/>
+                <constraint firstItem="hce-ph-2Tj" firstAttribute="centerY" secondItem="84g-V3-dPs" secondAttribute="centerY" id="FyX-te-YPn"/>
+                <constraint firstAttribute="trailing" secondItem="84g-V3-dPs" secondAttribute="trailing" constant="85" id="RVc-MD-3TV"/>
                 <constraint firstItem="hce-ph-2Tj" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="acc-8F-kte"/>
                 <constraint firstAttribute="bottom" secondItem="hce-ph-2Tj" secondAttribute="bottom" id="dtK-Dd-8Dj"/>
+                <constraint firstAttribute="bottom" secondItem="hce-ph-2Tj" secondAttribute="bottom" id="f09-WD-enD"/>
+                <constraint firstItem="hce-ph-2Tj" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="gLd-AY-KJT"/>
                 <constraint firstItem="hce-ph-2Tj" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="hXi-cY-2hh"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="76E-YN-UIH"/>
+                    <exclude reference="acc-8F-kte"/>
+                    <exclude reference="dtK-Dd-8Dj"/>
+                    <exclude reference="hXi-cY-2hh"/>
+                </mask>
+            </variation>
         </view>
     </objects>
 </document>
