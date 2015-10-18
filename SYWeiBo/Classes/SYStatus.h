@@ -8,6 +8,9 @@
 
 #import <Foundation/Foundation.h>
 @class SYUser;
+/**
+ *  一个微博数据模型
+ */
 @interface SYStatus : NSObject
 /**字符串型的微博ID */
 @property (nonatomic,copy) NSString *idstr;

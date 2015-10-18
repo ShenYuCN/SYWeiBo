@@ -19,6 +19,7 @@
 #import "SYStatus.h"
 #import "MJExtension.h"
 #import "SYLoadMoreFooter.h"
+#import "SYStatusCell.h"
 @interface SYHomeViewController ()<SYDropdownmMenuDelegate>
 /**
  *  微博数组（里面放的都是SYStatus模型，一个模型就是一条微博）
@@ -322,23 +323,26 @@
     return self.statuses.count;
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    static NSString *ID = @"status";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:ID];
-    }
     
+    //获得cell
+    SYStatusCell *cell = [SYStatusCell cellWithTableView:tableView];
     
-    //取出这行微博字典
-    SYStatus *status = self.statuses[indexPath.row];
-    //设置微博的文字
-    cell.detailTextLabel.text = status.text;
-    //取出这条微博的作者
-    SYUser *user = status.user;
-    cell.textLabel.text = user.name;
-    //设置头像
-    UIImage *placeholderImage = [UIImage imageNamed:@"avatar_default_small"];
-    [cell.imageView sd_setImageWithURL:[NSURL URLWithString:user.profile_image_url] placeholderImage:placeholderImage];
+    //给cell传递模型数据
+//    cell.statusFrame = self.statuses[indexPath.row];
+    
+    /**
+     *  
+     //取出这行微博字典
+     SYStatus *status = self.statuses[indexPath.row];
+     //设置微博的文字
+     cell.detailTextLabel.text = status.text;
+     //取出这条微博的作者
+     SYUser *user = status.user;
+     cell.textLabel.text = user.name;
+     //设置头像
+     UIImage *placeholderImage = [UIImage imageNamed:@"avatar_default_small"];
+     [cell.imageView sd_setImageWithURL:[NSURL URLWithString:user.profile_image_url] placeholderImage:placeholderImage];
+     */
     return cell;
 }
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView{
