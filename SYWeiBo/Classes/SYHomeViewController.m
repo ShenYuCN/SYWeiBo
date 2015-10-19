@@ -124,6 +124,7 @@
     //3.发送请求
     [mgr GET:@"https://api.weibo.com/2/statuses/friends_timeline.json" parameters:params success:^(AFHTTPRequestOperation *operation, NSDictionary *responseObject) {
          [control endRefreshing];
+        NSLog(@"%@",responseObject);
         //取得字典数组,转换成模型数组
         NSArray *newStatus = [SYStatus objectArrayWithKeyValuesArray:responseObject[@"statuses"] ];
         

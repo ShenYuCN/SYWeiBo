@@ -22,4 +22,7 @@
 @property (nonatomic,copy) NSString *created_at;
 /** 微博来源 */
 @property (nonatomic,copy) NSString *source;
+
+/** 配图数组，多图时返回多图链接。无配图返回“[]” */
+@property (nonatomic,copy) NSArray *pic_urls;
 @end

@@ -11,6 +11,7 @@
 #import "SYUser.h"
 #import "SYStatusFrame.h"
 #import "UIImageView+WebCache.h"
+#import "SYPhoto.h"
 @interface SYStatusCell()
 /**原创微博整体*/
 @property (nonatomic,weak) UIView *originalView;
@@ -44,7 +45,7 @@
 
 /**
  *  cell的初始化，一个cell只会调一次
- *  在这里设置添加子控件，并且对子控件一次性的设置
+ *  添加子控件，并且对子控件一次性的设置
  */
 -(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
@@ -100,6 +101,10 @@
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 }
+
+/**
+ *  设置frame，并塞数据
+ */
 -(void)setStatusFrame:(SYStatusFrame *)statusFrame{
     _statusFrame = statusFrame;
     SYStatus *status = statusFrame.status;
@@ -114,8 +119,15 @@
     [self.iconView sd_setImageWithURL:[NSURL URLWithString:user.profile_image_url] placeholderImage:[UIImage imageNamed:@"avatar_default_small"]];
     
     /**配图*/
-    self.photoView.frame = statusFrame.photoViewF;
-    self.photoView.backgroundColor = [UIColor redColor];
+    if (status.pic_urls.count) {
+        self.photoView.frame = statusFrame.photoViewF;
+        SYPhoto *photo = [status.pic_urls lastObject];
+        [self.photoView sd_setImageWithURL:[NSURL URLWithString:photo.thumbnail_pic] placeholderImage:[UIImage imageNamed:@"timeline_image_placeholder"]];
+        self.photoView.hidden = NO;
+    }else{
+        self.photoView.hidden = YES;
+    }
+  
     
     /**会员图标*/
     if (user.isVip) {
