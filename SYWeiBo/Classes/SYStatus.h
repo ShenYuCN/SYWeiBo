@@ -25,4 +25,7 @@
 
 /** 配图数组，多图时返回多图链接。无配图返回“[]” */
 @property (nonatomic,copy) NSArray *pic_urls;
+
+/** 转发的原微博信息字段，当该微博为转发微博时返回 */
+@property (nonatomic,strong) SYStatus *retweeted_status;
 @end

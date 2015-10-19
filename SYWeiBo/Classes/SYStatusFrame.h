@@ -20,6 +20,8 @@
 // 正文字体
 #define kSYStatusCellContentFont [UIFont systemFontOfSize:14]
 
+// 转发微博正文字体
+#define kSYStatusCellRetweetContentFont [UIFont systemFontOfSize:13]
 @class SYStatus;
 /**
  *  一个SYStatusFrame模型:
@@ -46,6 +48,15 @@
 @property (nonatomic,assign) CGRect sourceLabelF;
 /** 正文 */
 @property (nonatomic,assign) CGRect contentLabelF;
+
+
+/** 转发微博整体 */
+@property (nonatomic,assign) CGRect retweetViewF;
+/** 转发微博正文（@+昵称+正文） */
+@property (nonatomic,assign) CGRect retweetContentLabelF;
+/** 转发微博配图 */
+@property (nonatomic,assign) CGRect retweetPhotoViewF;
+
 
 /** cell的高度 */
 @property (nonatomic, assign) CGFloat cellHeightF;
