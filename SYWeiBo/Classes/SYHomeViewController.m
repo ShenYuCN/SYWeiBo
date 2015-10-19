@@ -39,6 +39,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.tableView.backgroundColor = [UIColor colorWithRed:211/255.0 green:211/255.0 blue:211/255.0 alpha:1];
+    
     //导航栏信息设置
     [self setupNav];
 
@@ -389,6 +391,6 @@
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     SYStatusFrame *statusFrame = self.statusFrames[indexPath.row];
-    return statusFrame.cellHeightF;
+    return statusFrame.cellHeight;
 }
 @end

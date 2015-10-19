@@ -38,6 +38,9 @@
 /** 转发微博配图 */
 @property (nonatomic,weak) UIImageView *retweetPhotoView;
 
+
+/** 工具条 */
+@property (nonatomic,weak) UIView *toolbar;
 @end
 
 
@@ -59,13 +62,26 @@
 -(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
+        self.backgroundColor = [UIColor clearColor];
         //初始化原创微博
         [self setupOriginal];
         
         //初始化转发微博
         [self setupRetweet];
+        
+        //初始化工具条
+        [self setupToolbar];
     }
     return  self;
+}
+/**
+ *  初始化工具条
+ */
+-(void)setupToolbar{
+    UIView *toolbar = [[UIView alloc] init];
+    [self.contentView addSubview:toolbar];
+    toolbar.backgroundColor = [UIColor orangeColor];
+    self.toolbar = toolbar;
 }
 /**
  *  初始化原创微博
@@ -74,6 +90,7 @@
     /**原创微博整体*/
     UIView *originalView = [[UIView alloc] init];
     [self.contentView addSubview:originalView];
+    originalView.backgroundColor = [UIColor whiteColor];
     self.originalView = originalView;
     
     /**头像*/
@@ -121,7 +138,7 @@
  */
 -(void)setupRetweet{
     UIView *retweetView = [[UIView alloc] init];
-    retweetView.backgroundColor =[UIColor colorWithRed:0.95 green:0.95 blue:0.95 alpha:1];
+    retweetView.backgroundColor =[UIColor colorWithRed:247/255.0 green:247/255.0 blue:247/255.0 alpha:1];
     [self.contentView addSubview:retweetView];
     self.retweetView = retweetView;
     
@@ -221,8 +238,9 @@
         self.retweetView.hidden = YES;
     }
     
+    //底部工具条
+    self.toolbar.frame = statusFrame.toolbarF;
     
- 
     
 }
 @end

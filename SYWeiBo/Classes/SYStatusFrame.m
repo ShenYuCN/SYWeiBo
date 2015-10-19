@@ -9,8 +9,11 @@
 #import "SYStatusFrame.h"
 #import "SYStatus.h"
 #import "SYUser.h"
-
+//cell的左右边距
 #define kSYStatusCellBorder 10
+
+//上下cell之间的灰色间距
+#define kSYStatusCellMargin 8
 @implementation SYStatusFrame
 /**
  *  计算文字尺寸
@@ -94,6 +97,7 @@
     
     
     /* 被转发微博 */
+    CGFloat toolbarY = 0;
     if (status.retweeted_status) {
         SYStatus *retweeted_status = status.retweeted_status;
         SYUser *retweeted_status_user = retweeted_status.user;
@@ -116,18 +120,23 @@
         } else { // 转发微博没有配图
             retweetH = CGRectGetMaxY(self.retweetContentLabelF) + kSYStatusCellBorder;
         }
-        
         /** 被转发微博整体 */
         CGFloat retweetX = 0;
         CGFloat retweetY = CGRectGetMaxY(self.originalViewF);
         CGFloat retweetW = cellW;
         self.retweetViewF = CGRectMake(retweetX, retweetY, retweetW, retweetH);
         
-        self.cellHeightF = CGRectGetMaxY(self.retweetViewF);
+        toolbarY = CGRectGetMaxY(self.retweetViewF);
     } else {
-        self.cellHeightF = CGRectGetMaxY(self.originalViewF);
+        toolbarY = CGRectGetMaxY(self.originalViewF);
     }
-
+    
+    //底部工具条
+    
+    self.toolbarF = CGRectMake(0, toolbarY, cellW, 35);
+    
+    
+    self.cellHeight = CGRectGetMaxY(self.toolbarF) + kSYStatusCellMargin;
 }
 
 @end
