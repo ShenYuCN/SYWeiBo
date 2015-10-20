@@ -23,7 +23,7 @@
 /** 微博来源 */
 @property (nonatomic,copy) NSString *source;
 
-/** 配图数组，多图时返回多图链接。无配图返回“[]” */
+/** 配图数组，多图时返回多图链接。无配图返回“[]”,之后转换成SYPhoto模型数组 */
 @property (nonatomic,copy) NSArray *pic_urls;
 
 /** 转发的原微博信息字段，当该微博为转发微博时返回 */

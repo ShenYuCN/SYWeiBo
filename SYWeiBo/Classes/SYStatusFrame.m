@@ -4,17 +4,30 @@
 //
 //  Created by Shen Yu on 15/10/18.
 //  Copyright © 2015年 Shen Yu. All rights reserved.
+
+//  int rows = count /3;
+//  if((count % 3)!= 0){
+//      rows +=1;
+//  }
 //
+//    int rows = 0;
+//    if (count % 3 == 0) { // count = 3\6\9
+//        rows = count / 3;
+//    } else { // count = 1\2\4\5\7\8
+//        rows = count / 3 + 1;
+//    }
 
 #import "SYStatusFrame.h"
 #import "SYStatus.h"
 #import "SYUser.h"
 #import "NSString+SY.h"
-
+#import "SYStatusPhotosView.h"
 
 //上下cell之间的灰色间距
 #define kSYStatusCellMargin 8
+
 @implementation SYStatusFrame
+
 -(void)setStatus:(SYStatus *)status{
     _status = status;
     SYUser *user = status.user;
@@ -66,10 +79,11 @@
     //配图
     CGFloat originalH = 0;
     if (status.pic_urls.count) {
-        CGFloat photoWH = 100;
+        CGSize photosSize = [SYStatusPhotosView sizeWithCount:(int)status.pic_urls.count];
         CGFloat photoY = CGRectGetMaxY(self.contentLabelF);
-        self.photoViewF = CGRectMake(contentX, photoY, photoWH, photoWH);
-        originalH = CGRectGetMaxY(self.photoViewF) + kSYStatusCellBorder;
+        self.photosViewF = (CGRect){{contentX,photoY},photosSize};
+        
+        originalH = CGRectGetMaxY(self.photosViewF) + kSYStatusCellBorder;
     }else{
         originalH = CGRectGetMaxY(self.contentLabelF) + kSYStatusCellBorder;
     }
@@ -93,12 +107,13 @@
         /** 被转发微博配图 */
         CGFloat retweetH = 0;
         if (retweeted_status.pic_urls.count) { // 转发微博有配图
-            CGFloat retweetPhotoWH = 100;
+            
             CGFloat retweetPhotoX = retweetContentX;
             CGFloat retweetPhotoY = CGRectGetMaxY(self.retweetContentLabelF) + kSYStatusCellBorder;
-            self.retweetPhotoViewF = CGRectMake(retweetPhotoX, retweetPhotoY, retweetPhotoWH, retweetPhotoWH);
+            CGSize retweetPhotosSize = [SYStatusPhotosView sizeWithCount:(int)retweeted_status.pic_urls.count];
+            self.retweetPhotosViewF = (CGRect){{retweetPhotoX,retweetPhotoY},retweetPhotosSize};
             
-            retweetH = CGRectGetMaxY(self.retweetPhotoViewF) + kSYStatusCellBorder;
+            retweetH = CGRectGetMaxY(self.retweetPhotosViewF) + kSYStatusCellBorder;
         } else { // 转发微博没有配图
             retweetH = CGRectGetMaxY(self.retweetContentLabelF) + kSYStatusCellBorder;
         }

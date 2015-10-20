@@ -14,13 +14,14 @@
 #import "SYPhoto.h"
 #import "SYStatusToolBar.h"
 #import "NSString+SY.h"
+#import "SYStatusPhotosView.h"
 @interface SYStatusCell()
 /**原创微博整体*/
 @property (nonatomic,weak) UIView *originalView;
 /**头像*/
 @property (nonatomic,weak) UIImageView *iconView;
 /**配图*/
-@property (nonatomic,weak) UIImageView *photoView;
+@property (nonatomic,weak) SYStatusPhotosView *photosView;
 /**会员图标*/
 @property (nonatomic,weak) UIImageView *vipView;
 /** 昵称 */
@@ -38,7 +39,7 @@
 /** 转发微博正文（@+昵称+正文） */
 @property (nonatomic,weak) UILabel *retweetContentLabel;
 /** 转发微博配图 */
-@property (nonatomic,weak) UIImageView *retweetPhotoView;
+@property (nonatomic,weak) SYStatusPhotosView *retweetphotosView;
 
 
 /** 工具条 */
@@ -110,9 +111,9 @@
     self.iconView = iconView;
     
     /**配图*/
-    UIImageView *photoView = [[UIImageView alloc] init];
-    [originalView addSubview:photoView];
-    self.photoView = photoView;
+    SYStatusPhotosView *photosView = [[SYStatusPhotosView alloc] init];
+    [originalView addSubview:photosView];
+    self.photosView = photosView;
     
     /**会员图标*/
     UIImageView *vipView = [[UIImageView alloc] init];
@@ -161,9 +162,9 @@
     self.retweetContentLabel = retweetContentLabel;
     
     /** 转发微博配图 */
-    UIImageView *retweetPhotoView = [[UIImageView alloc] init];
-    [retweetView addSubview:retweetPhotoView];
-    self.retweetPhotoView = retweetPhotoView;
+    SYStatusPhotosView *retweetphotosView = [[SYStatusPhotosView alloc] init];
+    [retweetView addSubview:retweetphotosView];
+    self.retweetphotosView = retweetphotosView;
 }
 
 /**
@@ -184,12 +185,12 @@
     
     /**配图*/
     if (status.pic_urls.count) {
-        self.photoView.frame = statusFrame.photoViewF;
-        SYPhoto *photo = [status.pic_urls lastObject];
-        [self.photoView sd_setImageWithURL:[NSURL URLWithString:photo.thumbnail_pic] placeholderImage:[UIImage imageNamed:@"timeline_image_placeholder"]];
-        self.photoView.hidden = NO;
+        self.photosView.frame = statusFrame.photosViewF;
+        self.photosView.photos = status.pic_urls;
+        NSLog(@"%@",status.pic_urls);
+        self.photosView.hidden = NO;
     }else{
-        self.photoView.hidden = YES;
+        self.photosView.hidden = YES;
     }
   
     
@@ -246,12 +247,11 @@
         
         /** 转发微博配图 */
         if (retweetStatus.pic_urls.count) {
-            self.retweetPhotoView.hidden = NO;
-            self.retweetPhotoView.frame = statusFrame.retweetPhotoViewF;
-            SYPhoto *photo = [retweetStatus.pic_urls lastObject];
-            [self.retweetPhotoView sd_setImageWithURL:[NSURL URLWithString:photo.thumbnail_pic] placeholderImage:[UIImage imageNamed:@"timeline_image_placeholder"]];
+            self.retweetphotosView.hidden = NO;
+            self.retweetphotosView.frame = statusFrame.retweetPhotosViewF;
+            self.retweetphotosView.photos = retweetStatus.pic_urls;
         }else{
-            self.retweetPhotoView.hidden = YES;
+            self.retweetphotosView.hidden = YES;
         }
     }else{
         self.retweetView.hidden = YES;

@@ -9,8 +9,6 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-
-
 // 昵称字体
 #define kSYStatusCellNameFont [UIFont systemFontOfSize:15]
 // 时间字体
@@ -41,7 +39,7 @@
 /**头像*/
 @property (nonatomic,assign) CGRect iconViewF;
 /**配图*/
-@property (nonatomic,assign) CGRect photoViewF;
+@property (nonatomic,assign) CGRect photosViewF;
 /**会员图标*/
 @property (nonatomic,assign) CGRect vipViewF;
 /** 昵称 */
@@ -59,7 +57,7 @@
 /** 转发微博正文（@+昵称+正文） */
 @property (nonatomic,assign) CGRect retweetContentLabelF;
 /** 转发微博配图 */
-@property (nonatomic,assign) CGRect retweetPhotoViewF;
+@property (nonatomic,assign) CGRect retweetPhotosViewF;
 
 /** 底部工具条 */
 @property (nonatomic,assign) CGRect toolbarF;
