@@ -112,6 +112,7 @@
  *  下拉刷新，加载最新数据
  */
 -(void)refreshStateChange:(UIRefreshControl *)control{
+    /*
     //TODO: 测试数据
     NSDictionary *responseObject = [NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"fakeStatus" ofType:@".plist"]];
     //取得字典数组,转换成模型数组
@@ -133,7 +134,7 @@
     
     
     return;
-    
+    */
     
     //1.请求管理者
     AFHTTPRequestOperationManager *mgr = [AFHTTPRequestOperationManager manager];

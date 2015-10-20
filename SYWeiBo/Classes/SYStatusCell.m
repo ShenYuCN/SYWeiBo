@@ -13,6 +13,7 @@
 #import "UIImageView+WebCache.h"
 #import "SYPhoto.h"
 #import "SYStatusToolBar.h"
+#import "NSString+SY.h"
 @interface SYStatusCell()
 /**原创微博整体*/
 @property (nonatomic,weak) UIView *originalView;
@@ -210,12 +211,20 @@
     self.nameLabel.font = kSYStatusCellNameFont;
     
     /** 时间 */
-    self.timeLabel.frame = statusFrame.timeLabelF;
-    self.timeLabel.text = status.created_at;
+    NSString *newTime = status.created_at;
+    CGFloat timeX = self.nameLabel.frame.origin.x;
+    CGFloat timeY = CGRectGetMaxY(self.nameLabel.frame) + kSYStatusCellBorder;
+    CGSize  timeSize = [newTime sizeWithFont:kSYStatusCellTimeFont];
+    self.timeLabel.frame = (CGRect){{timeX,timeY},timeSize};
+    self.timeLabel.text = newTime;
     
     /** 来源 */
-    self.sourceLabel.frame = statusFrame.sourceLabelF;
-    self.sourceLabel.text = status.source;
+    NSString *newSource = status.source;
+    CGFloat sourceX = CGRectGetMaxX(self.timeLabel.frame) + kSYStatusCellBorder;
+    CGFloat sourceY = timeY;
+    CGSize sourceSize = [newSource sizeWithFont:kSYStatusCellSourceFont];
+    self.sourceLabel.frame =(CGRect){{sourceX,sourceY},sourceSize};
+    self.sourceLabel.text = newSource;
     
     /** 正文 */
     self.contentLabel.frame = statusFrame.contentLabelF;

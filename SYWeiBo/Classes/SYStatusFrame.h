@@ -22,6 +22,10 @@
 
 // 转发微博正文字体
 #define kSYStatusCellRetweetContentFont [UIFont systemFontOfSize:13]
+
+//cell的左右边距
+#define kSYStatusCellBorder 10
+
 @class SYStatus;
 /**
  *  一个SYStatusFrame模型:

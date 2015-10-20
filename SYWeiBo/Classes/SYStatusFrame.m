@@ -9,30 +9,12 @@
 #import "SYStatusFrame.h"
 #import "SYStatus.h"
 #import "SYUser.h"
-//cell的左右边距
-#define kSYStatusCellBorder 10
+#import "NSString+SY.h"
+
 
 //上下cell之间的灰色间距
 #define kSYStatusCellMargin 8
 @implementation SYStatusFrame
-/**
- *  计算文字尺寸
- *
- *  @param font    文字的字体
- *  @param maxSize 文字的最大尺寸
- */
--(CGSize) sizeWithText:(NSString *)text font:(UIFont *)font maxW:(CGFloat)maxW{
-    
-    NSMutableDictionary *attrs = [NSMutableDictionary dictionary];
-    attrs[NSFontAttributeName] = font;
-    CGSize maxSize = CGSizeMake(maxW, MAXFLOAT);
-    return [text boundingRectWithSize:maxSize options:NSStringDrawingUsesLineFragmentOrigin attributes:attrs context:nil].size;
-}
--(CGSize) sizeWithText:(NSString *)text font:(UIFont *)font{
-    return [self sizeWithText:text font:font maxW:MAXFLOAT];
-}
-
-
 -(void)setStatus:(SYStatus *)status{
     _status = status;
     SYUser *user = status.user;
@@ -47,7 +29,7 @@
     //昵称
     CGFloat nameLabelX = CGRectGetMaxX(self.iconViewF) + kSYStatusCellBorder;
     CGFloat nameLabelY = iconViewY;
-    CGSize nameSize = [self sizeWithText:user.name font:kSYStatusCellNameFont];
+    CGSize nameSize = [user.name sizeWithFont:kSYStatusCellNameFont];
     self.nameLabelF = CGRectMake(nameLabelX, nameLabelY, nameSize.width, nameSize.height);
     
     //会员图标
@@ -62,13 +44,13 @@
     //时间
     CGFloat timeX = nameLabelX;
     CGFloat timeY = CGRectGetMaxY(self.nameLabelF) + kSYStatusCellBorder;
-    CGSize  timeSize = [self sizeWithText:status.created_at font:kSYStatusCellTimeFont];
+    CGSize  timeSize = [status.created_at sizeWithFont:kSYStatusCellTimeFont];
     self.timeLabelF = (CGRect){{timeX,timeY},timeSize};
     
     //来源
     CGFloat sourceX = CGRectGetMaxX(self.timeLabelF) + kSYStatusCellBorder;
     CGFloat sourceY = timeY;
-    CGSize sourceSize = [self sizeWithText:status.source font:kSYStatusCellSourceFont];
+    CGSize sourceSize = [status.source sizeWithFont:kSYStatusCellSourceFont];
     self.sourceLabelF =(CGRect){{sourceX,sourceY},sourceSize};
     
     //正文
@@ -77,7 +59,7 @@
     CGFloat cellW = [UIScreen mainScreen].bounds.size.width;
     CGFloat contentW = cellW - 2 * kSYStatusCellBorder
     ;
-    CGSize contentSize = [self sizeWithText:status.text font:kSYStatusCellContentFont maxW:contentW];
+    CGSize contentSize = [status.text sizeWithFont:kSYStatusCellContentFont maxW:contentW];
     self.contentLabelF = (CGRect){{contentX,contentY},contentSize};
     
     
@@ -106,7 +88,7 @@
         CGFloat retweetContentX = kSYStatusCellBorder;
         CGFloat retweetContentY = kSYStatusCellBorder;
         NSString *retweetContent = [NSString stringWithFormat:@"@%@ : %@", retweeted_status_user.name, retweeted_status.text];
-        CGSize retweetContentSize = [self sizeWithText:retweetContent font:kSYStatusCellRetweetContentFont maxW:contentW];
+        CGSize retweetContentSize = [retweetContent sizeWithFont:kSYStatusCellRetweetContentFont maxW:contentW];
         self.retweetContentLabelF = (CGRect){{retweetContentX, retweetContentY}, retweetContentSize};
         /** 被转发微博配图 */
         CGFloat retweetH = 0;

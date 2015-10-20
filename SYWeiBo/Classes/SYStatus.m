@@ -72,8 +72,6 @@
     // 计算两个日期之间的差值
     NSDateComponents *cmps = [calendar components:unit fromDate:createDate toDate:now options:0];
     
-    NSLog(@"%@ %@ %@", createDate, now, cmps);
-    
     if ([createDate isThisYear]) {//今年
         if ([createDate isYesterday]) {//昨天
             fmt.dateFormat = @"昨天 HH:mm";
@@ -98,6 +96,15 @@
     }
     
     return _created_at;
+    
+}
+-(void)setSource:(NSString *)source{
+    NSRange range;
+    range.location = [source rangeOfString:@">"].location + 1;
+    range.length = [source rangeOfString:@"</"].location - range.location;
+    //range.length = [source rangeOfString:@"<" options:NSBackwardsSearch];
+
+    _source = [NSString stringWithFormat:@"来自 %@",[source substringWithRange:range]];
     
 }
 @end
