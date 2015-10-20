@@ -19,6 +19,7 @@
 		A505AAE21BD47B9F00E537DF /* NSObject+MJCoding.m in Sources */ = {isa = PBXBuildFile; fileRef = A505AAD51BD47B9F00E537DF /* NSObject+MJCoding.m */; settings = {ASSET_TAGS = (); }; };
 		A505AAE31BD47B9F00E537DF /* NSObject+MJKeyValue.m in Sources */ = {isa = PBXBuildFile; fileRef = A505AAD71BD47B9F00E537DF /* NSObject+MJKeyValue.m */; settings = {ASSET_TAGS = (); }; };
 		A505AAE41BD47B9F00E537DF /* NSObject+MJMember.m in Sources */ = {isa = PBXBuildFile; fileRef = A505AAD91BD47B9F00E537DF /* NSObject+MJMember.m */; settings = {ASSET_TAGS = (); }; };
+		A5126CC91BD5101800223376 /* fakeStatus.plist in Resources */ = {isa = PBXBuildFile; fileRef = A5126CC81BD5101800223376 /* fakeStatus.plist */; settings = {ASSET_TAGS = (); }; };
 		A5283C351BC89EBE00E62BE7 /* SYHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5283C341BC89EBE00E62BE7 /* SYHomeViewController.m */; settings = {ASSET_TAGS = (); }; };
 		A5283C381BC89ED100E62BE7 /* SYMessageCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5283C371BC89ED100E62BE7 /* SYMessageCenterViewController.m */; settings = {ASSET_TAGS = (); }; };
 		A5283C3B1BC89EE400E62BE7 /* SYDiscoverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5283C3A1BC89EE400E62BE7 /* SYDiscoverViewController.m */; settings = {ASSET_TAGS = (); }; };
@@ -26,6 +27,7 @@
 		A5283C801BC8A6DE00E62BE7 /* SYTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5283C7F1BC8A6DE00E62BE7 /* SYTabBarViewController.m */; settings = {ASSET_TAGS = (); }; };
 		A5332AB81BD3CCAE00D394F1 /* NSString+SY.m in Sources */ = {isa = PBXBuildFile; fileRef = A5332AB71BD3CCAE00D394F1 /* NSString+SY.m */; settings = {ASSET_TAGS = (); }; };
 		A5332ABB1BD3DAA100D394F1 /* SYStatusFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = A5332ABA1BD3DAA100D394F1 /* SYStatusFrame.m */; settings = {ASSET_TAGS = (); }; };
+		A539C71A1BD4C3DE00758A68 /* SYStatusToolBar.m in Sources */ = {isa = PBXBuildFile; fileRef = A539C7191BD4C3DE00758A68 /* SYStatusToolBar.m */; settings = {ASSET_TAGS = (); }; };
 		A53EFC6E1BCFBC3100476CB2 /* SYUser.m in Sources */ = {isa = PBXBuildFile; fileRef = A53EFC6D1BCFBC3100476CB2 /* SYUser.m */; settings = {ASSET_TAGS = (); }; };
 		A53EFC711BCFBC3B00476CB2 /* SYStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = A53EFC701BCFBC3B00476CB2 /* SYStatus.m */; settings = {ASSET_TAGS = (); }; };
 		A54405DF1BCF7C0C00D7FB56 /* SYTitleButton.m in Sources */ = {isa = PBXBuildFile; fileRef = A54405DE1BCF7C0C00D7FB56 /* SYTitleButton.m */; settings = {ASSET_TAGS = (); }; };
@@ -33,6 +35,7 @@
 		A544E3421BCA176A0018BB9C /* UIBarButtonItem+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = A544E3411BCA176A0018BB9C /* UIBarButtonItem+Extension.m */; settings = {ASSET_TAGS = (); }; };
 		A567D4541BCBDF7C006098A4 /* SYTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = A567D4531BCBDF7C006098A4 /* SYTabBar.m */; settings = {ASSET_TAGS = (); }; };
 		A56D6F851BCCA70200C3ED44 /* SYNewFeatureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A56D6F841BCCA70200C3ED44 /* SYNewFeatureViewController.m */; settings = {ASSET_TAGS = (); }; };
+		A576A4531BD5C70D0048C18A /* NSDate+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = A576A4521BD5C70D0048C18A /* NSDate+Extension.m */; settings = {ASSET_TAGS = (); }; };
 		A585845F1BD39D010034172C /* SYStatusCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A585845E1BD39D010034172C /* SYStatusCell.m */; settings = {ASSET_TAGS = (); }; };
 		A58A023E1BCDEBF1005ACD8D /* SYOAuthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A58A023D1BCDEBF1005ACD8D /* SYOAuthViewController.m */; settings = {ASSET_TAGS = (); }; };
 		A58A02541BCDF5D9005ACD8D /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = A58A02421BCDF5D8005ACD8D /* AFHTTPRequestOperation.m */; settings = {ASSET_TAGS = (); }; };
@@ -128,6 +131,7 @@
 		A505AAD71BD47B9F00E537DF /* NSObject+MJKeyValue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+MJKeyValue.m"; sourceTree = "<group>"; };
 		A505AAD81BD47B9F00E537DF /* NSObject+MJMember.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+MJMember.h"; sourceTree = "<group>"; };
 		A505AAD91BD47B9F00E537DF /* NSObject+MJMember.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+MJMember.m"; sourceTree = "<group>"; };
+		A5126CC81BD5101800223376 /* fakeStatus.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = fakeStatus.plist; sourceTree = "<group>"; };
 		A5283C331BC89EBE00E62BE7 /* SYHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYHomeViewController.h; sourceTree = "<group>"; };
 		A5283C341BC89EBE00E62BE7 /* SYHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYHomeViewController.m; sourceTree = "<group>"; };
 		A5283C361BC89ED100E62BE7 /* SYMessageCenterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYMessageCenterViewController.h; sourceTree = "<group>"; };
@@ -141,6 +145,8 @@
 		A5332AB61BD3CCAE00D394F1 /* NSString+SY.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+SY.h"; sourceTree = "<group>"; };
 		A5332AB71BD3CCAE00D394F1 /* NSString+SY.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+SY.m"; sourceTree = "<group>"; };
 		A5332ABA1BD3DAA100D394F1 /* SYStatusFrame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYStatusFrame.m; sourceTree = "<group>"; };
+		A539C7181BD4C3DE00758A68 /* SYStatusToolBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYStatusToolBar.h; sourceTree = "<group>"; };
+		A539C7191BD4C3DE00758A68 /* SYStatusToolBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYStatusToolBar.m; sourceTree = "<group>"; };
 		A53EFC6C1BCFBC3100476CB2 /* SYUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYUser.h; sourceTree = "<group>"; };
 		A53EFC6D1BCFBC3100476CB2 /* SYUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYUser.m; sourceTree = "<group>"; };
 		A53EFC701BCFBC3B00476CB2 /* SYStatus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYStatus.m; sourceTree = "<group>"; };
@@ -154,6 +160,8 @@
 		A567D4531BCBDF7C006098A4 /* SYTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYTabBar.m; sourceTree = "<group>"; };
 		A56D6F831BCCA70200C3ED44 /* SYNewFeatureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYNewFeatureViewController.h; sourceTree = "<group>"; };
 		A56D6F841BCCA70200C3ED44 /* SYNewFeatureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYNewFeatureViewController.m; sourceTree = "<group>"; };
+		A576A4511BD5C70D0048C18A /* NSDate+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Extension.h"; sourceTree = "<group>"; };
+		A576A4521BD5C70D0048C18A /* NSDate+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Extension.m"; sourceTree = "<group>"; };
 		A585845E1BD39D010034172C /* SYStatusCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYStatusCell.m; sourceTree = "<group>"; };
 		A58584601BD3A4A30034172C /* SYStatus.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYStatus.h; sourceTree = "<group>"; };
 		A58584611BD3A4CD0034172C /* SYStatusCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYStatusCell.h; sourceTree = "<group>"; };
@@ -362,6 +370,8 @@
 		A544E3331BCA0C8E0018BB9C /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				A576A4511BD5C70D0048C18A /* NSDate+Extension.h */,
+				A576A4521BD5C70D0048C18A /* NSDate+Extension.m */,
 				A5332AB61BD3CCAE00D394F1 /* NSString+SY.h */,
 				A5332AB71BD3CCAE00D394F1 /* NSString+SY.m */,
 				A58A02771BCE51C7005ACD8D /* Foundation+Log.m */,
@@ -587,6 +597,8 @@
 				A5DC94001BD0959300429898 /* SYLoadMoreFooter.xib */,
 				A58584611BD3A4CD0034172C /* SYStatusCell.h */,
 				A585845E1BD39D010034172C /* SYStatusCell.m */,
+				A539C7181BD4C3DE00758A68 /* SYStatusToolBar.h */,
+				A539C7191BD4C3DE00758A68 /* SYStatusToolBar.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -663,6 +675,7 @@
 		A5F5B7A71BC7BA4D0047F482 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				A5126CC81BD5101800223376 /* fakeStatus.plist */,
 				A5F5B7B51BC7BA4D0047F482 /* LaunchScreen.storyboard */,
 				A5F5B7B81BC7BA4D0047F482 /* Info.plist */,
 				A5F5B7DA1BC7BB520047F482 /* Assets.xcassets */,
@@ -809,6 +822,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A5F5B7DB1BC7BB520047F482 /* Assets.xcassets in Resources */,
+				A5126CC91BD5101800223376 /* fakeStatus.plist in Resources */,
 				A58A026B1BCE2BEF005ACD8D /* MBProgressHUD.bundle in Resources */,
 				A5F5B7B71BC7BA4D0047F482 /* LaunchScreen.storyboard in Resources */,
 				A5D28C0D1BC8B18A00BF8BD9 /* Test1ViewController.xib in Resources */,
@@ -839,6 +853,7 @@
 			files = (
 				A505AADA1BD47B9F00E537DF /* MJArgument.m in Sources */,
 				A56D6F851BCCA70200C3ED44 /* SYNewFeatureViewController.m in Sources */,
+				A576A4531BD5C70D0048C18A /* NSDate+Extension.m in Sources */,
 				A58A02701BCE3742005ACD8D /* SYAccountTool.m in Sources */,
 				A5D28C101BC8BBAA00BF8BD9 /* UIView+Extension.m in Sources */,
 				A505AADE1BD47B9F00E537DF /* MJMember.m in Sources */,
@@ -866,6 +881,7 @@
 				A5CA0F981BC9116D00154FF6 /* Test2ViewController.m in Sources */,
 				A5B759231BCF990500B60990 /* SDWebImageDownloaderOperation.m in Sources */,
 				A544E3201BC9FD910018BB9C /* SYNavigationController.m in Sources */,
+				A539C71A1BD4C3DE00758A68 /* SYStatusToolBar.m in Sources */,
 				A5B7591D1BCF990500B60990 /* MKAnnotationView+WebCache.m in Sources */,
 				A5A78BC91BCB9667006EFB2D /* SYTitleMenuViewController.m in Sources */,
 				A505AADF1BD47B9F00E537DF /* MJMethod.m in Sources */,

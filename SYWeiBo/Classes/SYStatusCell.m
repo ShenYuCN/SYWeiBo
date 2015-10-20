@@ -12,6 +12,7 @@
 #import "SYStatusFrame.h"
 #import "UIImageView+WebCache.h"
 #import "SYPhoto.h"
+#import "SYStatusToolBar.h"
 @interface SYStatusCell()
 /**原创微博整体*/
 @property (nonatomic,weak) UIView *originalView;
@@ -40,7 +41,7 @@
 
 
 /** 工具条 */
-@property (nonatomic,weak) UIView *toolbar;
+@property (nonatomic,weak) SYStatusToolBar *toolbar;
 @end
 
 
@@ -63,6 +64,16 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         self.backgroundColor = [UIColor clearColor];
+        //设置cell选中效果
+        //无效果
+        self.selectionStyle = UITableViewCellSelectionStyleNone;
+        //其他颜色
+//        UIView *selectedViewBg = [[UIView alloc] init];
+//        selectedViewBg.backgroundColor = [UIColor colorWithRed:240/255.0 green:240/255.0 blue:240/255.0 alpha:1];
+//        self.selectedBackgroundView =selectedViewBg;
+        
+        
+        
         //初始化原创微博
         [self setupOriginal];
         
@@ -78,9 +89,8 @@
  *  初始化工具条
  */
 -(void)setupToolbar{
-    UIView *toolbar = [[UIView alloc] init];
+    SYStatusToolBar *toolbar = [SYStatusToolBar toolbar];
     [self.contentView addSubview:toolbar];
-    toolbar.backgroundColor = [UIColor orangeColor];
     self.toolbar = toolbar;
 }
 /**
@@ -240,6 +250,7 @@
     
     //底部工具条
     self.toolbar.frame = statusFrame.toolbarF;
+    self.toolbar.status = status;
     
     
 }

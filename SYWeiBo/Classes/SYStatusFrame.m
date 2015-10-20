@@ -92,7 +92,7 @@
         originalH = CGRectGetMaxY(self.contentLabelF) + kSYStatusCellBorder;
     }
     //原创微博整体
-    self.originalViewF = CGRectMake(0, 0, cellW,originalH);
+    self.originalViewF = CGRectMake(0, kSYStatusCellBorder, cellW,originalH);
     
     
     
@@ -136,7 +136,7 @@
     self.toolbarF = CGRectMake(0, toolbarY, cellW, 35);
     
     
-    self.cellHeight = CGRectGetMaxY(self.toolbarF) + kSYStatusCellMargin;
+    self.cellHeight = CGRectGetMaxY(self.toolbarF);
 }
 
 @end

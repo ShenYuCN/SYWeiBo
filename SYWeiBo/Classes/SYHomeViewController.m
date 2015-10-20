@@ -112,6 +112,29 @@
  *  下拉刷新，加载最新数据
  */
 -(void)refreshStateChange:(UIRefreshControl *)control{
+    //TODO: 测试数据
+    NSDictionary *responseObject = [NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"fakeStatus" ofType:@".plist"]];
+    //取得字典数组,转换成模型数组
+    NSArray *newStatus = [SYStatus objectArrayWithKeyValuesArray:responseObject[@"statuses"] ];
+    //将SYStatus模型转为SYStatusFrame模型
+    NSArray *statusFrames = [self statusFrameWithStatuses:newStatus];
+    
+    //将最新的数据添加到数组最前面
+    NSRange range = NSMakeRange(0, newStatus.count);
+    NSIndexSet *set = [[NSIndexSet alloc] initWithIndexesInRange:range];
+    [self.statusFrames insertObjects:statusFrames atIndexes:set];
+    
+    // 刷新表格
+    [self.tableView reloadData];
+    [control endRefreshing];
+    
+    //显示新的微博数量
+    [self showNewStatusCount:newStatus.count];
+    
+    
+    return;
+    
+    
     //1.请求管理者
     AFHTTPRequestOperationManager *mgr = [AFHTTPRequestOperationManager manager];
     mgr.responseSerializer = [AFJSONResponseSerializer serializer];
@@ -128,7 +151,7 @@
          [control endRefreshing];
         //取得字典数组,转换成模型数组
         NSArray *newStatus = [SYStatus objectArrayWithKeyValuesArray:responseObject[@"statuses"] ];
-        
+        //将SYStatus模型转为SYStatusFrame模型
         NSArray *statusFrames = [self statusFrameWithStatuses:newStatus];
         
         //将最新的数据添加到数组最前面
