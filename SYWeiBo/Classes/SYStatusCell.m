@@ -15,11 +15,12 @@
 #import "SYStatusToolBar.h"
 #import "NSString+SY.h"
 #import "SYStatusPhotosView.h"
+#import "SYIconView.h"
 @interface SYStatusCell()
 /**原创微博整体*/
 @property (nonatomic,weak) UIView *originalView;
 /**头像*/
-@property (nonatomic,weak) UIImageView *iconView;
+@property (nonatomic,weak) SYIconView *iconView;
 /**配图*/
 @property (nonatomic,weak) SYStatusPhotosView *photosView;
 /**会员图标*/
@@ -106,7 +107,7 @@
     self.originalView = originalView;
     
     /**头像*/
-    UIImageView *iconView = [[UIImageView alloc] init];
+    SYIconView *iconView = [[SYIconView alloc] init];
     [originalView addSubview:iconView];
     self.iconView = iconView;
     
@@ -181,7 +182,8 @@
     
     /**头像*/
     self.iconView.frame = statusFrame.iconViewF;
-    [self.iconView sd_setImageWithURL:[NSURL URLWithString:user.profile_image_url] placeholderImage:[UIImage imageNamed:@"avatar_default_small"]];
+//    [self.iconView sd_setImageWithURL:[NSURL URLWithString:user.profile_image_url] placeholderImage:[UIImage imageNamed:@"avatar_default_small"]];
+    self.iconView.user = user;
     
     /**配图*/
     if (status.pic_urls.count) {

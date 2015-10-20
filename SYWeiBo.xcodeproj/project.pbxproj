@@ -82,6 +82,7 @@
 		A5D28C101BC8BBAA00BF8BD9 /* UIView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = A5D28C0F1BC8BBAA00BF8BD9 /* UIView+Extension.m */; settings = {ASSET_TAGS = (); }; };
 		A5DC93FD1BD094A500429898 /* SYLoadMoreFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = A5DC93FC1BD094A400429898 /* SYLoadMoreFooter.m */; settings = {ASSET_TAGS = (); }; };
 		A5DC94011BD0959300429898 /* SYLoadMoreFooter.xib in Resources */ = {isa = PBXBuildFile; fileRef = A5DC94001BD0959300429898 /* SYLoadMoreFooter.xib */; settings = {ASSET_TAGS = (); }; };
+		A5E94D8D1BD640870080DC20 /* SYIconView.m in Sources */ = {isa = PBXBuildFile; fileRef = A5E94D8C1BD640870080DC20 /* SYIconView.m */; settings = {ASSET_TAGS = (); }; };
 		A5F5B7A91BC7BA4D0047F482 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A5F5B7A81BC7BA4D0047F482 /* main.m */; };
 		A5F5B7B71BC7BA4D0047F482 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5F5B7B51BC7BA4D0047F482 /* LaunchScreen.storyboard */; };
 		A5F5B7C21BC7BA4D0047F482 /* SYWeiBoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A5F5B7C11BC7BA4D0047F482 /* SYWeiBoTests.m */; };
@@ -256,6 +257,8 @@
 		A5DC93FB1BD094A400429898 /* SYLoadMoreFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYLoadMoreFooter.h; sourceTree = "<group>"; };
 		A5DC93FC1BD094A400429898 /* SYLoadMoreFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYLoadMoreFooter.m; sourceTree = "<group>"; };
 		A5DC94001BD0959300429898 /* SYLoadMoreFooter.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SYLoadMoreFooter.xib; sourceTree = "<group>"; };
+		A5E94D8B1BD640870080DC20 /* SYIconView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYIconView.h; sourceTree = "<group>"; };
+		A5E94D8C1BD640870080DC20 /* SYIconView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYIconView.m; sourceTree = "<group>"; };
 		A5F5B7A41BC7BA4D0047F482 /* SYWeiBo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SYWeiBo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5F5B7A81BC7BA4D0047F482 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		A5F5B7B61BC7BA4D0047F482 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -587,6 +590,8 @@
 				A5A78BC41BCB8B66006EFB2D /* SYDropdownMenu.m */,
 				A567D4521BCBDF7C006098A4 /* SYTabBar.h */,
 				A567D4531BCBDF7C006098A4 /* SYTabBar.m */,
+				A5E94D8B1BD640870080DC20 /* SYIconView.h */,
+				A5E94D8C1BD640870080DC20 /* SYIconView.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -888,6 +893,7 @@
 				A567D4541BCBDF7C006098A4 /* SYTabBar.m in Sources */,
 				A5283C3B1BC89EE400E62BE7 /* SYDiscoverViewController.m in Sources */,
 				A5283C3E1BC89EF400E62BE7 /* SYProfileViewController.m in Sources */,
+				A5E94D8D1BD640870080DC20 /* SYIconView.m in Sources */,
 				A505AAE31BD47B9F00E537DF /* NSObject+MJKeyValue.m in Sources */,
 				A5B759291BCF990500B60990 /* UIImage+WebP.m in Sources */,
 				A5CA0F981BC9116D00154FF6 /* Test2ViewController.m in Sources */,
