@@ -33,6 +33,7 @@
 		A54405DF1BCF7C0C00D7FB56 /* SYTitleButton.m in Sources */ = {isa = PBXBuildFile; fileRef = A54405DE1BCF7C0C00D7FB56 /* SYTitleButton.m */; settings = {ASSET_TAGS = (); }; };
 		A544E3201BC9FD910018BB9C /* SYNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = A544E31F1BC9FD910018BB9C /* SYNavigationController.m */; settings = {ASSET_TAGS = (); }; };
 		A544E3421BCA176A0018BB9C /* UIBarButtonItem+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = A544E3411BCA176A0018BB9C /* UIBarButtonItem+Extension.m */; settings = {ASSET_TAGS = (); }; };
+		A54A49C61BD62B3F00F57ACD /* SYStatusPhotoView.m in Sources */ = {isa = PBXBuildFile; fileRef = A54A49C51BD62B3F00F57ACD /* SYStatusPhotoView.m */; settings = {ASSET_TAGS = (); }; };
 		A567D4541BCBDF7C006098A4 /* SYTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = A567D4531BCBDF7C006098A4 /* SYTabBar.m */; settings = {ASSET_TAGS = (); }; };
 		A56D6F851BCCA70200C3ED44 /* SYNewFeatureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A56D6F841BCCA70200C3ED44 /* SYNewFeatureViewController.m */; settings = {ASSET_TAGS = (); }; };
 		A576A4531BD5C70D0048C18A /* NSDate+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = A576A4521BD5C70D0048C18A /* NSDate+Extension.m */; settings = {ASSET_TAGS = (); }; };
@@ -157,6 +158,8 @@
 		A544E31F1BC9FD910018BB9C /* SYNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYNavigationController.m; sourceTree = "<group>"; };
 		A544E3401BCA176A0018BB9C /* UIBarButtonItem+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+Extension.h"; sourceTree = "<group>"; };
 		A544E3411BCA176A0018BB9C /* UIBarButtonItem+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBarButtonItem+Extension.m"; sourceTree = "<group>"; };
+		A54A49C41BD62B3F00F57ACD /* SYStatusPhotoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYStatusPhotoView.h; sourceTree = "<group>"; };
+		A54A49C51BD62B3F00F57ACD /* SYStatusPhotoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYStatusPhotoView.m; sourceTree = "<group>"; };
 		A567D4521BCBDF7C006098A4 /* SYTabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYTabBar.h; sourceTree = "<group>"; };
 		A567D4531BCBDF7C006098A4 /* SYTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYTabBar.m; sourceTree = "<group>"; };
 		A56D6F831BCCA70200C3ED44 /* SYNewFeatureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYNewFeatureViewController.h; sourceTree = "<group>"; };
@@ -604,6 +607,8 @@
 				A539C7191BD4C3DE00758A68 /* SYStatusToolBar.m */,
 				A576A4671BD5E69A0048C18A /* SYStatusPhotosView.h */,
 				A576A4681BD5E69A0048C18A /* SYStatusPhotosView.m */,
+				A54A49C41BD62B3F00F57ACD /* SYStatusPhotoView.h */,
+				A54A49C51BD62B3F00F57ACD /* SYStatusPhotoView.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -865,6 +870,7 @@
 				A5D28C0C1BC8B18A00BF8BD9 /* Test1ViewController.m in Sources */,
 				A576A4691BD5E69A0048C18A /* SYStatusPhotosView.m in Sources */,
 				A5B759201BCF990500B60990 /* SDWebImageCompat.m in Sources */,
+				A54A49C61BD62B3F00F57ACD /* SYStatusPhotoView.m in Sources */,
 				A5F5B7A91BC7BA4D0047F482 /* main.m in Sources */,
 				A505AADC1BD47B9F00E537DF /* MJFoundation.m in Sources */,
 				A505AADD1BD47B9F00E537DF /* MJIvar.m in Sources */,

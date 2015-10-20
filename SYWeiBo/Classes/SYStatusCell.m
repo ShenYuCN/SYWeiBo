@@ -187,7 +187,6 @@
     if (status.pic_urls.count) {
         self.photosView.frame = statusFrame.photosViewF;
         self.photosView.photos = status.pic_urls;
-        NSLog(@"%@",status.pic_urls);
         self.photosView.hidden = NO;
     }else{
         self.photosView.hidden = YES;

@@ -9,6 +9,9 @@
 #import "SYStatusPhotosView.h"
 #import "SYPhoto.h"
 #import "UIImageView+WebCache.h"
+#import "SYStatusPhotoView.h"
+
+
 //每张配图的宽高
 #define kSYStatusPhotosWH 80
 //每张配图的间距
@@ -30,16 +33,15 @@
     int photosCount = (int)photos.count;
     //创建足够数量的UIImageView
     while (self.subviews.count < photosCount) {
-        UIImageView *photoView = [[UIImageView alloc] init];
+        SYStatusPhotoView *photoView = [[SYStatusPhotoView alloc] init];
         [self addSubview:photoView];
     }
     //遍历UIImageView,设置图片
     for (int i = 0; i < self.subviews.count; i ++) {
-        UIImageView *photoView = self.subviews[i];
+        SYStatusPhotoView *photoView = self.subviews[i];
         if (i < photosCount) {
             photoView.hidden = NO;
-            SYPhoto *photo = photos[i];
-            [photoView sd_setImageWithURL:[NSURL URLWithString:photo.thumbnail_pic] placeholderImage:[UIImage imageNamed:@"timeline_image_placeholder"]];
+            photoView.photo = photos[i];
         }else{
             photoView.hidden = YES;
         }
@@ -52,7 +54,7 @@
     int maxCol = kSYPhotoViewMaxCol(self.photos.count);
  
     for (int i = 0; i < self.photos.count; i ++) {
-        UIImageView *photoView = self.subviews[i];
+        SYStatusPhotoView *photoView = self.subviews[i];
         int col = i % maxCol;
         int row = i / maxCol;
         CGFloat photoX = col * (kSYStatusPhotosWH + kSYStatusPhotosMargin);

@@ -21,6 +21,13 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    // Override point for customization after application launch.
+    float sysVersion=[[UIDevice currentDevice]systemVersion].floatValue;
+    if (sysVersion>=8.0) {
+        UIUserNotificationType type=UIUserNotificationTypeBadge | UIUserNotificationTypeAlert | UIUserNotificationTypeSound;
+        UIUserNotificationSettings *setting=[UIUserNotificationSettings settingsForTypes:type categories:nil];
+        [[UIApplication sharedApplication]registerUserNotificationSettings:setting];
+    }
     
     
     //1.创建窗口

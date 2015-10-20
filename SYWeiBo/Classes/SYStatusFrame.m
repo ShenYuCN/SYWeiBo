@@ -80,7 +80,7 @@
     CGFloat originalH = 0;
     if (status.pic_urls.count) {
         CGSize photosSize = [SYStatusPhotosView sizeWithCount:(int)status.pic_urls.count];
-        CGFloat photoY = CGRectGetMaxY(self.contentLabelF);
+        CGFloat photoY = CGRectGetMaxY(self.contentLabelF) + kSYStatusCellBorder;
         self.photosViewF = (CGRect){{contentX,photoY},photosSize};
         
         originalH = CGRectGetMaxY(self.photosViewF) + kSYStatusCellBorder;
