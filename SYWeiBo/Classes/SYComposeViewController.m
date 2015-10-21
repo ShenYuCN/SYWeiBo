@@ -13,9 +13,12 @@
 #import "AFNetworking.h"
 #import "MBProgressHUD+MJ.h"
 #import "SYComposeToolbar.h"
-@interface SYComposeViewController ()<UITextViewDelegate,SYComposeToolBarDelegate>
+#import "SYComposePhotosView.h"
+@interface SYComposeViewController ()<UITextViewDelegate,SYComposeToolBarDelegate,UINavigationControllerDelegate, UIImagePickerControllerDelegate>
+
 @property (nonatomic,weak) SYTextView *textView;
-@property (nonatomic,strong) SYComposeToolbar *toolbar;
+@property (nonatomic,weak) SYComposeToolbar *toolbar;
+@property (nonatomic,weak) SYComposePhotosView *photosView;
 @end
 
 @implementation SYComposeViewController
@@ -32,6 +35,8 @@
     //设置工具条
     [self setupToolbar];
 
+    //添加相册
+    [self setupPhotosView];
 }
 
 -(void)dealloc{
@@ -100,6 +105,7 @@
     [self.view addSubview:textView];
     self.textView = textView;
     self.textView.delegate = self;
+    [self.textView becomeFirstResponder];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textDidChanged) name:UITextViewTextDidChangeNotification object:textView];
     
     // 键盘通知
@@ -129,6 +135,14 @@
     toolbar.delegate = self;
     self.toolbar = toolbar;
     [self.view addSubview:toolbar];
+}
+-(void)setupPhotosView{
+    SYComposePhotosView *photosView = [[SYComposePhotosView alloc] init];
+    photosView.width = self.view.width;
+    photosView.height = self.view.height;
+    photosView.y = 100;
+    [self.textView addSubview:photosView];
+    self.photosView = photosView;
 }
 #pragma mark - SYComposeToolBarDelegate
 -(void)compostToolBar:(SYComposeToolbar *)toolbar didClickButton:(SYComposeToolbarButtonType)buttonType{
@@ -160,11 +174,25 @@
 #pragma mark - toolBar Button选中的其他方法
 
 -(void)openCamera{
-
+   [self openImagePickViewController:UIImagePickerControllerSourceTypeCamera];
 }
 -(void)openAlbum{
-
+    [self openImagePickViewController:UIImagePickerControllerSourceTypePhotoLibrary];
 }
+-(void)openImagePickViewController:(UIImagePickerControllerSourceType)sourceType{
+    if (![UIImagePickerController isSourceTypeAvailable:sourceType ] ) return;    UIImagePickerController *ipc = [[UIImagePickerController alloc] init];
+    ipc.sourceType = sourceType;
+    ipc.delegate = self;
+    [self presentViewController:ipc animated:YES completion:nil];
+}
+#pragma mark - UIImagePickerControllerDelegate 代理方法
+-(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info{
+    
+    UIImage *image = info[UIImagePickerControllerOriginalImage];
+    [self.photosView addPhoto:image];
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
 #pragma mark - UITextView代理方法
 -(void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
     [self.view endEditing:YES];
@@ -174,7 +202,6 @@
  *  键盘frame改变时的监听
  */
 -(void)keyboardWillChangeFrame:(NSNotification *)notification{
-    NSLog(@"%@",notification.userInfo);
     /**
      notification.userInfo = @{
      // 键盘弹出\隐藏后的frame

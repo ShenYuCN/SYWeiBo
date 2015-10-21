@@ -59,6 +59,7 @@
 		A58A02701BCE3742005ACD8D /* SYAccountTool.m in Sources */ = {isa = PBXBuildFile; fileRef = A58A026F1BCE3742005ACD8D /* SYAccountTool.m */; settings = {ASSET_TAGS = (); }; };
 		A58A02731BCE41A2005ACD8D /* UIWindow+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = A58A02721BCE41A2005ACD8D /* UIWindow+Extension.m */; settings = {ASSET_TAGS = (); }; };
 		A58A02781BCE51C7005ACD8D /* Foundation+Log.m in Sources */ = {isa = PBXBuildFile; fileRef = A58A02771BCE51C7005ACD8D /* Foundation+Log.m */; settings = {ASSET_TAGS = (); }; };
+		A58E11FB1BD7CB7B004C7086 /* SYComposePhotosView.m in Sources */ = {isa = PBXBuildFile; fileRef = A58E11FA1BD7CB7B004C7086 /* SYComposePhotosView.m */; settings = {ASSET_TAGS = (); }; };
 		A5A78BC21BCB4E4D006EFB2D /* SYSearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = A5A78BC11BCB4E4D006EFB2D /* SYSearchBar.m */; settings = {ASSET_TAGS = (); }; };
 		A5A78BC51BCB8B66006EFB2D /* SYDropdownMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = A5A78BC41BCB8B66006EFB2D /* SYDropdownMenu.m */; settings = {ASSET_TAGS = (); }; };
 		A5A78BC91BCB9667006EFB2D /* SYTitleMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5A78BC81BCB9667006EFB2D /* SYTitleMenuViewController.m */; settings = {ASSET_TAGS = (); }; };
@@ -215,6 +216,8 @@
 		A58A02711BCE41A2005ACD8D /* UIWindow+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWindow+Extension.h"; sourceTree = "<group>"; };
 		A58A02721BCE41A2005ACD8D /* UIWindow+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWindow+Extension.m"; sourceTree = "<group>"; };
 		A58A02771BCE51C7005ACD8D /* Foundation+Log.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Foundation+Log.m"; sourceTree = "<group>"; };
+		A58E11F91BD7CB7B004C7086 /* SYComposePhotosView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYComposePhotosView.h; sourceTree = "<group>"; };
+		A58E11FA1BD7CB7B004C7086 /* SYComposePhotosView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYComposePhotosView.m; sourceTree = "<group>"; };
 		A5A78BC01BCB4E4D006EFB2D /* SYSearchBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYSearchBar.h; sourceTree = "<group>"; };
 		A5A78BC11BCB4E4D006EFB2D /* SYSearchBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYSearchBar.m; sourceTree = "<group>"; };
 		A5A78BC31BCB8B66006EFB2D /* SYDropdownMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYDropdownMenu.h; sourceTree = "<group>"; };
@@ -343,6 +346,8 @@
 			children = (
 				A52E45D71BD788900021B784 /* SYComposeToolbar.h */,
 				A52E45D81BD788900021B784 /* SYComposeToolbar.m */,
+				A58E11F91BD7CB7B004C7086 /* SYComposePhotosView.h */,
+				A58E11FA1BD7CB7B004C7086 /* SYComposePhotosView.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -939,6 +944,7 @@
 				A5B759291BCF990500B60990 /* UIImage+WebP.m in Sources */,
 				A5CA0F981BC9116D00154FF6 /* Test2ViewController.m in Sources */,
 				A5B759231BCF990500B60990 /* SDWebImageDownloaderOperation.m in Sources */,
+				A58E11FB1BD7CB7B004C7086 /* SYComposePhotosView.m in Sources */,
 				A52E45D91BD788900021B784 /* SYComposeToolbar.m in Sources */,
 				A544E3201BC9FD910018BB9C /* SYNavigationController.m in Sources */,
 				A539C71A1BD4C3DE00758A68 /* SYStatusToolBar.m in Sources */,
