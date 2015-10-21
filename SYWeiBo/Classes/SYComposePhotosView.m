@@ -10,18 +10,19 @@
 
 @implementation SYComposePhotosView
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
+- (id)initWithFrame:(CGRect)frame
+{
+    self = [super initWithFrame:frame];
+    if (self) {
+        _photos = [NSMutableArray array];
+    }
+    return self;
 }
-*/
-
 -(void)addPhoto:(UIImage *)image{
     UIImageView *imageView = [[UIImageView alloc] init];
     imageView.image = image;
     [self addSubview:imageView];
+    [_photos addObject:imageView];
 }
 -(void)layoutSubviews{
     [super layoutSubviews];
@@ -43,4 +44,19 @@
     }
 }
 
+//@property (nonatomic,strong) NSMutableArray *addedPhotos;
+
+//- (NSMutableArray *)addedPhotos
+//{
+//    if (!_addedPhotos) {
+////        self.addedPhotos = [[NSMutableArray alloc] init];
+//        self.addedPhotos = [NSMutableArray array];
+//    }
+//    return _addedPhotos;
+//}
+
+//- (NSArray *)photos
+//{
+//    return self.addedPhotos;
+//}
 @end

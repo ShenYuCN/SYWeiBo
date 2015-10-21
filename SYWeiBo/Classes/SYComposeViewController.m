@@ -48,6 +48,7 @@
  */
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    if (self.textView.hasText) return;
     self.navigationItem.rightBarButtonItem.enabled = NO;
 }
 #pragma mark - 初始化方法
@@ -218,6 +219,7 @@
     
     [UIView animateWithDuration:duration animations:^{
         self.toolbar.y = keyboardF.origin.y - self.toolbar.height;
+        NSLog(@"%@",NSStringFromCGRect(self.toolbar.frame));
     }];
 
 }
@@ -230,16 +232,62 @@
 }
 -(void)send{
     
+    if (self.photosView.photos.count) {
+        //发送带图片的微博
+        [self sendWithImage];
+    }else{
+        //发送没有图片的微博
+        [self sendWithoutImage];
+    }
+    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+}
+
+#pragma mark - 发送微博，上传数据
+/**
+ *   发送带图片的微博
+ */
+-(void)sendWithImage{
+    // URL: https://upload.api.weibo.com/2/statuses/upload.json
+    // 参数:
+    /**	status true string 要发布的微博文本内容，必须做URLencode，内容不超过140个汉字。*/
+    /**	access_token true string*/
+    /**	pic true binary 微博的配图。*/
+    
     AFHTTPRequestOperationManager *mgr = [AFHTTPRequestOperationManager manager];
+    
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    
+    params[@"access_token"] = [SYAccountTool account].access_token;
+    params[@"status"] = self.textView.text;
+    
+    [mgr POST:@"https://upload.api.weibo.com/2/statuses/upload.json" parameters:params constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
+        UIImageView *imageView = [self.photosView.photos firstObject];
+        NSData *data = UIImageJPEGRepresentation(imageView.image, 1.0);
+        [formData appendPartWithFileData:data name:@"pic" fileName:@"ete.jpg" mimeType:@"image/jpeg"];
+    
+        
+    } success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        [MBProgressHUD showSuccess:@"发送成功"];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        [MBProgressHUD showError:@"发送失败"];
+    }];
+
+}
+/**
+ *  发送没有图片的微博
+ */
+-(void)sendWithoutImage{
+    AFHTTPRequestOperationManager *mgr = [AFHTTPRequestOperationManager manager];
+    
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     params[@"access_token"] = [SYAccountTool account].access_token;
     params[@"status"] = self.textView.text;
+    
     [mgr POST:@"https://api.weibo.com/2/statuses/update.json" parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
         [MBProgressHUD showSuccess:@"发送成功"];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         [MBProgressHUD showError:@"发送失败"];
     }];
-    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end
