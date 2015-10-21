@@ -12,8 +12,10 @@
 #import "SYTextView.h"
 #import "AFNetworking.h"
 #import "MBProgressHUD+MJ.h"
-@interface SYComposeViewController ()
+#import "SYComposeToolbar.h"
+@interface SYComposeViewController ()<UITextViewDelegate>
 @property (nonatomic,weak) SYTextView *textView;
+@property (nonatomic,strong) SYComposeToolbar *toolbar;
 @end
 
 @implementation SYComposeViewController
@@ -26,6 +28,9 @@
     
     //设置输入控件
     [self setupTextView];
+    
+    //设置工具条
+    [self setupToolbar];
 
 }
 
@@ -88,16 +93,73 @@
     
     SYTextView *textView = [[SYTextView alloc] init];
     textView.frame = self.view.bounds;
-//    textView.placeHolderColor = [UIColor redColor];
     textView.placeHolder = @"分享新鲜事...";
     textView.font = [UIFont systemFontOfSize:14];
+    // 垂直方向上永远可以拖拽（有弹簧效果）
+    textView.alwaysBounceVertical = YES;
     [self.view addSubview:textView];
     self.textView = textView;
-    
+    self.textView.delegate = self;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textDidChanged) name:UITextViewTextDidChangeNotification object:textView];
     
+    // 键盘通知
+    // 键盘的frame发生改变时发出的通知（位置和尺寸）
+    //    UIKeyboardWillChangeFrameNotification
+    //    UIKeyboardDidChangeFrameNotification
+    // 键盘显示时发出的通知
+    //    UIKeyboardWillShowNotification
+    //    UIKeyboardDidShowNotification
+    // 键盘隐藏时发出的通知
+    //    UIKeyboardWillHideNotification
+    //    UIKeyboardDidHideNotification
+    
+    //对于键盘的监听
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillChangeFrame:) name:UIKeyboardWillChangeFrameNotification object:nil];
+    
+}
+-(void)setupToolbar{
+    SYComposeToolbar *toolbar = [[SYComposeToolbar alloc] init];
+    toolbar.height = 44;
+    toolbar.width = self.view.width;
+    toolbar.y = self.view.height - toolbar.height;
+    //inputAccessoryView设置显示在键盘顶部的内容,inputView显示键盘
+    //如果没有要求，退出键盘后toolbar也隐藏，则这局代码完全可以实现
+//    self.textView.inputAccessoryView = toolbar;
+    
+    
+    self.toolbar = toolbar;
+    [self.view addSubview:toolbar];
+}
+
+#pragma mark - UITextView代理方法
+-(void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
+    [self.view endEditing:YES];
 }
 #pragma mark - 监听方法
+/**
+ *  键盘frame改变时的监听
+ */
+-(void)keyboardWillChangeFrame:(NSNotification *)notification{
+    NSLog(@"%@",notification.userInfo);
+    /**
+     notification.userInfo = @{
+     // 键盘弹出\隐藏后的frame
+     UIKeyboardFrameEndUserInfoKey = NSRect: {{0, 352}, {320, 216}},
+     // 键盘弹出\隐藏所耗费的时间
+     UIKeyboardAnimationDurationUserInfoKey = 0.25,
+     // 键盘弹出\隐藏动画的执行节奏（先快后慢，匀速）
+     UIKeyboardAnimationCurveUserInfoKey = 7
+     }
+     */
+    NSDictionary *dict = notification.userInfo;
+    double duration = [dict[UIKeyboardAnimationDurationUserInfoKey] doubleValue];
+    CGRect keyboardF = [dict[UIKeyboardFrameEndUserInfoKey] CGRectValue];
+    
+    [UIView animateWithDuration:duration animations:^{
+        self.toolbar.y = keyboardF.origin.y - self.toolbar.height;
+    }];
+
+}
 -(void)textDidChanged{
     self.navigationItem.rightBarButtonItem.enabled = self.textView.hasText;
 }
