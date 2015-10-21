@@ -34,6 +34,7 @@
 		A544E3201BC9FD910018BB9C /* SYNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = A544E31F1BC9FD910018BB9C /* SYNavigationController.m */; settings = {ASSET_TAGS = (); }; };
 		A544E3421BCA176A0018BB9C /* UIBarButtonItem+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = A544E3411BCA176A0018BB9C /* UIBarButtonItem+Extension.m */; settings = {ASSET_TAGS = (); }; };
 		A54A49C61BD62B3F00F57ACD /* SYStatusPhotoView.m in Sources */ = {isa = PBXBuildFile; fileRef = A54A49C51BD62B3F00F57ACD /* SYStatusPhotoView.m */; settings = {ASSET_TAGS = (); }; };
+		A55D68371BD6812700C0D2B2 /* SYComposeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A55D68361BD6812700C0D2B2 /* SYComposeViewController.m */; settings = {ASSET_TAGS = (); }; };
 		A567D4541BCBDF7C006098A4 /* SYTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = A567D4531BCBDF7C006098A4 /* SYTabBar.m */; settings = {ASSET_TAGS = (); }; };
 		A56D6F851BCCA70200C3ED44 /* SYNewFeatureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A56D6F841BCCA70200C3ED44 /* SYNewFeatureViewController.m */; settings = {ASSET_TAGS = (); }; };
 		A576A4531BD5C70D0048C18A /* NSDate+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = A576A4521BD5C70D0048C18A /* NSDate+Extension.m */; settings = {ASSET_TAGS = (); }; };
@@ -161,6 +162,8 @@
 		A544E3411BCA176A0018BB9C /* UIBarButtonItem+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBarButtonItem+Extension.m"; sourceTree = "<group>"; };
 		A54A49C41BD62B3F00F57ACD /* SYStatusPhotoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYStatusPhotoView.h; sourceTree = "<group>"; };
 		A54A49C51BD62B3F00F57ACD /* SYStatusPhotoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYStatusPhotoView.m; sourceTree = "<group>"; };
+		A55D68351BD6812700C0D2B2 /* SYComposeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYComposeViewController.h; sourceTree = "<group>"; };
+		A55D68361BD6812700C0D2B2 /* SYComposeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYComposeViewController.m; sourceTree = "<group>"; };
 		A567D4521BCBDF7C006098A4 /* SYTabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYTabBar.h; sourceTree = "<group>"; };
 		A567D4531BCBDF7C006098A4 /* SYTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYTabBar.m; sourceTree = "<group>"; };
 		A56D6F831BCCA70200C3ED44 /* SYNewFeatureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYNewFeatureViewController.h; sourceTree = "<group>"; };
@@ -478,6 +481,23 @@
 			name = Temp;
 			sourceTree = "<group>";
 		};
+		A55D68331BD6811100C0D2B2 /* Compose */ = {
+			isa = PBXGroup;
+			children = (
+				A55D68341BD6811700C0D2B2 /* Controller */,
+			);
+			name = Compose;
+			sourceTree = "<group>";
+		};
+		A55D68341BD6811700C0D2B2 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				A55D68351BD6812700C0D2B2 /* SYComposeViewController.h */,
+				A55D68361BD6812700C0D2B2 /* SYComposeViewController.m */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
 		A56D6F811BCCA6D400C3ED44 /* NewFeature */ = {
 			isa = PBXGroup;
 			children = (
@@ -720,6 +740,7 @@
 		A5F5B7DC1BC7BBAA0047F482 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				A55D68331BD6811100C0D2B2 /* Compose */,
 				A58A023A1BCDEBBF005ACD8D /* OAuth */,
 				A56D6F811BCCA6D400C3ED44 /* NewFeature */,
 				A544E33C1BCA0CF70018BB9C /* Temp */,
@@ -880,6 +901,7 @@
 				A505AADC1BD47B9F00E537DF /* MJFoundation.m in Sources */,
 				A505AADD1BD47B9F00E537DF /* MJIvar.m in Sources */,
 				A58A02591BCDF5D9005ACD8D /* AFURLConnectionOperation.m in Sources */,
+				A55D68371BD6812700C0D2B2 /* SYComposeViewController.m in Sources */,
 				A5B759261BCF990500B60990 /* UIButton+WebCache.m in Sources */,
 				A58A02581BCDF5D9005ACD8D /* AFSecurityPolicy.m in Sources */,
 				A54405DF1BCF7C0C00D7FB56 /* SYTitleButton.m in Sources */,

@@ -14,6 +14,7 @@
 #import "SYNavigationController.h"
 #import "UIView+Extension.h"
 #import "SYTabBar.h"
+#import "SYComposeViewController.h"
 @interface SYTabBarViewController ()<SYTabBarDelegate>
 
 @end
@@ -87,9 +88,10 @@
 
 -(void)tabBarDidClickPlusBtn:(SYTabBar *)tabBar{
 
-    UIViewController *vc = [[UIViewController alloc] init];
-    vc.view.backgroundColor = [UIColor redColor];
-    [self presentViewController:vc animated:YES completion:NO];
+    SYComposeViewController *compose = [[SYComposeViewController alloc] init];
+    
+    SYNavigationController *nav = [[SYNavigationController alloc] initWithRootViewController:compose];
+    [self presentViewController:nav animated:YES completion:nil];
 }
 
 @end

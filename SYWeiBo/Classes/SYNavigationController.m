@@ -22,15 +22,14 @@
     //正常状态
     NSMutableDictionary *textAttr = [NSMutableDictionary dictionary];
     textAttr[NSForegroundColorAttributeName] = [UIColor orangeColor];
-    textAttr[NSFontAttributeName] = [UIFont systemFontOfSize:13];
+    textAttr[NSFontAttributeName] = [UIFont systemFontOfSize:15];
     [item setTitleTextAttributes:textAttr forState:UIControlStateNormal];
     //不可用状态
     NSMutableDictionary *disableTextAttr = [NSMutableDictionary dictionary];
     disableTextAttr[NSForegroundColorAttributeName] = [UIColor lightGrayColor];
-    disableTextAttr[NSFontAttributeName] = [UIFont systemFontOfSize:13];
+    disableTextAttr[NSFontAttributeName] = textAttr[NSFontAttributeName];
     [item setTitleTextAttributes:disableTextAttr forState:UIControlStateDisabled];
 
-    
     
     
     
@@ -39,12 +38,13 @@
     [super viewDidLoad];
     
 }
-/**
+/**tui
  *  重写这个方法目的：能够拦截所有push进来的控制器
  *
  *  @param viewController 即将push进来的控制器
  */
 -(void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated{
+    
     if (self.childViewControllers.count > 0) {
         
         //左边的barButtonItem

@@ -74,10 +74,11 @@
 }
 -(void)layoutSubviews{
     [super layoutSubviews];
-    
-    self.verifiedView.x = self.width - self.verifiedView.x * 0.6;
-    self.verifiedView.y = self.height - self.verifiedView.y * 0.6;
     self.verifiedView.size = self.verifiedView.image.size;
+    CGFloat scale = 0.6;
+    self.verifiedView.x = self.width - self.verifiedView.width * scale;
+    self.verifiedView.y = self.height - self.verifiedView.height * scale;
+   
 
 }
 @end
