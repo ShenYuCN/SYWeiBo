@@ -40,23 +40,13 @@
     
      // 2.设置加V图片
     switch (user.verified_type) {
-        case SYUserVerifiedTypeNone: // 无认证 -1
-            break;
-        case SYUserVerifiedTypeNonePerson: // 无认证 1
-            break;
-        case SYUserVerifiedPersonal: // 个人认证 0
+        case SYUserVerifiedPersonal: // 个人认证
             self.verifiedView.hidden = NO;
             self.verifiedView.image = [UIImage imageNamed:@"avatar_vip"];
             break;
             
-        case SYUserVerifiedOrgEnterprice: // 企业官方：CSDN、EOE、搜狐新闻客户端 2
-            self.verifiedView.hidden = NO;
-            self.verifiedView.image = [UIImage imageNamed:@"avatar_enterprise_vip"];
-            break;
+        case SYUserVerifiedOrgEnterprice:
         case SYUserVerifiedOrgMedia:
-            self.verifiedView.hidden = NO;
-            self.verifiedView.image = [UIImage imageNamed:@"avatar_enterprise_vip"];
-            break;
         case SYUserVerifiedOrgWebsite: // 官方认证
             self.verifiedView.hidden = NO;
             self.verifiedView.image = [UIImage imageNamed:@"avatar_enterprise_vip"];
@@ -70,6 +60,36 @@
         default:
             self.verifiedView.hidden = YES; // 当做没有任何认证
             break;
+//        case SYUserVerifiedTypeNone: // 无认证 -1
+//            break;
+//        case SYUserVerifiedTypeNonePerson: // 无认证 1
+//            break;
+//        case SYUserVerifiedPersonal: // 个人认证 0
+//            self.verifiedView.hidden = NO;
+//            self.verifiedView.image = [UIImage imageNamed:@"avatar_vip"];
+//            break;
+//            
+//        case SYUserVerifiedOrgEnterprice: // 企业官方：CSDN、EOE、搜狐新闻客户端 2
+//            self.verifiedView.hidden = NO;
+//            self.verifiedView.image = [UIImage imageNamed:@"avatar_enterprise_vip"];
+//            break;
+//        case SYUserVerifiedOrgMedia:
+//            self.verifiedView.hidden = NO;
+//            self.verifiedView.image = [UIImage imageNamed:@"avatar_enterprise_vip"];
+//            break;
+//        case SYUserVerifiedOrgWebsite: // 官方认证
+//            self.verifiedView.hidden = NO;
+//            self.verifiedView.image = [UIImage imageNamed:@"avatar_enterprise_vip"];
+//            break;
+//            
+//        case SYUserVerifiedDaren: // 微博达人
+//            self.verifiedView.hidden = NO;
+//            self.verifiedView.image = [UIImage imageNamed:@"avatar_grassroot"];
+//            break;
+//            
+//        default:
+//            self.verifiedView.hidden = YES; // 当做没有任何认证
+//            break;
     }
 }
 -(void)layoutSubviews{

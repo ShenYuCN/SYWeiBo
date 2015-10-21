@@ -11,7 +11,6 @@
 #import "SYProfileViewController.h"
 #import "Test1ViewController.h"
 @interface SYProfileViewController ()
-
 @end
 
 @implementation SYProfileViewController
