@@ -13,7 +13,7 @@
 #import "AFNetworking.h"
 #import "MBProgressHUD+MJ.h"
 #import "SYComposeToolbar.h"
-@interface SYComposeViewController ()<UITextViewDelegate>
+@interface SYComposeViewController ()<UITextViewDelegate,SYComposeToolBarDelegate>
 @property (nonatomic,weak) SYTextView *textView;
 @property (nonatomic,strong) SYComposeToolbar *toolbar;
 @end
@@ -124,13 +124,47 @@
     toolbar.y = self.view.height - toolbar.height;
     //inputAccessoryView设置显示在键盘顶部的内容,inputView显示键盘
     //如果没有要求，退出键盘后toolbar也隐藏，则这局代码完全可以实现
-//    self.textView.inputAccessoryView = toolbar;
+    //self.textView.inputAccessoryView = toolbar;
     
-    
+    toolbar.delegate = self;
     self.toolbar = toolbar;
     [self.view addSubview:toolbar];
 }
+#pragma mark - SYComposeToolBarDelegate
+-(void)compostToolBar:(SYComposeToolbar *)toolbar didClickButton:(SYComposeToolbarButtonType)buttonType{
 
+    switch (buttonType) {
+        case SYComposeToolbarButtonTypeCamera: // 拍照
+            NSLog(@"拍照");
+            [self openCamera];
+            break;
+            
+        case SYComposeToolbarButtonTypePicture: // 相册
+            NSLog(@"---  相册");
+            [self openAlbum];
+            break;
+            
+        case SYComposeToolbarButtonTypeMention: // @
+            NSLog(@"--- @");
+            break;
+            
+        case SYComposeToolbarButtonTypeTrend: // #
+            NSLog(@"--- #");
+            break;
+            
+        case SYComposeToolbarButtonTypeEmotion: // 表情\键盘
+            NSLog(@"--- 表情");
+            break;
+    }
+}
+#pragma mark - toolBar Button选中的其他方法
+
+-(void)openCamera{
+
+}
+-(void)openAlbum{
+
+}
 #pragma mark - UITextView代理方法
 -(void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
     [self.view endEditing:YES];
