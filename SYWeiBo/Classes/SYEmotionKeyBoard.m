@@ -23,12 +23,10 @@
     if (self = [super initWithFrame:frame]) {
         NSLog(@"init key board");
         SYEmotionTabBar *tabBar = [[SYEmotionTabBar alloc] init];
-        tabBar.backgroundColor = [UIColor redColor];
         [self addSubview:tabBar];
         self.tabBar = tabBar;
         
         SYEmotionListView *listView = [[SYEmotionListView alloc] init];
-        listView.backgroundColor = [UIColor grayColor];
         [self addSubview:listView];
         self.listView = listView;
     }
@@ -40,7 +38,7 @@
     
     //tabBar 的Frame
     self.tabBar.x = 0;
-    self.tabBar.height = 44;
+    self.tabBar.height = 37;
     self.tabBar.width = self.width;
     self.tabBar.y = self.height - self.tabBar.height;
     
