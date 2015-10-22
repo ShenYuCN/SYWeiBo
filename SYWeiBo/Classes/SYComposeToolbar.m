@@ -8,7 +8,9 @@
 
 #import "SYComposeToolbar.h"
 #import "UIView+Extension.h"
-
+@interface SYComposeToolbar()
+@property(nonatomic,weak) UIButton *emotionBtn;
+@end
 @implementation SYComposeToolbar
 
 -(instancetype)initWithFrame:(CGRect)frame{
@@ -23,17 +25,18 @@
         
         [self setupBtn:@"compose_trendbutton_background" highImage:@"compose_trendbutton_background_highlighted" type:SYComposeToolbarButtonTypeTrend ];
         
-        [self setupBtn:@"compose_emoticonbutton_background" highImage:@"compose_emoticonbutton_background_highlighted" type:SYComposeToolbarButtonTypeEmotion];
+        self.emotionBtn = [self setupBtn:@"compose_emoticonbutton_background" highImage:@"compose_emoticonbutton_background_highlighted" type:SYComposeToolbarButtonTypeEmotion];
     }
     return self;
 }
--(void)setupBtn:(NSString *)image highImage:(NSString *)highImage type:(SYComposeToolbarButtonType)type{
+-(UIButton *)setupBtn:(NSString *)image highImage:(NSString *)highImage type:(SYComposeToolbarButtonType)type{
     UIButton *btn = [[UIButton alloc] init];
     [btn setImage:[UIImage imageNamed:image] forState:UIControlStateNormal];
     [btn setImage:[UIImage imageNamed:highImage] forState:UIControlStateHighlighted];
     btn.tag = type;
     [btn addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:btn];
+    return btn;
 }
 
 -(void)layoutSubviews{
@@ -54,5 +57,22 @@
     if ([self.delegate respondsToSelector:@selector(compostToolBar:didClickButton:)]) {
         [self.delegate compostToolBar:self didClickButton:button.tag];
     }
+}
+
+-(void)setShowKeyBoardButton:(BOOL)showKeyBoardButton{
+    _showKeyBoardButton = showKeyBoardButton;
+    
+    // 默认的图片名
+    NSString *image = @"compose_emoticonbutton_background";
+    NSString *highImage = @"compose_emoticonbutton_background_highlighted";
+    
+    // 显示键盘图标
+    if (showKeyBoardButton) {
+        image = @"compose_keyboardbutton_background";
+        highImage = @"compose_keyboardbutton_background_highlighted";
+    }
+    [self.emotionBtn setImage:[UIImage imageNamed:image] forState:UIControlStateNormal];
+    [self.emotionBtn setImage:[UIImage imageNamed:highImage] forState:UIControlStateHighlighted];
+
 }
 @end

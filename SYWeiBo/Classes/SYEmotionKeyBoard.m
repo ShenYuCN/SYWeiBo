@@ -21,6 +21,7 @@
 
 -(instancetype)initWithFrame:(CGRect)frame{
     if (self = [super initWithFrame:frame]) {
+        NSLog(@"init key board");
         SYEmotionTabBar *tabBar = [[SYEmotionTabBar alloc] init];
         tabBar.backgroundColor = [UIColor redColor];
         [self addSubview:tabBar];

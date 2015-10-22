@@ -20,9 +20,19 @@
 @property (nonatomic,weak) SYComposeToolbar *toolbar;
 @property (nonatomic,weak) SYComposePhotosView *photosView;
 @property (nonatomic,assign) BOOL beginSwitchKeyBoard;
+@property (nonatomic,strong) SYEmotionKeyBoard *keyBoard;
 @end
 
 @implementation SYComposeViewController
+#pragma mark - 懒加载
+-(SYEmotionKeyBoard *)keyBoard{
+    if (_keyBoard == nil) {
+        _keyBoard = [[SYEmotionKeyBoard alloc] init];
+        _keyBoard.width = self.view.width;
+        _keyBoard.height = 216;
+    }
+    return _keyBoard;
+}
 #pragma mark - 系统方法
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -208,13 +218,20 @@
  */
 -(void)switchKeyBoard{
     
-    self.beginSwitchKeyBoard = YES;
-    //这个键盘直接设置inputView后必须关掉键盘再打开键盘才能切换表情键盘
-    SYEmotionKeyBoard *keyBoard = [[SYEmotionKeyBoard alloc] init];
-    keyBoard.width = self.view.width;
-    keyBoard.height = 216;
-    self.textView.inputView = keyBoard;
+    if(self.textView.inputView == nil) { // 切换为自定义键盘
+        //这个键盘直接设置inputView后必须关掉键盘再打开键盘才能切换表情键盘
+        self.textView.inputView = self.keyBoard;
+         // 显示键盘按钮
+        self.toolbar.showKeyBoardButton = YES;
+    }else{
+        // 切换为系统自带的键盘
+        self.textView.inputView = nil;
+         // 显示表情按钮
+        self.toolbar.showKeyBoardButton = NO;
+    }
     
+    self.beginSwitchKeyBoard = YES;
+    //关掉再开键盘
     [self.view endEditing:YES];
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.03 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [self.textView becomeFirstResponder];

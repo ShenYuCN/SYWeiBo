@@ -25,4 +25,5 @@ typedef enum {
 
 @interface SYComposeToolbar : UIView
 @property (nonatomic,weak) id<SYComposeToolBarDelegate> delegate;
+@property (nonatomic,assign) BOOL showKeyBoardButton;
 @end
