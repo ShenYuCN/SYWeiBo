@@ -15,12 +15,21 @@
 #import "SYComposeToolbar.h"
 #import "SYComposePhotosView.h"
 #import "SYEmotionKeyBoard.h"
+
 @interface SYComposeViewController ()<UITextViewDelegate,SYComposeToolBarDelegate,UINavigationControllerDelegate, UIImagePickerControllerDelegate>
+/** 输入控件 */
 @property (nonatomic,weak) SYTextView *textView;
+/** 工具条 */
 @property (nonatomic,weak) SYComposeToolbar *toolbar;
+/** 相册 */
 @property (nonatomic,weak) SYComposePhotosView *photosView;
+/** 是否开始切换键盘 */
 @property (nonatomic,assign) BOOL beginSwitchKeyBoard;
+/** 自定义键盘:包括工具条和键盘 */
 @property (nonatomic,strong) SYEmotionKeyBoard *keyBoard;
+/** 自己写的键盘高度，自定义的键盘高度不能写死216，要考虑键盘上的提示框 */
+@property (nonatomic,assign) CGFloat keyBoardHeight;
+
 @end
 
 @implementation SYComposeViewController
@@ -29,7 +38,7 @@
     if (_keyBoard == nil) {
         _keyBoard = [[SYEmotionKeyBoard alloc] init];
         _keyBoard.width = self.view.width;
-        _keyBoard.height = 216;
+        _keyBoard.height = self.keyBoardHeight;
     }
     return _keyBoard;
 }
@@ -229,7 +238,7 @@
          // 显示表情按钮
         self.toolbar.showKeyBoardButton = NO;
     }
-    
+  
     self.beginSwitchKeyBoard = YES;
     //关掉再开键盘
     [self.view endEditing:YES];
@@ -278,7 +287,9 @@
     NSDictionary *dict = notification.userInfo;
     double duration = [dict[UIKeyboardAnimationDurationUserInfoKey] doubleValue];
     CGRect keyboardF = [dict[UIKeyboardFrameEndUserInfoKey] CGRectValue];
-    
+    self.keyBoardHeight = keyboardF.size.height;
+    NSLog(@"keyboard.frame %@",NSStringFromCGRect(keyboardF));
+    NSLog(@"toolBar.frame: %@",NSStringFromCGRect(self.toolbar.frame));
     [UIView animateWithDuration:duration animations:^{
         // 工具条的Y值 == 键盘的Y值 - 工具条的高度
         //在ios 9.0,1只需要最后一句代码

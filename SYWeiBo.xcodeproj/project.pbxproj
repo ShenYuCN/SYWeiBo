@@ -7,95 +7,96 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A505AAC11BD4792500E537DF /* SYPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = A505AAC01BD4792500E537DF /* SYPhoto.m */; settings = {ASSET_TAGS = (); }; };
-		A505AADA1BD47B9F00E537DF /* MJArgument.m in Sources */ = {isa = PBXBuildFile; fileRef = A505AAC41BD47B9F00E537DF /* MJArgument.m */; settings = {ASSET_TAGS = (); }; };
-		A505AADB1BD47B9F00E537DF /* MJConst.m in Sources */ = {isa = PBXBuildFile; fileRef = A505AAC61BD47B9F00E537DF /* MJConst.m */; settings = {ASSET_TAGS = (); }; };
-		A505AADC1BD47B9F00E537DF /* MJFoundation.m in Sources */ = {isa = PBXBuildFile; fileRef = A505AAC91BD47B9F00E537DF /* MJFoundation.m */; settings = {ASSET_TAGS = (); }; };
-		A505AADD1BD47B9F00E537DF /* MJIvar.m in Sources */ = {isa = PBXBuildFile; fileRef = A505AACB1BD47B9F00E537DF /* MJIvar.m */; settings = {ASSET_TAGS = (); }; };
-		A505AADE1BD47B9F00E537DF /* MJMember.m in Sources */ = {isa = PBXBuildFile; fileRef = A505AACD1BD47B9F00E537DF /* MJMember.m */; settings = {ASSET_TAGS = (); }; };
-		A505AADF1BD47B9F00E537DF /* MJMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = A505AACF1BD47B9F00E537DF /* MJMethod.m */; settings = {ASSET_TAGS = (); }; };
-		A505AAE01BD47B9F00E537DF /* MJType.m in Sources */ = {isa = PBXBuildFile; fileRef = A505AAD11BD47B9F00E537DF /* MJType.m */; settings = {ASSET_TAGS = (); }; };
-		A505AAE11BD47B9F00E537DF /* MJTypeEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = A505AAD31BD47B9F00E537DF /* MJTypeEncoding.m */; settings = {ASSET_TAGS = (); }; };
-		A505AAE21BD47B9F00E537DF /* NSObject+MJCoding.m in Sources */ = {isa = PBXBuildFile; fileRef = A505AAD51BD47B9F00E537DF /* NSObject+MJCoding.m */; settings = {ASSET_TAGS = (); }; };
-		A505AAE31BD47B9F00E537DF /* NSObject+MJKeyValue.m in Sources */ = {isa = PBXBuildFile; fileRef = A505AAD71BD47B9F00E537DF /* NSObject+MJKeyValue.m */; settings = {ASSET_TAGS = (); }; };
-		A505AAE41BD47B9F00E537DF /* NSObject+MJMember.m in Sources */ = {isa = PBXBuildFile; fileRef = A505AAD91BD47B9F00E537DF /* NSObject+MJMember.m */; settings = {ASSET_TAGS = (); }; };
-		A5126CC91BD5101800223376 /* fakeStatus.plist in Resources */ = {isa = PBXBuildFile; fileRef = A5126CC81BD5101800223376 /* fakeStatus.plist */; settings = {ASSET_TAGS = (); }; };
-		A5283C351BC89EBE00E62BE7 /* SYHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5283C341BC89EBE00E62BE7 /* SYHomeViewController.m */; settings = {ASSET_TAGS = (); }; };
-		A5283C381BC89ED100E62BE7 /* SYMessageCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5283C371BC89ED100E62BE7 /* SYMessageCenterViewController.m */; settings = {ASSET_TAGS = (); }; };
-		A5283C3B1BC89EE400E62BE7 /* SYDiscoverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5283C3A1BC89EE400E62BE7 /* SYDiscoverViewController.m */; settings = {ASSET_TAGS = (); }; };
-		A5283C3E1BC89EF400E62BE7 /* SYProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5283C3D1BC89EF400E62BE7 /* SYProfileViewController.m */; settings = {ASSET_TAGS = (); }; };
-		A5283C801BC8A6DE00E62BE7 /* SYTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5283C7F1BC8A6DE00E62BE7 /* SYTabBarViewController.m */; settings = {ASSET_TAGS = (); }; };
-		A52E45D51BD75C9F0021B784 /* SYTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = A52E45D41BD75C9F0021B784 /* SYTextView.m */; settings = {ASSET_TAGS = (); }; };
-		A52E45D91BD788900021B784 /* SYComposeToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = A52E45D81BD788900021B784 /* SYComposeToolbar.m */; settings = {ASSET_TAGS = (); }; };
-		A5332AB81BD3CCAE00D394F1 /* NSString+SY.m in Sources */ = {isa = PBXBuildFile; fileRef = A5332AB71BD3CCAE00D394F1 /* NSString+SY.m */; settings = {ASSET_TAGS = (); }; };
-		A5332ABB1BD3DAA100D394F1 /* SYStatusFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = A5332ABA1BD3DAA100D394F1 /* SYStatusFrame.m */; settings = {ASSET_TAGS = (); }; };
-		A539C71A1BD4C3DE00758A68 /* SYStatusToolBar.m in Sources */ = {isa = PBXBuildFile; fileRef = A539C7191BD4C3DE00758A68 /* SYStatusToolBar.m */; settings = {ASSET_TAGS = (); }; };
-		A53EFC6E1BCFBC3100476CB2 /* SYUser.m in Sources */ = {isa = PBXBuildFile; fileRef = A53EFC6D1BCFBC3100476CB2 /* SYUser.m */; settings = {ASSET_TAGS = (); }; };
-		A53EFC711BCFBC3B00476CB2 /* SYStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = A53EFC701BCFBC3B00476CB2 /* SYStatus.m */; settings = {ASSET_TAGS = (); }; };
-		A54405DF1BCF7C0C00D7FB56 /* SYTitleButton.m in Sources */ = {isa = PBXBuildFile; fileRef = A54405DE1BCF7C0C00D7FB56 /* SYTitleButton.m */; settings = {ASSET_TAGS = (); }; };
-		A544E3201BC9FD910018BB9C /* SYNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = A544E31F1BC9FD910018BB9C /* SYNavigationController.m */; settings = {ASSET_TAGS = (); }; };
-		A544E3421BCA176A0018BB9C /* UIBarButtonItem+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = A544E3411BCA176A0018BB9C /* UIBarButtonItem+Extension.m */; settings = {ASSET_TAGS = (); }; };
-		A54A49C61BD62B3F00F57ACD /* SYStatusPhotoView.m in Sources */ = {isa = PBXBuildFile; fileRef = A54A49C51BD62B3F00F57ACD /* SYStatusPhotoView.m */; settings = {ASSET_TAGS = (); }; };
-		A55D68371BD6812700C0D2B2 /* SYComposeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A55D68361BD6812700C0D2B2 /* SYComposeViewController.m */; settings = {ASSET_TAGS = (); }; };
-		A567D4541BCBDF7C006098A4 /* SYTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = A567D4531BCBDF7C006098A4 /* SYTabBar.m */; settings = {ASSET_TAGS = (); }; };
-		A56D6F851BCCA70200C3ED44 /* SYNewFeatureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A56D6F841BCCA70200C3ED44 /* SYNewFeatureViewController.m */; settings = {ASSET_TAGS = (); }; };
-		A576A4531BD5C70D0048C18A /* NSDate+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = A576A4521BD5C70D0048C18A /* NSDate+Extension.m */; settings = {ASSET_TAGS = (); }; };
-		A576A4691BD5E69A0048C18A /* SYStatusPhotosView.m in Sources */ = {isa = PBXBuildFile; fileRef = A576A4681BD5E69A0048C18A /* SYStatusPhotosView.m */; settings = {ASSET_TAGS = (); }; };
-		A585845F1BD39D010034172C /* SYStatusCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A585845E1BD39D010034172C /* SYStatusCell.m */; settings = {ASSET_TAGS = (); }; };
-		A58A023E1BCDEBF1005ACD8D /* SYOAuthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A58A023D1BCDEBF1005ACD8D /* SYOAuthViewController.m */; settings = {ASSET_TAGS = (); }; };
-		A58A02541BCDF5D9005ACD8D /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = A58A02421BCDF5D8005ACD8D /* AFHTTPRequestOperation.m */; settings = {ASSET_TAGS = (); }; };
-		A58A02551BCDF5D9005ACD8D /* AFHTTPRequestOperationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A58A02441BCDF5D8005ACD8D /* AFHTTPRequestOperationManager.m */; settings = {ASSET_TAGS = (); }; };
-		A58A02561BCDF5D9005ACD8D /* AFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A58A02461BCDF5D8005ACD8D /* AFHTTPSessionManager.m */; settings = {ASSET_TAGS = (); }; };
-		A58A02571BCDF5D9005ACD8D /* AFNetworkReachabilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A58A02491BCDF5D8005ACD8D /* AFNetworkReachabilityManager.m */; settings = {ASSET_TAGS = (); }; };
-		A58A02581BCDF5D9005ACD8D /* AFSecurityPolicy.m in Sources */ = {isa = PBXBuildFile; fileRef = A58A024B1BCDF5D8005ACD8D /* AFSecurityPolicy.m */; settings = {ASSET_TAGS = (); }; };
-		A58A02591BCDF5D9005ACD8D /* AFURLConnectionOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = A58A024D1BCDF5D8005ACD8D /* AFURLConnectionOperation.m */; settings = {ASSET_TAGS = (); }; };
-		A58A025A1BCDF5D9005ACD8D /* AFURLRequestSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = A58A024F1BCDF5D8005ACD8D /* AFURLRequestSerialization.m */; settings = {ASSET_TAGS = (); }; };
-		A58A025B1BCDF5D9005ACD8D /* AFURLResponseSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = A58A02511BCDF5D8005ACD8D /* AFURLResponseSerialization.m */; settings = {ASSET_TAGS = (); }; };
-		A58A025C1BCDF5D9005ACD8D /* AFURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A58A02531BCDF5D8005ACD8D /* AFURLSessionManager.m */; settings = {ASSET_TAGS = (); }; };
-		A58A02631BCE26F2005ACD8D /* SYAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = A58A02621BCE26F2005ACD8D /* SYAccount.m */; settings = {ASSET_TAGS = (); }; };
-		A58A026A1BCE2BEF005ACD8D /* MBProgressHUD+MJ.m in Sources */ = {isa = PBXBuildFile; fileRef = A58A02661BCE2BEF005ACD8D /* MBProgressHUD+MJ.m */; settings = {ASSET_TAGS = (); }; };
-		A58A026B1BCE2BEF005ACD8D /* MBProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A58A02671BCE2BEF005ACD8D /* MBProgressHUD.bundle */; settings = {ASSET_TAGS = (); }; };
-		A58A026C1BCE2BEF005ACD8D /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = A58A02691BCE2BEF005ACD8D /* MBProgressHUD.m */; settings = {ASSET_TAGS = (); }; };
-		A58A02701BCE3742005ACD8D /* SYAccountTool.m in Sources */ = {isa = PBXBuildFile; fileRef = A58A026F1BCE3742005ACD8D /* SYAccountTool.m */; settings = {ASSET_TAGS = (); }; };
-		A58A02731BCE41A2005ACD8D /* UIWindow+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = A58A02721BCE41A2005ACD8D /* UIWindow+Extension.m */; settings = {ASSET_TAGS = (); }; };
-		A58A02781BCE51C7005ACD8D /* Foundation+Log.m in Sources */ = {isa = PBXBuildFile; fileRef = A58A02771BCE51C7005ACD8D /* Foundation+Log.m */; settings = {ASSET_TAGS = (); }; };
-		A58E11FB1BD7CB7B004C7086 /* SYComposePhotosView.m in Sources */ = {isa = PBXBuildFile; fileRef = A58E11FA1BD7CB7B004C7086 /* SYComposePhotosView.m */; settings = {ASSET_TAGS = (); }; };
-		A5A78BC21BCB4E4D006EFB2D /* SYSearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = A5A78BC11BCB4E4D006EFB2D /* SYSearchBar.m */; settings = {ASSET_TAGS = (); }; };
-		A5A78BC51BCB8B66006EFB2D /* SYDropdownMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = A5A78BC41BCB8B66006EFB2D /* SYDropdownMenu.m */; settings = {ASSET_TAGS = (); }; };
-		A5A78BC91BCB9667006EFB2D /* SYTitleMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5A78BC81BCB9667006EFB2D /* SYTitleMenuViewController.m */; settings = {ASSET_TAGS = (); }; };
-		A5B7591D1BCF990500B60990 /* MKAnnotationView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = A5B758FD1BCF990500B60990 /* MKAnnotationView+WebCache.m */; settings = {ASSET_TAGS = (); }; };
-		A5B7591E1BCF990500B60990 /* NSData+ImageContentType.m in Sources */ = {isa = PBXBuildFile; fileRef = A5B758FF1BCF990500B60990 /* NSData+ImageContentType.m */; settings = {ASSET_TAGS = (); }; };
-		A5B7591F1BCF990500B60990 /* SDImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = A5B759011BCF990500B60990 /* SDImageCache.m */; settings = {ASSET_TAGS = (); }; };
-		A5B759201BCF990500B60990 /* SDWebImageCompat.m in Sources */ = {isa = PBXBuildFile; fileRef = A5B759031BCF990500B60990 /* SDWebImageCompat.m */; settings = {ASSET_TAGS = (); }; };
-		A5B759211BCF990500B60990 /* SDWebImageDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = A5B759051BCF990500B60990 /* SDWebImageDecoder.m */; settings = {ASSET_TAGS = (); }; };
-		A5B759221BCF990500B60990 /* SDWebImageDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = A5B759071BCF990500B60990 /* SDWebImageDownloader.m */; settings = {ASSET_TAGS = (); }; };
-		A5B759231BCF990500B60990 /* SDWebImageDownloaderOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = A5B759091BCF990500B60990 /* SDWebImageDownloaderOperation.m */; settings = {ASSET_TAGS = (); }; };
-		A5B759241BCF990500B60990 /* SDWebImageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A5B7590B1BCF990500B60990 /* SDWebImageManager.m */; settings = {ASSET_TAGS = (); }; };
-		A5B759251BCF990500B60990 /* SDWebImagePrefetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = A5B7590E1BCF990500B60990 /* SDWebImagePrefetcher.m */; settings = {ASSET_TAGS = (); }; };
-		A5B759261BCF990500B60990 /* UIButton+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = A5B759101BCF990500B60990 /* UIButton+WebCache.m */; settings = {ASSET_TAGS = (); }; };
-		A5B759271BCF990500B60990 /* UIImage+GIF.m in Sources */ = {isa = PBXBuildFile; fileRef = A5B759121BCF990500B60990 /* UIImage+GIF.m */; settings = {ASSET_TAGS = (); }; };
-		A5B759281BCF990500B60990 /* UIImage+MultiFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = A5B759141BCF990500B60990 /* UIImage+MultiFormat.m */; settings = {ASSET_TAGS = (); }; };
-		A5B759291BCF990500B60990 /* UIImage+WebP.m in Sources */ = {isa = PBXBuildFile; fileRef = A5B759161BCF990500B60990 /* UIImage+WebP.m */; settings = {ASSET_TAGS = (); }; };
-		A5B7592A1BCF990500B60990 /* UIImageView+HighlightedWebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = A5B759181BCF990500B60990 /* UIImageView+HighlightedWebCache.m */; settings = {ASSET_TAGS = (); }; };
-		A5B7592B1BCF990500B60990 /* UIImageView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = A5B7591A1BCF990500B60990 /* UIImageView+WebCache.m */; settings = {ASSET_TAGS = (); }; };
-		A5B7592C1BCF990500B60990 /* UIView+WebCacheOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = A5B7591C1BCF990500B60990 /* UIView+WebCacheOperation.m */; settings = {ASSET_TAGS = (); }; };
-		A5CA0F981BC9116D00154FF6 /* Test2ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5CA0F971BC9116D00154FF6 /* Test2ViewController.m */; settings = {ASSET_TAGS = (); }; };
-		A5CA0F9B1BC916F900154FF6 /* Test3ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5CA0F9A1BC916F900154FF6 /* Test3ViewController.m */; settings = {ASSET_TAGS = (); }; };
-		A5D28C0C1BC8B18A00BF8BD9 /* Test1ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5D28C0A1BC8B18A00BF8BD9 /* Test1ViewController.m */; settings = {ASSET_TAGS = (); }; };
-		A5D28C0D1BC8B18A00BF8BD9 /* Test1ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A5D28C0B1BC8B18A00BF8BD9 /* Test1ViewController.xib */; settings = {ASSET_TAGS = (); }; };
-		A5D28C101BC8BBAA00BF8BD9 /* UIView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = A5D28C0F1BC8BBAA00BF8BD9 /* UIView+Extension.m */; settings = {ASSET_TAGS = (); }; };
-		A5DC93FD1BD094A500429898 /* SYLoadMoreFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = A5DC93FC1BD094A400429898 /* SYLoadMoreFooter.m */; settings = {ASSET_TAGS = (); }; };
-		A5DC94011BD0959300429898 /* SYLoadMoreFooter.xib in Resources */ = {isa = PBXBuildFile; fileRef = A5DC94001BD0959300429898 /* SYLoadMoreFooter.xib */; settings = {ASSET_TAGS = (); }; };
-		A5E94D8D1BD640870080DC20 /* SYIconView.m in Sources */ = {isa = PBXBuildFile; fileRef = A5E94D8C1BD640870080DC20 /* SYIconView.m */; settings = {ASSET_TAGS = (); }; };
+		A505AAC11BD4792500E537DF /* SYPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = A505AAC01BD4792500E537DF /* SYPhoto.m */; };
+		A505AADA1BD47B9F00E537DF /* MJArgument.m in Sources */ = {isa = PBXBuildFile; fileRef = A505AAC41BD47B9F00E537DF /* MJArgument.m */; };
+		A505AADB1BD47B9F00E537DF /* MJConst.m in Sources */ = {isa = PBXBuildFile; fileRef = A505AAC61BD47B9F00E537DF /* MJConst.m */; };
+		A505AADC1BD47B9F00E537DF /* MJFoundation.m in Sources */ = {isa = PBXBuildFile; fileRef = A505AAC91BD47B9F00E537DF /* MJFoundation.m */; };
+		A505AADD1BD47B9F00E537DF /* MJIvar.m in Sources */ = {isa = PBXBuildFile; fileRef = A505AACB1BD47B9F00E537DF /* MJIvar.m */; };
+		A505AADE1BD47B9F00E537DF /* MJMember.m in Sources */ = {isa = PBXBuildFile; fileRef = A505AACD1BD47B9F00E537DF /* MJMember.m */; };
+		A505AADF1BD47B9F00E537DF /* MJMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = A505AACF1BD47B9F00E537DF /* MJMethod.m */; };
+		A505AAE01BD47B9F00E537DF /* MJType.m in Sources */ = {isa = PBXBuildFile; fileRef = A505AAD11BD47B9F00E537DF /* MJType.m */; };
+		A505AAE11BD47B9F00E537DF /* MJTypeEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = A505AAD31BD47B9F00E537DF /* MJTypeEncoding.m */; };
+		A505AAE21BD47B9F00E537DF /* NSObject+MJCoding.m in Sources */ = {isa = PBXBuildFile; fileRef = A505AAD51BD47B9F00E537DF /* NSObject+MJCoding.m */; };
+		A505AAE31BD47B9F00E537DF /* NSObject+MJKeyValue.m in Sources */ = {isa = PBXBuildFile; fileRef = A505AAD71BD47B9F00E537DF /* NSObject+MJKeyValue.m */; };
+		A505AAE41BD47B9F00E537DF /* NSObject+MJMember.m in Sources */ = {isa = PBXBuildFile; fileRef = A505AAD91BD47B9F00E537DF /* NSObject+MJMember.m */; };
+		A5126CC91BD5101800223376 /* fakeStatus.plist in Resources */ = {isa = PBXBuildFile; fileRef = A5126CC81BD5101800223376 /* fakeStatus.plist */; };
+		A5283C351BC89EBE00E62BE7 /* SYHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5283C341BC89EBE00E62BE7 /* SYHomeViewController.m */; };
+		A5283C381BC89ED100E62BE7 /* SYMessageCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5283C371BC89ED100E62BE7 /* SYMessageCenterViewController.m */; };
+		A5283C3B1BC89EE400E62BE7 /* SYDiscoverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5283C3A1BC89EE400E62BE7 /* SYDiscoverViewController.m */; };
+		A5283C3E1BC89EF400E62BE7 /* SYProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5283C3D1BC89EF400E62BE7 /* SYProfileViewController.m */; };
+		A5283C801BC8A6DE00E62BE7 /* SYTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5283C7F1BC8A6DE00E62BE7 /* SYTabBarViewController.m */; };
+		A52E45D51BD75C9F0021B784 /* SYTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = A52E45D41BD75C9F0021B784 /* SYTextView.m */; };
+		A52E45D91BD788900021B784 /* SYComposeToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = A52E45D81BD788900021B784 /* SYComposeToolbar.m */; };
+		A5332AB81BD3CCAE00D394F1 /* NSString+SY.m in Sources */ = {isa = PBXBuildFile; fileRef = A5332AB71BD3CCAE00D394F1 /* NSString+SY.m */; };
+		A5332ABB1BD3DAA100D394F1 /* SYStatusFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = A5332ABA1BD3DAA100D394F1 /* SYStatusFrame.m */; };
+		A539C71A1BD4C3DE00758A68 /* SYStatusToolBar.m in Sources */ = {isa = PBXBuildFile; fileRef = A539C7191BD4C3DE00758A68 /* SYStatusToolBar.m */; };
+		A53EFC6E1BCFBC3100476CB2 /* SYUser.m in Sources */ = {isa = PBXBuildFile; fileRef = A53EFC6D1BCFBC3100476CB2 /* SYUser.m */; };
+		A53EFC711BCFBC3B00476CB2 /* SYStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = A53EFC701BCFBC3B00476CB2 /* SYStatus.m */; };
+		A54405DF1BCF7C0C00D7FB56 /* SYTitleButton.m in Sources */ = {isa = PBXBuildFile; fileRef = A54405DE1BCF7C0C00D7FB56 /* SYTitleButton.m */; };
+		A544E3201BC9FD910018BB9C /* SYNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = A544E31F1BC9FD910018BB9C /* SYNavigationController.m */; };
+		A544E3421BCA176A0018BB9C /* UIBarButtonItem+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = A544E3411BCA176A0018BB9C /* UIBarButtonItem+Extension.m */; };
+		A54A49C61BD62B3F00F57ACD /* SYStatusPhotoView.m in Sources */ = {isa = PBXBuildFile; fileRef = A54A49C51BD62B3F00F57ACD /* SYStatusPhotoView.m */; };
+		A55D68371BD6812700C0D2B2 /* SYComposeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A55D68361BD6812700C0D2B2 /* SYComposeViewController.m */; };
+		A567D4541BCBDF7C006098A4 /* SYTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = A567D4531BCBDF7C006098A4 /* SYTabBar.m */; };
+		A56D6F851BCCA70200C3ED44 /* SYNewFeatureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A56D6F841BCCA70200C3ED44 /* SYNewFeatureViewController.m */; };
+		A576A4531BD5C70D0048C18A /* NSDate+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = A576A4521BD5C70D0048C18A /* NSDate+Extension.m */; };
+		A576A4691BD5E69A0048C18A /* SYStatusPhotosView.m in Sources */ = {isa = PBXBuildFile; fileRef = A576A4681BD5E69A0048C18A /* SYStatusPhotosView.m */; };
+		A585845F1BD39D010034172C /* SYStatusCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A585845E1BD39D010034172C /* SYStatusCell.m */; };
+		A58A023E1BCDEBF1005ACD8D /* SYOAuthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A58A023D1BCDEBF1005ACD8D /* SYOAuthViewController.m */; };
+		A58A02541BCDF5D9005ACD8D /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = A58A02421BCDF5D8005ACD8D /* AFHTTPRequestOperation.m */; };
+		A58A02551BCDF5D9005ACD8D /* AFHTTPRequestOperationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A58A02441BCDF5D8005ACD8D /* AFHTTPRequestOperationManager.m */; };
+		A58A02561BCDF5D9005ACD8D /* AFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A58A02461BCDF5D8005ACD8D /* AFHTTPSessionManager.m */; };
+		A58A02571BCDF5D9005ACD8D /* AFNetworkReachabilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A58A02491BCDF5D8005ACD8D /* AFNetworkReachabilityManager.m */; };
+		A58A02581BCDF5D9005ACD8D /* AFSecurityPolicy.m in Sources */ = {isa = PBXBuildFile; fileRef = A58A024B1BCDF5D8005ACD8D /* AFSecurityPolicy.m */; };
+		A58A02591BCDF5D9005ACD8D /* AFURLConnectionOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = A58A024D1BCDF5D8005ACD8D /* AFURLConnectionOperation.m */; };
+		A58A025A1BCDF5D9005ACD8D /* AFURLRequestSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = A58A024F1BCDF5D8005ACD8D /* AFURLRequestSerialization.m */; };
+		A58A025B1BCDF5D9005ACD8D /* AFURLResponseSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = A58A02511BCDF5D8005ACD8D /* AFURLResponseSerialization.m */; };
+		A58A025C1BCDF5D9005ACD8D /* AFURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A58A02531BCDF5D8005ACD8D /* AFURLSessionManager.m */; };
+		A58A02631BCE26F2005ACD8D /* SYAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = A58A02621BCE26F2005ACD8D /* SYAccount.m */; };
+		A58A026A1BCE2BEF005ACD8D /* MBProgressHUD+MJ.m in Sources */ = {isa = PBXBuildFile; fileRef = A58A02661BCE2BEF005ACD8D /* MBProgressHUD+MJ.m */; };
+		A58A026B1BCE2BEF005ACD8D /* MBProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A58A02671BCE2BEF005ACD8D /* MBProgressHUD.bundle */; };
+		A58A026C1BCE2BEF005ACD8D /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = A58A02691BCE2BEF005ACD8D /* MBProgressHUD.m */; };
+		A58A02701BCE3742005ACD8D /* SYAccountTool.m in Sources */ = {isa = PBXBuildFile; fileRef = A58A026F1BCE3742005ACD8D /* SYAccountTool.m */; };
+		A58A02731BCE41A2005ACD8D /* UIWindow+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = A58A02721BCE41A2005ACD8D /* UIWindow+Extension.m */; };
+		A58A02781BCE51C7005ACD8D /* Foundation+Log.m in Sources */ = {isa = PBXBuildFile; fileRef = A58A02771BCE51C7005ACD8D /* Foundation+Log.m */; };
+		A58E11FB1BD7CB7B004C7086 /* SYComposePhotosView.m in Sources */ = {isa = PBXBuildFile; fileRef = A58E11FA1BD7CB7B004C7086 /* SYComposePhotosView.m */; };
+		A5A78BC21BCB4E4D006EFB2D /* SYSearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = A5A78BC11BCB4E4D006EFB2D /* SYSearchBar.m */; };
+		A5A78BC51BCB8B66006EFB2D /* SYDropdownMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = A5A78BC41BCB8B66006EFB2D /* SYDropdownMenu.m */; };
+		A5A78BC91BCB9667006EFB2D /* SYTitleMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5A78BC81BCB9667006EFB2D /* SYTitleMenuViewController.m */; };
+		A5B7591D1BCF990500B60990 /* MKAnnotationView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = A5B758FD1BCF990500B60990 /* MKAnnotationView+WebCache.m */; };
+		A5B7591E1BCF990500B60990 /* NSData+ImageContentType.m in Sources */ = {isa = PBXBuildFile; fileRef = A5B758FF1BCF990500B60990 /* NSData+ImageContentType.m */; };
+		A5B7591F1BCF990500B60990 /* SDImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = A5B759011BCF990500B60990 /* SDImageCache.m */; };
+		A5B759201BCF990500B60990 /* SDWebImageCompat.m in Sources */ = {isa = PBXBuildFile; fileRef = A5B759031BCF990500B60990 /* SDWebImageCompat.m */; };
+		A5B759211BCF990500B60990 /* SDWebImageDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = A5B759051BCF990500B60990 /* SDWebImageDecoder.m */; };
+		A5B759221BCF990500B60990 /* SDWebImageDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = A5B759071BCF990500B60990 /* SDWebImageDownloader.m */; };
+		A5B759231BCF990500B60990 /* SDWebImageDownloaderOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = A5B759091BCF990500B60990 /* SDWebImageDownloaderOperation.m */; };
+		A5B759241BCF990500B60990 /* SDWebImageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A5B7590B1BCF990500B60990 /* SDWebImageManager.m */; };
+		A5B759251BCF990500B60990 /* SDWebImagePrefetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = A5B7590E1BCF990500B60990 /* SDWebImagePrefetcher.m */; };
+		A5B759261BCF990500B60990 /* UIButton+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = A5B759101BCF990500B60990 /* UIButton+WebCache.m */; };
+		A5B759271BCF990500B60990 /* UIImage+GIF.m in Sources */ = {isa = PBXBuildFile; fileRef = A5B759121BCF990500B60990 /* UIImage+GIF.m */; };
+		A5B759281BCF990500B60990 /* UIImage+MultiFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = A5B759141BCF990500B60990 /* UIImage+MultiFormat.m */; };
+		A5B759291BCF990500B60990 /* UIImage+WebP.m in Sources */ = {isa = PBXBuildFile; fileRef = A5B759161BCF990500B60990 /* UIImage+WebP.m */; };
+		A5B7592A1BCF990500B60990 /* UIImageView+HighlightedWebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = A5B759181BCF990500B60990 /* UIImageView+HighlightedWebCache.m */; };
+		A5B7592B1BCF990500B60990 /* UIImageView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = A5B7591A1BCF990500B60990 /* UIImageView+WebCache.m */; };
+		A5B7592C1BCF990500B60990 /* UIView+WebCacheOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = A5B7591C1BCF990500B60990 /* UIView+WebCacheOperation.m */; };
+		A5CA0F981BC9116D00154FF6 /* Test2ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5CA0F971BC9116D00154FF6 /* Test2ViewController.m */; };
+		A5CA0F9B1BC916F900154FF6 /* Test3ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5CA0F9A1BC916F900154FF6 /* Test3ViewController.m */; };
+		A5D28C0C1BC8B18A00BF8BD9 /* Test1ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5D28C0A1BC8B18A00BF8BD9 /* Test1ViewController.m */; };
+		A5D28C0D1BC8B18A00BF8BD9 /* Test1ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A5D28C0B1BC8B18A00BF8BD9 /* Test1ViewController.xib */; };
+		A5D28C101BC8BBAA00BF8BD9 /* UIView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = A5D28C0F1BC8BBAA00BF8BD9 /* UIView+Extension.m */; };
+		A5DC93FD1BD094A500429898 /* SYLoadMoreFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = A5DC93FC1BD094A400429898 /* SYLoadMoreFooter.m */; };
+		A5DC94011BD0959300429898 /* SYLoadMoreFooter.xib in Resources */ = {isa = PBXBuildFile; fileRef = A5DC94001BD0959300429898 /* SYLoadMoreFooter.xib */; };
+		A5E94D8D1BD640870080DC20 /* SYIconView.m in Sources */ = {isa = PBXBuildFile; fileRef = A5E94D8C1BD640870080DC20 /* SYIconView.m */; };
 		A5F5B7A91BC7BA4D0047F482 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A5F5B7A81BC7BA4D0047F482 /* main.m */; };
 		A5F5B7B71BC7BA4D0047F482 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5F5B7B51BC7BA4D0047F482 /* LaunchScreen.storyboard */; };
 		A5F5B7C21BC7BA4D0047F482 /* SYWeiBoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A5F5B7C11BC7BA4D0047F482 /* SYWeiBoTests.m */; };
 		A5F5B7CD1BC7BA4D0047F482 /* SYWeiBoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = A5F5B7CC1BC7BA4D0047F482 /* SYWeiBoUITests.m */; };
-		A5F5B7DB1BC7BB520047F482 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A5F5B7DA1BC7BB520047F482 /* Assets.xcassets */; settings = {ASSET_TAGS = (); }; };
-		A5F5B7DF1BC7BBAA0047F482 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A5F5B7DE1BC7BBAA0047F482 /* AppDelegate.m */; settings = {ASSET_TAGS = (); }; };
-		A5FF33971BD881F400C439AD /* SYEmotionKeyBoard.m in Sources */ = {isa = PBXBuildFile; fileRef = A5FF33961BD881F400C439AD /* SYEmotionKeyBoard.m */; settings = {ASSET_TAGS = (); }; };
-		A5FF339A1BD8820800C439AD /* SYEmotionListView.m in Sources */ = {isa = PBXBuildFile; fileRef = A5FF33991BD8820800C439AD /* SYEmotionListView.m */; settings = {ASSET_TAGS = (); }; };
-		A5FF339D1BD8821300C439AD /* SYEmotionTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = A5FF339C1BD8821300C439AD /* SYEmotionTabBar.m */; settings = {ASSET_TAGS = (); }; };
+		A5F5B7DB1BC7BB520047F482 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A5F5B7DA1BC7BB520047F482 /* Assets.xcassets */; };
+		A5F5B7DF1BC7BBAA0047F482 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A5F5B7DE1BC7BBAA0047F482 /* AppDelegate.m */; };
+		A5FDADDB1BD92C1E008509C8 /* SYEmotionTabBarButton.m in Sources */ = {isa = PBXBuildFile; fileRef = A5FDADDA1BD92C1E008509C8 /* SYEmotionTabBarButton.m */; };
+		A5FF33971BD881F400C439AD /* SYEmotionKeyBoard.m in Sources */ = {isa = PBXBuildFile; fileRef = A5FF33961BD881F400C439AD /* SYEmotionKeyBoard.m */; };
+		A5FF339A1BD8820800C439AD /* SYEmotionListView.m in Sources */ = {isa = PBXBuildFile; fileRef = A5FF33991BD8820800C439AD /* SYEmotionListView.m */; };
+		A5FF339D1BD8821300C439AD /* SYEmotionTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = A5FF339C1BD8821300C439AD /* SYEmotionTabBar.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -287,6 +288,8 @@
 		A5F5B7DA1BC7BB520047F482 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A5F5B7DD1BC7BBAA0047F482 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		A5F5B7DE1BC7BBAA0047F482 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		A5FDADD91BD92C1E008509C8 /* SYEmotionTabBarButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYEmotionTabBarButton.h; sourceTree = "<group>"; };
+		A5FDADDA1BD92C1E008509C8 /* SYEmotionTabBarButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYEmotionTabBarButton.m; sourceTree = "<group>"; };
 		A5FF33951BD881F400C439AD /* SYEmotionKeyBoard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYEmotionKeyBoard.h; sourceTree = "<group>"; };
 		A5FF33961BD881F400C439AD /* SYEmotionKeyBoard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYEmotionKeyBoard.m; sourceTree = "<group>"; };
 		A5FF33981BD8820800C439AD /* SYEmotionListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYEmotionListView.h; sourceTree = "<group>"; };
@@ -363,6 +366,8 @@
 				A5FF33991BD8820800C439AD /* SYEmotionListView.m */,
 				A5FF339B1BD8821300C439AD /* SYEmotionTabBar.h */,
 				A5FF339C1BD8821300C439AD /* SYEmotionTabBar.m */,
+				A5FDADD91BD92C1E008509C8 /* SYEmotionTabBarButton.h */,
+				A5FDADDA1BD92C1E008509C8 /* SYEmotionTabBarButton.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -1002,6 +1007,7 @@
 				A5F5B7DF1BC7BBAA0047F482 /* AppDelegate.m in Sources */,
 				A5B759251BCF990500B60990 /* SDWebImagePrefetcher.m in Sources */,
 				A5B759281BCF990500B60990 /* UIImage+MultiFormat.m in Sources */,
+				A5FDADDB1BD92C1E008509C8 /* SYEmotionTabBarButton.m in Sources */,
 				A5A78BC51BCB8B66006EFB2D /* SYDropdownMenu.m in Sources */,
 				A5332ABB1BD3DAA100D394F1 /* SYStatusFrame.m in Sources */,
 				A53EFC6E1BCFBC3100476CB2 /* SYUser.m in Sources */,

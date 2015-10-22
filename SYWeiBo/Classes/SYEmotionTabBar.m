@@ -8,8 +8,9 @@
 
 #import "SYEmotionTabBar.h"
 #import "UIView+Extension.h"
+#import "SYEmotionTabBarButton.h"
 @interface SYEmotionTabBar()
-@property(nonatomic,strong) UIButton *selectedBtn;
+@property(nonatomic,strong) SYEmotionTabBarButton *selectedBtn;
 @end
 
 @implementation SYEmotionTabBar
@@ -17,24 +18,21 @@
 -(instancetype)initWithFrame:(CGRect)frame{
 
     if (self = [super initWithFrame:frame]) {
-        [self setupBtn:@"最近"];
-        self.selectedBtn = [self setupBtn:@"默认"];
-        [self buttonClick:self.selectedBtn];
-        [self setupBtn:@"Emoji"];
-        [self setupBtn:@"浪小花"];
+        [self setupBtn:@"最近" buttonType:SYEmotionTabBarButtonTypeRecent ];
+        [self setupBtn:@"默认" buttonType:SYEmotionTabBarButtonTypeDefault];
+        [self setupBtn:@"Emoji" buttonType:SYEmotionTabBarButtonTypeEmoji];
+        [self setupBtn:@"浪小花" buttonType:SYEmotionTabBarButtonTypeLxh];
     }
     return self;
 }
--(UIButton *)setupBtn:(NSString *) title{
-    UIButton *btn = [[UIButton alloc] init];
+-(SYEmotionTabBarButton *)setupBtn:(NSString *) title buttonType:(SYEmotionTabBarButtonType) buttonType{
+    SYEmotionTabBarButton *btn = [[SYEmotionTabBarButton alloc] init];
     [btn addTarget:self action:@selector(buttonClick:) forControlEvents:UIControlEventTouchDown];
+    btn.tag = buttonType;
     [self addSubview:btn];
     
     //设置文字
     [btn setTitle:title forState:UIControlStateNormal];
-    [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [btn setTitleColor:[UIColor darkGrayColor] forState:UIControlStateSelected];
-    
     // 设置背景图片
     NSString *image = @"compose_emotion_table_mid_normal";
     NSString *selectImage = @"compose_emotion_table_mid_selected";
@@ -46,8 +44,11 @@
         selectImage = @"compose_emotion_table_right_selected";
     }
     [btn setBackgroundImage:[UIImage imageNamed:image] forState:UIControlStateNormal];
-    [btn setBackgroundImage:[UIImage imageNamed:selectImage] forState:UIControlStateSelected];
+    [btn setBackgroundImage:[UIImage imageNamed:selectImage] forState:UIControlStateDisabled];
     
+    if (buttonType == SYEmotionTabBarButtonTypeDefault) {
+        [self buttonClick:btn];
+    }
     return btn;
 }
 
@@ -65,9 +66,14 @@
     }
     
 }
--(void)buttonClick:(UIButton *)btn{
-    self.selectedBtn.selected = NO;
-    btn.selected = YES;
+-(void)buttonClick:(SYEmotionTabBarButton *)btn{
+    self.selectedBtn.enabled = YES;
+    btn.enabled = NO;
     self.selectedBtn = btn;
+    
+    if ([self.delegate respondsToSelector:@selector(emotionTabBar:didSelectedButton:)]){
+        [self.delegate emotionTabBar:self didSelectedButton:btn.tag];
+    }
+    
 }
 @end

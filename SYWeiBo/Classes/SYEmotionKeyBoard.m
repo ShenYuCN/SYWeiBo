@@ -11,7 +11,7 @@
 #import "SYEmotionListView.h"
 #import "UIView+Extension.h"
 
-@interface SYEmotionKeyBoard()
+@interface SYEmotionKeyBoard()<SYEmotionTabBarDelegate>
 /** tabBar */
 @property(nonatomic,weak) SYEmotionTabBar *tabBar;
 /** 表情内容 */
@@ -23,16 +23,17 @@
     if (self = [super initWithFrame:frame]) {
         NSLog(@"init key board");
         SYEmotionTabBar *tabBar = [[SYEmotionTabBar alloc] init];
+        tabBar.delegate = self;
         [self addSubview:tabBar];
         self.tabBar = tabBar;
         
         SYEmotionListView *listView = [[SYEmotionListView alloc] init];
         [self addSubview:listView];
+        listView.backgroundColor = [UIColor redColor];
         self.listView = listView;
     }
     return self;
 }
-
 -(void)layoutSubviews{
     [super layoutSubviews];
     
@@ -47,6 +48,28 @@
     self.listView.y = 0;
     self.listView.width = self.width;
     self.listView.height = self.tabBar.y;
+}
+
+#pragma mark - SYEmotionTabBarDelegate
+-(void)emotionTabBar:(SYEmotionTabBar *)emotionTabBar didSelectedButton:(SYEmotionTabBarButtonType)buttonType{
+    switch (buttonType) {
+        case SYEmotionTabBarButtonTypeRecent: // 最近
+            NSLog(@"最近");
+            break;
+            
+        case SYEmotionTabBarButtonTypeDefault: // 默认
+            NSLog(@"默认");
+            break;
+            
+        case SYEmotionTabBarButtonTypeEmoji: // Emoji
+            NSLog(@"Emoji");
+            break;
+            
+        case SYEmotionTabBarButtonTypeLxh: // Lxh
+            NSLog(@"Lxh");
+            break;
+    }
+
 }
 
 @end
