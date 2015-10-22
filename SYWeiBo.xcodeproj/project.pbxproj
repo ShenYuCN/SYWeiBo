@@ -93,6 +93,9 @@
 		A5F5B7CD1BC7BA4D0047F482 /* SYWeiBoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = A5F5B7CC1BC7BA4D0047F482 /* SYWeiBoUITests.m */; };
 		A5F5B7DB1BC7BB520047F482 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A5F5B7DA1BC7BB520047F482 /* Assets.xcassets */; settings = {ASSET_TAGS = (); }; };
 		A5F5B7DF1BC7BBAA0047F482 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A5F5B7DE1BC7BBAA0047F482 /* AppDelegate.m */; settings = {ASSET_TAGS = (); }; };
+		A5FF33971BD881F400C439AD /* SYEmotionKeyBoard.m in Sources */ = {isa = PBXBuildFile; fileRef = A5FF33961BD881F400C439AD /* SYEmotionKeyBoard.m */; settings = {ASSET_TAGS = (); }; };
+		A5FF339A1BD8820800C439AD /* SYEmotionListView.m in Sources */ = {isa = PBXBuildFile; fileRef = A5FF33991BD8820800C439AD /* SYEmotionListView.m */; settings = {ASSET_TAGS = (); }; };
+		A5FF339D1BD8821300C439AD /* SYEmotionTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = A5FF339C1BD8821300C439AD /* SYEmotionTabBar.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -284,6 +287,12 @@
 		A5F5B7DA1BC7BB520047F482 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A5F5B7DD1BC7BBAA0047F482 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		A5F5B7DE1BC7BBAA0047F482 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		A5FF33951BD881F400C439AD /* SYEmotionKeyBoard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYEmotionKeyBoard.h; sourceTree = "<group>"; };
+		A5FF33961BD881F400C439AD /* SYEmotionKeyBoard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYEmotionKeyBoard.m; sourceTree = "<group>"; };
+		A5FF33981BD8820800C439AD /* SYEmotionListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYEmotionListView.h; sourceTree = "<group>"; };
+		A5FF33991BD8820800C439AD /* SYEmotionListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYEmotionListView.m; sourceTree = "<group>"; };
+		A5FF339B1BD8821300C439AD /* SYEmotionTabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYEmotionTabBar.h; sourceTree = "<group>"; };
+		A5FF339C1BD8821300C439AD /* SYEmotionTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYEmotionTabBar.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -348,6 +357,12 @@
 				A52E45D81BD788900021B784 /* SYComposeToolbar.m */,
 				A58E11F91BD7CB7B004C7086 /* SYComposePhotosView.h */,
 				A58E11FA1BD7CB7B004C7086 /* SYComposePhotosView.m */,
+				A5FF33951BD881F400C439AD /* SYEmotionKeyBoard.h */,
+				A5FF33961BD881F400C439AD /* SYEmotionKeyBoard.m */,
+				A5FF33981BD8820800C439AD /* SYEmotionListView.h */,
+				A5FF33991BD8820800C439AD /* SYEmotionListView.m */,
+				A5FF339B1BD8821300C439AD /* SYEmotionTabBar.h */,
+				A5FF339C1BD8821300C439AD /* SYEmotionTabBar.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -649,8 +664,8 @@
 				A5DC93FB1BD094A400429898 /* SYLoadMoreFooter.h */,
 				A5DC93FC1BD094A400429898 /* SYLoadMoreFooter.m */,
 				A5DC94001BD0959300429898 /* SYLoadMoreFooter.xib */,
-				A58584611BD3A4CD0034172C /* SYStatusCell.h */,
 				A585845E1BD39D010034172C /* SYStatusCell.m */,
+				A58584611BD3A4CD0034172C /* SYStatusCell.h */,
 				A539C7181BD4C3DE00758A68 /* SYStatusToolBar.h */,
 				A539C7191BD4C3DE00758A68 /* SYStatusToolBar.m */,
 				A576A4671BD5E69A0048C18A /* SYStatusPhotosView.h */,
@@ -913,6 +928,7 @@
 				A505AADA1BD47B9F00E537DF /* MJArgument.m in Sources */,
 				A56D6F851BCCA70200C3ED44 /* SYNewFeatureViewController.m in Sources */,
 				A576A4531BD5C70D0048C18A /* NSDate+Extension.m in Sources */,
+				A5FF339D1BD8821300C439AD /* SYEmotionTabBar.m in Sources */,
 				A58A02701BCE3742005ACD8D /* SYAccountTool.m in Sources */,
 				A5D28C101BC8BBAA00BF8BD9 /* UIView+Extension.m in Sources */,
 				A505AADE1BD47B9F00E537DF /* MJMember.m in Sources */,
@@ -922,6 +938,7 @@
 				A54A49C61BD62B3F00F57ACD /* SYStatusPhotoView.m in Sources */,
 				A5F5B7A91BC7BA4D0047F482 /* main.m in Sources */,
 				A52E45D51BD75C9F0021B784 /* SYTextView.m in Sources */,
+				A5FF339A1BD8820800C439AD /* SYEmotionListView.m in Sources */,
 				A505AADC1BD47B9F00E537DF /* MJFoundation.m in Sources */,
 				A505AADD1BD47B9F00E537DF /* MJIvar.m in Sources */,
 				A58A02591BCDF5D9005ACD8D /* AFURLConnectionOperation.m in Sources */,
@@ -952,6 +969,7 @@
 				A5A78BC91BCB9667006EFB2D /* SYTitleMenuViewController.m in Sources */,
 				A505AADF1BD47B9F00E537DF /* MJMethod.m in Sources */,
 				A505AAE11BD47B9F00E537DF /* MJTypeEncoding.m in Sources */,
+				A5FF33971BD881F400C439AD /* SYEmotionKeyBoard.m in Sources */,
 				A58A02551BCDF5D9005ACD8D /* AFHTTPRequestOperationManager.m in Sources */,
 				A505AAE41BD47B9F00E537DF /* NSObject+MJMember.m in Sources */,
 				A5B7592A1BCF990500B60990 /* UIImageView+HighlightedWebCache.m in Sources */,

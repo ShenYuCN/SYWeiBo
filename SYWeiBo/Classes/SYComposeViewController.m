@@ -14,11 +14,12 @@
 #import "MBProgressHUD+MJ.h"
 #import "SYComposeToolbar.h"
 #import "SYComposePhotosView.h"
+#import "SYEmotionKeyBoard.h"
 @interface SYComposeViewController ()<UITextViewDelegate,SYComposeToolBarDelegate,UINavigationControllerDelegate, UIImagePickerControllerDelegate>
-
 @property (nonatomic,weak) SYTextView *textView;
 @property (nonatomic,weak) SYComposeToolbar *toolbar;
 @property (nonatomic,weak) SYComposePhotosView *photosView;
+@property (nonatomic,assign) BOOL beginSwitchKeyBoard;
 @end
 
 @implementation SYComposeViewController
@@ -26,6 +27,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
+    
     //设置导航栏
     [self setupNav];
     
@@ -124,6 +126,9 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillChangeFrame:) name:UIKeyboardWillChangeFrameNotification object:nil];
     
 }
+/**
+ *  设置工具条
+ */
 -(void)setupToolbar{
     SYComposeToolbar *toolbar = [[SYComposeToolbar alloc] init];
     toolbar.height = 44;
@@ -146,6 +151,9 @@
     self.photosView = photosView;
 }
 #pragma mark - SYComposeToolBarDelegate
+/**
+ *  工具条点击事件的监听
+ */
 -(void)compostToolBar:(SYComposeToolbar *)toolbar didClickButton:(SYComposeToolbarButtonType)buttonType{
 
     switch (buttonType) {
@@ -169,24 +177,54 @@
             
         case SYComposeToolbarButtonTypeEmotion: // 表情\键盘
             NSLog(@"--- 表情");
+            [self switchKeyBoard];
             break;
     }
 }
 #pragma mark - toolBar Button选中的其他方法
-
+/**
+ *  打开相机
+ */
 -(void)openCamera{
    [self openImagePickViewController:UIImagePickerControllerSourceTypeCamera];
 }
+/**
+ *  打开相册
+ */
 -(void)openAlbum{
     [self openImagePickViewController:UIImagePickerControllerSourceTypePhotoLibrary];
 }
+/**
+ *  打开相机和相册的封装
+ */
 -(void)openImagePickViewController:(UIImagePickerControllerSourceType)sourceType{
     if (![UIImagePickerController isSourceTypeAvailable:sourceType ] ) return;    UIImagePickerController *ipc = [[UIImagePickerController alloc] init];
     ipc.sourceType = sourceType;
     ipc.delegate = self;
     [self presentViewController:ipc animated:YES completion:nil];
 }
+/**
+ *  切换键盘
+ */
+-(void)switchKeyBoard{
+    
+    self.beginSwitchKeyBoard = YES;
+    //这个键盘直接设置inputView后必须关掉键盘再打开键盘才能切换表情键盘
+    SYEmotionKeyBoard *keyBoard = [[SYEmotionKeyBoard alloc] init];
+    keyBoard.width = self.view.width;
+    keyBoard.height = 216;
+    self.textView.inputView = keyBoard;
+    
+    [self.view endEditing:YES];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.03 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self.textView becomeFirstResponder];
+        self.beginSwitchKeyBoard = NO;
+    });
+}
 #pragma mark - UIImagePickerControllerDelegate 代理方法
+/**
+ *  UIImagePickerControllerDelegate,选中图片后的操作
+ */
 -(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info{
     
     UIImage *image = info[UIImagePickerControllerOriginalImage];
@@ -195,6 +233,9 @@
 }
 
 #pragma mark - UITextView代理方法
+/**
+ *  拖动视图，隐藏键盘
+ */
 -(void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
     [self.view endEditing:YES];
 }
@@ -203,6 +244,10 @@
  *  键盘frame改变时的监听
  */
 -(void)keyboardWillChangeFrame:(NSNotification *)notification{
+    
+     // 如果正在切换键盘，就不要执行后面的代码.这样tabBar就不会随键盘上下移动了.
+    if (self.beginSwitchKeyBoard) return;
+    
     /**
      notification.userInfo = @{
      // 键盘弹出\隐藏后的frame
@@ -218,8 +263,13 @@
     CGRect keyboardF = [dict[UIKeyboardFrameEndUserInfoKey] CGRectValue];
     
     [UIView animateWithDuration:duration animations:^{
-        self.toolbar.y = keyboardF.origin.y - self.toolbar.height;
-        NSLog(@"%@",NSStringFromCGRect(self.toolbar.frame));
+        // 工具条的Y值 == 键盘的Y值 - 工具条的高度
+        //在ios 9.0,1只需要最后一句代码
+        if (keyboardF.origin.y > self.view.height) { // 键盘的Y值已经远远超过了控制器view的高度
+            self.toolbar.y = self.view.height - self.toolbar.height;
+        } else {
+            self.toolbar.y = keyboardF.origin.y - self.toolbar.height;
+        }
     }];
 
 }

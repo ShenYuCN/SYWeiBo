@@ -30,7 +30,7 @@
     NSUInteger count = self.subviews.count;
     
     int maxCol = 3;
-    CGFloat photoWH = 90;
+    CGFloat photoWH = ([UIScreen mainScreen].bounds.size.width - 40) / 3;
     CGFloat photoMargin = 10;
     for (int i = 0; i < count; i ++) {
         UIImageView *photoView = self.subviews[i];

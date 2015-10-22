@@ -10,10 +10,11 @@
 #import "SYPhoto.h"
 #import "UIImageView+WebCache.h"
 #import "SYStatusPhotoView.h"
+#import "UIView+Extension.h"
 
 
 //每张配图的宽高
-#define kSYStatusPhotosWH 80
+#define kSYStatusPhotosWH  (([UIScreen mainScreen].bounds.size.width - 40) / 3)
 //每张配图的间距
 #define kSYStatusPhotosMargin 10
 //最大列数
