@@ -51,6 +51,8 @@
         self.defaultListView.emotions = [SYEmotion objectArrayWithKeyValuesArray:[NSArray arrayWithContentsOfFile:path]];
         //TODO: 设置背景色直接返回，必须将容器先初始化，再初始化子控件
         //self.defaultListView.backgroundColor = [UIColor redColor];
+        
+        self.defaultListView.backgroundColor = [UIColor yellowColor];
        
     }
     return _defaultListView;
@@ -59,7 +61,7 @@
     if (_emojiListView == nil) {
         self.emojiListView = [[SYEmotionListView alloc] init];;
         NSString *path = [[NSBundle mainBundle] pathForResource:@"EmotionIcons/emoji/info.plist" ofType:nil];
-        self.defaultListView.emotions = [SYEmotion objectArrayWithKeyValuesArray:[NSArray arrayWithContentsOfFile:path]];
+        self.emojiListView.emotions = [SYEmotion objectArrayWithKeyValuesArray:[NSArray arrayWithContentsOfFile:path]];
     }
     return _emojiListView;
 }
@@ -67,7 +69,7 @@
     if (_lxhListView == nil) {
         self.lxhListView = [[SYEmotionListView alloc] init];
         NSString *path = [[NSBundle mainBundle] pathForResource:@"EmotionIcons/lxh/info.plist" ofType:nil];
-        self.defaultListView.emotions = [SYEmotion objectArrayWithKeyValuesArray: [NSArray arrayWithContentsOfFile:path]];
+        self.lxhListView.emotions = [SYEmotion objectArrayWithKeyValuesArray: [NSArray arrayWithContentsOfFile:path]];
     }
     return _lxhListView;
 }
@@ -136,7 +138,6 @@
     
     // 设置正在显示的listView,将上面四步封装
     self.showingListView = [self.subviews lastObject];
-    
     //设置frame
     [self setNeedsLayout];
 
