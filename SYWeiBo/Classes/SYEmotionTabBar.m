@@ -14,7 +14,6 @@
 @end
 
 @implementation SYEmotionTabBar
-
 -(instancetype)initWithFrame:(CGRect)frame{
 
     if (self = [super initWithFrame:frame]) {
@@ -46,9 +45,6 @@
     [btn setBackgroundImage:[UIImage imageNamed:image] forState:UIControlStateNormal];
     [btn setBackgroundImage:[UIImage imageNamed:selectImage] forState:UIControlStateDisabled];
     
-    if (buttonType == SYEmotionTabBarButtonTypeDefault) {
-        [self buttonClick:btn];
-    }
     return btn;
 }
 
@@ -66,11 +62,19 @@
     }
     
 }
+-(void)setDelegate:(id<SYEmotionTabBarDelegate>)delegate{
+    _delegate = delegate;
+    
+    //选中默认按钮
+    [self buttonClick:(SYEmotionTabBarButton *)[self viewWithTag:SYEmotionTabBarButtonTypeDefault]];
+}
+
 -(void)buttonClick:(SYEmotionTabBarButton *)btn{
     self.selectedBtn.enabled = YES;
     btn.enabled = NO;
     self.selectedBtn = btn;
-    
+    NSLog(@"delegate --%@",self.delegate);
+    //点击表情按钮进入键盘时，第一次self.delegate 为nil
     if ([self.delegate respondsToSelector:@selector(emotionTabBar:didSelectedButton:)]){
         [self.delegate emotionTabBar:self didSelectedButton:btn.tag];
     }

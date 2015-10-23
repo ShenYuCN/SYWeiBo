@@ -30,6 +30,8 @@
 /** 自己写的键盘高度，自定义的键盘高度不能写死216，要考虑键盘上的提示框 */
 @property (nonatomic,assign) CGFloat keyBoardHeight;
 
+
+
 @end
 
 @implementation SYComposeViewController

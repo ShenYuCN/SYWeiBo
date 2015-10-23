@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface SYEmotionListView : UIView
-
+/** 表情模型数组 */
+@property (nonatomic,strong) NSArray *emotions;
 @end
