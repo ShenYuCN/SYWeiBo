@@ -25,6 +25,7 @@
     return self;
 }
 -(SYEmotionTabBarButton *)setupBtn:(NSString *) title buttonType:(SYEmotionTabBarButtonType) buttonType{
+    
     SYEmotionTabBarButton *btn = [[SYEmotionTabBarButton alloc] init];
     [btn addTarget:self action:@selector(buttonClick:) forControlEvents:UIControlEventTouchDown];
     btn.tag = buttonType;
@@ -73,7 +74,7 @@
     self.selectedBtn.enabled = YES;
     btn.enabled = NO;
     self.selectedBtn = btn;
-    NSLog(@"delegate --%@",self.delegate);
+    
     //点击表情按钮进入键盘时，第一次self.delegate 为nil
     if ([self.delegate respondsToSelector:@selector(emotionTabBar:didSelectedButton:)]){
         [self.delegate emotionTabBar:self didSelectedButton:btn.tag];

@@ -290,8 +290,6 @@
     double duration = [dict[UIKeyboardAnimationDurationUserInfoKey] doubleValue];
     CGRect keyboardF = [dict[UIKeyboardFrameEndUserInfoKey] CGRectValue];
     self.keyBoardHeight = keyboardF.size.height;
-    NSLog(@"keyboard.frame %@",NSStringFromCGRect(keyboardF));
-    NSLog(@"toolBar.frame: %@",NSStringFromCGRect(self.toolbar.frame));
     [UIView animateWithDuration:duration animations:^{
         // 工具条的Y值 == 键盘的Y值 - 工具条的高度
         //在ios 9.0,1只需要最后一句代码
