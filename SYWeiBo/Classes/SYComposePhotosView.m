@@ -49,7 +49,6 @@
 //- (NSMutableArray *)addedPhotos
 //{
 //    if (!_addedPhotos) {
-////        self.addedPhotos = [[NSMutableArray alloc] init];
 //        self.addedPhotos = [NSMutableArray array];
 //    }
 //    return _addedPhotos;

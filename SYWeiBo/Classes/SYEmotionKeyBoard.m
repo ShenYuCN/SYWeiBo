@@ -134,7 +134,7 @@
             break;
     }
     
-    // 设置正在显示的listView,将上面四部封装
+    // 设置正在显示的listView,将上面四步封装
     self.showingListView = [self.subviews lastObject];
     
     //设置frame
