@@ -22,7 +22,7 @@ typedef enum {
 -(void)compostToolBar:(SYComposeToolbar *)toolbar didClickButton:(SYComposeToolbarButtonType)buttonType;
 
 @end
-
+/** 工具条，键盘之上的view */
 @interface SYComposeToolbar : UIView
 @property (nonatomic,weak) id<SYComposeToolBarDelegate> delegate;
 @property (nonatomic,assign) BOOL showKeyBoardButton;

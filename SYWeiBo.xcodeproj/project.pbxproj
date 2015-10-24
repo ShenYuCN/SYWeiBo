@@ -95,6 +95,8 @@
 		A5F5B7CD1BC7BA4D0047F482 /* SYWeiBoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = A5F5B7CC1BC7BA4D0047F482 /* SYWeiBoUITests.m */; };
 		A5F5B7DB1BC7BB520047F482 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A5F5B7DA1BC7BB520047F482 /* Assets.xcassets */; };
 		A5F5B7DF1BC7BBAA0047F482 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A5F5B7DE1BC7BBAA0047F482 /* AppDelegate.m */; };
+		A5FC86E01BDB650C002ABE21 /* SYEmotionPageView.m in Sources */ = {isa = PBXBuildFile; fileRef = A5FC86DF1BDB650C002ABE21 /* SYEmotionPageView.m */; };
+		A5FC86E31BDB68EC002ABE21 /* NSString+Emoji.m in Sources */ = {isa = PBXBuildFile; fileRef = A5FC86E21BDB68EC002ABE21 /* NSString+Emoji.m */; };
 		A5FDADDB1BD92C1E008509C8 /* SYEmotionTabBarButton.m in Sources */ = {isa = PBXBuildFile; fileRef = A5FDADDA1BD92C1E008509C8 /* SYEmotionTabBarButton.m */; };
 		A5FF33971BD881F400C439AD /* SYEmotionKeyBoard.m in Sources */ = {isa = PBXBuildFile; fileRef = A5FF33961BD881F400C439AD /* SYEmotionKeyBoard.m */; };
 		A5FF339A1BD8820800C439AD /* SYEmotionListView.m in Sources */ = {isa = PBXBuildFile; fileRef = A5FF33991BD8820800C439AD /* SYEmotionListView.m */; };
@@ -293,6 +295,10 @@
 		A5F5B7DA1BC7BB520047F482 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A5F5B7DD1BC7BBAA0047F482 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		A5F5B7DE1BC7BBAA0047F482 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		A5FC86DE1BDB650C002ABE21 /* SYEmotionPageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYEmotionPageView.h; sourceTree = "<group>"; };
+		A5FC86DF1BDB650C002ABE21 /* SYEmotionPageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYEmotionPageView.m; sourceTree = "<group>"; };
+		A5FC86E11BDB68EC002ABE21 /* NSString+Emoji.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Emoji.h"; sourceTree = "<group>"; };
+		A5FC86E21BDB68EC002ABE21 /* NSString+Emoji.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Emoji.m"; sourceTree = "<group>"; };
 		A5FDADD91BD92C1E008509C8 /* SYEmotionTabBarButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYEmotionTabBarButton.h; sourceTree = "<group>"; };
 		A5FDADDA1BD92C1E008509C8 /* SYEmotionTabBarButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYEmotionTabBarButton.m; sourceTree = "<group>"; };
 		A5FF33951BD881F400C439AD /* SYEmotionKeyBoard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYEmotionKeyBoard.h; sourceTree = "<group>"; };
@@ -378,6 +384,8 @@
 				A5FF33961BD881F400C439AD /* SYEmotionKeyBoard.m */,
 				A5FF33981BD8820800C439AD /* SYEmotionListView.h */,
 				A5FF33991BD8820800C439AD /* SYEmotionListView.m */,
+				A5FC86DE1BDB650C002ABE21 /* SYEmotionPageView.h */,
+				A5FC86DF1BDB650C002ABE21 /* SYEmotionPageView.m */,
 				A5FF339B1BD8821300C439AD /* SYEmotionTabBar.h */,
 				A5FF339C1BD8821300C439AD /* SYEmotionTabBar.m */,
 				A5FDADD91BD92C1E008509C8 /* SYEmotionTabBarButton.h */,
@@ -436,6 +444,8 @@
 		A544E3331BCA0C8E0018BB9C /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				A5FC86E11BDB68EC002ABE21 /* NSString+Emoji.h */,
+				A5FC86E21BDB68EC002ABE21 /* NSString+Emoji.m */,
 				A576A4511BD5C70D0048C18A /* NSDate+Extension.h */,
 				A576A4521BD5C70D0048C18A /* NSDate+Extension.m */,
 				A5332AB61BD3CCAE00D394F1 /* NSString+SY.h */,
@@ -952,10 +962,12 @@
 				A576A4531BD5C70D0048C18A /* NSDate+Extension.m in Sources */,
 				A5FF339D1BD8821300C439AD /* SYEmotionTabBar.m in Sources */,
 				A5294F0D1BD9C8EB00087D65 /* SYEmotion.m in Sources */,
+				A5FC86E01BDB650C002ABE21 /* SYEmotionPageView.m in Sources */,
 				A58A02701BCE3742005ACD8D /* SYAccountTool.m in Sources */,
 				A5D28C101BC8BBAA00BF8BD9 /* UIView+Extension.m in Sources */,
 				A505AADE1BD47B9F00E537DF /* MJMember.m in Sources */,
 				A5D28C0C1BC8B18A00BF8BD9 /* Test1ViewController.m in Sources */,
+				A5FC86E31BDB68EC002ABE21 /* NSString+Emoji.m in Sources */,
 				A576A4691BD5E69A0048C18A /* SYStatusPhotosView.m in Sources */,
 				A5B759201BCF990500B60990 /* SDWebImageCompat.m in Sources */,
 				A54A49C61BD62B3F00F57ACD /* SYStatusPhotoView.m in Sources */,

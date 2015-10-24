@@ -8,6 +8,7 @@
 
 #import "SYEmotionListView.h"
 #import "UIView+Extension.h"
+#import "SYEmotionPageView.h"
 
 
 // RGB颜色
@@ -16,7 +17,7 @@
 // 随机色
 #define SYRandomColor SYColor(arc4random_uniform(256), arc4random_uniform(256), arc4random_uniform(256))
 
-#define kSYEmotionPageSize 20
+
 @interface SYEmotionListView()<UIScrollViewDelegate>
 @property (nonatomic,weak) UIScrollView *scrollView;
 @property (nonatomic,weak) UIPageControl *pageControl;
@@ -60,7 +61,12 @@
     
     //2.创建每一页用来显示表情的控件
     for (int i = 0; i < count; i++) {
-        UIView *pageView = [[UIView alloc] init];
+        SYEmotionPageView *pageView = [[SYEmotionPageView alloc] init];
+        NSRange range;
+        NSUInteger leftEmotionsCount = emotions.count - i * kSYEmotionPageSize;
+        range.location = i * kSYEmotionPageSize;
+        range.length = leftEmotionsCount > kSYEmotionPageSize ? kSYEmotionPageSize : leftEmotionsCount;
+        pageView.emotions = [emotions subarrayWithRange:range];
         [self.scrollView addSubview:pageView];
     }
     
@@ -83,8 +89,7 @@
     NSLog(@"scrollView.count %zd",count);
     
     for (int i = 0; i < count; i++) {
-        UIView *pageView = self.scrollView.subviews[i];
-        pageView.backgroundColor = SYRandomColor;
+        SYEmotionPageView *pageView = self.scrollView.subviews[i];
         pageView.height = self.scrollView.height;
         pageView.width = self.scrollView.width;
         pageView.x = i * pageView.width;

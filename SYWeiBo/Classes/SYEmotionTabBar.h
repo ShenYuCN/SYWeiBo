@@ -19,7 +19,7 @@ typedef enum {
 -(void)emotionTabBar:(SYEmotionTabBar *)emotionTabBar didSelectedButton:(SYEmotionTabBarButtonType)buttonType;
 
 @end
-
+/** 键盘内部的底部工具条 */
 @interface SYEmotionTabBar : UIView
 @property (nonatomic,weak) id<SYEmotionTabBarDelegate>  delegate;
 @end

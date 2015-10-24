@@ -7,6 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-
+/** 整个键盘 */
 @interface SYEmotionKeyBoard : UIView
 @end
