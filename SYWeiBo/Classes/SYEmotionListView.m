@@ -86,7 +86,6 @@
     
     //设置scrollView内部每一页的尺寸
     NSUInteger count = self.scrollView.subviews.count;
-    NSLog(@"scrollView.count %zd",count);
     
     for (int i = 0; i < count; i++) {
         SYEmotionPageView *pageView = self.scrollView.subviews[i];
