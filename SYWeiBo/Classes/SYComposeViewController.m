@@ -15,10 +15,12 @@
 #import "SYComposeToolbar.h"
 #import "SYComposePhotosView.h"
 #import "SYEmotionKeyBoard.h"
+#import "SYEmotion.h"
+#import "SYEmotionTextView.h"
 
 @interface SYComposeViewController ()<UITextViewDelegate,SYComposeToolBarDelegate,UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 /** 输入控件 */
-@property (nonatomic,weak) SYTextView *textView;
+@property (nonatomic,weak) SYEmotionTextView *textView;
 /** 工具条 */
 @property (nonatomic,weak) SYComposeToolbar *toolbar;
 /** 相册 */
@@ -120,7 +122,7 @@
  */
 -(void)setupTextView{
     
-    SYTextView *textView = [[SYTextView alloc] init];
+    SYEmotionTextView *textView = [[SYEmotionTextView alloc] init];
     textView.frame = self.view.bounds;
     textView.placeHolder = @"分享新鲜事...";
     textView.font = [UIFont systemFontOfSize:14];
@@ -130,7 +132,11 @@
     self.textView = textView;
     self.textView.delegate = self;
     [self.textView becomeFirstResponder];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textDidChanged) name:UITextViewTextDidChangeNotification object:textView];
+    
+    NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
+    
+    //文字改变的监听
+    [notificationCenter addObserver:self selector:@selector(textDidChanged) name:UITextViewTextDidChangeNotification object:textView];
     
     // 键盘通知
     // 键盘的frame发生改变时发出的通知（位置和尺寸）
@@ -144,8 +150,10 @@
     //    UIKeyboardDidHideNotification
     
     //对于键盘的监听
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillChangeFrame:) name:UIKeyboardWillChangeFrameNotification object:nil];
+    [notificationCenter addObserver:self selector:@selector(keyboardWillChangeFrame:) name:UIKeyboardWillChangeFrameNotification object:nil];
     
+    //表情选中的通知
+    [notificationCenter addObserver:self selector:@selector(emotionDidSelect:) name:@"SYEmotionDidSelectNotification" object:nil];
 }
 /**
  *  设置工具条
@@ -319,7 +327,13 @@
     }
     [self.navigationController dismissViewControllerAnimated:YES completion:nil];
 }
-
+/**
+ *  表情选中的监听方法
+ */
+-(void)emotionDidSelect:(NSNotification *)notification{
+    SYEmotion *emotion = notification.userInfo[@"SYSelectEmotionKey"];
+    [self.textView insertEmotion:emotion];
+}
 #pragma mark - 发送微博，上传数据
 /**
  *   发送带图片的微博

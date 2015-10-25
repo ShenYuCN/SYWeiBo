@@ -54,13 +54,18 @@
     [self setNeedsDisplay];
 }
 -(void)setPlaceHolderColor:(UIColor *)placeHolderColor{
-    _placeHolderColor = _placeHolderColor;
+    _placeHolderColor = placeHolderColor;
     [self setNeedsDisplay];
 
 }
 -(void)setText:(NSString *)text{
     [super setText:text];
     [self setNeedsDisplay];
+}
+-(void)setAttributedText:(NSAttributedString *)attributedText{
+    [super setAttributedText:attributedText];
+    [self setNeedsDisplay];
+    
 }
 -(void)setFont:(UIFont *)font{
     [super setFont:font];

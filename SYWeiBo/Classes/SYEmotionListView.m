@@ -27,7 +27,6 @@
 
 -(instancetype)initWithFrame:(CGRect)frame{
     if (self = [super initWithFrame:frame]) {
-        self.backgroundColor = [UIColor whiteColor];
         //UIScrollView
         UIScrollView *scrollView = [[UIScrollView alloc] init];
         scrollView.backgroundColor = [UIColor redColor];

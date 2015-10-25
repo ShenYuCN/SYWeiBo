@@ -39,6 +39,8 @@
 		A544E3421BCA176A0018BB9C /* UIBarButtonItem+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = A544E3411BCA176A0018BB9C /* UIBarButtonItem+Extension.m */; };
 		A54A49C61BD62B3F00F57ACD /* SYStatusPhotoView.m in Sources */ = {isa = PBXBuildFile; fileRef = A54A49C51BD62B3F00F57ACD /* SYStatusPhotoView.m */; };
 		A55D68371BD6812700C0D2B2 /* SYComposeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A55D68361BD6812700C0D2B2 /* SYComposeViewController.m */; };
+		A561C2EC1BDCE484003F5050 /* SYEmotionTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = A561C2EB1BDCE484003F5050 /* SYEmotionTextView.m */; };
+		A561C2EF1BDCEB6C003F5050 /* UITextView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = A561C2EE1BDCEB6C003F5050 /* UITextView+Extension.m */; };
 		A567D4541BCBDF7C006098A4 /* SYTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = A567D4531BCBDF7C006098A4 /* SYTabBar.m */; };
 		A56D6F851BCCA70200C3ED44 /* SYNewFeatureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A56D6F841BCCA70200C3ED44 /* SYNewFeatureViewController.m */; };
 		A576A4531BD5C70D0048C18A /* NSDate+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = A576A4521BD5C70D0048C18A /* NSDate+Extension.m */; };
@@ -185,6 +187,10 @@
 		A54A49C51BD62B3F00F57ACD /* SYStatusPhotoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYStatusPhotoView.m; sourceTree = "<group>"; };
 		A55D68351BD6812700C0D2B2 /* SYComposeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYComposeViewController.h; sourceTree = "<group>"; };
 		A55D68361BD6812700C0D2B2 /* SYComposeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYComposeViewController.m; sourceTree = "<group>"; };
+		A561C2EA1BDCE484003F5050 /* SYEmotionTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYEmotionTextView.h; sourceTree = "<group>"; };
+		A561C2EB1BDCE484003F5050 /* SYEmotionTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYEmotionTextView.m; sourceTree = "<group>"; };
+		A561C2ED1BDCEB6C003F5050 /* UITextView+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextView+Extension.h"; sourceTree = "<group>"; };
+		A561C2EE1BDCEB6C003F5050 /* UITextView+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextView+Extension.m"; sourceTree = "<group>"; };
 		A567D4521BCBDF7C006098A4 /* SYTabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYTabBar.h; sourceTree = "<group>"; };
 		A567D4531BCBDF7C006098A4 /* SYTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYTabBar.m; sourceTree = "<group>"; };
 		A56D6F831BCCA70200C3ED44 /* SYNewFeatureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYNewFeatureViewController.h; sourceTree = "<group>"; };
@@ -394,6 +400,8 @@
 				A5FF33991BD8820800C439AD /* SYEmotionListView.m */,
 				A5FC86DE1BDB650C002ABE21 /* SYEmotionPageView.h */,
 				A5FC86DF1BDB650C002ABE21 /* SYEmotionPageView.m */,
+				A561C2EA1BDCE484003F5050 /* SYEmotionTextView.h */,
+				A561C2EB1BDCE484003F5050 /* SYEmotionTextView.m */,
 				A5FC86E91BDB816A002ABE21 /* SYEmotionPopView.h */,
 				A5FC86EA1BDB816A002ABE21 /* SYEmotionPopView.m */,
 				A5FC86F11BDB8C1E002ABE21 /* SYEmotionPopView.xib */,
@@ -470,6 +478,8 @@
 				A544E3411BCA176A0018BB9C /* UIBarButtonItem+Extension.m */,
 				A58A02711BCE41A2005ACD8D /* UIWindow+Extension.h */,
 				A58A02721BCE41A2005ACD8D /* UIWindow+Extension.m */,
+				A561C2ED1BDCEB6C003F5050 /* UITextView+Extension.h */,
+				A561C2EE1BDCEB6C003F5050 /* UITextView+Extension.m */,
 			);
 			name = Category;
 			sourceTree = "<group>";
@@ -1011,6 +1021,7 @@
 				A5B759291BCF990500B60990 /* UIImage+WebP.m in Sources */,
 				A5CA0F981BC9116D00154FF6 /* Test2ViewController.m in Sources */,
 				A5B759231BCF990500B60990 /* SDWebImageDownloaderOperation.m in Sources */,
+				A561C2EF1BDCEB6C003F5050 /* UITextView+Extension.m in Sources */,
 				A58E11FB1BD7CB7B004C7086 /* SYComposePhotosView.m in Sources */,
 				A52E45D91BD788900021B784 /* SYComposeToolbar.m in Sources */,
 				A544E3201BC9FD910018BB9C /* SYNavigationController.m in Sources */,
@@ -1032,6 +1043,7 @@
 				A5283C801BC8A6DE00E62BE7 /* SYTabBarViewController.m in Sources */,
 				A505AADB1BD47B9F00E537DF /* MJConst.m in Sources */,
 				A5B7592B1BCF990500B60990 /* UIImageView+WebCache.m in Sources */,
+				A561C2EC1BDCE484003F5050 /* SYEmotionTextView.m in Sources */,
 				A58A02781BCE51C7005ACD8D /* Foundation+Log.m in Sources */,
 				A5B7592C1BCF990500B60990 /* UIView+WebCacheOperation.m in Sources */,
 				A505AAC11BD4792500E537DF /* SYPhoto.m in Sources */,

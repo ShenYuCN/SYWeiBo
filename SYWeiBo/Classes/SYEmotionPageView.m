@@ -13,6 +13,7 @@
 #import "SYEmotionPopView.h"
 #import "SYEmotionButton.h"
 
+
 // 随机色
 #define SYRandomColor [UIColor colorWithRed:(arc4random_uniform(256))/255.0 green:(arc4random_uniform(256))/255.0 blue:(arc4random_uniform(256))/255.0 alpha:1.0]
 @interface SYEmotionPageView()
@@ -98,6 +99,11 @@
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [self.popView removeFromSuperview];
     });
+    
+    //发出通知
+    NSMutableDictionary *userInfo = [NSMutableDictionary dictionary];
+    userInfo[@"SYSelectEmotionKey"] = btn.emotion;
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"SYEmotionDidSelectNotification" object:nil userInfo:userInfo];
     
 }
 /**
