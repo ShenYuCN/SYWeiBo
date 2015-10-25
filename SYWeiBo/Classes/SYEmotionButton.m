@@ -12,7 +12,7 @@
 
 @implementation SYEmotionButton
 /**
- *  当控件不是从xib、storyboard中创建时，就会调用这个方法
+ *  代码创建时，就会调用这个方法
  */
 - (id)initWithFrame:(CGRect)frame
 {
@@ -34,9 +34,14 @@
     return self;
 }
 
+/**
+ *  初始化一些共同的属性，比如字体大小，高亮状态隐藏
+ */
 - (void)setup
 {
     self.titleLabel.font = [UIFont systemFontOfSize:32];
+    //按钮高亮的时候图片不要变灰
+    self.adjustsImageWhenHighlighted = NO;
 }
 
 /**
