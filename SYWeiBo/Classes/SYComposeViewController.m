@@ -29,10 +29,6 @@
 @property (nonatomic,assign) BOOL beginSwitchKeyBoard;
 /** 自定义键盘:包括工具条和键盘 */
 @property (nonatomic,strong) SYEmotionKeyBoard *keyBoard;
-/** 自己写的键盘高度，自定义的键盘高度不能写死216，要考虑键盘上的提示框 */
-@property (nonatomic,assign) CGFloat keyBoardHeight;
-
-
 
 @end
 
@@ -42,7 +38,7 @@
     if (_keyBoard == nil) {
         _keyBoard = [[SYEmotionKeyBoard alloc] init];
         _keyBoard.width = self.view.width;
-        _keyBoard.height = self.keyBoardHeight;
+        _keyBoard.height = 216;
     }
     return _keyBoard;
 }
@@ -249,12 +245,17 @@
         self.toolbar.showKeyBoardButton = NO;
     }
   
+    //开始切换键盘
     self.beginSwitchKeyBoard = YES;
-    //关掉再开键盘
+    //退出旧键盘，这时候标识位为YES，在keyBoardSwichFrame方法拦截旧键盘退出时，toolBar的Frame改变
     [self.view endEditing:YES];
+    //切换键盘完成，
+    self.beginSwitchKeyBoard = NO;
+    
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.03 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        //打开新键盘
         [self.textView becomeFirstResponder];
-        self.beginSwitchKeyBoard = NO;
+        
     });
 }
 #pragma mark - UIImagePickerControllerDelegate 代理方法
@@ -281,7 +282,8 @@
  */
 -(void)keyboardWillChangeFrame:(NSNotification *)notification{
     
-     // 如果正在切换键盘，就不要执行后面的代码.这样tabBar就不会随键盘上下移动了.
+    //如果正在切换键盘，就不要执行后面的代码.这样tabBar就不会随键盘上下移动了.
+    //只拦截旧键盘，旧键盘退出不做操作，新键盘打开设置toolBar的frame
     if (self.beginSwitchKeyBoard) return;
     
     /**
@@ -297,7 +299,6 @@
     NSDictionary *dict = notification.userInfo;
     double duration = [dict[UIKeyboardAnimationDurationUserInfoKey] doubleValue];
     CGRect keyboardF = [dict[UIKeyboardFrameEndUserInfoKey] CGRectValue];
-    self.keyBoardHeight = keyboardF.size.height;
     [UIView animateWithDuration:duration animations:^{
         // 工具条的Y值 == 键盘的Y值 - 工具条的高度
         //在ios 9.0,1只需要最后一句代码
