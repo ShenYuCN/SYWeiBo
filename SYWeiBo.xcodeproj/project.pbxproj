@@ -19,6 +19,7 @@
 		A505AAE21BD47B9F00E537DF /* NSObject+MJCoding.m in Sources */ = {isa = PBXBuildFile; fileRef = A505AAD51BD47B9F00E537DF /* NSObject+MJCoding.m */; };
 		A505AAE31BD47B9F00E537DF /* NSObject+MJKeyValue.m in Sources */ = {isa = PBXBuildFile; fileRef = A505AAD71BD47B9F00E537DF /* NSObject+MJKeyValue.m */; };
 		A505AAE41BD47B9F00E537DF /* NSObject+MJMember.m in Sources */ = {isa = PBXBuildFile; fileRef = A505AAD91BD47B9F00E537DF /* NSObject+MJMember.m */; };
+		A5110DDF1BDDAEA800743638 /* SYEmotionAttachment.m in Sources */ = {isa = PBXBuildFile; fileRef = A5110DDE1BDDAEA800743638 /* SYEmotionAttachment.m */; };
 		A5126CC91BD5101800223376 /* fakeStatus.plist in Resources */ = {isa = PBXBuildFile; fileRef = A5126CC81BD5101800223376 /* fakeStatus.plist */; };
 		A5283C351BC89EBE00E62BE7 /* SYHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5283C341BC89EBE00E62BE7 /* SYHomeViewController.m */; };
 		A5283C381BC89ED100E62BE7 /* SYMessageCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5283C371BC89ED100E62BE7 /* SYMessageCenterViewController.m */; };
@@ -151,6 +152,8 @@
 		A505AAD71BD47B9F00E537DF /* NSObject+MJKeyValue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+MJKeyValue.m"; sourceTree = "<group>"; };
 		A505AAD81BD47B9F00E537DF /* NSObject+MJMember.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+MJMember.h"; sourceTree = "<group>"; };
 		A505AAD91BD47B9F00E537DF /* NSObject+MJMember.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+MJMember.m"; sourceTree = "<group>"; };
+		A5110DDD1BDDAEA800743638 /* SYEmotionAttachment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYEmotionAttachment.h; sourceTree = "<group>"; };
+		A5110DDE1BDDAEA800743638 /* SYEmotionAttachment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYEmotionAttachment.m; sourceTree = "<group>"; };
 		A5126CC81BD5101800223376 /* fakeStatus.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = fakeStatus.plist; sourceTree = "<group>"; };
 		A5283C331BC89EBE00E62BE7 /* SYHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYHomeViewController.h; sourceTree = "<group>"; };
 		A5283C341BC89EBE00E62BE7 /* SYHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYHomeViewController.m; sourceTree = "<group>"; };
@@ -402,6 +405,8 @@
 				A5FC86DF1BDB650C002ABE21 /* SYEmotionPageView.m */,
 				A561C2EA1BDCE484003F5050 /* SYEmotionTextView.h */,
 				A561C2EB1BDCE484003F5050 /* SYEmotionTextView.m */,
+				A5110DDD1BDDAEA800743638 /* SYEmotionAttachment.h */,
+				A5110DDE1BDDAEA800743638 /* SYEmotionAttachment.m */,
 				A5FC86E91BDB816A002ABE21 /* SYEmotionPopView.h */,
 				A5FC86EA1BDB816A002ABE21 /* SYEmotionPopView.m */,
 				A5FC86F11BDB8C1E002ABE21 /* SYEmotionPopView.xib */,
@@ -1037,6 +1042,7 @@
 				A585845F1BD39D010034172C /* SYStatusCell.m in Sources */,
 				A5FC86F01BDB863E002ABE21 /* SYEmotionButton.m in Sources */,
 				A58A023E1BCDEBF1005ACD8D /* SYOAuthViewController.m in Sources */,
+				A5110DDF1BDDAEA800743638 /* SYEmotionAttachment.m in Sources */,
 				A58A02541BCDF5D9005ACD8D /* AFHTTPRequestOperation.m in Sources */,
 				A58A02631BCE26F2005ACD8D /* SYAccount.m in Sources */,
 				A58A025C1BCDF5D9005ACD8D /* AFURLSessionManager.m in Sources */,

@@ -29,7 +29,6 @@
     if (self = [super initWithFrame:frame]) {
         //UIScrollView
         UIScrollView *scrollView = [[UIScrollView alloc] init];
-        scrollView.backgroundColor = [UIColor redColor];
         scrollView.delegate = self;
         scrollView.pagingEnabled = YES;
         scrollView.showsVerticalScrollIndicator = NO;
@@ -41,7 +40,6 @@
         //PageControl
         UIPageControl *pageControl = [[UIPageControl alloc] init];
         pageControl.userInteractionEnabled = NO;
-        pageControl.backgroundColor = [UIColor purpleColor];
         [pageControl setValue:[UIImage imageNamed:@"compose_keyboard_dot_normal"] forKeyPath:@"pageImage"];
         [pageControl setValue:[UIImage imageNamed:@"compose_keyboard_dot_selected"] forKeyPath:@"currentPageImage"];
         

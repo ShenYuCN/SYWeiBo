@@ -150,6 +150,9 @@
     
     //表情选中的通知
     [notificationCenter addObserver:self selector:@selector(emotionDidSelect:) name:@"SYEmotionDidSelectNotification" object:nil];
+    
+    //删除按钮
+    [notificationCenter addObserver:self selector:@selector(emotionDidDelete) name:@"SYEmotionDidDelete" object:nil];
 }
 /**
  *  设置工具条
@@ -335,6 +338,12 @@
     SYEmotion *emotion = notification.userInfo[@"SYSelectEmotionKey"];
     [self.textView insertEmotion:emotion];
 }
+/**
+ *  表情栏删除按钮的操作
+ */
+-(void)emotionDidDelete{
+    [self.textView deleteBackward];
+}
 #pragma mark - 发送微博，上传数据
 /**
  *   发送带图片的微博
@@ -374,7 +383,7 @@
     
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     params[@"access_token"] = [SYAccountTool account].access_token;
-    params[@"status"] = self.textView.text;
+    params[@"status"] = self.textView.fullText;
     
     [mgr POST:@"https://api.weibo.com/2/statuses/update.json" parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
         [MBProgressHUD showSuccess:@"发送成功"];

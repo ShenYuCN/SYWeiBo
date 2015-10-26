@@ -10,4 +10,5 @@
 #import "SYEmotion.h"
 @interface SYEmotionTextView : SYTextView
 -(void)insertEmotion:(SYEmotion *)emotion;
+-(NSString *)fullText;
 @end

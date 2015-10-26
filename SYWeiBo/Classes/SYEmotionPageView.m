@@ -32,7 +32,6 @@
 
 -(instancetype)initWithFrame:(CGRect)frame{
     if (self = [super initWithFrame:frame]) {
-        self.backgroundColor = SYRandomColor;
         //添加删除按钮
         UIButton *deleteBtn = [[UIButton alloc] init];
         [deleteBtn setImage:[UIImage imageNamed:@"compose_emotion_delete_highlighted"] forState:UIControlStateHighlighted];
@@ -110,6 +109,6 @@
  *  删除按钮的点击事件
  */
 -(void)deleteClick{
-  NSLog(@"%s",__func__);
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"SYEmotionDidDelete" object:nil];
 }
 @end
