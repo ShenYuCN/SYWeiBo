@@ -3,6 +3,14 @@
    version = "1.0">
    <ContextStates>
       <ContextState
+         contextName = "-[SYEmotionPageView longPressPageView:]:SYEmotionPageView.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.subviews">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "-[SYEmotionPageView layoutSubviews]:SYEmotionPageView.m">
          <PersistentStrings>
             <PersistentString

@@ -7,8 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-@class SYEmotion;
+@class SYEmotion,SYEmotionButton;
 @interface SYEmotionPopView : UIView
 +(instancetype)popView;
 @property (nonatomic,strong) SYEmotion *emotion;
+/** 在表情按钮btn处  显示popView */
+-(void)showFrom:(SYEmotionButton *)btn;
 @end

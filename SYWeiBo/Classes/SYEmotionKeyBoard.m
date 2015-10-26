@@ -52,8 +52,6 @@
         //TODO: 设置背景色直接返回，必须将容器先初始化，再初始化子控件
         //self.defaultListView.backgroundColor = [UIColor redColor];
         
-        self.defaultListView.backgroundColor = [UIColor yellowColor];
-       
     }
     return _defaultListView;
 }
@@ -77,6 +75,7 @@
 #pragma mark - 初始化
 -(instancetype)initWithFrame:(CGRect)frame{
     if (self = [super initWithFrame:frame]) {
+        self.backgroundColor = [UIColor whiteColor];
          //!!!:  这里必须先初始化 父容器，如果先初始化子控件会有莫名其妙的未知问题
          // UIView *contentView = [[UIView alloc] init];
          //[self addSubview:contentView];

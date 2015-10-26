@@ -40,14 +40,65 @@
         self.deleteBtn = deleteBtn;
         [self addSubview:deleteBtn];
         
+        
+        //添加长按手势
+        [self addGestureRecognizer:[[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPressPageView:)]];
     }
     return self;
 }
-
+/**
+ *  根据手指位置所在的表情按钮
+ */
+-(SYEmotionButton *)emotionButtonWithLocation:(CGPoint)location{
+    NSUInteger count = self.emotions.count;
+    for (int i = 0; i < count; i++) {
+        SYEmotionButton *btn = self.subviews[i + 1];
+        if (CGRectContainsPoint(btn.frame, location)) {
+            return btn;
+        }
+    }
+    return nil;
+}
+/**
+ *  长按手势的监听
+ */
+-(void)longPressPageView:(UILongPressGestureRecognizer *)recognizer{
+    
+    CGPoint location = [recognizer locationInView:recognizer.view];
+    SYEmotionButton *btn = [self emotionButtonWithLocation:location];
+    switch (recognizer.state) {
+        case UIGestureRecognizerStateCancelled:
+        case UIGestureRecognizerStateEnded:{//手指不在触摸pageView
+            [self.popView removeFromSuperview];
+            //如果手指还在按钮上
+            if (btn) {
+                //这一句也可以，不严谨，还显示一次popView
+                // [self buttonClick:btn];
+                
+                //发出通知
+                NSMutableDictionary *userInfo = [NSMutableDictionary dictionary];
+                userInfo[@"SYSelectEmotionKey"] = btn.emotion;
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"SYEmotionDidSelectNotification" object:nil userInfo:userInfo];
+            }
+            break;
+        }
+        case UIGestureRecognizerStateBegan://开始触摸
+        case UIGestureRecognizerStateChanged:{//手指位置改变
+            [self.popView showFrom:btn];
+            break;
+        }
+        default:
+            break;
+    }
+    
+    
+}
 -(void)setEmotions:(NSArray *)emotions{
     _emotions = emotions;
     for (int i = 0; i < emotions.count ; i++) {
         SYEmotionButton *btn = [[SYEmotionButton alloc] init];
+        
+        //设置表情数据
         btn.emotion = emotions[i];
         [btn addTarget:self action:@selector(buttonClick:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:btn];
@@ -82,17 +133,8 @@
  */
 -(void)buttonClick:(SYEmotionButton *)btn{
     
-    //给popView传递模型数据
-    self.popView.emotion = btn.emotion;
-    
-    //将popView添加到最上面的window上面
-    UIWindow *window = [[UIApplication sharedApplication].windows lastObject];
-    [window addSubview:self.popView];
-
-    //设置popView的位置
-    CGRect btnFrame = [btn convertRect:btn.bounds toView:nil];
-    self.popView.centerX = CGRectGetMidX(btnFrame);
-    self.popView.y = CGRectGetMidY(btnFrame) - self.popView.height;
+    //显示popView
+    [self.popView showFrom:btn];
     
     //过一会popView自动消失
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
