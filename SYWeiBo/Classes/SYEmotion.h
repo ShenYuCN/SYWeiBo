@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 /**表情模型*/
-@interface SYEmotion : UIView
+@interface SYEmotion : NSObject
 /**表情的 png图片名字*/
 @property (nonatomic,copy) NSString *png;
 /**表情的 文字描述*/

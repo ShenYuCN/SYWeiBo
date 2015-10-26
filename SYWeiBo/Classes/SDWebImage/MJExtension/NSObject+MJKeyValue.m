@@ -213,11 +213,9 @@
     // 3.遍历
     for (NSDictionary *keyValues in keyValuesArray) {
         if (![keyValues isKindOfClass:[NSDictionary class]]) continue;
-        
         id model = [self objectWithKeyValues:keyValues];
         [modelArray addObject:model];
     }
-    
     return modelArray;
 }
 

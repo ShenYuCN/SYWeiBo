@@ -12,6 +12,7 @@
 #import "NSString+Emoji.h"
 #import "SYEmotionPopView.h"
 #import "SYEmotionButton.h"
+#import "SYEmotionTool.h"
 
 
 // 随机色
@@ -69,6 +70,7 @@
     switch (recognizer.state) {
         case UIGestureRecognizerStateCancelled:
         case UIGestureRecognizerStateEnded:{//手指不在触摸pageView
+            
             [self.popView removeFromSuperview];
             //如果手指还在按钮上
             if (btn) {
@@ -76,9 +78,7 @@
                 // [self buttonClick:btn];
                 
                 //发出通知
-                NSMutableDictionary *userInfo = [NSMutableDictionary dictionary];
-                userInfo[@"SYSelectEmotionKey"] = btn.emotion;
-                [[NSNotificationCenter defaultCenter] postNotificationName:@"SYEmotionDidSelectNotification" object:nil userInfo:userInfo];
+                [self selectEmotion:btn];
             }
             break;
         }
@@ -140,6 +140,20 @@
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [self.popView removeFromSuperview];
     });
+    
+    //发出通知
+    [self selectEmotion:btn];
+    
+}
+/**
+ *  选中表情，发出通知
+ *
+ *  @param emotion 选中表情的emotion属性
+ */
+-(void)selectEmotion:(SYEmotionButton *)btn{
+    
+    //添加到沙盒
+    [SYEmotionTool addRecentEmotion:btn.emotion];
     
     //发出通知
     NSMutableDictionary *userInfo = [NSMutableDictionary dictionary];

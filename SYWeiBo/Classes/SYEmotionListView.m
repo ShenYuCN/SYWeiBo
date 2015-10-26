@@ -40,6 +40,7 @@
         //PageControl
         UIPageControl *pageControl = [[UIPageControl alloc] init];
         pageControl.userInteractionEnabled = NO;
+        pageControl.hidesForSinglePage = YES;
         [pageControl setValue:[UIImage imageNamed:@"compose_keyboard_dot_normal"] forKeyPath:@"pageImage"];
         [pageControl setValue:[UIImage imageNamed:@"compose_keyboard_dot_selected"] forKeyPath:@"currentPageImage"];
         
@@ -51,6 +52,8 @@
 -(void)setEmotions:(NSArray *)emotions{
     _emotions = emotions;
     
+    // 删除之前的控件
+    [self.scrollView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
     NSUInteger count = (emotions.count + kSYEmotionPageSize - 1) / kSYEmotionPageSize;
     
     // 1.设置页数
@@ -64,8 +67,11 @@
         range.location = i * kSYEmotionPageSize;
         range.length = leftEmotionsCount > kSYEmotionPageSize ? kSYEmotionPageSize : leftEmotionsCount;
         pageView.emotions = [emotions subarrayWithRange:range];
+        
         [self.scrollView addSubview:pageView];
     }
+    
+    [self setNeedsLayout];
     
 }
 

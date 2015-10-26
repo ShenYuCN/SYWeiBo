@@ -9,7 +9,7 @@
 #import "SYAccountTool.h"
 #import "SYAccount.h"
 
-//存储位置沙盒路径
+//存储账号沙盒路径
 #define SYAccountPath [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:@"account.archive"]
 @implementation SYAccountTool
 

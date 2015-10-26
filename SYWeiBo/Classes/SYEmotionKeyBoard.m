@@ -12,6 +12,7 @@
 #import "UIView+Extension.h"
 #import "SYEmotion.h"
 #import "MJExtension.h"
+#import "SYEmotionTool.h"
 
 @interface SYEmotionKeyBoard()<SYEmotionTabBarDelegate>
 /** tabBar */
@@ -38,6 +39,8 @@
 -(SYEmotionListView *)recentListView{
     if (_recentListView == nil) {
         self.recentListView = [[SYEmotionListView alloc] init];
+        self.recentListView.emotions = [SYEmotionTool recentEmotions];
+        
     }
     return _recentListView;
 }
@@ -49,9 +52,6 @@
         NSString *path = [[NSBundle mainBundle] pathForResource:@"EmotionIcons/default/info.plist" ofType:nil];
         //表情字典数组  转成 模型数组
         self.defaultListView.emotions = [SYEmotion objectArrayWithKeyValuesArray:[NSArray arrayWithContentsOfFile:path]];
-        //TODO: 设置背景色直接返回，必须将容器先初始化，再初始化子控件
-        //self.defaultListView.backgroundColor = [UIColor redColor];
-        
     }
     return _defaultListView;
 }
@@ -60,6 +60,9 @@
         self.emojiListView = [[SYEmotionListView alloc] init];;
         NSString *path = [[NSBundle mainBundle] pathForResource:@"EmotionIcons/emoji/info.plist" ofType:nil];
         self.emojiListView.emotions = [SYEmotion objectArrayWithKeyValuesArray:[NSArray arrayWithContentsOfFile:path]];
+        
+        //TODO: 设置背景色直接返回，必须将容器先初始化，再初始化子控件
+        //self.defaultListView.backgroundColor = [UIColor redColor];
     }
     return _emojiListView;
 }
@@ -75,6 +78,7 @@
 #pragma mark - 初始化
 -(instancetype)initWithFrame:(CGRect)frame{
     if (self = [super initWithFrame:frame]) {
+        
         self.backgroundColor = [UIColor whiteColor];
          //!!!:  这里必须先初始化 父容器，如果先初始化子控件会有莫名其妙的未知问题
          // UIView *contentView = [[UIView alloc] init];
@@ -85,7 +89,10 @@
         tabBar.delegate = self;
         [self addSubview:tabBar];
         self.tabBar = tabBar;
-
+        
+        //表情的通知监听
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(emotionDidSelect) name:@"SYEmotionDidSelectNotification" object:nil];
+        
     }
     return self;
 }
@@ -141,5 +148,10 @@
     [self setNeedsLayout];
 
 }
-
+/**
+ *  表情按钮的通知监听方法
+ */
+-(void)emotionDidSelect{
+    self.recentListView.emotions = [SYEmotionTool recentEmotions];
+}
 @end
