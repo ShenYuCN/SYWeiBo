@@ -13,7 +13,7 @@
 #import "SYEmotionPopView.h"
 #import "SYEmotionButton.h"
 #import "SYEmotionTool.h"
-
+#import "SYConst.h"
 
 // 随机色
 #define SYRandomColor [UIColor colorWithRed:(arc4random_uniform(256))/255.0 green:(arc4random_uniform(256))/255.0 blue:(arc4random_uniform(256))/255.0 alpha:1.0]
@@ -157,14 +157,14 @@
     
     //发出通知
     NSMutableDictionary *userInfo = [NSMutableDictionary dictionary];
-    userInfo[@"SYSelectEmotionKey"] = btn.emotion;
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"SYEmotionDidSelectNotification" object:nil userInfo:userInfo];
+    userInfo[SYSelectEmotionKey] = btn.emotion;
+    [[NSNotificationCenter defaultCenter] postNotificationName:SYEmotionDidSelectNotification object:nil userInfo:userInfo];
     
 }
 /**
  *  删除按钮的点击事件
  */
 -(void)deleteClick{
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"SYEmotionDidDelete" object:nil];
+    [[NSNotificationCenter defaultCenter] postNotificationName:SYEmotionDidDeleteNotification object:nil];
 }
 @end

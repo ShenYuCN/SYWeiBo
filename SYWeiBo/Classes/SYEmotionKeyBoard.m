@@ -13,7 +13,7 @@
 #import "SYEmotion.h"
 #import "MJExtension.h"
 #import "SYEmotionTool.h"
-
+#import "SYConst.h"
 @interface SYEmotionKeyBoard()<SYEmotionTabBarDelegate>
 /** tabBar */
 @property(nonatomic,weak) SYEmotionTabBar *tabBar;
@@ -91,7 +91,7 @@
         self.tabBar = tabBar;
         
         //表情的通知监听
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(emotionDidSelect) name:@"SYEmotionDidSelectNotification" object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(emotionDidSelect) name:SYEmotionDidSelectNotification object:nil];
         
     }
     return self;

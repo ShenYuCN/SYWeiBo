@@ -14,6 +14,9 @@
 #import "SYNewFeatureViewController.h"
 #import "SYAccountTool.h"
 #import "UIWindow+Extension.h"
+#import "SYConst.h"
+
+
 @interface SYOAuthViewController()<UIWebViewDelegate>
 @end
 @implementation SYOAuthViewController
@@ -24,8 +27,8 @@
     webView.delegate = self;
     webView.frame = self.view.frame;
     [self.view addSubview:webView];
-    
-    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"https://api.weibo.com/oauth2/authorize?client_id=2543107217&redirect_uri=http://"]];
+    NSString *urlStr = [NSString stringWithFormat:@"https://api.weibo.com/oauth2/authorize?client_id=%@&redirect_uri=%@",SYAppKey,SYRedirectURI];
+    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:urlStr]];
     [webView loadRequest:request];
     
 }
@@ -69,11 +72,11 @@
     
     //2.拼接请求参数
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
-    params[@"client_id"]     = @"2543107217";
-    params[@"client_secret"] = @"07137f4afb2e451a9728e3f447771689";
+    params[@"client_id"]     = SYAppKey;
+    params[@"client_secret"] = SYAppSecret;
     params[@"grant_type"]    = @"authorization_code";
     params[@"code"]          = code;
-    params[@"redirect_uri"]  = @"http://";
+    params[@"redirect_uri"]  = SYRedirectURI;
     
     
     //3.发送请求

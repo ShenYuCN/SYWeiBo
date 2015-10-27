@@ -17,6 +17,7 @@
 #import "SYEmotionKeyBoard.h"
 #import "SYEmotion.h"
 #import "SYEmotionTextView.h"
+#import "SYConst.h"
 
 @interface SYComposeViewController ()<UITextViewDelegate,SYComposeToolBarDelegate,UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 /** 输入控件 */
@@ -152,7 +153,7 @@
     [notificationCenter addObserver:self selector:@selector(emotionDidSelect:) name:@"SYEmotionDidSelectNotification" object:nil];
     
     //删除按钮
-    [notificationCenter addObserver:self selector:@selector(emotionDidDelete) name:@"SYEmotionDidDelete" object:nil];
+    [notificationCenter addObserver:self selector:@selector(emotionDidDelete) name:SYEmotionDidDeleteNotification object:nil];
 }
 /**
  *  设置工具条
@@ -335,7 +336,7 @@
  *  表情选中的监听方法
  */
 -(void)emotionDidSelect:(NSNotification *)notification{
-    SYEmotion *emotion = notification.userInfo[@"SYSelectEmotionKey"];
+    SYEmotion *emotion = notification.userInfo[SYSelectEmotionKey];
     [self.textView insertEmotion:emotion];
 }
 /**
