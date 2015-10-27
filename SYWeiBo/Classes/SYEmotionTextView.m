@@ -48,8 +48,6 @@
 
     NSMutableString *fullText = [NSMutableString string];
     [self.attributedText enumerateAttributesInRange:NSMakeRange(0, self.attributedText.length) options:0 usingBlock:^(NSDictionary<NSString *,id> * _Nonnull attrs, NSRange range, BOOL * _Nonnull stop) {
-        NSLog(@"attrs----%@",attrs);
-        NSLog(@"range----%@",NSStringFromRange(range));
         
         SYEmotionAttachment *attach = attrs[@"NSAttachment"];
         if (attach) {//图片

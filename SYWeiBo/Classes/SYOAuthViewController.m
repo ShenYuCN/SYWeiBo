@@ -7,7 +7,6 @@
 //
 
 #import "SYOAuthViewController.h"
-#import "AFNetworking.h"
 #import "MBProgressHUD+MJ.h"
 #import "SYAccount.h"
 #import "SYTabBarViewController.h"
@@ -15,6 +14,7 @@
 #import "SYAccountTool.h"
 #import "UIWindow+Extension.h"
 #import "SYConst.h"
+#import "SYHttpTool.h"
 
 
 @interface SYOAuthViewController()<UIWebViewDelegate>
@@ -67,10 +67,8 @@
      redirect_uri 回调地址，需需与注册应用里的回调地址一致。
      */
     
-    //1.请求管理者
-    AFHTTPRequestOperationManager *mgr = [AFHTTPRequestOperationManager manager];
     
-    //2.拼接请求参数
+    //1.拼接请求参数
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     params[@"client_id"]     = SYAppKey;
     params[@"client_secret"] = SYAppSecret;
@@ -79,22 +77,35 @@
     params[@"redirect_uri"]  = SYRedirectURI;
     
     
-    //3.发送请求
-    [mgr POST:@"https://api.weibo.com/oauth2/access_token" parameters:params success:^(AFHTTPRequestOperation *operation, NSDictionary *responseObject) {
+    //2.发送请求
+    [SYHttpTool post:@"https://api.weibo.com/oauth2/access_token" parameters:params success:^(id json) {
         [MBProgressHUD hideHUD];
         
         // 将返回的账号字典数据 --> 模型，存进沙盒
-        SYAccount *account = [SYAccount accountWithDict:responseObject];
+        SYAccount *account = [SYAccount accountWithDict:json];
         // 存储账号信息
         [SYAccountTool saveAccount:account];
         
         // 切换窗口的根控制器
         UIWindow *window = [UIApplication sharedApplication].keyWindow;
         [window switchRootViewController];
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+    } failure:^(NSError *error) {
         NSLog(@"请求失败 ---- %@",error);
         [MBProgressHUD hideHUD];
     }];
+    
+    /**
+     //1.请求管理者
+     AFHTTPRequestOperationManager *mgr = [AFHTTPRequestOperationManager manager];
+     
+     //3.发送请求
+     [mgr POST:@"https://api.weibo.com/oauth2/access_token" parameters:params success:^(AFHTTPRequestOperation *operation, NSDictionary *responseObject) {
+     
+     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+     
+     }];
+     */
+   
 }
 
 

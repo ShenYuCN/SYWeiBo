@@ -10,7 +10,6 @@
 #import "SYAccountTool.h"
 #import "UIView+Extension.h"
 #import "SYTextView.h"
-#import "AFNetworking.h"
 #import "MBProgressHUD+MJ.h"
 #import "SYComposeToolbar.h"
 #import "SYComposePhotosView.h"
@@ -18,6 +17,7 @@
 #import "SYEmotion.h"
 #import "SYEmotionTextView.h"
 #import "SYConst.h"
+#import "SYHttpTool.h"
 
 @interface SYComposeViewController ()<UITextViewDelegate,SYComposeToolBarDelegate,UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 /** 输入控件 */
@@ -82,13 +82,6 @@
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"发送" style:UIBarButtonItemStyleDone target:self action:@selector(send)];
 //    self.navigationItem.rightBarButtonItem.enabled = NO;
     
-//    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"发送" style:UIBarButtonItemStylePlain target:self action:@selector(send)];
-//    NSMutableDictionary *dict =[NSMutableDictionary dictionary];
-//    dict[NSForegroundColorAttributeName] = [UIColor redColor];
-//    [item setTitleTextAttributes:dict forState:UIControlStateDisabled];
-//    [item setTintColor:[UIColor redColor]];
-//    self.navigationItem.rightBarButtonItem = item;
-//    self.navigationItem.rightBarButtonItem.enabled = NO;
     
     UILabel *titleLabel = [[UILabel alloc] init];
     titleLabel.height = 60;
@@ -150,7 +143,7 @@
     [notificationCenter addObserver:self selector:@selector(keyboardWillChangeFrame:) name:UIKeyboardWillChangeFrameNotification object:nil];
     
     //表情选中的通知
-    [notificationCenter addObserver:self selector:@selector(emotionDidSelect:) name:@"SYEmotionDidSelectNotification" object:nil];
+    [notificationCenter addObserver:self selector:@selector(emotionDidSelect:) name:SYEmotionDidSelectNotification object:nil];
     
     //删除按钮
     [notificationCenter addObserver:self selector:@selector(emotionDidDelete) name:SYEmotionDidDeleteNotification object:nil];
@@ -315,6 +308,7 @@
 
 }
 -(void)textDidChanged{
+//    NSLog(@"%@",self.textView.text);
     self.navigationItem.rightBarButtonItem.enabled = self.textView.hasText;
 }
 
@@ -338,6 +332,10 @@
 -(void)emotionDidSelect:(NSNotification *)notification{
     SYEmotion *emotion = notification.userInfo[SYSelectEmotionKey];
     [self.textView insertEmotion:emotion];
+//    NSLog(@"%@",self.textView.attributedText);
+    if (self.textView.attributedText) {
+        self.navigationItem.rightBarButtonItem.enabled = self.textView.attributedText;
+    }
 }
 /**
  *  表情栏删除按钮的操作
@@ -355,40 +353,37 @@
     /**	status true string 要发布的微博文本内容，必须做URLencode，内容不超过140个汉字。*/
     /**	access_token true string*/
     /**	pic true binary 微博的配图。*/
-    
-    AFHTTPRequestOperationManager *mgr = [AFHTTPRequestOperationManager manager];
-    
+   
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     
     params[@"access_token"] = [SYAccountTool account].access_token;
     params[@"status"] = self.textView.text;
-    
-    [mgr POST:@"https://upload.api.weibo.com/2/statuses/upload.json" parameters:params constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
+  
+    [SYHttpTool post:@"https://upload.api.weibo.com/2/statuses/upload.json" parameters:params constructingBodyWithBlock:^(id <AFMultipartFormData> formData) {
         UIImageView *imageView = [self.photosView.photos firstObject];
         NSData *data = UIImageJPEGRepresentation(imageView.image, 1.0);
         [formData appendPartWithFileData:data name:@"pic" fileName:@"ete.jpg" mimeType:@"image/jpeg"];
-    
-        
-    } success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    } success:^(id json) {
         [MBProgressHUD showSuccess:@"发送成功"];
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+    } failure:^(NSError *error) {
         [MBProgressHUD showError:@"发送失败"];
     }];
+    
+    
 
 }
 /**
  *  发送没有图片的微博
  */
 -(void)sendWithoutImage{
-    AFHTTPRequestOperationManager *mgr = [AFHTTPRequestOperationManager manager];
     
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     params[@"access_token"] = [SYAccountTool account].access_token;
     params[@"status"] = self.textView.fullText;
     
-    [mgr POST:@"https://api.weibo.com/2/statuses/update.json" parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        [MBProgressHUD showSuccess:@"发送成功"];
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+    [SYHttpTool post:@"https://api.weibo.com/2/statuses/update.json" parameters:params success:^(id json) {
+         [MBProgressHUD showSuccess:@"发送成功"];
+    } failure:^(NSError *error) {
         [MBProgressHUD showError:@"发送失败"];
     }];
 }

@@ -10,7 +10,6 @@
 #import "UIBarButtonItem+Extension.h"
 #import "UIView+Extension.h"
 #import "SYDropdownMenu.h"
-#import "AFNetworking.h"
 #import "SYTitleMenuViewController.h"
 #import "SYAccountTool.h"
 #import "SYTitleButton.h"
@@ -21,6 +20,8 @@
 #import "SYLoadMoreFooter.h"
 #import "SYStatusCell.h"
 #import "SYStatusFrame.h"
+#import "SYHttpTool.h"
+#import "MJRefresh.h"
 @interface SYHomeViewController ()<SYDropdownmMenuDelegate>
 /**
  *  微博数组（里面放的都是SYStatuFrame模型，一个模型就是一条微博,包含SYStatus数据和Frame）
@@ -29,13 +30,18 @@
 @end
 
 @implementation SYHomeViewController
+/**
+ *  懒加载
+ */
 -(NSMutableArray *)statusFrames{
     if (_statusFrames == nil) {
         _statusFrames = [NSMutableArray array];
     }
     return _statusFrames;
 }
-
+/**
+ *  初始化控件
+ */
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -72,47 +78,63 @@
      https://api.weibo.com/2/users/show.json
      */
     
-    
-    //1.请求管理者
-    AFHTTPRequestOperationManager *mgr = [AFHTTPRequestOperationManager manager];
-    
-    //2.拼接参数
+   
+    //1.拼接参数
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     SYAccount *account = [SYAccountTool account];
     params[@"access_token"] = account.access_token;
     params[@"uid"] = account.uid;
-    //3.发送请求
-    [mgr GET:@"https://api.weibo.com/2/users/show.json" parameters:params success:^(AFHTTPRequestOperation *operation, NSDictionary *responseObject) {
+    
+    //2.发送请求
+    [SYHttpTool get:@"https://api.weibo.com/2/users/show.json" parameters:params success:^(id json) {
         //取出名字
-        SYUser *user = [SYUser objectWithKeyValues:responseObject];
+        SYUser *user = [SYUser objectWithKeyValues:json];
         //设置标题
         UIButton *titleBtn = (UIButton *)self.navigationItem.titleView;
         [titleBtn setTitle:user.name forState:UIControlStateNormal];
         //将名字存入沙盒
         account.name = user.name;
         [SYAccountTool saveAccount:account];
-        
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"请求失败 --%@",error);
+    } failure:^(NSError *error) {
+           NSLog(@"请求失败 --%@",error);
     }];
+    
+     /**
+     //1.请求管理者
+     AFHTTPRequestOperationManager *mgr = [AFHTTPRequestOperationManager manager];
+     //3.发送请求
+     [mgr GET:@"https://api.weibo.com/2/users/show.json" parameters:params success:^(AFHTTPRequestOperation *operation, NSDictionary *responseObject) {
+     
+     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+     
+     }];
+     */
+   
 }
 /**
  *  添加下拉刷新控件
  */
 -(void)setDownRefresh{
     
-    UIRefreshControl *control = [[UIRefreshControl alloc] init];
-    [control addTarget:self action:@selector(refreshStateChange:) forControlEvents:UIControlEventValueChanged];
-    [self.tableView addSubview:control];
-    //如果使用 [control beginRefresh] 仅仅是显示，不会触发UIControlEventValueChanged
-    //进来就直接刷新一次
-    [self refreshStateChange:control];
+    [self.tableView addHeaderWithTarget:self action:@selector(refreshStateChange)];
+    
+    [self.tableView headerBeginRefreshing];
+    /**
+     UIRefreshControl *control = [[UIRefreshControl alloc] init];
+     [control addTarget:self action:@selector(refreshStateChange:) forControlEvents:UIControlEventValueChanged];
+     [self.tableView addSubview:control];
+     //如果使用 [control beginRefresh] 仅仅是显示，不会触发UIControlEventValueChanged
+     //进来就直接刷新一次
+     [self refreshStateChange:control];
+     
+     */
+  
 }
 /**
  *  下拉刷新，加载最新数据
  */
--(void)refreshStateChange:(UIRefreshControl *)control{
-//    //TODO: 测试数据
+-(void)refreshStateChange{
+//    //TODO: 本地测试数据
 //    NSDictionary *responseObject = [NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"fakeStatus" ofType:@".plist"]];
 //    //取得字典数组,转换成模型数组
 //    NSArray *newStatus = [SYStatus objectArrayWithKeyValuesArray:responseObject[@"statuses"] ];
@@ -134,9 +156,6 @@
 //    
 //    return;
     
-    //1.请求管理者
-    AFHTTPRequestOperationManager *mgr = [AFHTTPRequestOperationManager manager];
-    mgr.responseSerializer = [AFJSONResponseSerializer serializer];
     //2.拼接参数
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     SYAccount *account = [SYAccountTool account];
@@ -146,10 +165,10 @@
         params[@"since_id"] = firstStatusFrame.status.idstr;
     }
     //3.发送请求
-    [mgr GET:@"https://api.weibo.com/2/statuses/friends_timeline.json" parameters:params success:^(AFHTTPRequestOperation *operation, NSDictionary *responseObject) {
-         [control endRefreshing];
+    [SYHttpTool get:@"https://api.weibo.com/2/statuses/friends_timeline.json" parameters:params success:^(id json) {
+        
         //取得字典数组,转换成模型数组
-        NSArray *newStatus = [SYStatus objectArrayWithKeyValuesArray:responseObject[@"statuses"] ];
+        NSArray *newStatus = [SYStatus objectArrayWithKeyValuesArray:json[@"statuses"] ];
         //将SYStatus模型转为SYStatusFrame模型
         NSArray *statusFrames = [self statusFrameWithStatuses:newStatus];
         
@@ -160,13 +179,14 @@
         
         // 刷新表格
         [self.tableView reloadData];
-        [control endRefreshing];
+        //结束刷新
+        [self.tableView headerEndRefreshing];
         
         //显示新的微博数量
         [self showNewStatusCount:newStatus.count];
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+    } failure:^(NSError *error) {
         NSLog(@"请求失败 --%@",error);
-        [control endRefreshing];
+         [self.tableView headerEndRefreshing];
     }];
 }
 /**
@@ -185,17 +205,15 @@
  *  添加上拉加载控件
  */
 -(void)setUpRefresh{
-    SYLoadMoreFooter *footer = [SYLoadMoreFooter footerView];
-    footer.hidden = YES;
-    self.tableView.tableFooterView = footer;
+    [self.tableView addFooterWithTarget:self action:@selector(loadMoreStatus)];
+//    SYLoadMoreFooter *footer = [SYLoadMoreFooter footerView];
+//    footer.hidden = YES;
+//    self.tableView.tableFooterView = footer;
 }
 /**
  *  上拉加载，加载数据
  */
 -(void)loadMoreStatus{
-    //1.请求管理者
-    AFHTTPRequestOperationManager *mgr = [AFHTTPRequestOperationManager manager];
-    mgr.responseSerializer = [AFJSONResponseSerializer serializer];
     //2.拼接参数
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     SYAccount *account = [SYAccountTool account];
@@ -209,11 +227,11 @@
         params[@"max_id"] = @(maxId);
     }
     //3.发送请求
-    [mgr GET:@"https://api.weibo.com/2/statuses/friends_timeline.json" parameters:params success:^(AFHTTPRequestOperation *operation, NSDictionary *responseObject) {
+    [SYHttpTool get:@"https://api.weibo.com/2/statuses/friends_timeline.json" parameters:params success:^(id json) {
         //取得字典数组,转换成模型数组
-        NSArray *newStatus = [SYStatus objectArrayWithKeyValuesArray:responseObject[@"statuses"]];
-       
-         NSArray *statusFrames = [self statusFrameWithStatuses:newStatus];
+        NSArray *newStatus = [SYStatus objectArrayWithKeyValuesArray:json[@"statuses"]];
+        
+        NSArray *statusFrames = [self statusFrameWithStatuses:newStatus];
         
         //将更多的微博数据，添加到总数组的最后面
         [self.statusFrames addObjectsFromArray:statusFrames];
@@ -222,10 +240,11 @@
         [self.tableView reloadData];
         
         // 结束刷新(隐藏footer)
-        self.tableView.tableFooterView.hidden = YES;
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        [self.tableView footerEndRefreshing];
+        //self.tableView.tableFooterView.hidden = YES;
+    } failure:^(NSError *error) {
         NSLog(@"请求失败 --%@",error);
-      self.tableView.tableFooterView.hidden = YES;
+         [self.tableView footerEndRefreshing];
     }];
 }
 
@@ -233,9 +252,6 @@
  *  获得未读数
  */
 -(void)setupUnreadCount{
-    // 1.请求管理者
-    AFHTTPRequestOperationManager *mgr = [AFHTTPRequestOperationManager manager];
-    
     // 2.拼接请求参数
     SYAccount *account = [SYAccountTool account];
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
@@ -243,21 +259,21 @@
     params[@"uid"] = account.uid;
     
     // 3.发送请求
-    [mgr GET:@"https://rm.api.weibo.com/2/remind/unread_count.json" parameters:params success:^(AFHTTPRequestOperation *operation, NSDictionary *responseObject) {
+    [SYHttpTool get:@"https://rm.api.weibo.com/2/remind/unread_count.json" parameters:params success:^(id json) {
         // @20 --> @"20"
         // NSNumber --> NSString
         // 设置提醒数字(微博的未读数)
-        NSString *status = [responseObject[@"status"] description];
+        NSString *status = [json[@"status"] description];
         if ([status isEqualToString:@"0"]) { // 如果是0，得清空数字
-             // 设置提醒数字,tabBar和用户手机桌面的badgeValue
+            // 设置提醒数字,tabBar和用户手机桌面的badgeValue
             self.tabBarItem.badgeValue = nil;
             [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
         } else { // 非0情况
             self.tabBarItem.badgeValue = status;
             [UIApplication sharedApplication].applicationIconBadgeNumber = status.intValue;
         }
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"请求失败-%@", error);
+    } failure:^(NSError *error) {
+            NSLog(@"请求失败-%@", error);
     }];
     
 }
@@ -386,6 +402,13 @@
      */
     return cell;
 }
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    SYStatusFrame *statusFrame = self.statusFrames[indexPath.row];
+    return statusFrame.cellHeight;
+}
+#pragma mark - UIScrollView的代理方法  配合 上拉加载控件使用
+//  因为使用了MJRefresh，所以没有必要再监听tableView的滑动（到下面刷新）
+/*
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView{
     //scrollView == self.tableView == self.view
     //如果tableView还没有数据，直接返回
@@ -403,16 +426,12 @@
         //加载更多数据
         [self loadMoreStatus];
     }
-    /*
      contentInset：除具体内容以外的边框尺寸
      contentSize: 里面的具体内容（header、cell、footer），除掉contentInset以外的尺寸
      contentOffset:
      1.它可以用来判断scrollView滚动到什么位置
      2.指scrollView的内容超出了scrollView顶部的距离（除掉contentInset以外的尺寸）
-     */
 }
--(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    SYStatusFrame *statusFrame = self.statusFrames[indexPath.row];
-    return statusFrame.cellHeight;
-}
+*/
+
 @end
