@@ -111,7 +111,6 @@
  *  设置输入控件
  */
 -(void)setupTextView{
-    
     SYEmotionTextView *textView = [[SYEmotionTextView alloc] init];
     textView.frame = self.view.bounds;
     textView.placeHolder = @"分享新鲜事...";

@@ -74,6 +74,8 @@
 		A58D27FE1BDF9DF90052DA07 /* UIScrollView+MJRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = A58D27F51BDF9DF90052DA07 /* UIScrollView+MJRefresh.m */; };
 		A58D27FF1BDF9DF90052DA07 /* UIView+MJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = A58D27F71BDF9DF90052DA07 /* UIView+MJExtension.m */; };
 		A58E11FB1BD7CB7B004C7086 /* SYComposePhotosView.m in Sources */ = {isa = PBXBuildFile; fileRef = A58E11FA1BD7CB7B004C7086 /* SYComposePhotosView.m */; };
+		A5A076B31BE05FDD003923CF /* RegexKitLite.m in Sources */ = {isa = PBXBuildFile; fileRef = A5A076B21BE05FDD003923CF /* RegexKitLite.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		A5A076B51BE06269003923CF /* libicucore.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A5A076B41BE06269003923CF /* libicucore.tbd */; };
 		A5A78BC21BCB4E4D006EFB2D /* SYSearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = A5A78BC11BCB4E4D006EFB2D /* SYSearchBar.m */; };
 		A5A78BC51BCB8B66006EFB2D /* SYDropdownMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = A5A78BC41BCB8B66006EFB2D /* SYDropdownMenu.m */; };
 		A5A78BC91BCB9667006EFB2D /* SYTitleMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5A78BC81BCB9667006EFB2D /* SYTitleMenuViewController.m */; };
@@ -270,6 +272,9 @@
 		A58D27F71BDF9DF90052DA07 /* UIView+MJExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+MJExtension.m"; sourceTree = "<group>"; };
 		A58E11F91BD7CB7B004C7086 /* SYComposePhotosView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYComposePhotosView.h; sourceTree = "<group>"; };
 		A58E11FA1BD7CB7B004C7086 /* SYComposePhotosView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYComposePhotosView.m; sourceTree = "<group>"; };
+		A5A076B11BE05FDD003923CF /* RegexKitLite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegexKitLite.h; sourceTree = "<group>"; };
+		A5A076B21BE05FDD003923CF /* RegexKitLite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegexKitLite.m; sourceTree = "<group>"; };
+		A5A076B41BE06269003923CF /* libicucore.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libicucore.tbd; path = usr/lib/libicucore.tbd; sourceTree = SDKROOT; };
 		A5A78BC01BCB4E4D006EFB2D /* SYSearchBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYSearchBar.h; sourceTree = "<group>"; };
 		A5A78BC11BCB4E4D006EFB2D /* SYSearchBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYSearchBar.m; sourceTree = "<group>"; };
 		A5A78BC31BCB8B66006EFB2D /* SYDropdownMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYDropdownMenu.h; sourceTree = "<group>"; };
@@ -364,6 +369,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A5A076B51BE06269003923CF /* libicucore.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -677,6 +683,7 @@
 		A58A023F1BCDF5B3005ACD8D /* Lib */ = {
 			isa = PBXGroup;
 			children = (
+				A5A076B01BE05FDD003923CF /* RegexKitLite */,
 				A58D27E71BDF9DF90052DA07 /* MJRefresh */,
 				A5B758FB1BCF990500B60990 /* SDWebImage */,
 				A58A02641BCE2BEF005ACD8D /* MBProgressHUD */,
@@ -764,6 +771,15 @@
 			path = MJRefresh;
 			sourceTree = "<group>";
 		};
+		A5A076B01BE05FDD003923CF /* RegexKitLite */ = {
+			isa = PBXGroup;
+			children = (
+				A5A076B11BE05FDD003923CF /* RegexKitLite.h */,
+				A5A076B21BE05FDD003923CF /* RegexKitLite.m */,
+			);
+			path = RegexKitLite;
+			sourceTree = "<group>";
+		};
 		A5A78BBF1BCB4D87006EFB2D /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -791,8 +807,8 @@
 				A5DC93FB1BD094A400429898 /* SYLoadMoreFooter.h */,
 				A5DC93FC1BD094A400429898 /* SYLoadMoreFooter.m */,
 				A5DC94001BD0959300429898 /* SYLoadMoreFooter.xib */,
-				A585845E1BD39D010034172C /* SYStatusCell.m */,
 				A58584611BD3A4CD0034172C /* SYStatusCell.h */,
+				A585845E1BD39D010034172C /* SYStatusCell.m */,
 				A539C7181BD4C3DE00758A68 /* SYStatusToolBar.h */,
 				A539C7191BD4C3DE00758A68 /* SYStatusToolBar.m */,
 				A576A4671BD5E69A0048C18A /* SYStatusPhotosView.h */,
@@ -856,6 +872,7 @@
 		A5F5B79B1BC7BA4D0047F482 = {
 			isa = PBXGroup;
 			children = (
+				A5A076B41BE06269003923CF /* libicucore.tbd */,
 				A5F5B7A61BC7BA4D0047F482 /* SYWeiBo */,
 				A5F5B7C01BC7BA4D0047F482 /* SYWeiBoTests */,
 				A5F5B7CB1BC7BA4D0047F482 /* SYWeiBoUITests */,
@@ -1146,6 +1163,7 @@
 				A5B759271BCF990500B60990 /* UIImage+GIF.m in Sources */,
 				A5A78BC21BCB4E4D006EFB2D /* SYSearchBar.m in Sources */,
 				A5B7591F1BCF990500B60990 /* SDImageCache.m in Sources */,
+				A5A076B31BE05FDD003923CF /* RegexKitLite.m in Sources */,
 				A5B7591E1BCF990500B60990 /* NSData+ImageContentType.m in Sources */,
 				A5110E4A1BDDF85300743638 /* MJIvar.m in Sources */,
 				A5110E4E1BDDF85300743638 /* MJTypeEncoding.m in Sources */,

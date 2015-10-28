@@ -148,7 +148,6 @@
 //    
 //    // 刷新表格
 //    [self.tableView reloadData];
-//    [control endRefreshing];
 //    
 //    //显示新的微博数量
 //    [self showNewStatusCount:newStatus.count];

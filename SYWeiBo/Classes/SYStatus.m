@@ -5,11 +5,13 @@
 //  Created by Shen Yu on 15/10/15.
 //  Copyright © 2015年 Shen Yu. All rights reserved.
 //
-
 #import "SYStatus.h"
 #import "SYPhoto.h"
 #import "MJExtension.h"
 #import "NSDate+Extension.h"
+#import "RegexKitLite.h"
+#import <UIKit/UIKit.h>
+#import "SYUser.h"
 @implementation SYStatus
 /**
  *  数组中需要转换的模型类
@@ -19,6 +21,64 @@
 - (NSDictionary *)objectClassInArray
 {
     return @{@"pic_urls" : [SYPhoto class]};
+}
+
+/**
+ *  重写转发的微博模型内容
+ */
+-(void)setRetweeted_status:(SYStatus *)retweeted_status{
+
+    _retweeted_status = retweeted_status;
+    
+    NSString *retweetContent = [NSString stringWithFormat:@"@%@ : %@",retweeted_status.user.name,retweeted_status.text];
+    self.retweeteAttributedText = [self attributedTextWithText:retweetContent];
+}
+
+/**
+ *  重写set方法，微博的正文，普通文字 --->属性文字
+ */
+-(void)setText:(NSString *)text{
+    _text = [text copy];
+    self.attributedText = [self attributedTextWithText:text];
+}
+
+
+
+/**
+ *  普通文字 ---> 属性文字
+ *  @param text 普通文字
+ *
+ *  @return 属性文字
+ */
+-(NSMutableAttributedString *)attributedTextWithText:(NSString *)text{
+    
+    //利用text生成attributedString
+    NSMutableAttributedString *attributedText = [[NSMutableAttributedString alloc] initWithString:text];
+    
+    //表情正则规则
+    NSString *emotionPattern = @"\\[[0-9a-zA-Z\\u4e00-\\u9fa5]+\\]";
+    //@的规则
+    NSString *atPattern = @"\\@[0-9a-zA-Z\\u4e00-\\u9fa5]+";
+    //#话题# 的规则
+    NSString *topicPattern = @"#[0-9a-zA-Z\\u4e00-\\u9fa5]+#";
+    //url的规则
+    NSString *urlPattern = @"\\b(([\\w-]+://?|www[.])[^\\s()<>]+(?:\\([\\w\\d]+\\)|([^[:punct:]\\s]|/)))";
+    NSString *pattern = [NSString stringWithFormat:@"%@|%@|%@|%@",emotionPattern,atPattern,topicPattern,urlPattern];
+    
+    //遍历所有特殊字符串
+    [text enumerateStringsMatchedByRegex:pattern usingBlock:^(NSInteger captureCount, NSString *const __unsafe_unretained *capturedStrings, const NSRange *capturedRanges, volatile BOOL *const stop) {
+        [attributedText addAttribute:NSForegroundColorAttributeName   value:[UIColor redColor] range:*capturedRanges];
+    }];
+    
+    
+    
+    //拼接表情
+//    NSAttributedString *str = [str string]
+    NSTextAttachment *attach  = [[NSTextAttachment alloc] init];
+    attach.image = [UIImage imageNamed:@"d_aini"];
+    attach.bounds = CGRectMake(0, -3, 15, 15);
+    [attributedText insertAttributedString:[NSAttributedString attributedStringWithAttachment:attach ] atIndex:0];
+    return attributedText;
 }
 
 /**
@@ -46,6 +106,8 @@
  // y:年
  */
 -(NSString *)created_at{
+    
+    
     //这是get方法，会被调用多次，每次cell滚动都会调用
     //而对于set方法，只有在字典转模型才会，基本值调用一次
 
@@ -98,16 +160,9 @@
     return _created_at;
     
 }
-//- (void)setSource:(NSString *)source
-//{
-//    // 正则表达式 NSRegularExpression
-//    // 截串 NSString
-//    NSRange range;
-//    range.location = [source rangeOfString:@">"].location + 1;
-//    range.length = [source rangeOfString:@"</"].location - range.location;
-//    //    range.length = [source rangeOfString:@"<" options:NSBackwardsSearch];
-//    _source = [NSString stringWithFormat:@"来自%@", [source substringWithRange:range]];
-//}
+/**
+ *  设置来源
+ */
 -(void)setSource:(NSString *)source{
     if ([source isEqualToString:@""]) return;
     NSRange range;

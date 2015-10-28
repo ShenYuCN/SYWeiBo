@@ -16,6 +16,10 @@
 @property (nonatomic,copy) NSString *idstr;
 /**微博信息内容 */
 @property (nonatomic,copy) NSString *text;
+
+/** 微博信息内容---带属性的内容，包括高亮显示，表情 */
+@property (nonatomic,copy) NSAttributedString  *attributedText;
+
 /**微博作者的用户信息字段 详细*/
 @property (nonatomic,strong) SYUser *user;
 /** 微博创建时间 */
@@ -28,6 +32,9 @@
 
 /** 转发的原微博信息字段，当该微博为转发微博时返回 */
 @property (nonatomic,strong) SYStatus *retweeted_status;
+
+/** 被转发微博信息内容---带属性的内容，包括高亮显示，表情 */
+@property (nonatomic,copy) NSAttributedString  *retweeteAttributedText;
 
 /**	转发数*/
 @property (nonatomic, assign) int reposts_count;
