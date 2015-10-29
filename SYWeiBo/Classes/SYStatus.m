@@ -70,15 +70,19 @@
         [attributedText addAttribute:NSForegroundColorAttributeName   value:[UIColor redColor] range:*capturedRanges];
     }];
     
+    //一定要设计字体，保证计算出来的尺寸正确
+    [attributedText addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:14] range:NSMakeRange(0, attributedText.length)];
     
+    return attributedText;
     
     //拼接表情
-//    NSAttributedString *str = [str string]
-    NSTextAttachment *attach  = [[NSTextAttachment alloc] init];
-    attach.image = [UIImage imageNamed:@"d_aini"];
-    attach.bounds = CGRectMake(0, -3, 15, 15);
-    [attributedText insertAttributedString:[NSAttributedString attributedStringWithAttachment:attach ] atIndex:0];
-    return attributedText;
+    /**
+     NSTextAttachment *attach  = [[NSTextAttachment alloc] init];
+     attach.image = [UIImage imageNamed:@"d_aini"];
+     attach.bounds = CGRectMake(0, -3, 15, 15);
+     [attributedText insertAttributedString:[NSAttributedString attributedStringWithAttachment:attach ] atIndex:0];
+     */
+    
 }
 
 /**
