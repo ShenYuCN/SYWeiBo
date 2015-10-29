@@ -13,6 +13,8 @@
 #import <UIKit/UIKit.h>
 #import "SYUser.h"
 #import "SYTextPart.h"
+#import "SYEmotionTool.h"
+#import "SYEmotion.h"
 @implementation SYStatus
 /**
  *  数组中需要转换的模型类
@@ -107,14 +109,22 @@
         return NSOrderedAscending;
     }];
     
+    UIFont *font = [UIFont systemFontOfSize:14];
+    
     //按顺序拼接每一段字符串
     for (SYTextPart *part in parts) {
         NSAttributedString *subStr = nil;
         if (part.isEmotion) {//是表情
             NSTextAttachment *attach = [[NSTextAttachment alloc] init];
-            attach.image = [UIImage imageNamed:@"d_aini"];
-            attach.bounds = CGRectMake(0, -3, 15, 15);
-            subStr = [NSAttributedString attributedStringWithAttachment:attach];
+            SYEmotion *emotion = [SYEmotionTool emotionWithChs:part.text];
+            if (emotion) {
+                attach.image = [UIImage imageNamed:emotion.png];
+                attach.bounds = CGRectMake(0, -3, font.lineHeight, font.lineHeight);
+                subStr = [NSAttributedString attributedStringWithAttachment:attach];
+            }else{
+                subStr = [[NSAttributedString alloc] initWithString:part.text];
+            }
+            
         }else if (part.isSpecial){//是除表情以外的特殊字符串
             subStr = [[NSAttributedString alloc] initWithString:part.text attributes:@{
                                                                                       NSForegroundColorAttributeName : [UIColor blueColor]}];
@@ -127,7 +137,7 @@
     
     
     //一定要设置字体，保证计算出来的尺寸正确
-    [attributedText addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:14] range:NSMakeRange(0, attributedText.length)];
+    [attributedText addAttribute:NSFontAttributeName value:font range:NSMakeRange(0, attributedText.length)];
     
     return attributedText;
     

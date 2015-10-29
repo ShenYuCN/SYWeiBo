@@ -14,6 +14,7 @@
 #import "MJExtension.h"
 #import "SYEmotionTool.h"
 #import "SYConst.h"
+
 @interface SYEmotionKeyBoard()<SYEmotionTabBarDelegate>
 /** tabBar */
 @property(nonatomic,weak) SYEmotionTabBar *tabBar;
@@ -48,18 +49,14 @@
     if (_defaultListView == nil) {
       
         self.defaultListView = [[SYEmotionListView alloc] init];;
-     
-        NSString *path = [[NSBundle mainBundle] pathForResource:@"EmotionIcons/default/info.plist" ofType:nil];
-        //表情字典数组  转成 模型数组
-        self.defaultListView.emotions = [SYEmotion objectArrayWithKeyValuesArray:[NSArray arrayWithContentsOfFile:path]];
+        self.defaultListView.emotions = [SYEmotionTool defaultEmotions];
     }
     return _defaultListView;
 }
 -(SYEmotionListView *)emojiListView{
     if (_emojiListView == nil) {
         self.emojiListView = [[SYEmotionListView alloc] init];;
-        NSString *path = [[NSBundle mainBundle] pathForResource:@"EmotionIcons/emoji/info.plist" ofType:nil];
-        self.emojiListView.emotions = [SYEmotion objectArrayWithKeyValuesArray:[NSArray arrayWithContentsOfFile:path]];
+        self.emojiListView.emotions = [SYEmotionTool emojiEmotions];
         
         //TODO: 设置背景色直接返回，必须将容器先初始化，再初始化子控件
         //self.defaultListView.backgroundColor = [UIColor redColor];
@@ -69,8 +66,7 @@
 -(SYEmotionListView *)lxhListView{
     if (_lxhListView == nil) {
         self.lxhListView = [[SYEmotionListView alloc] init];
-        NSString *path = [[NSBundle mainBundle] pathForResource:@"EmotionIcons/lxh/info.plist" ofType:nil];
-        self.lxhListView.emotions = [SYEmotion objectArrayWithKeyValuesArray: [NSArray arrayWithContentsOfFile:path]];
+        self.lxhListView.emotions = [SYEmotionTool lxhEmotions];
     }
     return _lxhListView;
 }

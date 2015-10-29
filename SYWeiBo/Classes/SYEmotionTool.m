@@ -7,6 +7,8 @@
 //
 
 #import "SYEmotionTool.h"
+#import "SYEmotion.h"
+#import "MJExtension.h"
 //存储最近表情模型数组沙盒路径
 #define SYRecentEmotionsPath [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:@"emotions.archive"]
 
@@ -49,5 +51,53 @@ static NSMutableArray *_recentEmotions;
     //将表情写入沙盒
     [NSKeyedArchiver archiveRootObject:_recentEmotions toFile:SYRecentEmotionsPath];
     
+}
+
+
+
+
++ (SYEmotion *)emotionWithChs:(NSString *)chs{
+    NSArray *defaultEmotion = [self defaultEmotions];
+    for (SYEmotion  *emotion in defaultEmotion) {
+        if ([emotion.chs isEqualToString:chs]) return emotion;
+    }
+    
+    NSArray *lxhEmotion = [self lxhEmotions];
+    for (SYEmotion  *emotion in lxhEmotion) {
+        if ([emotion.chs isEqualToString:chs]) return emotion;
+    }
+    return nil;
+}
+
+
+//相当于懒加载，只有第一次获取时调用
+static NSArray *_emojiEmotions, *_defaultEmotions, *_lxhEmotions;
+
++(NSArray *)defaultEmotions{
+    
+    if (_defaultEmotions == nil) {
+        NSString *path = [[NSBundle mainBundle] pathForResource:@"EmotionIcons/default/info.plist" ofType:nil];
+        //表情字典数组  --> 模型数组
+        _defaultEmotions =  [SYEmotion objectArrayWithKeyValuesArray:[NSArray arrayWithContentsOfFile:path]];
+    }
+    return _defaultEmotions;
+    
+}
++ (NSArray *)emojiEmotions{
+    if (_emojiEmotions == nil) {
+        NSString *path = [[NSBundle mainBundle] pathForResource:@"EmotionIcons/emoji/info.plist" ofType:nil];
+        //表情字典数组  --> 模型数组
+        _emojiEmotions =  [SYEmotion objectArrayWithKeyValuesArray:[NSArray arrayWithContentsOfFile:path]];
+    }
+    return _emojiEmotions;
+}
+
++ (NSArray *)lxhEmotions{
+    if (_lxhEmotions == nil) {
+        NSString *path = [[NSBundle mainBundle] pathForResource:@"EmotionIcons/lxh/info.plist" ofType:nil];
+        //表情字典数组  --> 模型数组
+        _lxhEmotions =  [SYEmotion objectArrayWithKeyValuesArray:[NSArray arrayWithContentsOfFile:path]];
+    }
+    return _lxhEmotions;
 }
 @end
