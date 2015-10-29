@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A5002C3E1BE1B7F5000757A7 /* SYTextPart.m in Sources */ = {isa = PBXBuildFile; fileRef = A5002C3D1BE1B7F5000757A7 /* SYTextPart.m */; };
 		A505AAC11BD4792500E537DF /* SYPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = A505AAC01BD4792500E537DF /* SYPhoto.m */; };
 		A5110DDF1BDDAEA800743638 /* SYEmotionAttachment.m in Sources */ = {isa = PBXBuildFile; fileRef = A5110DDE1BDDAEA800743638 /* SYEmotionAttachment.m */; };
 		A5110DE61BDDD4E400743638 /* SYEmotionTool.m in Sources */ = {isa = PBXBuildFile; fileRef = A5110DE51BDDD4E400743638 /* SYEmotionTool.m */; };
@@ -140,6 +141,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A5002C3C1BE1B7F5000757A7 /* SYTextPart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYTextPart.h; sourceTree = "<group>"; };
+		A5002C3D1BE1B7F5000757A7 /* SYTextPart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYTextPart.m; sourceTree = "<group>"; };
 		A505AABF1BD4792500E537DF /* SYPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYPhoto.h; sourceTree = "<group>"; };
 		A505AAC01BD4792500E537DF /* SYPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYPhoto.m; sourceTree = "<group>"; };
 		A5110DDD1BDDAEA800743638 /* SYEmotionAttachment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYEmotionAttachment.h; sourceTree = "<group>"; };
@@ -480,6 +483,8 @@
 				A5332ABA1BD3DAA100D394F1 /* SYStatusFrame.m */,
 				A505AABF1BD4792500E537DF /* SYPhoto.h */,
 				A505AAC01BD4792500E537DF /* SYPhoto.m */,
+				A5002C3C1BE1B7F5000757A7 /* SYTextPart.h */,
+				A5002C3D1BE1B7F5000757A7 /* SYTextPart.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -1157,6 +1162,7 @@
 				A58A025B1BCDF5D9005ACD8D /* AFURLResponseSerialization.m in Sources */,
 				A58A025A1BCDF5D9005ACD8D /* AFURLRequestSerialization.m in Sources */,
 				A5283C351BC89EBE00E62BE7 /* SYHomeViewController.m in Sources */,
+				A5002C3E1BE1B7F5000757A7 /* SYTextPart.m in Sources */,
 				A58D27FD1BDF9DF90052DA07 /* UIScrollView+MJExtension.m in Sources */,
 				A5B759221BCF990500B60990 /* SDWebImageDownloader.m in Sources */,
 				A544E3421BCA176A0018BB9C /* UIBarButtonItem+Extension.m in Sources */,

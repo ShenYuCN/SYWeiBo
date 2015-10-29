@@ -12,6 +12,7 @@
 #import "RegexKitLite.h"
 #import <UIKit/UIKit.h>
 #import "SYUser.h"
+#import "SYTextPart.h"
 @implementation SYStatus
 /**
  *  数组中需要转换的模型类
@@ -53,24 +54,79 @@
 -(NSMutableAttributedString *)attributedTextWithText:(NSString *)text{
     
     //利用text生成attributedString
-    NSMutableAttributedString *attributedText = [[NSMutableAttributedString alloc] initWithString:text];
+    NSMutableAttributedString *attributedText = [[NSMutableAttributedString alloc] init];
     
     //表情正则规则
     NSString *emotionPattern = @"\\[[0-9a-zA-Z\\u4e00-\\u9fa5]+\\]";
     //@的规则
-    NSString *atPattern = @"\\@[0-9a-zA-Z\\u4e00-\\u9fa5]+";
+    NSString *atPattern = @"\\@[0-9a-zA-Z\\u4e00-\\u9fa5-_]+";
     //#话题# 的规则
     NSString *topicPattern = @"#[0-9a-zA-Z\\u4e00-\\u9fa5]+#";
     //url的规则
     NSString *urlPattern = @"\\b(([\\w-]+://?|www[.])[^\\s()<>]+(?:\\([\\w\\d]+\\)|([^[:punct:]\\s]|/)))";
     NSString *pattern = [NSString stringWithFormat:@"%@|%@|%@|%@",emotionPattern,atPattern,topicPattern,urlPattern];
     
-    //遍历所有特殊字符串
+    NSMutableArray *parts = [[NSMutableArray alloc] init];
+    
+    //遍历所有 特殊字符串
     [text enumerateStringsMatchedByRegex:pattern usingBlock:^(NSInteger captureCount, NSString *const __unsafe_unretained *capturedStrings, const NSRange *capturedRanges, volatile BOOL *const stop) {
-        [attributedText addAttribute:NSForegroundColorAttributeName   value:[UIColor redColor] range:*capturedRanges];
+        if ((*capturedStrings).length == 0) return ;
+        
+        SYTextPart *part = [[SYTextPart alloc] init];
+        part.text = *capturedStrings;
+        part.special = YES;
+        part.range = *capturedRanges;
+        part.emotion = [part.text hasPrefix:@"["] && [part.text hasSuffix:@"]"];
+        [parts addObject:part];
     }];
     
-    //一定要设计字体，保证计算出来的尺寸正确
+    //遍历所有 普通字符串
+    [text enumerateStringsSeparatedByRegex:pattern usingBlock:^(NSInteger captureCount, NSString *const __unsafe_unretained *capturedStrings, const NSRange *capturedRanges, volatile BOOL *const stop) {
+         if ((*capturedStrings).length == 0) return ;
+        
+        SYTextPart *part = [[SYTextPart alloc] init];
+        part.text = *capturedStrings;
+        part.range = *capturedRanges;
+        
+        [parts addObject:part];
+    }];
+    
+    //数组排序，系统默认按照从小到大
+    [parts sortUsingComparator:^NSComparisonResult(SYTextPart   *part1, SYTextPart  *part2) {
+        // NSOrderedAscending = -1L, NSOrderedSame, NSOrderedDescending
+        // 返回NSOrderedSame:两个一样大
+        // NSOrderedAscending(升序):part2>part1
+        // NSOrderedDescending(降序):part1>part2
+        if (part1.range.location > part2.range.location) {
+            // part1>part2
+            // part1放后面, part2放前面
+            return NSOrderedDescending;
+        }
+        // part1<part2
+        // part1放前面, part2放后面
+        return NSOrderedAscending;
+    }];
+    
+    //按顺序拼接每一段字符串
+    for (SYTextPart *part in parts) {
+        NSAttributedString *subStr = nil;
+        if (part.isEmotion) {//是表情
+            NSTextAttachment *attach = [[NSTextAttachment alloc] init];
+            attach.image = [UIImage imageNamed:@"d_aini"];
+            attach.bounds = CGRectMake(0, -3, 15, 15);
+            subStr = [NSAttributedString attributedStringWithAttachment:attach];
+        }else if (part.isSpecial){//是除表情以外的特殊字符串
+            subStr = [[NSAttributedString alloc] initWithString:part.text attributes:@{
+                                                                                      NSForegroundColorAttributeName : [UIColor blueColor]}];
+        }else{//普通文字
+            subStr = [[NSAttributedString alloc] initWithString:part.text];
+        }
+        [attributedText appendAttributedString:subStr];
+    }
+    
+    
+    
+    //一定要设置字体，保证计算出来的尺寸正确
     [attributedText addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:14] range:NSMakeRange(0, attributedText.length)];
     
     return attributedText;
@@ -108,6 +164,9 @@
  // m:分钟
  // s:秒
  // y:年
+ */
+/**
+ *  微博发布时间显示
  */
 -(NSString *)created_at{
     
