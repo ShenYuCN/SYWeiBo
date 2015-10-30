@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		A5002C3E1BE1B7F5000757A7 /* SYTextPart.m in Sources */ = {isa = PBXBuildFile; fileRef = A5002C3D1BE1B7F5000757A7 /* SYTextPart.m */; };
+		A5002C471BE2062D000757A7 /* UIView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = A5002C461BE2062D000757A7 /* UIView+Extension.m */; };
+		A5002C4D1BE2127B000757A7 /* SYStatusTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = A5002C4C1BE2127B000757A7 /* SYStatusTextView.m */; };
 		A505AAC11BD4792500E537DF /* SYPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = A505AAC01BD4792500E537DF /* SYPhoto.m */; };
 		A5110DDF1BDDAEA800743638 /* SYEmotionAttachment.m in Sources */ = {isa = PBXBuildFile; fileRef = A5110DDE1BDDAEA800743638 /* SYEmotionAttachment.m */; };
 		A5110DE61BDDD4E400743638 /* SYEmotionTool.m in Sources */ = {isa = PBXBuildFile; fileRef = A5110DE51BDDD4E400743638 /* SYEmotionTool.m */; };
@@ -96,11 +98,11 @@
 		A5B7592A1BCF990500B60990 /* UIImageView+HighlightedWebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = A5B759181BCF990500B60990 /* UIImageView+HighlightedWebCache.m */; };
 		A5B7592B1BCF990500B60990 /* UIImageView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = A5B7591A1BCF990500B60990 /* UIImageView+WebCache.m */; };
 		A5B7592C1BCF990500B60990 /* UIView+WebCacheOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = A5B7591C1BCF990500B60990 /* UIView+WebCacheOperation.m */; };
+		A5C309481BE302BA0055F587 /* SYSpecial.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C309471BE302BA0055F587 /* SYSpecial.m */; };
 		A5CA0F981BC9116D00154FF6 /* Test2ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5CA0F971BC9116D00154FF6 /* Test2ViewController.m */; };
 		A5CA0F9B1BC916F900154FF6 /* Test3ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5CA0F9A1BC916F900154FF6 /* Test3ViewController.m */; };
 		A5D28C0C1BC8B18A00BF8BD9 /* Test1ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5D28C0A1BC8B18A00BF8BD9 /* Test1ViewController.m */; };
 		A5D28C0D1BC8B18A00BF8BD9 /* Test1ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A5D28C0B1BC8B18A00BF8BD9 /* Test1ViewController.xib */; };
-		A5D28C101BC8BBAA00BF8BD9 /* UIView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = A5D28C0F1BC8BBAA00BF8BD9 /* UIView+Extension.m */; };
 		A5DC93FD1BD094A500429898 /* SYLoadMoreFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = A5DC93FC1BD094A400429898 /* SYLoadMoreFooter.m */; };
 		A5DC94011BD0959300429898 /* SYLoadMoreFooter.xib in Resources */ = {isa = PBXBuildFile; fileRef = A5DC94001BD0959300429898 /* SYLoadMoreFooter.xib */; };
 		A5E94D8D1BD640870080DC20 /* SYIconView.m in Sources */ = {isa = PBXBuildFile; fileRef = A5E94D8C1BD640870080DC20 /* SYIconView.m */; };
@@ -143,6 +145,10 @@
 /* Begin PBXFileReference section */
 		A5002C3C1BE1B7F5000757A7 /* SYTextPart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYTextPart.h; sourceTree = "<group>"; };
 		A5002C3D1BE1B7F5000757A7 /* SYTextPart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYTextPart.m; sourceTree = "<group>"; };
+		A5002C451BE2062D000757A7 /* UIView+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Extension.h"; sourceTree = "<group>"; };
+		A5002C461BE2062D000757A7 /* UIView+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Extension.m"; sourceTree = "<group>"; };
+		A5002C4B1BE2127B000757A7 /* SYStatusTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYStatusTextView.h; sourceTree = "<group>"; };
+		A5002C4C1BE2127B000757A7 /* SYStatusTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYStatusTextView.m; sourceTree = "<group>"; };
 		A505AABF1BD4792500E537DF /* SYPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYPhoto.h; sourceTree = "<group>"; };
 		A505AAC01BD4792500E537DF /* SYPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYPhoto.m; sourceTree = "<group>"; };
 		A5110DDD1BDDAEA800743638 /* SYEmotionAttachment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYEmotionAttachment.h; sourceTree = "<group>"; };
@@ -317,6 +323,8 @@
 		A5B7591A1BCF990500B60990 /* UIImageView+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+WebCache.m"; sourceTree = "<group>"; };
 		A5B7591B1BCF990500B60990 /* UIView+WebCacheOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+WebCacheOperation.h"; sourceTree = "<group>"; };
 		A5B7591C1BCF990500B60990 /* UIView+WebCacheOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+WebCacheOperation.m"; sourceTree = "<group>"; };
+		A5C309461BE302BA0055F587 /* SYSpecial.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYSpecial.h; sourceTree = "<group>"; };
+		A5C309471BE302BA0055F587 /* SYSpecial.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYSpecial.m; sourceTree = "<group>"; };
 		A5CA0F961BC9116D00154FF6 /* Test2ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Test2ViewController.h; sourceTree = "<group>"; };
 		A5CA0F971BC9116D00154FF6 /* Test2ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Test2ViewController.m; sourceTree = "<group>"; };
 		A5CA0F991BC916F900154FF6 /* Test3ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Test3ViewController.h; sourceTree = "<group>"; };
@@ -324,8 +332,6 @@
 		A5D28C091BC8B18A00BF8BD9 /* Test1ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Test1ViewController.h; sourceTree = "<group>"; };
 		A5D28C0A1BC8B18A00BF8BD9 /* Test1ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Test1ViewController.m; sourceTree = "<group>"; };
 		A5D28C0B1BC8B18A00BF8BD9 /* Test1ViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Test1ViewController.xib; sourceTree = "<group>"; };
-		A5D28C0E1BC8BBAA00BF8BD9 /* UIView+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Extension.h"; sourceTree = "<group>"; };
-		A5D28C0F1BC8BBAA00BF8BD9 /* UIView+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Extension.m"; sourceTree = "<group>"; };
 		A5DC93FB1BD094A400429898 /* SYLoadMoreFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYLoadMoreFooter.h; sourceTree = "<group>"; };
 		A5DC93FC1BD094A400429898 /* SYLoadMoreFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYLoadMoreFooter.m; sourceTree = "<group>"; };
 		A5DC94001BD0959300429898 /* SYLoadMoreFooter.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SYLoadMoreFooter.xib; sourceTree = "<group>"; };
@@ -485,6 +491,8 @@
 				A505AAC01BD4792500E537DF /* SYPhoto.m */,
 				A5002C3C1BE1B7F5000757A7 /* SYTextPart.h */,
 				A5002C3D1BE1B7F5000757A7 /* SYTextPart.m */,
+				A5C309461BE302BA0055F587 /* SYSpecial.h */,
+				A5C309471BE302BA0055F587 /* SYSpecial.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -527,6 +535,8 @@
 		A544E3331BCA0C8E0018BB9C /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				A5002C451BE2062D000757A7 /* UIView+Extension.h */,
+				A5002C461BE2062D000757A7 /* UIView+Extension.m */,
 				A5FC86E11BDB68EC002ABE21 /* NSString+Emoji.h */,
 				A5FC86E21BDB68EC002ABE21 /* NSString+Emoji.m */,
 				A576A4511BD5C70D0048C18A /* NSDate+Extension.h */,
@@ -534,8 +544,6 @@
 				A5332AB61BD3CCAE00D394F1 /* NSString+SY.h */,
 				A5332AB71BD3CCAE00D394F1 /* NSString+SY.m */,
 				A58A02771BCE51C7005ACD8D /* Foundation+Log.m */,
-				A5D28C0E1BC8BBAA00BF8BD9 /* UIView+Extension.h */,
-				A5D28C0F1BC8BBAA00BF8BD9 /* UIView+Extension.m */,
 				A544E3401BCA176A0018BB9C /* UIBarButtonItem+Extension.h */,
 				A544E3411BCA176A0018BB9C /* UIBarButtonItem+Extension.m */,
 				A58A02711BCE41A2005ACD8D /* UIWindow+Extension.h */,
@@ -822,6 +830,8 @@
 				A576A4681BD5E69A0048C18A /* SYStatusPhotosView.m */,
 				A54A49C41BD62B3F00F57ACD /* SYStatusPhotoView.h */,
 				A54A49C51BD62B3F00F57ACD /* SYStatusPhotoView.m */,
+				A5002C4B1BE2127B000757A7 /* SYStatusTextView.h */,
+				A5002C4C1BE2127B000757A7 /* SYStatusTextView.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -1096,7 +1106,6 @@
 				A5294F0D1BD9C8EB00087D65 /* SYEmotion.m in Sources */,
 				A5FC86E01BDB650C002ABE21 /* SYEmotionPageView.m in Sources */,
 				A58A02701BCE3742005ACD8D /* SYAccountTool.m in Sources */,
-				A5D28C101BC8BBAA00BF8BD9 /* UIView+Extension.m in Sources */,
 				A5110E4D1BDDF85300743638 /* MJType.m in Sources */,
 				A5D28C0C1BC8B18A00BF8BD9 /* Test1ViewController.m in Sources */,
 				A5FC86E31BDB68EC002ABE21 /* NSString+Emoji.m in Sources */,
@@ -1133,6 +1142,7 @@
 				A561C2EF1BDCEB6C003F5050 /* UITextView+Extension.m in Sources */,
 				A58E11FB1BD7CB7B004C7086 /* SYComposePhotosView.m in Sources */,
 				A52E45D91BD788900021B784 /* SYComposeToolbar.m in Sources */,
+				A5C309481BE302BA0055F587 /* SYSpecial.m in Sources */,
 				A544E3201BC9FD910018BB9C /* SYNavigationController.m in Sources */,
 				A539C71A1BD4C3DE00758A68 /* SYStatusToolBar.m in Sources */,
 				A5B7591D1BCF990500B60990 /* MKAnnotationView+WebCache.m in Sources */,
@@ -1180,6 +1190,7 @@
 				A5B759251BCF990500B60990 /* SDWebImagePrefetcher.m in Sources */,
 				A5B759281BCF990500B60990 /* UIImage+MultiFormat.m in Sources */,
 				A5110DE61BDDD4E400743638 /* SYEmotionTool.m in Sources */,
+				A5002C471BE2062D000757A7 /* UIView+Extension.m in Sources */,
 				A5110E481BDDF85300743638 /* MJConst.m in Sources */,
 				A5FDADDB1BD92C1E008509C8 /* SYEmotionTabBarButton.m in Sources */,
 				A58D27FF1BDF9DF90052DA07 /* UIView+MJExtension.m in Sources */,
@@ -1191,6 +1202,7 @@
 				A5283C381BC89ED100E62BE7 /* SYMessageCenterViewController.m in Sources */,
 				A5110E511BDDF85300743638 /* NSObject+MJMember.m in Sources */,
 				A5EE159D1BDF5A67009FFF5F /* SYConst.m in Sources */,
+				A5002C4D1BE2127B000757A7 /* SYStatusTextView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

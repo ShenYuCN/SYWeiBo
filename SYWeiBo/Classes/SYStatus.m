@@ -15,6 +15,7 @@
 #import "SYTextPart.h"
 #import "SYEmotionTool.h"
 #import "SYEmotion.h"
+#import "SYSpecial.h"
 @implementation SYStatus
 /**
  *  数组中需要转换的模型类
@@ -34,6 +35,7 @@
     _retweeted_status = retweeted_status;
     
     NSString *retweetContent = [NSString stringWithFormat:@"@%@ : %@",retweeted_status.user.name,retweeted_status.text];
+  
     self.retweeteAttributedText = [self attributedTextWithText:retweetContent];
 }
 
@@ -42,6 +44,8 @@
  */
 -(void)setText:(NSString *)text{
     _text = [text copy];
+    
+    // 利用text生成attributedText
     self.attributedText = [self attributedTextWithText:text];
 }
 
@@ -110,7 +114,7 @@
     }];
     
     UIFont *font = [UIFont systemFontOfSize:14];
-    
+    NSMutableArray *specials = [NSMutableArray array];
     //按顺序拼接每一段字符串
     for (SYTextPart *part in parts) {
         NSAttributedString *subStr = nil;
@@ -128,6 +132,18 @@
         }else if (part.isSpecial){//是除表情以外的特殊字符串
             subStr = [[NSAttributedString alloc] initWithString:part.text attributes:@{
                                                                                       NSForegroundColorAttributeName : [UIColor blueColor]}];
+            
+            //创建特殊对象
+            SYSpecial *special = [[SYSpecial alloc] init];
+            special.text = part.text;
+            NSUInteger loc = attributedText.length;
+            NSUInteger len = part.text.length;
+            special.range = NSMakeRange(loc, len);
+            
+            //添加到 specials 数组
+            [specials addObject:special];
+            
+            
         }else{//普通文字
             subStr = [[NSAttributedString alloc] initWithString:part.text];
         }
@@ -138,6 +154,9 @@
     
     //一定要设置字体，保证计算出来的尺寸正确
     [attributedText addAttribute:NSFontAttributeName value:font range:NSMakeRange(0, attributedText.length)];
+    
+    //将specials 赋值给attributedText属性
+    [attributedText addAttribute:@"specials" value:specials range:NSMakeRange(0, 1)];
     
     return attributedText;
     

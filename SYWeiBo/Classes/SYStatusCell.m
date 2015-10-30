@@ -16,6 +16,7 @@
 #import "NSString+SY.h"
 #import "SYStatusPhotosView.h"
 #import "SYIconView.h"
+#import "SYStatusTextView.h"
 @interface SYStatusCell()
 /**原创微博整体*/
 @property (nonatomic,weak) UIView *originalView;
@@ -32,13 +33,13 @@
 /** 来源 */
 @property (nonatomic,weak) UILabel *sourceLabel;
 /** 正文 */
-@property (nonatomic,weak) UILabel *contentLabel;
+@property (nonatomic,weak) SYStatusTextView *contentLabel;
 
 
 /** 转发微博整体 */
 @property (nonatomic,weak) UIView *retweetView;
 /** 转发微博正文（@+昵称+正文） */
-@property (nonatomic,weak) UILabel *retweetContentLabel;
+@property (nonatomic,weak) SYStatusTextView *retweetContentLabel;
 /** 转发微博配图 */
 @property (nonatomic,weak) SYStatusPhotosView *retweetphotosView;
 
@@ -140,9 +141,8 @@
     self.sourceLabel = sourceLabel;
     
     /** 正文 */
-    UILabel *contentLabel = [[UILabel alloc] init];
+    SYStatusTextView *contentLabel = [[SYStatusTextView alloc] init];
     [originalView addSubview:contentLabel];
-    contentLabel.numberOfLines = 0;
     self.contentLabel = contentLabel;
     contentLabel.font = kSYStatusCellContentFont;
 }
@@ -156,8 +156,7 @@
     self.retweetView = retweetView;
     
     /** 转发微博正文 + 昵称 */
-    UILabel *retweetContentLabel = [[UILabel alloc] init];
-    retweetContentLabel.numberOfLines = 0;
+    SYStatusTextView *retweetContentLabel = [[SYStatusTextView alloc] init];
     retweetContentLabel.font = kSYStatusCellRetweetContentFont;
     [retweetView addSubview:retweetContentLabel];
     self.retweetContentLabel = retweetContentLabel;
