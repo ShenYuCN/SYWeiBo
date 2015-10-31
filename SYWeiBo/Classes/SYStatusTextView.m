@@ -14,6 +14,7 @@
 
 -(instancetype)initWithFrame:(CGRect)frame{
     if (self =[super initWithFrame:frame] ) {
+        self.backgroundColor = [UIColor clearColor];
         //不可编辑
         self.editable = NO;
         //内边距
