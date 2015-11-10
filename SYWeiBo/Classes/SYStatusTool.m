@@ -110,7 +110,6 @@ static FMDatabase *_db;
     } else {
         resultSet = [_db executeQuery:@"SELECT * FROM t_home_status WHERE access_token = ? ORDER BY status_idstr DESC limit ?;", homeStatusesParam.access_token, homeStatusesParam.count];
     }
-    
     // 遍历查询结果
     while (resultSet.next) {
         NSData *statusDictData = [resultSet objectForColumnName:@"status_dict"];

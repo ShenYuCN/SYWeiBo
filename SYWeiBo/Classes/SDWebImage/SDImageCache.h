@@ -35,6 +35,7 @@ typedef void(^SDWebImageCalculateSizeBlock)(NSUInteger fileCount, NSUInteger tot
  * asynchronous so it doesn’t add unnecessary latency to the UI.
  */
 @interface SDImageCache : NSObject
+-(NSString *)diskCachePath;
 
 /**
  * The maximum "total cost" of the in-memory image cache. The cost function is the number of pixels held in memory.

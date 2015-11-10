@@ -10,17 +10,28 @@
 #import "UIView+Extension.h"
 #import "SYProfileViewController.h"
 #import "Test2ViewController.h"
+#import "NSString+File.h"
+#import "SDImageCache.h"
 @interface Test1ViewController ()
-
+@property (weak, nonatomic) IBOutlet UILabel *sizeLabel;
+@property (weak, nonatomic) IBOutlet UITextField *size;
 @end
 
 @implementation Test1ViewController
+-(void)viewDidLoad{
+    [super viewDidLoad];
+    
+    NSString *path = [[SDImageCache sharedImageCache] diskCachePath];
+    long long size = [path fileSize];
+    self.sizeLabel.text = [NSString stringWithFormat:@"%.1fM",size / (1000.0 * 1000.0)] ;
+}
 
 
 -(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
     
-    Test2ViewController *test2 = [[Test2ViewController alloc] init];
-    [self.navigationController pushViewController:test2 animated:YES];
+    NSFileManager *mgr = [NSFileManager defaultManager];
+    NSString *path = [[SDImageCache sharedImageCache] diskCachePath];
+    [mgr removeItemAtPath:path error:nil];
 }
 
 @end
