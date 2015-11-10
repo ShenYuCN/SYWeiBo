@@ -22,6 +22,9 @@
 #import "SYStatusFrame.h"
 #import "SYHttpTool.h"
 #import "MJRefresh.h"
+#import "SYStatusTool.h"
+#import "SYHomeStatusesParam.h"
+#import "SYHomeStatusesResult.h"
 @interface SYHomeViewController ()<SYDropdownmMenuDelegate>
 /**
  *  微博数组（里面放的都是SYStatuFrame模型，一个模型就是一条微博,包含SYStatus数据和Frame）
@@ -156,23 +159,25 @@
 //    return;
     
     //2.拼接参数
-    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    SYHomeStatusesParam *param = [[SYHomeStatusesParam alloc] init];
     SYAccount *account = [SYAccountTool account];
-    params[@"access_token"] = account.access_token;
+    param.access_token = account.access_token;
     SYStatusFrame *firstStatusFrame = [self.statusFrames firstObject];
     if (firstStatusFrame) {
-        params[@"since_id"] = firstStatusFrame.status.idstr;
+        param.since_id = firstStatusFrame.status.idstr;
     }
+    
+//    [SYHttpTool get:@"https://api.weibo.com/2/statuses/friends_timeline.json" parameters:params success:^(id json) {
     //3.发送请求
-    [SYHttpTool get:@"https://api.weibo.com/2/statuses/friends_timeline.json" parameters:params success:^(id json) {
-        
+    [SYStatusTool homeStatusesWithParam:param success:^(SYHomeStatusesResult *result) {
         //取得字典数组,转换成模型数组
-        NSArray *newStatus = [SYStatus objectArrayWithKeyValuesArray:json[@"statuses"] ];
+//        NSArray *newStatus = [SYStatus objectArrayWithKeyValuesArray:json[@"statuses"] ];
+        
         //将SYStatus模型转为SYStatusFrame模型
-        NSArray *statusFrames = [self statusFrameWithStatuses:newStatus];
+        NSArray *statusFrames = [self statusFrameWithStatuses:result.statuses];
         
         //将最新的数据添加到数组最前面
-        NSRange range = NSMakeRange(0, newStatus.count);
+        NSRange range = NSMakeRange(0, statusFrames.count);
         NSIndexSet *set = [[NSIndexSet alloc] initWithIndexesInRange:range];
         [self.statusFrames insertObjects:statusFrames atIndexes:set];
         
@@ -182,7 +187,7 @@
         [self.tableView headerEndRefreshing];
         
         //显示新的微博数量
-        [self showNewStatusCount:newStatus.count];
+        [self showNewStatusCount:statusFrames.count];
     } failure:^(NSError *error) {
         NSLog(@"请求失败 --%@",error);
          [self.tableView headerEndRefreshing];
@@ -214,23 +219,27 @@
  */
 -(void)loadMoreStatus{
     //2.拼接参数
-    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    SYHomeStatusesParam *param = [[SYHomeStatusesParam alloc] init];
     SYAccount *account = [SYAccountTool account];
-    params[@"access_token"] = account.access_token;
+    param.access_token = account.access_token;
      // 取出最后面的微博（最新的微博，ID最大的微博）
     SYStatusFrame *lastStatusFrame = [self.statusFrames lastObject];
     if (lastStatusFrame) {
         // 若指定此参数，则返回ID小于或等于max_id的微博，默认为0。
         // id这种数据一般都是比较大的，一般转成整数的话，最好是long long类型
         long long maxId = lastStatusFrame.status.idstr.longLongValue - 1;
-        params[@"max_id"] = @(maxId);
+        param.max_id = @(maxId);
     }
+ 
+//    [SYHttpTool get:@"https://api.weibo.com/2/statuses/friends_timeline.json" parameters:params success:^(id json) {
+    
     //3.发送请求
-    [SYHttpTool get:@"https://api.weibo.com/2/statuses/friends_timeline.json" parameters:params success:^(id json) {
-        //取得字典数组,转换成模型数组
-        NSArray *newStatus = [SYStatus objectArrayWithKeyValuesArray:json[@"statuses"]];
+    [SYStatusTool homeStatusesWithParam:param success:^(SYHomeStatusesResult *result) {
         
-        NSArray *statusFrames = [self statusFrameWithStatuses:newStatus];
+        //取得字典数组,转换成模型数组
+//        NSArray *newStatus = [SYStatus objectArrayWithKeyValuesArray:json[@"statuses"]];
+        
+        NSArray *statusFrames = [self statusFrameWithStatuses:result.statuses];
         
         //将更多的微博数据，添加到总数组的最后面
         [self.statusFrames addObjectsFromArray:statusFrames];

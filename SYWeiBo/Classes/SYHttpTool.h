@@ -33,7 +33,6 @@
  *
  *  @param URLString  url地址
  *  @param parameters 要传递的参数
- *  @param block      <#block description#>
  *  @param success    请求成功执行的代码块
  *  @param failure    请求失败执行的代码块
  */
