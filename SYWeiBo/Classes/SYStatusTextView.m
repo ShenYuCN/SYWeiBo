@@ -9,6 +9,8 @@
 #import "SYStatusTextView.h"
 #import "SYSpecial.h"
 #define SYStatusTextViewCoverTag 999
+#define SYSpecialText @"SYSpecialText"
+#define SYSpecialDidSelectedNotification  @"SYSpecialDidSelectedNotification"
 
 @implementation SYStatusTextView
 
@@ -38,14 +40,8 @@
     SYSpecial *special = [self touchingSpecialWithPoint:point];
     
     // 在被触摸的特殊字符串 后面 加一段高亮背景
-    for (NSValue *rectValue in special.rects) {
-        UIView *view = [[UIView alloc] init];
-        view.backgroundColor = [UIColor colorWithRed:0 green:0 blue:1 alpha:0.3];
-        view.frame = rectValue.CGRectValue;
-        view.tag = SYStatusTextViewCoverTag;
-        view.layer.cornerRadius = 5;
-        [self insertSubview:view atIndex:0];
-    }
+    [self showLinkBackground:special.rects];
+   
     
 }
 
@@ -59,7 +55,7 @@
     
     for (SYSpecial *special in specials) {
         
-        //通过设置 self.selectedRange  间接设置 self.selectedTextRange
+        //通过设置 self.selectedRange  间接设置 self.select edTextRange
         self.selectedRange = special.range;
         
         //获得选中范围的 矩形框数组
@@ -102,22 +98,46 @@
     
     return nil;
 }
+/**
+ *  显示链接的背景
+ */
+- (void)showLinkBackground:(NSArray *)rects{
+    for (NSValue *rectValue in rects) {
+        UIView *view = [[UIView alloc] init];
+        view.backgroundColor = [UIColor colorWithRed:0 green:0 blue:1 alpha:0.3];
+        view.frame = rectValue.CGRectValue;
+        view.tag = SYStatusTextViewCoverTag;
+        view.layer.cornerRadius = 5;
+        [self insertSubview:view atIndex:0];
+    }
+}
 
 -(void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.25 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [self touchesCancelled:touches withEvent:event];
-    });
+    
+    UITouch *touche = [touches anyObject];
+    CGPoint point = [touche locationInView:touche.view];
+        
+    SYSpecial *special = [self touchingSpecialWithPoint:point];
+    if (special) {
+        [[NSNotificationCenter defaultCenter] postNotificationName: SYSpecialDidSelectedNotification object:nil userInfo:@{SYSpecialText : special.text}];
+    }
+    
+    
+    [self touchesCancelled:touches withEvent:event];
 
 }
 
 -(void)touchesCancelled:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
     
-    for (UIView *view in self.subviews) {
-        if (view.tag == SYStatusTextViewCoverTag) {
-            [view removeFromSuperview];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.25 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        
+        for (UIView *view in self.subviews) {
+            if (view.tag == SYStatusTextViewCoverTag) {
+                [view removeFromSuperview];
+            }
         }
-    }
-
+        
+    });
 }
 
 /**

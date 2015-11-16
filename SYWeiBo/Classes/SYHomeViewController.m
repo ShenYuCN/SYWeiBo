@@ -25,6 +25,11 @@
 #import "SYStatusTool.h"
 #import "SYHomeStatusesParam.h"
 #import "SYHomeStatusesResult.h"
+
+
+#define SYSpecialText @"SYSpecialText"
+#define SYSpecialDidSelectedNotification  @"SYSpecialDidSelectedNotification"
+
 @interface SYHomeViewController ()<SYDropdownmMenuDelegate>
 /**
  *  微博数组（里面放的都是SYStatuFrame模型，一个模型就是一条微博,包含SYStatus数据和Frame）
@@ -61,6 +66,9 @@
     
     //上拉加载
     [self setUpRefresh];
+    
+    // 监听链接选中的通知
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(specialDidSelected:) name:SYSpecialDidSelectedNotification object:nil];
     
     //获得未读数
     NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:3.0 target:self selector:@selector(setupUnreadCount) userInfo:nil repeats:YES];
@@ -254,6 +262,18 @@
         NSLog(@"请求失败 --%@",error);
          [self.tableView footerEndRefreshing];
     }];
+}
+
+- (void)specialDidSelected:(NSNotification *)note{
+    
+    NSString *specialText = note.userInfo[SYSpecialText];
+    if ([specialText hasPrefix:@"http"]) {
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:specialText]];
+    }else{
+        // 跳转控制器
+        NSLog(@"选中了非HTTP链接---%@", note.userInfo[SYSpecialText]);
+    }
+
 }
 
 /**

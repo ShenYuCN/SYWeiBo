@@ -7,5 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
+
 @interface SYStatusTextView : UITextView
 @end
