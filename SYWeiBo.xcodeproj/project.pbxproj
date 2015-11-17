@@ -62,6 +62,10 @@
 		A576F7091BF195E100754A2F /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A576F7081BF195E100754A2F /* libsqlite3.0.tbd */; };
 		A576F70C1BF1AE5400754A2F /* SYHomeStatusesResult.m in Sources */ = {isa = PBXBuildFile; fileRef = A576F70B1BF1AE5400754A2F /* SYHomeStatusesResult.m */; };
 		A5840C871BFB0C86003E0718 /* UIImage+SY.m in Sources */ = {isa = PBXBuildFile; fileRef = A5840C861BFB0C86003E0718 /* UIImage+SY.m */; };
+		A5840C8A1BFB182E003E0718 /* SYCommonArrowItem.m in Sources */ = {isa = PBXBuildFile; fileRef = A5840C891BFB182E003E0718 /* SYCommonArrowItem.m */; };
+		A5840C8D1BFB1870003E0718 /* SYCommonSwitchItem.m in Sources */ = {isa = PBXBuildFile; fileRef = A5840C8C1BFB1870003E0718 /* SYCommonSwitchItem.m */; };
+		A5840C901BFB2291003E0718 /* SYCommonLabelItem.m in Sources */ = {isa = PBXBuildFile; fileRef = A5840C8F1BFB2291003E0718 /* SYCommonLabelItem.m */; };
+		A5840C931BFB261A003E0718 /* SYBadgeView.m in Sources */ = {isa = PBXBuildFile; fileRef = A5840C921BFB261A003E0718 /* SYBadgeView.m */; };
 		A585845F1BD39D010034172C /* SYStatusCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A585845E1BD39D010034172C /* SYStatusCell.m */; };
 		A58A023E1BCDEBF1005ACD8D /* SYOAuthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A58A023D1BCDEBF1005ACD8D /* SYOAuthViewController.m */; };
 		A58A02541BCDF5D9005ACD8D /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = A58A02421BCDF5D8005ACD8D /* AFHTTPRequestOperation.m */; };
@@ -263,6 +267,14 @@
 		A576F70B1BF1AE5400754A2F /* SYHomeStatusesResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYHomeStatusesResult.m; sourceTree = "<group>"; };
 		A5840C851BFB0C86003E0718 /* UIImage+SY.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+SY.h"; sourceTree = "<group>"; };
 		A5840C861BFB0C86003E0718 /* UIImage+SY.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+SY.m"; sourceTree = "<group>"; };
+		A5840C881BFB182E003E0718 /* SYCommonArrowItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYCommonArrowItem.h; sourceTree = "<group>"; };
+		A5840C891BFB182E003E0718 /* SYCommonArrowItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYCommonArrowItem.m; sourceTree = "<group>"; };
+		A5840C8B1BFB1870003E0718 /* SYCommonSwitchItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYCommonSwitchItem.h; sourceTree = "<group>"; };
+		A5840C8C1BFB1870003E0718 /* SYCommonSwitchItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYCommonSwitchItem.m; sourceTree = "<group>"; };
+		A5840C8E1BFB2291003E0718 /* SYCommonLabelItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYCommonLabelItem.h; sourceTree = "<group>"; };
+		A5840C8F1BFB2291003E0718 /* SYCommonLabelItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYCommonLabelItem.m; sourceTree = "<group>"; };
+		A5840C911BFB261A003E0718 /* SYBadgeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYBadgeView.h; sourceTree = "<group>"; };
+		A5840C921BFB261A003E0718 /* SYBadgeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYBadgeView.m; sourceTree = "<group>"; };
 		A585845E1BD39D010034172C /* SYStatusCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYStatusCell.m; sourceTree = "<group>"; };
 		A58584601BD3A4A30034172C /* SYStatus.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYStatus.h; sourceTree = "<group>"; };
 		A58584611BD3A4CD0034172C /* SYStatusCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYStatusCell.h; sourceTree = "<group>"; };
@@ -891,6 +903,8 @@
 				A52E45D41BD75C9F0021B784 /* SYTextView.m */,
 				A5EB484E1BFAFA19009A18A1 /* SYCommonCell.h */,
 				A5EB484F1BFAFA19009A18A1 /* SYCommonCell.m */,
+				A5840C911BFB261A003E0718 /* SYBadgeView.h */,
+				A5840C921BFB261A003E0718 /* SYBadgeView.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -962,10 +976,16 @@
 		A5EB48431BFAF739009A18A1 /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				A5EB48441BFAF764009A18A1 /* SYCommonItem.h */,
-				A5EB48451BFAF764009A18A1 /* SYCommonItem.m */,
 				A5EB48481BFAF78F009A18A1 /* SYCommonGroup.h */,
 				A5EB48491BFAF78F009A18A1 /* SYCommonGroup.m */,
+				A5EB48441BFAF764009A18A1 /* SYCommonItem.h */,
+				A5EB48451BFAF764009A18A1 /* SYCommonItem.m */,
+				A5840C881BFB182E003E0718 /* SYCommonArrowItem.h */,
+				A5840C891BFB182E003E0718 /* SYCommonArrowItem.m */,
+				A5840C8B1BFB1870003E0718 /* SYCommonSwitchItem.h */,
+				A5840C8C1BFB1870003E0718 /* SYCommonSwitchItem.m */,
+				A5840C8E1BFB2291003E0718 /* SYCommonLabelItem.h */,
+				A5840C8F1BFB2291003E0718 /* SYCommonLabelItem.m */,
 			);
 			name = Common;
 			sourceTree = "<group>";
@@ -1220,6 +1240,7 @@
 				A5F5B7A91BC7BA4D0047F482 /* main.m in Sources */,
 				A52E45D51BD75C9F0021B784 /* SYTextView.m in Sources */,
 				A5FF339A1BD8820800C439AD /* SYEmotionListView.m in Sources */,
+				A5840C901BFB2291003E0718 /* SYCommonLabelItem.m in Sources */,
 				A58A02591BCDF5D9005ACD8D /* AFURLConnectionOperation.m in Sources */,
 				A55D68371BD6812700C0D2B2 /* SYComposeViewController.m in Sources */,
 				A5B759261BCF990500B60990 /* UIButton+WebCache.m in Sources */,
@@ -1236,6 +1257,7 @@
 				A5110E491BDDF85300743638 /* MJFoundation.m in Sources */,
 				A58A02561BCDF5D9005ACD8D /* AFHTTPSessionManager.m in Sources */,
 				A567D4541BCBDF7C006098A4 /* SYTabBar.m in Sources */,
+				A5840C931BFB261A003E0718 /* SYBadgeView.m in Sources */,
 				A5283C3B1BC89EE400E62BE7 /* SYDiscoverViewController.m in Sources */,
 				A5283C3E1BC89EF400E62BE7 /* SYProfileViewController.m in Sources */,
 				A58D27F91BDF9DF90052DA07 /* MJRefreshBaseView.m in Sources */,
@@ -1249,6 +1271,7 @@
 				A58E11FB1BD7CB7B004C7086 /* SYComposePhotosView.m in Sources */,
 				A52E45D91BD788900021B784 /* SYComposeToolbar.m in Sources */,
 				A5EB48501BFAFA19009A18A1 /* SYCommonCell.m in Sources */,
+				A5840C8A1BFB182E003E0718 /* SYCommonArrowItem.m in Sources */,
 				A5C309481BE302BA0055F587 /* SYSpecial.m in Sources */,
 				A544E3201BC9FD910018BB9C /* SYNavigationController.m in Sources */,
 				A539C71A1BD4C3DE00758A68 /* SYStatusToolBar.m in Sources */,
@@ -1308,6 +1331,7 @@
 				A5002C471BE2062D000757A7 /* UIView+Extension.m in Sources */,
 				A5110E481BDDF85300743638 /* MJConst.m in Sources */,
 				A5EB484A1BFAF78F009A18A1 /* SYCommonGroup.m in Sources */,
+				A5840C8D1BFB1870003E0718 /* SYCommonSwitchItem.m in Sources */,
 				A5FDADDB1BD92C1E008509C8 /* SYEmotionTabBarButton.m in Sources */,
 				A58D27FF1BDF9DF90052DA07 /* UIView+MJExtension.m in Sources */,
 				A5A78BC51BCB8B66006EFB2D /* SYDropdownMenu.m in Sources */,

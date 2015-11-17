@@ -15,7 +15,7 @@
 /** 组尾 */
 @property (nonatomic,copy) NSString *footer;
 
-/** 这组的所有行模型（每一行都是SYCommonItem模型） */
+/** 这组的所有行模型（每一行都是SYCommonItem以及子类模型） */
 @property (nonatomic,strong) NSArray *items;
 
 

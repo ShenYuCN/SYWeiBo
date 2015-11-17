@@ -15,6 +15,8 @@
 @property (nonatomic,copy) NSString *title;
 /** 子标题 */
 @property (nonatomic,copy) NSString *subTitle;
+/** 右边显示的数字标记 */
+@property (nonatomic, copy) NSString *badgeValue;
 
 + (instancetype)itemWithTitle:(NSString *)title icon:(NSString *)icon;
 + (instancetype)itemWithTitle:(NSString *)title;

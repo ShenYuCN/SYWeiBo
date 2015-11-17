@@ -11,7 +11,7 @@
 @implementation SYCommonItem
 
 + (instancetype)itemWithTitle:(NSString *)title icon:(NSString *)icon{
-    SYCommonItem *item = [[SYCommonItem alloc] init];
+    SYCommonItem *item = [[self alloc] init];
     item.title = title;
     item.icon = icon;
     return item;

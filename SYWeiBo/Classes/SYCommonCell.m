@@ -10,8 +10,37 @@
 #import "SYCommonItem.h"
 #import "UIView+Extension.h"
 #import "UIImage+SY.h"
+#import "SYCommonArrowItem.h"
+#import "SYCommonLabelItem.h"
+#import "SYCommonSwitchItem.h"
+#import "NSString+SY.h"
+#import "SYBadgeView.h"
+@interface SYCommonCell()
+@property(nonatomic,strong) UISwitch *rightSwitch;
+@property (nonatomic,strong) UIImageView *rightArrow;
+@property (nonatomic,strong) UILabel *rightLabel;
+@end
 @implementation SYCommonCell
-
+-(UISwitch *)rightSwitch{
+    if (_rightSwitch == nil) {
+        self.rightSwitch = [[UISwitch alloc] init];
+    }
+    return _rightSwitch;
+}
+-(UIImageView *)rightArrow{
+    if (_rightArrow == nil) {
+        self.rightArrow = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"common_icon_arrow"]];
+    }
+    return _rightArrow;
+}
+- (UILabel *)rightLabel{
+    if (_rightLabel == nil) {
+        self.rightLabel = [[UILabel alloc] init];
+        self.rightLabel.textColor = [UIColor lightGrayColor];
+        self.rightLabel.font = [UIFont systemFontOfSize:13];
+    }
+    return _rightLabel;
+}
 #pragma mark - 初始化
 + (instancetype)cellWithTableView:(UITableView *)tableView{
     static NSString *ID = @"common";
@@ -74,9 +103,31 @@
 #pragma mark - setter方法设置item
 -(void)setItem:(SYCommonItem *)item{
     _item = item;
+    
+    //设置cell的基本数据
     self.imageView.image = [UIImage imageNamed:item.icon];
     self.textLabel.text = item.title;
     self.detailTextLabel.text = item.subTitle;
+    
+    
+    //设置右边内容
+    if (item.badgeValue) { //如果有提醒数字
+        SYBadgeView *badgeView = [[SYBadgeView alloc] init];
+        badgeView.badgeValue = item.badgeValue;
+        self.accessoryView = badgeView;
+    }else if ([item isKindOfClass:[SYCommonArrowItem class]]) { // 箭头
+        self.accessoryView = self.rightArrow;
+    }else if ([item isKindOfClass:[SYCommonSwitchItem class]]){ // 开关
+        self.accessoryView = self.rightSwitch;
+    }else if ([item isKindOfClass:[SYCommonLabelItem class]]){ // 文本
+        SYCommonLabelItem *labelItem = (SYCommonLabelItem *)item;
+        self.rightLabel.text = labelItem.text;
+        // 根据文字计算尺寸
+        self.rightLabel.size = [labelItem.text sizeWithFont:self.rightLabel.font];
+        self.accessoryView = self.rightLabel;
+    }else{
+        self.accessoryView = nil;
+    }
     
 }
 

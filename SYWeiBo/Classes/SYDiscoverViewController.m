@@ -9,9 +9,12 @@
 #import "SYDiscoverViewController.h"
 #import "UIView+Extension.h"
 #import "SYSearchBar.h"
+#import "SYCommonItem.h"
 #import "SYCommonCell.h"
 #import "SYCommonGroup.h"
-#import "SYCommonItem.h"
+#import "SYCommonSwitchItem.h"
+#import "SYCommonArrowItem.h"
+#import "SYCommonLabelItem.h"
 @interface SYDiscoverViewController ()<UITextFieldDelegate>
 @property (nonatomic,strong) NSMutableArray *groups;
 
@@ -50,6 +53,13 @@
     [self setupGroup2];
 }
 - (void)setupGroup0{
+    // 3.设置组的所有行数据
+    SYCommonItem *hotStatus = [SYCommonArrowItem itemWithTitle:@"热门微博" icon:@"hot_status"];
+    hotStatus.subTitle = @"笑话，娱乐，神最右都搬到这啦";
+    
+    SYCommonItem *findPeople = [SYCommonArrowItem itemWithTitle:@"找人" icon:@"find_people"];
+    findPeople.subTitle = @"名人、有意思的人尽在这里";
+    
     // 1.创建组
     SYCommonGroup *group = [SYCommonGroup group];
     [self.groups addObject:group];
@@ -57,13 +67,6 @@
     // 2.设置组的基本数据
     group.header = @"第0组头部";
     group.footer = @"第0组尾部的详细信息";
-    
-    // 3.设置组的所有行数据
-    SYCommonItem *hotStatus = [SYCommonItem itemWithTitle:@"热门微博" icon:@"hot_status"];
-    hotStatus.subTitle = @"笑话，娱乐，神最右都搬到这啦";
-    
-    SYCommonItem *findPeople = [SYCommonItem itemWithTitle:@"找人" icon:@"find_people"];
-    findPeople.subTitle = @"名人、有意思的人尽在这里";
     
     group.items = @[hotStatus, findPeople];
 }
@@ -73,9 +76,9 @@
     [self.groups addObject:group];
     
     // 2.设置组的所有行数据
-    SYCommonItem *gameCenter = [SYCommonItem itemWithTitle:@"游戏中心" icon:@"game_center"];
+    SYCommonArrowItem *gameCenter = [SYCommonArrowItem itemWithTitle:@"游戏中心" icon:@"game_center"];
     SYCommonItem *near = [SYCommonItem itemWithTitle:@"周边" icon:@"near"];
-    SYCommonItem *app = [SYCommonItem itemWithTitle:@"应用" icon:@"app"];
+    SYCommonSwitchItem *app = [SYCommonSwitchItem itemWithTitle:@"应用" icon:@"app"];
     
     group.items = @[gameCenter, near, app];
 }
@@ -86,10 +89,13 @@
     [self.groups addObject:group];
     
     // 2.设置组的所有行数据
-    SYCommonItem *video = [SYCommonItem itemWithTitle:@"视频" icon:@"video"];
+    SYCommonLabelItem *video = [SYCommonLabelItem itemWithTitle:@"视频" icon:@"video"];
+    video.text = @"这是右边的文字";
     SYCommonItem *music = [SYCommonItem itemWithTitle:@"音乐" icon:@"music"];
     SYCommonItem *movie = [SYCommonItem itemWithTitle:@"电影" icon:@"movie"];
+    movie.badgeValue = @"111";
     SYCommonItem *cast = [SYCommonItem itemWithTitle:@"播客" icon:@"cast"];
+    cast.badgeValue = @"3";
     SYCommonItem *more = [SYCommonItem itemWithTitle:@"更多" icon:@"more"];
     
     group.items = @[video, music, movie, cast, more];
@@ -122,5 +128,8 @@
     return cell;
 }
 
-
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
+    SYCommonGroup *group = self.groups[section];
+    return group.header;
+}
 @end
