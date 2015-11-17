@@ -41,7 +41,7 @@
     
     //判断是否为回调地址
     if (range.length != 0) {
-        int fromIndex = range.location + range.length;
+        NSUInteger fromIndex = range.location + range.length;
         NSString *code = [url substringFromIndex:fromIndex];
         [self accessTokenWithCode:code];
         
