@@ -17,6 +17,10 @@
 @property (nonatomic,copy) NSString *subTitle;
 /** 右边显示的数字标记 */
 @property (nonatomic, copy) NSString *badgeValue;
+/** 跳转的目标控制器 */
+@property (nonatomic,assign) Class destVc;
+/** Block,点击cell做的操作 */
+@property (nonatomic,copy) void (^operation)();
 
 + (instancetype)itemWithTitle:(NSString *)title icon:(NSString *)icon;
 + (instancetype)itemWithTitle:(NSString *)title;

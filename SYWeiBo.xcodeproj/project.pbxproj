@@ -116,6 +116,9 @@
 		A5C309481BE302BA0055F587 /* SYSpecial.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C309471BE302BA0055F587 /* SYSpecial.m */; };
 		A5CA0F981BC9116D00154FF6 /* Test2ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5CA0F971BC9116D00154FF6 /* Test2ViewController.m */; };
 		A5CA0F9B1BC916F900154FF6 /* Test3ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5CA0F9A1BC916F900154FF6 /* Test3ViewController.m */; };
+		A5D1E0191BFC0BBD00A88BFA /* SYOneTempController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5D1E0171BFC0BBD00A88BFA /* SYOneTempController.m */; };
+		A5D1E01A1BFC0BBD00A88BFA /* SYOneTempController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A5D1E0181BFC0BBD00A88BFA /* SYOneTempController.xib */; };
+		A5D1E01D1BFC0F5700A88BFA /* SYCommonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5D1E01C1BFC0F5700A88BFA /* SYCommonViewController.m */; };
 		A5D28C0C1BC8B18A00BF8BD9 /* Test1ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5D28C0A1BC8B18A00BF8BD9 /* Test1ViewController.m */; };
 		A5D28C0D1BC8B18A00BF8BD9 /* Test1ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A5D28C0B1BC8B18A00BF8BD9 /* Test1ViewController.xib */; };
 		A5DC93FD1BD094A500429898 /* SYLoadMoreFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = A5DC93FC1BD094A400429898 /* SYLoadMoreFooter.m */; };
@@ -377,6 +380,11 @@
 		A5CA0F971BC9116D00154FF6 /* Test2ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Test2ViewController.m; sourceTree = "<group>"; };
 		A5CA0F991BC916F900154FF6 /* Test3ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Test3ViewController.h; sourceTree = "<group>"; };
 		A5CA0F9A1BC916F900154FF6 /* Test3ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Test3ViewController.m; sourceTree = "<group>"; };
+		A5D1E0161BFC0BBD00A88BFA /* SYOneTempController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYOneTempController.h; sourceTree = "<group>"; };
+		A5D1E0171BFC0BBD00A88BFA /* SYOneTempController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYOneTempController.m; sourceTree = "<group>"; };
+		A5D1E0181BFC0BBD00A88BFA /* SYOneTempController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SYOneTempController.xib; sourceTree = "<group>"; };
+		A5D1E01B1BFC0F5700A88BFA /* SYCommonViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYCommonViewController.h; sourceTree = "<group>"; };
+		A5D1E01C1BFC0F5700A88BFA /* SYCommonViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYCommonViewController.m; sourceTree = "<group>"; };
 		A5D28C091BC8B18A00BF8BD9 /* Test1ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Test1ViewController.h; sourceTree = "<group>"; };
 		A5D28C0A1BC8B18A00BF8BD9 /* Test1ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Test1ViewController.m; sourceTree = "<group>"; };
 		A5D28C0B1BC8B18A00BF8BD9 /* Test1ViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Test1ViewController.xib; sourceTree = "<group>"; };
@@ -559,11 +567,11 @@
 		A544E3301BCA0C6B0018BB9C /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				A544E3331BCA0C8E0018BB9C /* Category */,
 				A5EB48471BFAF768009A18A1 /* Model */,
 				A5EE159E1BDF7412009FFF5F /* Tool */,
 				A58A023F1BCDF5B3005ACD8D /* Lib */,
 				A5A78BBF1BCB4D87006EFB2D /* View */,
-				A544E3331BCA0C8E0018BB9C /* Category */,
 				A544E3321BCA0C7D0018BB9C /* Other */,
 				A544E3311BCA0C730018BB9C /* Controller */,
 			);
@@ -577,6 +585,8 @@
 				A5283C7F1BC8A6DE00E62BE7 /* SYTabBarViewController.m */,
 				A544E31E1BC9FD910018BB9C /* SYNavigationController.h */,
 				A544E31F1BC9FD910018BB9C /* SYNavigationController.m */,
+				A5D1E01B1BFC0F5700A88BFA /* SYCommonViewController.h */,
+				A5D1E01C1BFC0F5700A88BFA /* SYCommonViewController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -973,7 +983,17 @@
 			path = SDWebImage;
 			sourceTree = "<group>";
 		};
-		A5EB48431BFAF739009A18A1 /* Common */ = {
+		A5D1E0151BFC0B9A00A88BFA /* Temp */ = {
+			isa = PBXGroup;
+			children = (
+				A5D1E0161BFC0BBD00A88BFA /* SYOneTempController.h */,
+				A5D1E0171BFC0BBD00A88BFA /* SYOneTempController.m */,
+				A5D1E0181BFC0BBD00A88BFA /* SYOneTempController.xib */,
+			);
+			name = Temp;
+			sourceTree = "<group>";
+		};
+		A5EB48471BFAF768009A18A1 /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				A5EB48481BFAF78F009A18A1 /* SYCommonGroup.h */,
@@ -986,14 +1006,6 @@
 				A5840C8C1BFB1870003E0718 /* SYCommonSwitchItem.m */,
 				A5840C8E1BFB2291003E0718 /* SYCommonLabelItem.h */,
 				A5840C8F1BFB2291003E0718 /* SYCommonLabelItem.m */,
-			);
-			name = Common;
-			sourceTree = "<group>";
-		};
-		A5EB48471BFAF768009A18A1 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				A5EB48431BFAF739009A18A1 /* Common */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -1010,8 +1022,6 @@
 		A5F5B79B1BC7BA4D0047F482 = {
 			isa = PBXGroup;
 			children = (
-				A576F7081BF195E100754A2F /* libsqlite3.0.tbd */,
-				A532DA6A1BE10FD4000E4B5A /* libicucore.tbd */,
 				A5F5B7A61BC7BA4D0047F482 /* SYWeiBo */,
 				A5F5B7C01BC7BA4D0047F482 /* SYWeiBoTests */,
 				A5F5B7CB1BC7BA4D0047F482 /* SYWeiBoUITests */,
@@ -1041,6 +1051,8 @@
 		A5F5B7A71BC7BA4D0047F482 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				A576F7081BF195E100754A2F /* libsqlite3.0.tbd */,
+				A532DA6A1BE10FD4000E4B5A /* libicucore.tbd */,
 				A5294F081BD9B8FF00087D65 /* EmotionIcons */,
 				A5126CC81BD5101800223376 /* fakeStatus.plist */,
 				A5F5B7B51BC7BA4D0047F482 /* LaunchScreen.storyboard */,
@@ -1072,6 +1084,7 @@
 		A5F5B7DC1BC7BBAA0047F482 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				A5D1E0151BFC0B9A00A88BFA /* Temp */,
 				A55D68331BD6811100C0D2B2 /* Compose */,
 				A58A023A1BCDEBBF005ACD8D /* OAuth */,
 				A56D6F811BCCA6D400C3ED44 /* NewFeature */,
@@ -1195,6 +1208,7 @@
 				A5F5B7B71BC7BA4D0047F482 /* LaunchScreen.storyboard in Resources */,
 				A5294F091BD9B8FF00087D65 /* EmotionIcons in Resources */,
 				A5D28C0D1BC8B18A00BF8BD9 /* Test1ViewController.xib in Resources */,
+				A5D1E01A1BFC0BBD00A88BFA /* SYOneTempController.xib in Resources */,
 				A5FC86F21BDB8C1E002ABE21 /* SYEmotionPopView.xib in Resources */,
 				A5DC94011BD0959300429898 /* SYLoadMoreFooter.xib in Resources */,
 				A58D27F81BDF9DF90052DA07 /* MJRefresh.bundle in Resources */,
@@ -1250,8 +1264,10 @@
 				A58D27FE1BDF9DF90052DA07 /* UIScrollView+MJRefresh.m in Sources */,
 				A5B759241BCF990500B60990 /* SDWebImageManager.m in Sources */,
 				A576F6FF1BF18BAD00754A2F /* FMDatabase.m in Sources */,
+				A5D1E0191BFC0BBD00A88BFA /* SYOneTempController.m in Sources */,
 				A58A02731BCE41A2005ACD8D /* UIWindow+Extension.m in Sources */,
 				A58A026A1BCE2BEF005ACD8D /* MBProgressHUD+MJ.m in Sources */,
+				A5D1E01D1BFC0F5700A88BFA /* SYCommonViewController.m in Sources */,
 				A5CA0F9B1BC916F900154FF6 /* Test3ViewController.m in Sources */,
 				A5B759211BCF990500B60990 /* SDWebImageDecoder.m in Sources */,
 				A5110E491BDDF85300743638 /* MJFoundation.m in Sources */,

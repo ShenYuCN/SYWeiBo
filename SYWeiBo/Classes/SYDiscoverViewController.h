@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface SYDiscoverViewController : UITableViewController
+#import "SYCommonViewController.h"
+@interface SYDiscoverViewController : SYCommonViewController
 
 @end
