@@ -19,11 +19,6 @@
 #import "SYOneTempController.h"
 #define SYColor(r,g,b) [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:1.0]
 
-@interface SYCommonViewController ()
-
-@property (nonatomic,strong) NSMutableArray *groups;
-@end
-
 @implementation SYCommonViewController
 -(NSMutableArray *)groups{
     if (_groups == nil) {
@@ -31,11 +26,19 @@
     }
     return _groups;
 }
-
-/** 屏蔽tableView的样式---group */
+/**
+ *  初始化tableView的样式，group还是plain
+ */
 - (instancetype)init{
-    return [self initWithStyle:UITableViewStyleGrouped];
+    return  [super initWithStyle:UITableViewStyleGrouped];
 }
+/**
+ *  初始化tableView的样式，group还是plain
+ */
+-(instancetype)initWithStyle:(UITableViewStyle)style{
+    return [super initWithStyle:UITableViewStyleGrouped];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -60,6 +63,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
+    // 创建cell,并给cell传递模型
     SYCommonCell *cell = [SYCommonCell cellWithTableView:tableView];
     SYCommonGroup *group = self.groups[indexPath.section];
     cell.item = group.items[indexPath.row];
@@ -80,6 +84,10 @@
 
 #pragma mark - 代理方法
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    //取消选中这行，取消灰色显示
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
     
     // 1.取出这行对应的item模型
     SYCommonGroup *group = self.groups[indexPath.section];

@@ -702,6 +702,9 @@
 		A544E33C1BCA0CF70018BB9C /* Temp */ = {
 			isa = PBXGroup;
 			children = (
+				A5D1E0161BFC0BBD00A88BFA /* SYOneTempController.h */,
+				A5D1E0171BFC0BBD00A88BFA /* SYOneTempController.m */,
+				A5D1E0181BFC0BBD00A88BFA /* SYOneTempController.xib */,
 				A5D28C091BC8B18A00BF8BD9 /* Test1ViewController.h */,
 				A5D28C0A1BC8B18A00BF8BD9 /* Test1ViewController.m */,
 				A5D28C0B1BC8B18A00BF8BD9 /* Test1ViewController.xib */,
@@ -983,16 +986,6 @@
 			path = SDWebImage;
 			sourceTree = "<group>";
 		};
-		A5D1E0151BFC0B9A00A88BFA /* Temp */ = {
-			isa = PBXGroup;
-			children = (
-				A5D1E0161BFC0BBD00A88BFA /* SYOneTempController.h */,
-				A5D1E0171BFC0BBD00A88BFA /* SYOneTempController.m */,
-				A5D1E0181BFC0BBD00A88BFA /* SYOneTempController.xib */,
-			);
-			name = Temp;
-			sourceTree = "<group>";
-		};
 		A5EB48471BFAF768009A18A1 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -1084,7 +1077,6 @@
 		A5F5B7DC1BC7BBAA0047F482 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				A5D1E0151BFC0B9A00A88BFA /* Temp */,
 				A55D68331BD6811100C0D2B2 /* Compose */,
 				A58A023A1BCDEBBF005ACD8D /* OAuth */,
 				A56D6F811BCCA6D400C3ED44 /* NewFeature */,

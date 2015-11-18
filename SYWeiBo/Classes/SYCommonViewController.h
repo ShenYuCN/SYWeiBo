@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface SYCommonViewController : UITableViewController
-- (NSMutableArray *)groups;
+@property (nonatomic,strong) NSMutableArray *groups;
 @end
