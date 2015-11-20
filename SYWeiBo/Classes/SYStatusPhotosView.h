@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SYStatusPhotosView : UIImageView
+@interface SYStatusPhotosView : UIView
 
 @property (nonatomic,strong) NSArray *photos;
 /**

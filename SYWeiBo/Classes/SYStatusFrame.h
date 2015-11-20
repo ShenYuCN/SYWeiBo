@@ -33,6 +33,7 @@
  */
 @interface SYStatusFrame : NSObject
 
+/** 一条微博数据模型 */
 @property (nonatomic,strong) SYStatus *status;
 /**原创微博整体*/
 @property (nonatomic,assign) CGRect originalViewF;

@@ -27,6 +27,8 @@
 -(instancetype)initWithFrame:(CGRect)frame{
     self = [super initWithFrame:frame];
     if (self) {
+        
+        self.userInteractionEnabled = YES;
         self.contentMode = UIViewContentModeScaleAspectFill;
         self.clipsToBounds = YES;
      

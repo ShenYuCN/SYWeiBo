@@ -77,7 +77,6 @@
 //        self.selectedBackgroundView =selectedViewBg;
         
         
-        
         //初始化原创微博
         [self setupOriginal];
         

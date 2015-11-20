@@ -56,8 +56,8 @@
     [self.groups addObject:group];
     
     // 2.设置组的基本数据
-    group.header = @"第0组头部";
-    group.footer = @"第0组尾部的详细信息";
+//    group.header = @"第0组头部";
+//    group.footer = @"第0组尾部的详细信息";
     
     group.items = @[hotStatus, findPeople];
 }

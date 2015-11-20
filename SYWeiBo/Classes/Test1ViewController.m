@@ -22,6 +22,7 @@
     [super viewDidLoad];
     
     NSString *path = [[SDImageCache sharedImageCache] diskCachePath];
+    NSLog(@"%@",path);
     long long size = [path fileSize];
     self.sizeLabel.text = [NSString stringWithFormat:@"%.1fM",size / (1000.0 * 1000.0)] ;
 }

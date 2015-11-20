@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface SYProfileViewController : UITableViewController
+#import "SYCommonViewController.h"
+@interface SYProfileViewController : SYCommonViewController
 
 @end

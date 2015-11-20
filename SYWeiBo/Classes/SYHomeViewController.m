@@ -25,6 +25,7 @@
 #import "SYStatusTool.h"
 #import "SYHomeStatusesParam.h"
 #import "SYHomeStatusesResult.h"
+#import "SYStatusDetailViewController.h"
 
 
 #define SYSpecialText @"SYSpecialText"
@@ -181,7 +182,7 @@
         //取得字典数组,转换成模型数组
 //        NSArray *newStatus = [SYStatus objectArrayWithKeyValuesArray:json[@"statuses"] ];
         
-        //将SYStatus模型转为SYStatusFrame模型
+        //将SYStatus模型转为SYStatusFrame模型数组
         NSArray *statusFrames = [self statusFrameWithStatuses:result.statuses];
         
         //将最新的数据添加到数组最前面
@@ -202,7 +203,7 @@
     }];
 }
 /**
- *  将SYStatus模型转为SYStatusFrame模型
+ *  将SYStatus模型转为SYStatusFrame模型数组
  */
 -(NSArray *)statusFrameWithStatuses:(NSArray *)statuses{
     NSMutableArray *statusFrames = [NSMutableArray array];
@@ -433,6 +434,18 @@
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     SYStatusFrame *statusFrame = self.statusFrames[indexPath.row];
     return statusFrame.cellHeight;
+}
+
+#pragma mark - tableView 的代理方法
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+      NSLog(@"%s",__func__);
+    SYStatusDetailViewController *detail = [[SYStatusDetailViewController alloc] init];
+//    detail.status = self.statusFrames[indexPath.row];
+    [self.navigationController pushViewController:detail animated:YES];
+    
+    
+    
 }
 #pragma mark - UIScrollView的代理方法  配合 上拉加载控件使用
 //  因为使用了MJRefresh，所以没有必要再监听tableView的滑动（到下面刷新）

@@ -11,8 +11,8 @@
 #import "UIImageView+WebCache.h"
 #import "SYStatusPhotoView.h"
 #import "UIView+Extension.h"
-
-
+#import "MJPhotoBrowser.h"
+#import "MJPhoto.h"
 
 //每张配图的宽高
 #define kSYStatusPhotosWH  (([UIScreen mainScreen].bounds.size.width - 40) / 3)
@@ -20,6 +20,8 @@
 #define kSYStatusPhotosMargin 10
 //最大列数
 #define kSYPhotoViewMaxCol(count) ((count == 4)?2:3)
+//最大图片数量
+#define SYStatusPhotosMaxCount 9
 @interface SYStatusPhotosView()
 @property (nonatomic,assign) CGFloat photosWH;
 @end
@@ -27,9 +29,53 @@
 @implementation SYStatusPhotosView
 -(instancetype)initWithFrame:(CGRect)frame{
     if (self = [super initWithFrame:frame]) {
+        
+        // 预先创建9个图片控件
+        for (int i = 0; i<SYStatusPhotosMaxCount; i++) {
+            SYStatusPhotoView *photoView = [[SYStatusPhotoView alloc] init];
+            photoView.tag = i;
+            [self addSubview:photoView];
+            
+            // 添加手势监听器（一个手势监听器 只能 监听对应的一个view）
+            UITapGestureRecognizer *recognizer = [[UITapGestureRecognizer alloc] init];
+            [recognizer addTarget:self action:@selector(tapPhoto:)];
+            [photoView addGestureRecognizer:recognizer];
+        }
     }
     return self;
 }
+
+/**
+ *  监听图片的点击
+ */
+- (void)tapPhoto:(UITapGestureRecognizer *)recognizer
+{
+    NSLog(@"tapPhoto");
+    // 1.创建图片浏览器
+    MJPhotoBrowser *browser = [[MJPhotoBrowser alloc] init];
+    
+    // 2.设置图片浏览器显示的所有图片
+    NSMutableArray *photos = [NSMutableArray array];
+    NSUInteger count = self.photos.count;
+    for (int i = 0; i<count; i++) {
+        SYPhoto *pic = self.photos[i];
+        
+        MJPhoto *photo = [[MJPhoto alloc] init];
+        // 设置图片的路径
+        photo.url = [NSURL URLWithString:pic.bmiddle_pic];
+        // 设置来源于哪一个UIImageView
+        photo.srcImageView = self.subviews[i];
+        [photos addObject:photo];
+    }
+    browser.photos = photos;
+    
+    // 3.设置默认显示的图片索引
+    browser.currentPhotoIndex = recognizer.view.tag;
+    
+    // 3.显示浏览器
+    [browser show];
+}
+
 
 -(void)setPhotos:(NSArray *)photos{
 

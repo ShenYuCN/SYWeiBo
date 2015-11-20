@@ -9,6 +9,10 @@
 //
 
 #import "SYProfileViewController.h"
+#import "SYCommonGroup.h"
+#import "SYCommonArrowItem.h"
+#import "MBProgressHUD+MJ.h"
+#import "SYSettingViewController.h"
 #import "Test1ViewController.h"
 @interface SYProfileViewController ()
 @end
@@ -17,88 +21,57 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    
+    // 右上角的设置按钮
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"设置" style:UIBarButtonItemStyleDone target:self action:@selector(setting)];
+    
+    // 初始化数据
+    [self setupGroup];
+}
+- (void)setupGroup{
+    [self setupGroup0];
+    [self setupGroup1];
+
+}
+- (void)setupGroup0{
+    
+    // 1.创建组
+    SYCommonGroup *group = [SYCommonGroup group];
+    [self.groups addObject:group];
+    
+    // 2.设置组的所有行数据
+    SYCommonArrowItem *newFriend = [SYCommonArrowItem itemWithTitle:@"新的好友" icon:@"new_friend"];
+    newFriend.badgeValue = @"5";
+    newFriend.operation = ^{
+        [MBProgressHUD showSuccess:@"这是好友"];
+    };
+    group.items = @[newFriend];
+    
+}
+- (void)setupGroup1{
+    // 1.创建组
+    SYCommonGroup *group = [SYCommonGroup group];
+    [self.groups addObject:group];
+    
+    // 2.设置组的所有行数据
+    SYCommonArrowItem *album = [SYCommonArrowItem itemWithTitle:@"我的相册" icon:@"album"];
+    album.subTitle = @"(100)";
+    album.operation = ^{
+        [MBProgressHUD showSuccess:@"这是相册"];
+    };
+    
+    SYCommonArrowItem *collect = [SYCommonArrowItem itemWithTitle:@"我的收藏" icon:@"collect"];
+    collect.subTitle = @"(10)";
+    collect.badgeValue = @"1";
+    
+    SYCommonArrowItem *like = [SYCommonArrowItem itemWithTitle:@"赞" icon:@"like"];
+    like.subTitle = @"(36)";
+    like.badgeValue = @"10";
+    
+    group.items = @[album, collect, like];
 }
 -(void)setting{
-    [self.navigationController pushViewController:[[Test1ViewController alloc] init] animated:YES];
+    SYSettingViewController *setting = [[SYSettingViewController alloc] init];
+    [self.navigationController pushViewController:setting animated:YES];
 }
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-#pragma mark - Table view data source
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Incomplete implementation, return the number of sections
-    return 0;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete implementation, return the number of rows
-    return 0;
-}
-
-/*
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
-    
-    // Configure the cell...
-    
-    return cell;
-}
-*/
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

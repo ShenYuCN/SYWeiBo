@@ -143,6 +143,7 @@
 /**
  告诉系统:触摸点point是否在这个UI控件身上
  */
+
 - (BOOL)pointInside:(CGPoint)point withEvent:(UIEvent *)event
 {
     // 初始化矩形框
@@ -157,6 +158,20 @@
         return NO;
     }
 }
+
+/**
+ *  这个方法会返回能够处理事件的控件
+ *  这个方法可以用来拦截所有触摸事件
+ *  @param point 触摸点
+ */
+//- (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event
+//{
+//    if ([self touchingSpecialWithPoint:point]) {
+//        return self;
+//    }
+//    return nil;
+//}
+
 
 // 触摸事件的处理
 // 1.判断触摸点在谁身上: 调用所有UI控件的- (BOOL)pointInside:(CGPoint)point withEvent:(UIEvent *)event
