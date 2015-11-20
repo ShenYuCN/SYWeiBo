@@ -31,7 +31,7 @@
     if (self = [super initWithFrame:frame]) {
         
         // 预先创建9个图片控件
-        for (int i = 0; i<SYStatusPhotosMaxCount; i++) {
+        for (int i = 0; i < SYStatusPhotosMaxCount; i++) {
             SYStatusPhotoView *photoView = [[SYStatusPhotoView alloc] init];
             photoView.tag = i;
             [self addSubview:photoView];
@@ -50,7 +50,17 @@
  */
 - (void)tapPhoto:(UITapGestureRecognizer *)recognizer
 {
-    NSLog(@"tapPhoto");
+    
+//    UIView *cover =[[UIView alloc] initWithFrame:[UIScreen mainScreen].bounds];
+//    cover.backgroundColor = [UIColor blackColor];
+//    [[UIApplication sharedApplication].keyWindow addSubview:cover];
+//    
+//    SYStatusPhotoView *photoView = (SYStatusPhotoView *)recognizer.view;
+//    UIImageView *imageView = [[UIImageView alloc] init];
+//    imageView.image = photoView.image;
+//    imageView.frame = [self convertRect:photoView.frame toView:cover];
+//    [cover addSubview:imageView];
+    
     // 1.创建图片浏览器
     MJPhotoBrowser *browser = [[MJPhotoBrowser alloc] init];
     
@@ -80,16 +90,11 @@
 -(void)setPhotos:(NSArray *)photos{
 
     _photos = photos;
-    int photosCount = (int)photos.count;
-    //创建足够数量的UIImageView
-    while (self.subviews.count < photosCount) {
-        SYStatusPhotoView *photoView = [[SYStatusPhotoView alloc] init];
-        [self addSubview:photoView];
-    }
-    //遍历UIImageView,设置图片
-    for (int i = 0; i < self.subviews.count; i ++) {
+    
+    //遍历UIImageView,设置图片的显示和隐藏
+    for (int i = 0; i < SYStatusPhotosMaxCount; i ++) {
         SYStatusPhotoView *photoView = self.subviews[i];
-        if (i < photosCount) {
+        if (i < photos.count) {
             photoView.hidden = NO;
             photoView.photo = photos[i];
         }else{
