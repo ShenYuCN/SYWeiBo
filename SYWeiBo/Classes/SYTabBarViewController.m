@@ -39,9 +39,9 @@
     // 2.更换系统自带的tabbar,只读属性不能使用set方法
     // self.tabBar = [[SYTabBar alloc] init];
     
-    SYTabBar *tabBar =[[SYTabBar alloc] init];
-    [self setValue:tabBar forKey:@"tabBar"];
-    tabBar.delegeta = self;
+//    SYTabBar *tabBar =[[SYTabBar alloc] init];
+//    [self setValue:tabBar forKey:@"tabBar"];
+//    tabBar.delegeta = self;
     
 }
 
@@ -85,6 +85,7 @@
 }
 
 #pragma mark - tabBar的代理方法
+
 
 -(void)tabBarDidClickPlusBtn:(SYTabBar *)tabBar{
 

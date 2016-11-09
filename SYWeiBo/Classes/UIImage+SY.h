@@ -11,6 +11,7 @@
 @interface UIImage (SY)
 /**截图*/
 +(instancetype)captureWithView:(UIView *)view;
+
 /**水印*/
 +(instancetype)waterImageWithBg:(NSString *)bgName addLogo:(NSString *) logoName;
 /**转换成圆形头像，带白边*/

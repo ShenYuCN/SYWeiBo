@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-@class SYStatus;
-@interface SYStatusDetailViewController : UITableViewController
+@class SYStatus,SYStatusFrame;
+@interface SYStatusDetailViewController : UIViewController
 
 @property (nonatomic,strong) SYStatus   *status;
+@property (nonatomic,strong) SYStatusFrame *statusFrame;
 @end

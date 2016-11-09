@@ -12,6 +12,7 @@
 
 @implementation UIWindow (Extension)
 -(void)switchRootViewController{
+    
     // 之前已经登录成功过，沙盒中存在数据
     //判断版本是否更新
     NSString *key = @"CFBundleVersion";

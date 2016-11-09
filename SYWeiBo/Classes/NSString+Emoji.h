@@ -14,6 +14,7 @@
  */
 + (NSString *)emojiWithIntCode:(int)intCode;
 
+
 /**
  *  将十六进制的编码转为emoji字符
  */

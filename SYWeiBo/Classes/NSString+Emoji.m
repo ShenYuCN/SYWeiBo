@@ -36,7 +36,8 @@
 - (BOOL)isEmoji
 {
      BOOL returnValue = NO;
-         
+
+    
      const unichar hs = [self characterAtIndex:0];
      // surrogate pair
      if (0xd800 <= hs && hs <= 0xdbff) {

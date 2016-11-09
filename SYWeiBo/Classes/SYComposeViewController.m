@@ -219,7 +219,7 @@
  *  打开相机和相册的封装
  */
 -(void)openImagePickViewController:(UIImagePickerControllerSourceType)sourceType{
-    if (![UIImagePickerController isSourceTypeAvailable:sourceType ] ) return;    UIImagePickerController *ipc = [[UIImagePickerController alloc] init];
+    if (![UIImagePickerController isSourceTypeAvailable:sourceType ] ) return;UIImagePickerController *ipc = [[UIImagePickerController alloc] init];
     ipc.sourceType = sourceType;
     ipc.delegate = self;
     [self presentViewController:ipc animated:YES completion:nil];

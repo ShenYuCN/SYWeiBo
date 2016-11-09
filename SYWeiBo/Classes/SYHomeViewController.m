@@ -56,6 +56,9 @@
     
     self.tableView.backgroundColor = [UIColor colorWithRed:211/255.0 green:211/255.0 blue:211/255.0 alpha:1];
     
+    NSString *path = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:@"status.sqlite"];
+    
+    NSLog(@"path===%@",path);
     //导航栏信息设置
     [self setupNav];
 
@@ -99,6 +102,7 @@
     
     //2.发送请求
     [SYHttpTool get:@"https://api.weibo.com/2/users/show.json" parameters:params success:^(id json) {
+        NSLog(@"json__%@",json);
         //取出名字
         SYUser *user = [SYUser objectWithKeyValues:json];
         //设置标题
@@ -439,10 +443,11 @@
 #pragma mark - tableView 的代理方法
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
-      NSLog(@"%s",__func__);
-    SYStatusDetailViewController *detail = [[SYStatusDetailViewController alloc] init];
-//    detail.status = self.statusFrames[indexPath.row];
-    [self.navigationController pushViewController:detail animated:YES];
+//    SYStatusDetailViewController *detail = [[SYStatusDetailViewController alloc] init];
+//    SYStatusFrame *statusFrame = self.statusFrames[indexPath.row];
+//    detail.status = statusFrame.status;
+//    detail.statusFrame = statusFrame;
+//    [self.navigationController pushViewController:detail animated:YES];
     
     
     

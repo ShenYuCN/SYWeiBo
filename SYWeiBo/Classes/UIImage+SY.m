@@ -37,7 +37,7 @@
  *  @param bgName   背景图片名字
  *  @param logoName 水印图片名字
  *
- *  @return <#return value description#>
+ *  @return UIImage
  */
 +(instancetype)waterImageWithBg:(NSString *)bgName addLogo:(NSString *)logoName{
     UIImage *bgImage =[UIImage imageNamed:bgName];

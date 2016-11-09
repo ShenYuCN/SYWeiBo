@@ -52,6 +52,7 @@
         
         //右边的barButtonItem
         viewController.navigationItem.rightBarButtonItem =  [UIBarButtonItem itemWithTarget:self action:@selector(more) image:@"navigationbar_more" highlightedImage:@"navigationbar_more_highlighted"];
+//        viewController.hidesBottomBarWhenPushed = YES;
 
     }
     [super pushViewController:viewController animated:YES];
